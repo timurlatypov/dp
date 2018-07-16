@@ -1,0 +1,101 @@
+<nav class="navbar sticky-top navbar-expand-lg" id="sectionsNav">
+    <div class="container-fluid">
+        <div class="navbar-translate">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Новинки</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Бестселлеры</a>
+                </li>
+
+                <li class="dropdown nav-item">
+                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Уход за кожей</a>
+                    <div class="dropdown-menu">
+                        <div class="megamenu mx-3 my-2">
+                            <div style="min-width: 200px;">
+                                <h4 class="title px-4 mt-4 mb-2"><nobr>Для лица</nobr></h4>
+                                <a class="dropdown-item" href="#">Домашние пилинги</a>
+                                <a class="dropdown-item" href="#">Проблемная кожа</a>
+                                <a class="dropdown-item" href="#">Защита от солнца SPF</a>
+                                <a class="dropdown-item" href="#">Антиоксиданты</a>
+                                <a class="dropdown-item" href="#">Крема</a>
+                                <a class="dropdown-item" href="#">Сыворотки</a>
+                                <a class="dropdown-item" href="#">Маски</a>
+                                <a class="dropdown-item" href="#">Скрабы</a>
+                                <a class="dropdown-item" href="#">Косметика для глаз</a>
+                                <a class="dropdown-item" href="#">Уход за ресницами</a>
+                                <a class="dropdown-item" href="#">Уход за губами</a>
+                                <a class="dropdown-item" href="#">Уход за волосами</a>
+                            </div>
+                            <div style="min-width: 200px">
+                                <h4 class="title px-4 mt-4 mb-2"><nobr>Для тела</nobr></h4>
+                                <a class="dropdown-item" href="#">Антицеллюлитные средства</a>
+                                <a class="dropdown-item" href="#">Липолитические средства</a>
+                                <a class="dropdown-item" href="#">Дренаж и коррекция</a>
+                                <a class="dropdown-item" href="#">Укрепляющий уход</a>
+                            </div>
+                            <div style="min-width: 200px;">
+                                <h4 class="title px-4 mt-4 mb-2"><nobr>Направленный уход</nobr></h4>
+                                <a class="dropdown-item" href="#">Очищающие средства</a>
+                                <a class="dropdown-item" href="#">Увлажняющие средства</a>
+                                <a class="dropdown-item" href="#">Тонизирующие средства</a>
+                                <a class="dropdown-item" href="#">Восстанавливающие средства</a>
+                                <a class="dropdown-item" href="#">Осветляющие средства</a>
+                                <a class="dropdown-item" href="#">Отшелушивающие средства</a>
+                                <a class="dropdown-item" href="#">Anti-Age средства</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Для мужчин</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Для детей</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Скидки</a>
+                </li>
+
+                <li class="dropdown nav-item">
+                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Бренды</a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a class="dropdown-item" href="#">Corpolibero</a>
+                        <a class="dropdown-item" href="#">Officina Pelle</a>
+                        <a class="dropdown-item" href="#">Professional Solutions</a>
+                        <a class="dropdown-item" href="#">Mene&Moy System</a>
+                        <a class="dropdown-item" href="#">Skin Renu</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Доставка и оплата</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="material-icons">shopping_cart</i><span class="badge badge-pill badge-danger"><b>2</b></span></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

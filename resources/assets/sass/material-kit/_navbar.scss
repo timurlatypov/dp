@@ -1,8 +1,8 @@
 .navbar {
     border: 0;
     border-radius: $border-radius-base;
-    padding: 0.625rem 0;
-    margin-bottom: 20px;
+    padding: 0;
+    margin-bottom: 0;
     @include navbar-colors($white-color, $navbar-color);
 
     &.fixed-top{
@@ -14,7 +14,7 @@
             position: relative;
             color: inherit;
             padding: $padding-general-x;
-            font-weight: $font-weight-default;
+            font-weight: $font-weight-bold;
             font-size: $mdb-btn-font-size-base;
             text-transform: uppercase;
             border-radius: $border-radius-base;
@@ -149,7 +149,7 @@
     &.navbar-transparent{
         background-color: transparent !important;
         box-shadow: none;
-        padding-top: 25px;
+        padding-top: 0;
         color: $white-color;
     }
 

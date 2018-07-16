@@ -6,6 +6,13 @@
  */
 
 require('./bootstrap');
+require('moment');
+
+require('./material-kit');
+require('./plugins/nouislider.min');
+require('./core/bootstrap-material-design.min');
+require('./plugins/bootstrap-datetimepicker');
+
 
 window.Vue = require('vue');
 

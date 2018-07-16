@@ -27,10 +27,13 @@
                 background-color: rgba(200, 200, 200, 0.2);
             }
 
-            &.active{
+            &.active {
                 color: $white-color;
                 background-color: $brand-primary;
                 @include shadow-big-color($brand-primary);
+            }
+            &.active svg {
+                fill: $white-color;
             }
         }
 
@@ -38,6 +41,11 @@
             display: block;
             font-size: 30px;
             padding: 15px 0;
+        }
+
+        svg {
+            fill: darkgrey;
+            padding: 10px;
         }
 
     }

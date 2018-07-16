@@ -1,0 +1,24 @@
+.card-product {
+  width: 30%;
+}
+
+.card-product-recomendation {
+  width: 47%;
+}
+
+.card-blog {
+  margin-top: 60px;
+}
+
+.colored-shadow {
+  transform: scale(.94);
+  top: 12px;
+  filter: blur(12px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: -1;
+  transition: opacity .45s;
+  opacity: 0;
+}
