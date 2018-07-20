@@ -76,11 +76,9 @@
                 <li class="dropdown nav-item">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Бренды</a>
                     <div class="dropdown-menu dropdown-with-icons">
-                        <a class="dropdown-item" href="#">Corpolibero</a>
-                        <a class="dropdown-item" href="#">Officina Pelle</a>
-                        <a class="dropdown-item" href="#">Professional Solutions</a>
-                        <a class="dropdown-item" href="#">Mene&Moy System</a>
-                        <a class="dropdown-item" href="#">Skin Renu</a>
+                        @foreach($brands as $brand)
+                        <a class="dropdown-item" href="/brand/{{$brand->slug}}">{{ $brand->name }}</a>
+                        @endforeach
                     </div>
                 </li>
 
