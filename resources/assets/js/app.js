@@ -22,7 +22,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('editor', require('./components/Editor.vue'));
+Vue.component('toggle-switch', require('./components/ToggleSwitch.vue'));
+Vue.component('input-field', require('./components/InputField.vue'));
+Vue.component('product-image-upload', require('./components/products/ProductImageUpload.vue'));
+Vue.component('select-brand-line', require('./components/products/SelectBrandLine.vue'));
 
 const app = new Vue({
     el: '#app'

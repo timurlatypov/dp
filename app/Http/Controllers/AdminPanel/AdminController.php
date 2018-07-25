@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers\AdminPanel;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DiscountController extends Controller
+class AdminController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,7 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.index');
     }
 
     /**

@@ -29,10 +29,15 @@
                         </button>
                     </form>
                 </div>
-                <div class="col-3 text-right align-self-center">
-                    <button class="btn btn-warning">
-                        <i class="material-icons">account_box</i> Войти
-                        <div class="ripple-container"></div></button>
+                <div class="col-3 text-right align-self-center px-0">
+                    @guest
+                        <a class="btn btn-warning" href="{{ route('login') }}"><i class="material-icons">account_box</i> Войти<div class="ripple-container"></div></a>
+                        @else
+                        <a class="btn btn-warning" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">account_box</i> Выйти<div class="ripple-container"></div></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
                 </div>
             </div>
         </div>

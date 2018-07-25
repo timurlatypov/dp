@@ -1,0 +1,50 @@
+<div class="admin-panel-logo mx-auto mt-4">
+    @include('layouts.partials._logo')
+</div>
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link" href="#href">
+            <i class="material-icons">dashboard</i>
+            <p>Панель</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#href">
+            <i class="material-icons">supervisor_account</i>
+            <p>Пользователи</p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="#href">
+            <i class="material-icons">assignment</i>
+            <p>Заказы</p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="#href">
+            <i class="material-icons">assignment_ind</i>
+            <p>Клиенты</p>
+        </a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="#href">
+            <i class="material-icons">shopping_cart</i>
+            <p>Продукты</p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="#promo">
+            <i class="material-icons">confirmation_number</i>
+            <p>Промокоды</p>
+        </a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+            <i class="material-icons">confirmation_number</i> <p>{{ __('Logout') }}</p>
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </li>
+</ul>

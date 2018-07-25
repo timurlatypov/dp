@@ -13,7 +13,7 @@
 
                             <div class="card card-product p-2">
                                 <div>
-                                    <a href="#"><img class="card-img-top" src="/storage/product/thumb/Corpolibero-Flash-Repair-Cream-SPF-15-650-650.jpg" alt=""></a>
+                                    <a href="#"><img class="card-img-top" src="/storage/products/thumb/Corpolibero-Flash-Repair-Cream-SPF-15-650-650.jpg" alt=""></a>
                                     <div class="position-absolute top-0 p-2"><h6 class="text-muted my-1">Corpolibero</h6></div>
                                     <div class="position-absolute top-0 right-0 pr-1">
                                         <button type="submit" class="btn btn-fab btn-link" data-toggle="tooltip" data-placement="top" title="Сохранить любимый продукт">
@@ -38,7 +38,7 @@
                             </div>
                             <div class="card card-product p-2">
                                 <div>
-                                    <a href="#"><img class="card-img-top" src="/storage/product/thumb/Corpolibero-Flash-Whitening-Cream-650-650.jpg" alt=""></a>
+                                    <a href="#"><img class="card-img-top" src="/storage/products/thumb/Corpolibero-Flash-Whitening-Cream-650-650.jpg" alt=""></a>
                                     <div class="position-absolute top-0 p-2"><h6 class="text-muted my-1">Corpolibero</h6></div>
                                     <div class="position-absolute top-0 right-0 pr-1">
                                         <button type="submit" class="btn btn-fab btn-link" data-toggle="tooltip" data-placement="top" title="Сохранить любимый продукт">
@@ -63,7 +63,7 @@
                             </div>
                             <div class="card card-product p-2">
                                 <div>
-                                    <a href="#"><img class="card-img-top" src="/storage/product/thumb/Corpolibero-Reliance-Lipcode-650-650.jpg" alt=""></a>
+                                    <a href="#"><img class="card-img-top" src="/storage/products/thumb/Corpolibero-Reliance-Lipcode-650-650.jpg" alt=""></a>
                                     <div class="position-absolute top-0 p-2"><h6 class="text-muted my-1">Corpolibero</h6></div>
                                     <div class="position-absolute top-0 right-0 pr-1">
                                         <button type="submit" class="btn btn-fab btn-link" data-toggle="tooltip" data-placement="top" title="Сохранить любимый продукт">

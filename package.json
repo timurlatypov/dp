@@ -22,6 +22,7 @@
     "dependencies": {
         "moment": "^2.22.2",
         "inputmask": "^3.3.11",
+        "trix": "^0.11.2",
         "vee-validate": "^2.1.0-beta.4",
         "vue-recaptcha": "^1.1.1"
     }

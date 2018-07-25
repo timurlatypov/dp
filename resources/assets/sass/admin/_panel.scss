@@ -1,0 +1,12 @@
+.wrapper {
+  position: relative;
+  top: 0;
+  height: 100vh;
+}
+
+.main-panel {
+  position: relative;
+  float: right;
+  width: calc(100% - 260px);
+  transition: .33s,cubic-bezier(.685,.0473,.346,1);
+}
