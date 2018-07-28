@@ -26,18 +26,22 @@
         @include('layouts.partials._header')
         @include('layouts.partials._nav')
 
-       @include('layouts.partials._carousel')
+        @include('layouts.partials._carousel')
 
         <main class="py-4">
             @yield('content')
         </main>
-        @include('layouts.partials._brands')
 
-        @include('layouts.partials._infoblock')
+        <flash message="{{ session('flash') }}"></flash>
 
-        @include('layouts.partials._about')
 
-        @include('layouts.partials._blog')
+        @yield('brands')
+
+        @yield('infoblock')
+
+        @yield('about')
+
+        @yield('blog')
 
         @include('layouts.partials._footer')
     </div>

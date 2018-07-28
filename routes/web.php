@@ -2,9 +2,8 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('landing-page');
-});
+Route::get('/', 'HomeController@index')->name('landing-page');
+
 
 //Route::group(['middleware' => 'role:admin'], function() {
 //
@@ -18,6 +17,14 @@ Route::get('/', function () {
 //		return 'admin panel entered';
 //	});
 //});
+
+Route::group(['prefix' => '/cart'], function() {
+	Route::post('/add', 'CartController@store')->name('add.product.to.cart');
+});
+
+
+Route::get('/checkout', 'CartController@checkout')->name('checkout');
+
 
 Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin', 'namespace' => 'AdminPanel'], function() {
 	Route::get('/', 'AdminController@index')->name('admin.index');
@@ -60,6 +67,10 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin', 'namespa
 
 	Route::group(['prefix' => '/api', 'namespace' => 'Bestseller'], function() {
 		Route::post('/bestseller/toggle', 'BestsellerController@toggle')->name('api.bestseller.toggle');
+	});
+
+	Route::group(['prefix' => '/api', 'namespace' => 'Novelty'], function() {
+		Route::post('/novelty/toggle', 'NoveltyController@toggle')->name('api.novelty.toggle');
 	});
 });
 

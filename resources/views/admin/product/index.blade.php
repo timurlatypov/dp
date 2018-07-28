@@ -15,6 +15,7 @@
                             <th class="w-25">Бренд</th>
                             <th>Цена</th>
                             <th>Скидка</th>
+                            <th>Новинка</th>
                             <th>Сезонный</th>
                             <th>Бестселлер</th>
                             <th>На сайте</th>
@@ -36,6 +37,9 @@
                                 <input-field value="{{ $product->discount }}" endpoint="{{ route('api.product.discount.update') }}" product_id="{{ $product->id }}" fontawesome="fa fa-percentage" placeholder="Скидка"></input-field>
                             </td>
 
+                            <td>
+                                <toggle-switch toggle="{{ $product->novelty }}" endpoint="{{ route('api.novelty.toggle') }}" product_id="{{ $product->id }}"></toggle-switch>
+                            </td>
 
                             <td>
                                 <toggle-switch toggle="{{ $product->seasonal }}" endpoint="{{ route('api.seasonal.toggle') }}" product_id="{{ $product->id }}"></toggle-switch>

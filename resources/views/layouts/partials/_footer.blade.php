@@ -9,7 +9,7 @@
                             <div class="footer-logo">@include('layouts.partials._logo')</div>
                             <h6>Интернет-магазин<br>профессиональной косметики</h6>
                             <div class="py-2"><i class="fab fa-facebook fa-lg pr-3"></i><i class="fab fa-instagram fa-lg"></i></div>
-                            <h6 class="text-white">&copy; {{ date('Y') }} Все права защищены</h6>
+                            <h6 class="text-white">© 2018 Все права защищены</h6>
                         </div>
                         <div class="col-3">
                             <h4 class="title text-white mt-2">Покупки</h4>

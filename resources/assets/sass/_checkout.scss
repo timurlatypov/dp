@@ -1,0 +1,15 @@
+.table-shopping .img-container {
+  width: 120px;
+  max-height: 160px;
+  overflow: hidden;
+  display: block;
+}
+
+.table .th-description {
+  max-width: 150px;
+}
+
+.table-shopping>thead>tr>th {
+  font-size: .75rem;
+  text-transform: uppercase;
+}

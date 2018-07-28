@@ -6,10 +6,13 @@
             <div class="col-12 col-md-10">
                 <div class="card">
                     <form class="form" method="" action="">
+
                         <div class="card-header card-header-warning text-center">
                             <h3 class="card-title mb-1 mt-0">Сезонное предложение</h3>
                         </div>
+
                         <div class="card-body d-flex flex-wrap justify-content-around">
+
 
                             <div class="card card-product p-2">
                                 <div>
@@ -30,12 +33,14 @@
                                         <div class="d-inline-flex">
                                             <h4 class="title my-0 opacity-50"><strike>2630 <i class="fas fa-ruble-sign fa-sm"></i></strike></h4>&nbsp;&nbsp;<h4 class="title my-0 text-danger">2100 <i class="fas fa-ruble-sign fa-sm"></i></h4>
                                         </div>
-                                        <button type="submit" class="btn btn-default btn-sm">
-                                            <i class="material-icons pb-1">shopping_cart</i> В корзину<div class="ripple-container"></div>
-                                        </button>
+
+                                        <add-button endpoint="{{ route('add.product.to.cart') }}" id="21" name="Repair Cream SPF 15" price="2700" :cart="{{ $cart }}"></add-button>
+
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="card card-product p-2">
                                 <div>
                                     <a href="#"><img class="card-img-top" src="/storage/products/thumb/Corpolibero-Flash-Whitening-Cream-650-650.jpg" alt=""></a>
@@ -55,9 +60,7 @@
                                         <div class="d-inline-flex">
                                             <h4 class="title my-0 opacity-50"><strike>3120 <i class="fas fa-ruble-sign fa-sm"></i></strike></h4>&nbsp;&nbsp;<h4 class="title my-0 text-danger">2750 <i class="fas fa-ruble-sign fa-sm"></i></h4>
                                         </div>
-                                        <button type="submit" class="btn btn-default btn-sm">
-                                            <i class="material-icons pb-1">shopping_cart</i> В корзину<div class="ripple-container"></div>
-                                        </button>
+                                        <add-button endpoint="{{ route('add.product.to.cart') }}" id="20" name="Whitening Cream" price="2200"></add-button>
                                     </div>
                                 </div>
                             </div>
@@ -80,15 +83,15 @@
                                         <div class="d-inline-flex">
                                             <h4 class="title my-0 opacity-50"><strike>1280 <i class="fas fa-ruble-sign fa-sm"></i></strike></h4>&nbsp;&nbsp;<h4 class="title my-0 text-danger">980 <i class="fas fa-ruble-sign fa-sm"></i></h4>
                                         </div>
-                                        <button type="submit" class="btn btn-default btn-sm">
-                                            <i class="material-icons pb-1">shopping_cart</i> В корзину<div class="ripple-container"></div>
-                                        </button>
+
+                                        <add-button endpoint="{{ route('add.product.to.cart') }}" id="54" name="LipCode" price="1200"></add-button>
+
                                     </div>
                                 </div>
                             </div>
 
-
                         </div>
+
                         <div class="footer text-center pb-3">
                             <a href="#pablo" class="btn btn-primary">Все предложения</a>
                         </div>
@@ -97,4 +100,20 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('brands')
+    @include('layouts.partials._brands')
+@endsection
+
+@section('infoblock')
+    @include('layouts.partials._infoblock')
+@endsection
+
+@section('about')
+    @include('layouts.partials._about')
+@endsection
+
+@section('blog')
+    @include('layouts.partials._blog')
 @endsection
