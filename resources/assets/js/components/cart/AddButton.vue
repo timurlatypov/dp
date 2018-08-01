@@ -7,42 +7,28 @@
 
 <script>
     export default {
-        props: ['endpoint', 'id', 'name', 'price', 'cart'],
+        props: ['endpoint', 'model', 'price_to_show'],
         data() {
             return {
-                data: {
-                    id: '',
-                    name: '',
-                    quantity: 1,
-                    price: ''
+                payload: {
+                    priceToShow: ''
                 },
                 disabled: false,
             }
         },
         methods: {
             saveToCart() {
-                window.flash('true');
-                axios.post(this.endpoint, this.data)
+                console.log(this.payload);
+                axios.post(this.endpoint, this.payload)
                     .then( response => {
-                        window.flash('added');
-//                        console.log(response.data);
+                        window.cartUpdate();
                         this.disabled = true;
                     } )
-                console.log(this.cart);
-
-                let jsonCart = JSON.stringify(this.cart);
-
-                console.log(jsonCart);
-
-                let objectCart = JSON.parse(jsonCart);
-
-                console.log(objectCart);
             }
         },
         mounted() {
-            this.data.id = this.id;
-            this.data.name = this.name;
-            this.data.price = this.price;
+            this.payload = this.model;
+            this.payload.priceToShow = this.price_to_show;
         }
     }
 </script>

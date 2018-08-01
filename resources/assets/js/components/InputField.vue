@@ -5,7 +5,15 @@
               <i :class="[fontawesome, success ? ' text-success' : '']"></i>
           </span>
         </div>
-        <input class="form-control font-weight-bold" type="text" v-model="payload.value" v-on:change="onChange" :disabled="disabled" :placeholder="placeholder">
+        <input
+                class="form-control font-weight-bold"
+                v-model="payload.value"
+                v-on:change="onChange"
+                :disabled="disabled"
+                :placeholder="placeholder"
+                type="number"
+                min="1"
+                oninput="validity.valid||(value='');">
     </div>
 </template>
 
@@ -16,6 +24,7 @@
             return {
                 disabled: false,
                 success: false,
+                length: 0,
                 payload: {
                     id: null,
                     value: '',
@@ -37,7 +46,7 @@
         },
         mounted() {
             this.payload.id = this.product_id;
-            if (this.value ? this.payload.value = this.value : this.payload.value = '');
+            this.value ? this.payload.value = this.value : this.payload.value = '';
         }
     }
 </script>

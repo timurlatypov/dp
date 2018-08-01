@@ -20,11 +20,24 @@ Route::get('/', 'HomeController@index')->name('landing-page');
 
 Route::group(['prefix' => '/cart'], function() {
 	Route::post('/add', 'CartController@store')->name('add.product.to.cart');
+	Route::get('/refresh', 'CartController@refresh')->name('refresh.items.in.cart');
 });
 
+Route::group(['prefix' => '/checkout'], function() {
+	Route::get('/', 'CheckoutController@index')->name('checkout');
+	Route::post('/add', 'CheckoutController@add_qty_to_item')->name('add.qty.to.item');
+	Route::post('/remove', 'CheckoutController@remove_qty_to_item')->name('add.qty.to.item');
+	Route::delete('/delete/{rowId}', 'CheckoutController@destroy')->name('delete.item.from.cart');
+});
 
-Route::get('/checkout', 'CartController@checkout')->name('checkout');
+Route::group(['prefix' => '/order'], function() {
+	Route::post('/store', 'OrderController@store')->name('order.store');
+});
 
+Route::group(['prefix' => '/coupon'], function() {
+	Route::get('/', 'CouponController@index')->name('coupon.index');
+	Route::post('/validate', 'CouponController@validate_coupon')->name('validate.coupon');
+});
 
 Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin', 'namespace' => 'AdminPanel'], function() {
 	Route::get('/', 'AdminController@index')->name('admin.index');

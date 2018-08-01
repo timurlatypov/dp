@@ -59,4 +59,8 @@ window.flash = function (message) {
     window.events.$emit('flash', message);
 }
 
+window.cartUpdate = function () {
+    window.events.$emit('cartUpdate');
+}
+
 $(document).ready(function() { $('body').bootstrapMaterialDesign(); });

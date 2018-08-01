@@ -11,8 +11,19 @@ class Product extends Model
 
 	protected $guarded = [];
 
-	public function getRouteKeyName(){
+	public function getRouteKeyName()
+	{
 		return 'slug';
+	}
+
+	public function definePriceToShow()
+	{
+		return $this->discount ? $this->discounted_price() : $this->price;
+	}
+
+	private function discounted_price()
+	{
+		return round($this->price * (($this->discount - 100) / -100));
 	}
 
     public function brand()

@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-12 col-md-8">
                                 <div>
-                                    <h4 class="title mt-3 mb-0 text-primary">Мы рекомендуем!</h4>
+                                    <h4 class="title mt-3 mb-0">Мы рекомендуем!</h4>
                                 </div>
                                 <div class="d-flex flex-wrap justify-content-between">
                                     <div class="card card-product-recomendation p-2">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-12 col-md-4">
                                 <div>
-                                    <h4 class="title mt-3 mb-0 text-primary">Консультация косметолога</h4>
+                                    <h4 class="title mt-3 mb-0">Консультация косметолога</h4>
                                 </div>
                                 <div class="card card-blog">
                                     <div class="card-header card-header-image">

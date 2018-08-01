@@ -20344,8 +20344,8 @@ body,
 }
 
 .table-shopping .img-container {
-  width: 120px;
-  max-height: 160px;
+  width: 80px;
+  max-height: 120px;
   overflow: hidden;
   display: block;
 }
@@ -20355,7 +20355,7 @@ body,
 }
 
 .table-shopping > thead > tr > th {
-  font-size: .75rem;
+  font-size: .7rem;
   text-transform: uppercase;
 }
 

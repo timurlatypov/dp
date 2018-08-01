@@ -35,22 +35,17 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-
-    	//dd($request);
-
-        $addCart = \Gloudemans\Shoppingcart\Facades\Cart::add($request->id, $request->name, $request->quantity, $request->price);
-
+        $addToCart = \Gloudemans\Shoppingcart\Facades\Cart::add([
+        	'id' => $request->id,
+	        'name' => $request->title_eng,
+	        'qty' => 1,
+	        'price' => $request->priceToShow,
+	        'options' => [
+	        	'brand' => $request->brand['name'],
+		        'image' => $request->thumb_path
+	        ]
+        ]);
         return response(['data' => \Gloudemans\Shoppingcart\Facades\Cart::content()], 200);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function checkout()
-    {
-        return view('checkout');
     }
 
     /**
@@ -86,4 +81,12 @@ class CartController extends Controller
     {
         //
     }
+
+	public function refresh()
+	{
+		$cart_items = \Gloudemans\Shoppingcart\Facades\Cart::content();
+		$cart_count = $cart_items->count();
+
+		return response(['cart_items' => $cart_items, 'cart_count' => $cart_count], 200);
+	}
 }

@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
 		    $nav->with('brands', \App\Brand::orderBy('order_id')->get());
 		    $nav->with('cart', \Gloudemans\Shoppingcart\Facades\Cart::content() );
 	    });
+
+	    view()->composer('layouts.partials._seasonal', function($seasonal) {
+		    $seasonal->with('seasonal', \App\Product::where('seasonal', true)->take(3)->get());
+	    });
     }
 
     /**

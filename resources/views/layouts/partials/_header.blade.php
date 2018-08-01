@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-3 align-self-center">
                     <div class="header-logo py-4" style="min-height: 100px;">
-                        @include('layouts.partials._logo')
+                        <a href="/">@include('layouts.partials._logo')</a>
                     </div>
                 </div>
                 <div class="col-6 align-self-center">

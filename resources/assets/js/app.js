@@ -7,6 +7,11 @@
 
 window.Vue = require('vue');
 
+// import ru from 'vee-validate/dist/locale/ru';
+// import VeeValidate, { Validator } from 'vee-validate';
+// VeeValidate.Validator.localize('ru', ru);
+// Vue.use(VeeValidate);
+
 require('./bootstrap');
 require('moment');
 
@@ -23,13 +28,23 @@ require('./plugins/bootstrap-datetimepicker');
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
+Vue.component('cart', require('./components/cart/Cart.vue'));
 Vue.component('add-button', require('./components/cart/AddButton.vue'));
 Vue.component('editor', require('./components/Editor.vue'));
 Vue.component('toggle-switch', require('./components/ToggleSwitch.vue'));
 Vue.component('input-field', require('./components/InputField.vue'));
 Vue.component('product-image-upload', require('./components/products/ProductImageUpload.vue'));
 Vue.component('select-brand-line', require('./components/products/SelectBrandLine.vue'));
+Vue.component('order-checkout-form', require('./components/checkout/OrderCheckoutForm.vue'));
 
 const app = new Vue({
     el: '#app'
 });
+
+let Inputmask = require('inputmask');
+
+if (document.getElementById("phone")) {
+    var selector = document.getElementById("phone");
+    var im = new Inputmask("9 (999) 999-99-99");
+    im.mask(selector);
+}

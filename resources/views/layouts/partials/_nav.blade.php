@@ -89,15 +89,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Контакты</a>
                 </li>
-                <li class="dropdown nav-item">
-                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="material-icons">shopping_cart</i><span class="badge badge-pill badge-danger"><b>{{ $cart->count() }}</b></span></a>
-                    <div class="dropdown-menu  dropdown-menu-right dropdown-with-icons">
-                            <a class="dropdown-item" href="/checkout">Оформить заказ</a>
-                        @foreach($cart as $row)
-                            <a class="dropdown-item" href="#">ID: {{$row->id}}, Name: {{$row->name}}, Qty: {{$row->qty}}, Price: {{$row->price}}</a>
-                        @endforeach
-                    </div>
-                </li>
+
+                <cart :cart_items="{{ $cart }}" cart_count="{{ $cart->count() }}"></cart>
 
             </ul>
         </div>
