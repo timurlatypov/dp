@@ -4,7 +4,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('landing-page');
 
-
 //Route::group(['middleware' => 'role:admin'], function() {
 //
 //	Route::group(['middleware' => 'role:admin,delete posts'], function() {
@@ -30,12 +29,19 @@ Route::group(['prefix' => '/checkout'], function() {
 	Route::delete('/delete/{rowId}', 'CheckoutController@destroy')->name('delete.item.from.cart');
 });
 
+//
+// ORDER CONTROLLER
+//
 Route::group(['prefix' => '/order'], function() {
 	Route::post('/store', 'OrderController@store')->name('order.store');
 });
 
+
+
 Route::group(['prefix' => '/coupon'], function() {
 	Route::get('/', 'CouponController@index')->name('coupon.index');
+	Route::get('/destroy', 'CouponController@destroy')->name('coupon.destroy');
+
 	Route::post('/validate', 'CouponController@validate_coupon')->name('validate.coupon');
 });
 

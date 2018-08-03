@@ -1,12 +1,20 @@
 <template>
-    <div class="card">
+
+
+    <div class="card" v-if="!show_checkout">
+      <div class="px-4 py-3 mx-auto text-center">
+          <h3 class="title">Корзина</h3>
+          <p class="p-5">В вашей корзине нет товаров</p>
+      </div>
+    </div>
+
+
+    <div class="card" v-else>
 
         <div class="px-4 py-3 mx-auto">
             <h3 class="title">Ваш заказ</h3>
         </div>
-
         <div class="table-responsive px-5">
-
             <table class="table table-shopping">
 
                 <thead>
@@ -59,7 +67,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan="3" rowspan="4" style="vertical-align: top">
+                        <td colspan="3" rowspan="10" style="vertical-align: top">
 
                             <div class="card p-2 mx-auto" style="width: 300px;">
                                 <div class="card-body text-center">
@@ -75,25 +83,35 @@
 
                         </td>
                         <td>Общая сумма</td>
-                        <td>{{ order.billing_subtotal    }}</td>
+                        <td>{{ order.billing_subtotal }}</td>
                         <td></td>
                     </tr>
 
-                    <tr>
+
+                    <tr v-if="this.order.coupon.valid">
                         <td>Промокод</td>
-                        <td>{{ total }}</td>
+                        <td><span class="text-danger">{{ '-' + define_coupon_discount }}</span> ({{order.coupon.discount}}%)</td>
                         <td></td>
                     </tr>
+
+
+                    <tr v-if="this.auth_user">
+                        <td>Любимый клиент</td>
+                        <td><span class="text-danger">{{ '-' + define_loyalty_discount }}</span> ({{order.user.loyalty}}%)</td>
+                        <td></td>
+                    </tr>
+
 
                     <tr>
                         <td>Доставка</td>
-                        <td>{{ total }}</td>
+                        <td>{{ define_delivery_costs }}</td>
                         <td></td>
                     </tr>
 
+
                     <tr>
-                        <td>Итого</td>
-                        <td>{{ total }}</td>
+                        <td><h5 class="title my-0">Итого</h5></td>
+                        <td><h5 class="title my-0">{{ define_total }} <i class="fas fa-ruble-sign fa-sm"></i></h5></td>
                         <td></td>
                     </tr>
 
@@ -237,7 +255,6 @@
         data() {
             return {
                 total: '',
-                success: false,
                 payload: {
                     rowId: '',
                     qty: ''
@@ -249,11 +266,14 @@
                 order: {
                     cart: {},
                     coupon: {
+                        value: '',
                         coupon: '',
                         error: '',
                         valid: false
                     },
-                    user: {},
+                    user: {
+                        loyalty_value: 0,
+                    },
                     address: {
                         billing_city: '',
                         billing_street: '',
@@ -264,9 +284,53 @@
                         billing_comment: '',
                     },
                     billing_subtotal: '',
+                    billing_delivery: 0,
                     billing_total: ''
                 }
             }
+        },
+
+        computed: {
+          show_checkout: function () {
+            if (Number(this.order.billing_subtotal) > 0) {
+              return true;
+            } else {
+              return false;
+            }
+          },
+
+          define_delivery_costs: function () {
+            if (Number(this.order.billing_subtotal) > 3000) {
+              this.order.billing_delivery = 0;
+              return 0;
+            } else {
+              this.order.billing_delivery = 300;
+              return 300;
+            }
+          },
+
+          define_coupon_discount: function() {
+            if (this.order.coupon.valid) {
+              this.order.coupon.value = Math.round(Number(this.order.billing_subtotal) * (this.order.coupon.discount/100));
+              return this.order.coupon.value;
+            }
+            return this.order.coupon.value;
+          },
+
+            define_loyalty_discount: function() {
+                if ( this.order.user.loyalty > 0) {
+                    console.log(' > 0 ')
+                    this.order.user.loyalty_value = Math.round(Number(this.order.billing_subtotal) * (this.order.user.loyalty/100));
+                    return this.order.user.loyalty_value;
+                } else {
+                    this.order.user.loyalty_value = 0;
+                    return this.order.user.loyalty_value;
+                }
+            },
+
+          define_total: function () {
+            return this.order.billing_total =  this.order.billing_subtotal - this.order.coupon.value - this.order.user.loyalty_value + this.order.billing_delivery;
+          }
         },
 
         methods: {
@@ -308,8 +372,10 @@
                         window.cartUpdate();
                     })
             },
+
+
             validateCoupon() {
-                axios.post('/coupon/validate', this.coupon)
+                axios.post('/coupon/validate', this.order.coupon)
                     .then( response => {
 
                         if( response.status === 202) {
@@ -317,6 +383,7 @@
                             return;
                         }
 
+                        this.order.coupon = response.data.coupon;
                         this.coupon_input_disabled = true;
                         this.order.coupon.valid = true;
                         this.order.coupon.success = 'Промокод применён';
@@ -325,9 +392,12 @@
 
                     })
             },
+
             applySavedAddress(index) {
                 this.order.address = this.user_addresses[index];
             },
+
+
             storeOrder() {
                 axios.post('/order/store', this.order)
                     .then(response => {
@@ -336,10 +406,13 @@
             }
         },
         mounted() {
-            this.order.billing_subtotal = this.session_cart_subtotal;
+            this.order.billing_subtotal = Number(this.session_cart_subtotal);
 
             if (this.auth_user) {
                 this.order.user = this.auth_user;
+
+                console.log(this.auth_user);
+                console.log(this.order.user);
             }
 
             if (this.auth_user_addresses) {
@@ -348,7 +421,6 @@
 
             if (this.session_cart) {
                 this.order.cart = this.session_cart;
-                console.log(this.order.cart);
             }
 
             if (this.session_coupon) {

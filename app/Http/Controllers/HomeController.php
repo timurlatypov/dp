@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -26,5 +27,11 @@ class HomeController extends Controller
     {
     	$cart  = Cart::content();
         return view('landing-page', compact('cart'));
+    }
+
+    public function show($id)
+    {
+    	$user = User::find($id);
+    	dd($user);
     }
 }

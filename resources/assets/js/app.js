@@ -41,6 +41,7 @@ const app = new Vue({
     el: '#app'
 });
 
+
 let Inputmask = require('inputmask');
 
 if (document.getElementById("phone")) {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Coupon;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -30,22 +31,28 @@ class OrderController extends Controller
 	 */
 	public function store(Request $request)
 	{
+
+		//dd($request);
+
 		if ( auth()->check() ) {
 			$user_id = $request->user()->id;
 		} else {
 			$user_id = null;
 		}
 
-		dd($request);
+		if ( $request->coupon['coupon'] ) {
+			$hasCoupon = true;
+		} else {
+			$hasCoupon = false;
+		}
 
 		$order = Order::create([
 			'user_id' => $user_id,
-
-			'order_details' => $request->order_details,
+			'order_details' => json_encode($request->cart),
 			'order_status' => 'Новый',
 
-			'coupon' => $request->coupon,
-			'coupon_details' => $request->coupon_details,
+			'coupon' => $hasCoupon,
+			'coupon_details' => json_encode($request->coupon),
 
 			'billing_name' => $request->user['name'],
 			'billing_surname' => $request->user['surname'],
@@ -60,12 +67,22 @@ class OrderController extends Controller
 			'billing_floor' => $request->address['billing_floor'],
 			'billing_comment' => $request->address['billing_comment'],
 
-
 			'billing_subtotal' => $request->billing_subtotal,
 			'billing_delivery' => $request->billing_delivery,
 			'billing_total' => $request->billing_total,
 
 		]);
+
+
+		$coupon = Coupon::where('coupon', $request->coupon['coupon'])->first();
+
+		if ( $coupon && !$coupon->reusable ) {
+			$coupon->update([
+				'used' => true,
+			]);
+		}
+
+		request()->session()->forget('coupon');
 
 	}
 

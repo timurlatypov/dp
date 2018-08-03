@@ -77,39 +77,25 @@ class CouponController extends Controller
 		//
 	}
 
-	/**
-	 * Delete the specified item from cart.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
+
+	public function destroy()
 	{
-		//
+		return request()->session()->forget('coupon');
 	}
 
 	public function validate_coupon(Request $request)
 	{
-
 		if ( $coupon = Coupon::where('coupon', $request->coupon)->first() ) {
-
 			if ( $coupon->expired_at > now() ) {
-
 				if (!$coupon->used) {
-
 					$request->session()->put('coupon', $coupon);
-					return response(['message' => 'успешно добавлен'], 200);
+					return response(['coupon' => $coupon], 200);
 
 				}
-
 				return response(['message' => 'промокод уже использован'], 202);
-
 			}
-
 			return response(['message' => 'промокод не действителен'], 202);
-
 		}
-
 		return response(['message' => 'промокод не найден'], 202);
 	}
 }

@@ -64,10 +64,16 @@ trait HasPermissionsTrait
 		return Permission::whereIn('name', $permissions)->get();
 	}
 
+
+
+
 	public function roles()
 	{
 		return $this->belongsToMany(Role::class, 'users_roles');
 	}
+
+
+
 
 	public function permissions()
 	{
