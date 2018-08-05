@@ -32278,6 +32278,7 @@ __webpack_require__(171);
 Vue.component('flash', __webpack_require__(172));
 Vue.component('cart', __webpack_require__(180));
 Vue.component('add-button', __webpack_require__(183));
+Vue.component('add-favorite', __webpack_require__(223));
 Vue.component('editor', __webpack_require__(186));
 Vue.component('toggle-switch', __webpack_require__(191));
 Vue.component('input-field', __webpack_require__(194));
@@ -61831,7 +61832,7 @@ $(document).ready(function () {
 
   $navbar = $('.navbar[color-on-scroll]');
 
-  scroll_distance = $navbar.attr('color-on-scroll') || 1500;
+  scroll_distance = $navbar.attr('color-on-scroll') || 500;
 
   $navbar_collapse = $('.navbar').find('.navbar-collapse');
 
@@ -65559,6 +65560,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['message'],
@@ -65610,13 +65617,27 @@ var render = function() {
       directives: [
         { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
       ],
-      staticClass: "alert alert-success alert-style text-center p-3",
-      attrs: { role: "alert" }
+      staticClass: "alert alert-info"
     },
-    [_c("b", { domProps: { innerHTML: _vm._s(_vm.body) } })]
+    [
+      _c("div", { staticClass: "container" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("b", { domProps: { innerHTML: _vm._s(_vm.body) } })
+      ])
+    ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "alert-icon" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("info_outline")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -69246,6 +69267,148 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(224)
+/* template */
+var __vue_template__ = __webpack_require__(225)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/favorite/AddFavorite.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-597f62e1", Component.options)
+  } else {
+    hotAPI.reload("data-v-597f62e1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 224 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['endpoint'],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        saveToFavorite: function saveToFavorite() {
+            axios.get(this.endpoint).then(function (response) {
+                if (response.status === 202) {
+                    window.flash('Данный продукт уже сохранен как Любимый!');
+                } else if (response.status === 200) {
+                    window.flash('Продукт сохранен как Любимый!');
+                } else {
+                    return;
+                }
+            });
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      staticClass: "btn btn-fab btn-link",
+      attrs: {
+        "data-toggle": "tooltip",
+        "data-placement": "top",
+        title: "Сохранить любимый продукт"
+      },
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          return _vm.saveToFavorite($event)
+        }
+      }
+    },
+    [
+      _c("i", { staticClass: "material-icons text-danger" }, [
+        _vm._v("favorite_border")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ripple-container" })
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-597f62e1", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

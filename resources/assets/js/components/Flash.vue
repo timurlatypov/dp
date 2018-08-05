@@ -1,6 +1,12 @@
 <template>
-    <div class="alert alert-success alert-style text-center p-3" role="alert" v-show="show">
-        <b v-html="body"></b>
+    <div class="alert alert-info" v-show="show">
+        <div class="container">
+            <div class="alert-icon">
+                <i class="material-icons">info_outline</i>
+            </div>
+
+            <b v-html="body"></b>
+        </div>
     </div>
 </template>
 

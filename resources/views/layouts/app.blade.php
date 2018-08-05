@@ -5,26 +5,30 @@
 </head>
 <body>
     <div id="app">
+        <flash message="{{ session('flash') }}" ></flash>
         @include('layouts.partials._header')
         @include('layouts.partials._nav')
 
-        @include('layouts.partials._carousel')
+        <div class="container-fluid p-0 h-100">
+            <div class="row h-100 m-0">
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+                <div class="col-12 align-self-center p-0">
+                    @yield('carousel')
+                    @yield('banner')
+                    @yield('content')
+                    @yield('infoblock')
+                    @yield('brands')
+                    @yield('about')
+                    @yield('blog')
+                </div>
 
-        <flash message="{{ session('flash') }}"></flash>
+                <div class="col-12 align-self-end p-0">
+                    @include('layouts.partials._footer')
+                </div>
 
-        @yield('infoblock')
+            </div>
+        </div>
 
-        @yield('brands')
-
-        @yield('about')
-
-        @yield('blog')
-
-        @include('layouts.partials._footer')
     </div>
 </body>
 </html>

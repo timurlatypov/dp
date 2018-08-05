@@ -15,6 +15,7 @@ class User extends Authenticatable
 	protected $appends = ['loyalty'];
 
     protected $fillable = ['name', 'surname', 'phone', 'email', 'password'];
+
     protected $hidden = ['password', 'remember_token'];
 
     public function addresses()
@@ -25,6 +26,21 @@ class User extends Authenticatable
 	public function orders()
 	{
 		return $this->hasMany(Order::class);
+	}
+
+	public function favorites()
+	{
+		return $this->belongsToMany(Product::class, 'users_products');
+	}
+
+	private function totalSum()
+	{
+		return array_sum($this->orders->where('order_status', 'Доставлен')->pluck('billing_total')->toArray());
+	}
+
+	public function getLoyaltyAttribute()
+	{
+		return $this->discountAmount();
 	}
 
 	public function discountAmount()
@@ -43,15 +59,5 @@ class User extends Authenticatable
 			$this->loyalty_discount = 12;
 		}
 		return $this->loyalty_discount;
-	}
-
-	private function totalSum()
-	{
-		return array_sum($this->orders->where('order_status', 'Доставлен')->pluck('billing_total')->toArray());
-	}
-
-	public function getLoyaltyAttribute()
-	{
-		return $this->discountAmount();
 	}
 }

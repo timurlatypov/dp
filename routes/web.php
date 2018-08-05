@@ -3,6 +3,19 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('landing-page');
+Route::get('/novelties', 'HomeController@novelties')->name('novelties');
+Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
+Route::get('/discounts', 'HomeController@discounts')->name('discounts');
+
+Route::group(['prefix' => '/category'], function() {
+	Route::get('/{categories}', 'HomeController@category')->name('show.category');;
+	Route::get('/{categories}/{subcategory}', 'HomeController@subcategory')->name('show.category.subcategory');;
+});
+
+
+Route::get('/brand/{brand}', 'AdminPanel\Brand\BrandController@show_brand_products')->name('show.brand.products');
+Route::get('/brand/{brand}/{line}', 'AdminPanel\Brand\BrandController@show_brand_line_products')->name('show.brand.line.products');
+
 
 //Route::group(['middleware' => 'role:admin'], function() {
 //
@@ -22,6 +35,12 @@ Route::group(['prefix' => '/cart'], function() {
 	Route::get('/refresh', 'CartController@refresh')->name('refresh.items.in.cart');
 });
 
+Route::group(['prefix' => '/favorite', 'middleware' => 'auth', 'namespace' => 'User'], function() {
+	Route::get('/{product}/attach', 'FavoriteController@attachProductToFavorite')->name('attach.product.to.favorite');
+	Route::get('/{product}/detach', 'FavoriteController@detachProductFromFavorite')->name('detach.product.from.favorite');
+});
+
+
 Route::group(['prefix' => '/checkout'], function() {
 	Route::get('/', 'CheckoutController@index')->name('checkout');
 	Route::post('/add', 'CheckoutController@add_qty_to_item')->name('add.qty.to.item');
@@ -29,12 +48,33 @@ Route::group(['prefix' => '/checkout'], function() {
 	Route::delete('/delete/{rowId}', 'CheckoutController@destroy')->name('delete.item.from.cart');
 });
 
+/////////////////////////////////////////////////////////////////
 //
-// ORDER CONTROLLER
+//          ORDER CONTROLLER
 //
+/////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/order'], function() {
 	Route::post('/store', 'OrderController@store')->name('order.store');
 });
+
+
+
+/////////////////////////////////////////////////////////////////
+//
+//          USER ACCOUNT CONTROLLER
+//
+/////////////////////////////////////////////////////////////////
+Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Account'], function() {
+	Route::get('/profile', 'AccountController@profile')->name('account.profile');
+	Route::get('/addresses', 'AccountController@addresses')->name('account.addresses');
+	Route::get('/orders', 'AccountController@orders')->name('account.orders');
+	Route::get('/favorite', 'AccountController@favorites')->name('account.favorite');
+	Route::get('/loyalty', 'AccountController@loyalty')->name('account.loyalty');
+
+});
+
+
+
 
 
 

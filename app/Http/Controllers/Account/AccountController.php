@@ -1,23 +1,49 @@
 <?php
 
-namespace App\Http\Controllers\AdminPanel\Brand;
+namespace App\Http\Controllers\Account;
 
-use App\Brand;
-use App\Line;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BrandController extends Controller
+class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function profile()
     {
-        //
+    	$user = User::select('name','surname', 'phone')->where('id', auth()->user()->id)->first();
+        return view('account.pages.profile', compact('user'));
     }
+
+    public function addresses()
+    {
+    	$addresses = auth()->user()->addresses()->get();
+
+        return view('account.pages.addresses', compact('addresses'));
+    }
+
+    public function orders()
+    {
+    	$orders = auth()->user()->orders()->get();
+
+        return view('account.pages.orders', compact('orders'));
+    }
+
+	public function favorites()
+	{
+		$favorites = auth()->user()->favorites()->paginate(20);
+
+		return view('account.pages.favorite', compact('favorites'));
+	}
+
+	public function loyalty()
+	{
+		//$favorites = auth()->user()->favorites()->paginate(20);
+
+		return view('account.pages.loyalty');
+	}
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,23 +66,15 @@ class BrandController extends Controller
         //
     }
 
-
-
-    public function show_brand_products(Brand $brand)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-
-    	$products = $brand->products()->live()->paginate(21);
-
-        return view('web.brand', compact(['brand', 'products']));
-    }
-
-    public function show_brand_line_products(Brand $brand, Line $line)
-    {
-
-	    $products = $line->products()->orderBy('order_id', 'asc')->live()->paginate(21);
-
-
-	    return view('web.brand', compact(['brand', 'line', 'products']));
+        //
     }
 
     /**

@@ -1,4 +1,5 @@
 <header>
+
     <section class="bg-dark">
         <div class="container">
             <div class="row d-flex justify-content-between align-items-center header-top-line">
@@ -10,14 +11,17 @@
             </div>
         </div>
     </section>
+
     <section class="bg-white">
         <div class="container">
             <div class="row">
+
                 <div class="col-3 align-self-center">
                     <div class="header-logo py-4" style="min-height: 100px;">
                         <a href="/">@include('layouts.partials._logo')</a>
                     </div>
                 </div>
+
                 <div class="col-6 align-self-center">
                     <form class="form-inline pt-3">
                         <div class="form-group bmd-form-group pt-0 ">
@@ -29,17 +33,23 @@
                         </button>
                     </form>
                 </div>
+
                 <div class="col-3 text-right align-self-center px-0">
                     @guest
                         <a class="btn btn-warning" href="{{ route('login') }}"><i class="material-icons">account_box</i> Войти<div class="ripple-container"></div></a>
                         @else
-                        <a class="btn btn-warning" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">account_box</i> Выйти<div class="ripple-container"></div></a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <a class="btn btn-secondary" href="{{ route('account.profile') }}"><i class="material-icons">account_box</i> Кабинет<div class="ripple-container"></div></a>
+                            <button type="button" class="btn btn-secondary btn-simple btn-fab" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <i class="material-icons">exit_to_app</i>
+                            </button>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form>
+                            </form>
                     @endguest
                 </div>
             </div>
         </div>
+
     </section>
+
 </header>

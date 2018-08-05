@@ -5803,7 +5803,10 @@ tbody.collapse.show {
 }
 
 .alert {
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 1300;
+  width: 100%;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
@@ -15988,7 +15991,6 @@ textarea {
 
 .navbar {
   border: 0;
-  border-radius: 3px;
   padding: 0;
   margin-bottom: 0;
   color: #555;
@@ -20288,6 +20290,13 @@ body,
 
 .card-product {
   width: 30%;
+}
+
+.card-product .card-body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: 0.75rem;
 }
 
 .card-product-recomendation {

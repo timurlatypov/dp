@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-10 pt-3">
 
             <div class="card">
                 <form class="form" method="" action="">
@@ -17,10 +17,7 @@
                                 <a href="#"><img class="card-img-top" src="/storage/products/thumb/{{$product->thumb_path}}" alt=""></a>
                                 <div class="position-absolute top-0 p-2"><h6 class="text-muted my-1">{{ $product->brand->name }}</h6></div>
                                 <div class="position-absolute top-0 right-0 pr-1">
-                                    <button type="submit" class="btn btn-fab btn-link" data-toggle="tooltip" data-placement="top" title="Сохранить любимый продукт">
-                                        <i class="material-icons text-danger">favorite_border</i>
-                                        <div class="ripple-container"></div>
-                                    </button>
+                                    <add-favorite endpoint="{{ route('attach.product.to.favorite', $product) }}"></add-favorite>
                                 </div>
                             </div>
                             <div class="card-body w-100">

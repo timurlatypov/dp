@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\LiveAware;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -36,6 +37,18 @@ class Product extends Model
 		return $this->belongsTo(Line::class);
 	}
 
+	public function categories()
+	{
+		return $this->belongsToMany(Categories::class, 'product_category');
+	}
+
+	public function subcategories()
+	{
+		return $this->belongsToMany(Subcategory::class, 'product_subcategory');
+	}
+
+
+
 	public function thumb()
 	{
 		return asset( $this->thumb_path ? '/storage/thumbs/'.$this->thumb_path : '/storage/thumbs/default.jpg');
@@ -44,6 +57,21 @@ class Product extends Model
 	public function image()
 	{
 		return asset( $this->image_path ? '/storage/images/'.$this->image_path : '/storage/thumbs/default.jpg');
+	}
+
+	public function scopeDiscount(Builder $builder)
+	{
+		return $builder->where('discount', '>', '0');
+	}
+
+	public function scopeNovelties(Builder $builder)
+	{
+		return $builder->where('novelty', true);
+	}
+
+	public function scopeBestsellers(Builder $builder)
+	{
+		return $builder->where('bestseller', true);
 	}
 
 }

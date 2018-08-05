@@ -27,7 +27,7 @@ $(document).ready(function() {
 
   $navbar = $('.navbar[color-on-scroll]');
 
-  scroll_distance = $navbar.attr('color-on-scroll') || 1500;
+  scroll_distance = $navbar.attr('color-on-scroll') || 500;
 
   $navbar_collapse = $('.navbar').find('.navbar-collapse');
 

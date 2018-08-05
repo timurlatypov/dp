@@ -3,7 +3,10 @@
 //
 
 .alert {
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 1300;
+  width: 100%;
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;
   border: $alert-border-width solid transparent;
