@@ -1,10 +1,9 @@
 <template>
-    <div class="alert alert-info" v-show="show">
+    <div class="alert alert-success" v-show="show">
         <div class="container">
             <div class="alert-icon">
                 <i class="material-icons">info_outline</i>
             </div>
-
             <b v-html="body"></b>
         </div>
     </div>

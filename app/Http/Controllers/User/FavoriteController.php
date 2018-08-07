@@ -19,7 +19,7 @@ class FavoriteController extends Controller
 
     	auth()->user()->favorites()->attach($product->id);
 
-	    return response(['message' => 'Cохранен'], 200);
+	    return response(['message' => 'Продукт сохранён как любимый!'], 200);
 
     }
 
@@ -31,7 +31,7 @@ class FavoriteController extends Controller
 	    {
 		    $user->favorites()->detach($product->id);
 
-		    return redirect()->back()->with('flash', 'Мы получили Ваше сообщение!');
+		    return redirect()->back()->with('flash', 'Продукт удалён из Любимых');
 	    }
 
 	    return back();

@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-    	$products = Product::orderBy('id', 'desc')->paginate(25);
+    	$products = Product::orderBy('id', 'desc')->paginate(300);
         return view('admin.product.index', compact('products'));
     }
 
@@ -124,6 +124,12 @@ class ProductController extends Controller
 		    'meta_description' => $request->meta_description,
 		    'meta_keywords' => $request->meta_keywords,
 	    ]);
+
+	    $categories = $request->categories;
+	    $product->categories()->sync($categories);
+
+	    $subcategories = $request->subcategories;
+	    $product->subcategories()->sync($subcategories);
 
 	    return redirect()->route('admin.product.index');
     }

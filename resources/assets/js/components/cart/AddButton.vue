@@ -18,10 +18,10 @@
         },
         methods: {
             saveToCart() {
-                console.log(this.payload);
                 axios.post(this.endpoint, this.payload)
                     .then( response => {
                         window.cartUpdate();
+                        window.flash('Продукт '+this.payload.title_eng+' добавлен в корзину');
                         this.disabled = true;
                     } )
             }

@@ -8,6 +8,12 @@
                 <div class=""><h6><i class="fa fa-user-md"></i>&nbsp;&nbsp;КОНСУЛЬТАЦИЯ КОСМЕТОЛОГА</h6></div>
                 <div class=""><h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" data-toggle="tooltip" data-placement="bottom" title="Написать в Whatsapp"><i class="fab fa-whatsapp fa-lg"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6></div>
                 <div class="pr-2"><h6><a class="text-white" href="tel:84953801141"><i class="fa fa-phone-volume fa-lg"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6></div>
+
+                    @if(  auth()->check() && auth()->user()->hasRole('admin', 'manager'))
+                        <div class="pr-2"><a class="text-white" href="/admin-panel/"><i class="material-icons">dashboard</i></a></div>
+                    @endif
+
+
             </div>
         </div>
     </section>
@@ -36,7 +42,7 @@
 
                 <div class="col-3 text-right align-self-center px-0">
                     @guest
-                        <a class="btn btn-warning" href="{{ route('login') }}"><i class="material-icons">account_box</i> Войти<div class="ripple-container"></div></a>
+                        <a class="btn btn-primary" href="{{ route('login') }}"><i class="material-icons">account_box</i> Войти<div class="ripple-container"></div></a>
                         @else
                             <a class="btn btn-secondary" href="{{ route('account.profile') }}"><i class="material-icons">account_box</i> Кабинет<div class="ripple-container"></div></a>
                             <button type="button" class="btn btn-secondary btn-simple btn-fab" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

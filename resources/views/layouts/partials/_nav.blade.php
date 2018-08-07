@@ -18,34 +18,21 @@
                         <div class="megamenu mx-3 my-2">
                             <div style="min-width: 200px;">
                                 <h4 class="title px-4 mt-4 mb-2"><nobr>Для лица</nobr></h4>
-                                <a class="dropdown-item" href="#">Домашние пилинги</a>
-                                <a class="dropdown-item" href="#">Проблемная кожа</a>
-                                <a class="dropdown-item" href="#">Защита от солнца SPF</a>
-                                <a class="dropdown-item" href="#">Антиоксиданты</a>
-                                <a class="dropdown-item" href="#">Крема</a>
-                                <a class="dropdown-item" href="#">Сыворотки</a>
-                                <a class="dropdown-item" href="#">Маски</a>
-                                <a class="dropdown-item" href="#">Скрабы</a>
-                                <a class="dropdown-item" href="#">Косметика для глаз</a>
-                                <a class="dropdown-item" href="#">Уход за ресницами</a>
-                                <a class="dropdown-item" href="#">Уход за губами</a>
-                                <a class="dropdown-item" href="#">Уход за волосами</a>
+                                @foreach($for_face->subcategories as $subcategory)
+                                    <a class="dropdown-item" href="{{ route('show.category.subcategory', [$for_face, $subcategory]) }}">{{ $subcategory->name }}</a>
+                                @endforeach
                             </div>
                             <div style="min-width: 200px">
                                 <h4 class="title px-4 mt-4 mb-2"><nobr>Для тела</nobr></h4>
                                 @foreach($for_body->subcategories as $subcategory)
                                     <a class="dropdown-item" href="{{ route('show.category.subcategory', [$for_body, $subcategory]) }}">{{ $subcategory->name }}</a>
-                                    @endforeach
+                                @endforeach
                             </div>
                             <div style="min-width: 200px;">
                                 <h4 class="title px-4 mt-4 mb-2"><nobr>Направленный уход</nobr></h4>
-                                <a class="dropdown-item" href="#">Очищающие средства</a>
-                                <a class="dropdown-item" href="#">Увлажняющие средства</a>
-                                <a class="dropdown-item" href="#">Тонизирующие средства</a>
-                                <a class="dropdown-item" href="#">Восстанавливающие средства</a>
-                                <a class="dropdown-item" href="#">Осветляющие средства</a>
-                                <a class="dropdown-item" href="#">Отшелушивающие средства</a>
-                                <a class="dropdown-item" href="#">Anti-Age средства</a>
+                                @foreach($direct_care->subcategories as $subcategory)
+                                    <a class="dropdown-item" href="{{ route('show.category.subcategory', [$direct_care, $subcategory]) }}">{{ $subcategory->name }}</a>
+                                @endforeach
                             </div>
                         </div>
 

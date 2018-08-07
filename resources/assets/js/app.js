@@ -37,6 +37,7 @@ Vue.component('input-field', require('./components/InputField.vue'));
 Vue.component('product-image-upload', require('./components/products/ProductImageUpload.vue'));
 Vue.component('select-brand-line', require('./components/products/SelectBrandLine.vue'));
 Vue.component('order-checkout-form', require('./components/checkout/OrderCheckoutForm.vue'));
+Vue.component('order-subcategories', require('./components/OrderSubcategories.vue'));
 
 const app = new Vue({
     el: '#app'

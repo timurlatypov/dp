@@ -104,6 +104,40 @@
                                 @endif
                             </div>
 
+
+                            <div class="form-group pb-3">
+                                <h4 class="title">Калегории продукта</h4>
+                            </div>
+
+
+                            @foreach($categories as $category)
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" id="categories{{ $category->id }}" {{ $product->categories->contains($category->id) ? ' checked' : ''}}>
+                                    {{ $category->name }}
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                                @if($category->subcategories)
+                                    <div class="pl-5">
+                                        @foreach($category->subcategories as $subcategory)
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" name="subcategories[]" value="{{ $subcategory->id }}" id="subcategories{{ $subcategory->id }}" {{ $product->subcategories->contains($subcategory->id) ? ' checked' : ''}}>
+                                                    {{ $subcategory->name }}
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            @endforeach
+
+
                             <div class="form-group pt-3">
                                 <button type="submit" class="btn btn-primary">Обновить</button>
                             </div>

@@ -24,7 +24,7 @@ class AccountController extends Controller
 
     public function orders()
     {
-    	$orders = auth()->user()->orders()->get();
+    	$orders = auth()->user()->orders()->paginate(20);
 
         return view('account.pages.orders', compact('orders'));
     }

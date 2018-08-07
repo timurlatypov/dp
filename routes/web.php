@@ -40,7 +40,6 @@ Route::group(['prefix' => '/favorite', 'middleware' => 'auth', 'namespace' => 'U
 	Route::get('/{product}/detach', 'FavoriteController@detachProductFromFavorite')->name('detach.product.from.favorite');
 });
 
-
 Route::group(['prefix' => '/checkout'], function() {
 	Route::get('/', 'CheckoutController@index')->name('checkout');
 	Route::post('/add', 'CheckoutController@add_qty_to_item')->name('add.qty.to.item');
@@ -73,18 +72,22 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
 
 });
 
-
-
-
-
-
+/////////////////////////////////////////////////////////////////
+//
+//          COUPON CONTROLLER
+//
+/////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/coupon'], function() {
 	Route::get('/', 'CouponController@index')->name('coupon.index');
 	Route::get('/destroy', 'CouponController@destroy')->name('coupon.destroy');
-
 	Route::post('/validate', 'CouponController@validate_coupon')->name('validate.coupon');
 });
 
+/////////////////////////////////////////////////////////////////
+//
+//          ADMIN PANEL CONTROLLER
+//
+/////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin', 'namespace' => 'AdminPanel'], function() {
 	Route::get('/', 'AdminController@index')->name('admin.index');
 	//
@@ -105,8 +108,19 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin', 'namespa
 
 		// API 'live' toggle
 		Route::post('/live/toggle', 'ProductController@toggle')->name('api.product.live.toggle');
-
 	});
+
+	//
+	// CATEGORIES / SUBCATEGORIES ROUTES GROUP
+	//
+	Route::group(['prefix' => '/categories', 'namespace' => 'Categories'], function() {
+		Route::get('/', 'CategoriesController@index')->name('');
+
+		Route::post('/{categories}/store', 'SubcategoriesController@store')->name('store.new.subcategory');
+	});
+
+
+
 
 	Route::group(['prefix' => '/images', 'namespace' => 'Images'], function() {
 		Route::post('/store', 'ImageController@store_product_image')->name('api.store.product.image');

@@ -17,7 +17,7 @@
     <li class="nav-item ">
         <a class="nav-link" href="#href">
             <i class="material-icons">assignment</i>
-            <p>Заказы</p>
+            <p>Заказы @if($new_orders_count)<span class="badge badge-pill badge-danger">{{$new_orders_count}}</span>@endif</p>
         </a>
     </li>
     <li class="nav-item ">
@@ -27,7 +27,7 @@
         </a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="#href">
+        <a class="nav-link" href="{{ route('admin.product.index') }}">
             <i class="material-icons">shopping_cart</i>
             <p>Продукты</p>
         </a>
@@ -41,7 +41,7 @@
 
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            <i class="material-icons">confirmation_number</i> <p>{{ __('Logout') }}</p>
+            <i class="material-icons">exit_to_app</i> <p>Выйти</p>
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf

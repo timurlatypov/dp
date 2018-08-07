@@ -4,9 +4,32 @@
     <h5 class="title mt-0 mb-3">Ваши заказы</h5>
 
     @if (count($orders))
-    @foreach ($orders as $order)
-        <p>{{ $order->order_id }} - {{ $order->created_at }} - {{ $order->order_status }} - {{ $order->billing_total }}</p>
-    @endforeach
+        <table class="table table-shopping table-user-orders">
+
+            <thead>
+            <tr>
+                <th>Номер</th>
+                <th>Дата</th>
+                <th class="th-description">Сумма заказа</th>
+                <th class="th-description">Статус</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach ($orders as $order)
+                <tr>
+                    <td>{{ $order->order_id }}</td>
+                    <td>{{ $order->created_at->format('d M Y') }}</td>
+                    <td>{{ $order->billing_total }} &#x20BD;</td>
+                    <td>{!! $order->order_current_status !!}</td>
+                </tr>
+
+            @endforeach
+            </tbody>
+        </table>
+        <div class="mx-auto p-4 text-center">
+            {{ $orders->links() }}
+        </div>
     @else
         <p>У Вас еще нет заказов</p>
     @endif
