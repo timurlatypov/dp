@@ -3,15 +3,27 @@
         <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="material-icons">shopping_cart</i>
             <span class="badge badge-pill badge-danger" v-if="count"><b>{{ count }}</b></span>
         </a>
-        <div class="dropdown-menu  dropdown-menu-right dropdown-with-icons">
+        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons px-3 pb-3">
 
             <div v-if="!count">
-                <span class="dropdown-item">В корзине пусто</span>
+                     <span class="dropdown-item">В корзине пусто</span>
             </div>
 
             <div v-else>
-                <a class="dropdown-item" href="/checkout">Оформить заказ</a>
-                <a class="dropdown-item" href="#" v-for="item in items">ID: {{ item.id }}, Name: {{ item.name }}, Qty: {{ item.qty }}, Price: {{ item.price }}</a>
+                <h6 class="my-2"><nobr>Всего наименований: {{ count }}</nobr></h6>
+                <div>
+                    <table class="table table-shopping table-cart">
+                        <tbody>
+                            <tr v-for="item in items">
+                                <td><img :src="'/storage/products/thumb/'+item.options['image']" width="35px"></td>
+                                <td><nobr><b>{{ item.name }}</b></nobr></td>
+                                <td><nobr>{{ item.qty }} ед.</nobr></td>
+                                <td><nobr>{{ item.price }} &#x20BD;</nobr></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-right"><a class="btn btn-primary btn-sm" href="/checkout">Оформить заказ</a></div>
             </div>
 
 
@@ -46,6 +58,7 @@
         mounted() {
             this.items = this.cart_items;
             this.count = this.cart_count;
+
         }
     }
 </script>

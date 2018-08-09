@@ -1,4 +1,4 @@
-<div class="card card-product p-2 m-2">
+<div class="card card-product p-2">
     <div>
         <a href="#"><img class="card-img-top" src="/storage/products/thumb/{{ $thumb_path }}" alt=""></a>
         <div class="position-absolute top-0 p-2">
@@ -11,7 +11,7 @@
     </div>
     <div class="card-body d-flex flex-column justify-content-between w-100">
 
-        <div><h4 class="title my-0"><a href="#" class="hover-underlined">{{ $title_eng }}</a></h4></div>
+        <div><h4 class="title my-0"><a href="{{ $link }}" class="hover-underlined">{{ $title_eng }}</a></h4></div>
 
         <div><p class="mt-0 mb-3 text-muted">{{ $title_rus }}</p></div>
 

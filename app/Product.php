@@ -61,7 +61,7 @@ class Product extends Model
 
 	public function scopeDiscount(Builder $builder)
 	{
-		return $builder->where('discount', '>', '0');
+		return $builder->where('discount', '>', '0')->orderBy('discount', 'desc');
 	}
 
 	public function scopeNovelties(Builder $builder)

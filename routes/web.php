@@ -2,6 +2,13 @@
 
 Auth::routes();
 
+Route::get('/managers', function() {
+	dd($managers);
+});
+
+
+
+
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
@@ -13,8 +20,9 @@ Route::group(['prefix' => '/category'], function() {
 });
 
 
+Route::get('/brand/{brand}/{product}', 'AdminPanel\Brand\BrandController@show_product')->name('show.product');
 Route::get('/brand/{brand}', 'AdminPanel\Brand\BrandController@show_brand_products')->name('show.brand.products');
-Route::get('/brand/{brand}/{line}', 'AdminPanel\Brand\BrandController@show_brand_line_products')->name('show.brand.line.products');
+Route::get('/brand/{brand}/line/{line}', 'AdminPanel\Brand\BrandController@show_brand_line_products')->name('show.brand.line.products');
 
 
 //Route::group(['middleware' => 'role:admin'], function() {

@@ -13,11 +13,6 @@
 <script>
     export default {
         props: ['endpoint'],
-        data() {
-            return {
-
-            }
-        },
         methods: {
             saveToFavorite() {
                 axios.get(this.endpoint)
@@ -26,14 +21,9 @@
                             window.flash('Данный продукт уже сохранен как Любимый!');
                         } else if (response.status === 200) {
                             window.flash('Продукт сохранен как Любимый!');
-                        } else {
-                            return;
                         }
                     } )
             }
-        },
-        mounted() {
-
         }
     }
 </script>

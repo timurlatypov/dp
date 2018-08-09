@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Coupon;
 use App\Order;
+use App\Coupon;
+use App\Events\NewOrderCreated;
+use App\Role;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -81,6 +83,12 @@ class OrderController extends Controller
 				'used' => true,
 			]);
 		}
+
+		$customer = $request->user['email'];
+		$managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
+
+
+		event(new NewOrderCreated($order, $customer, $managers));
 
 		request()->session()->forget('coupon');
 

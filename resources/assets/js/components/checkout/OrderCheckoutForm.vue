@@ -37,7 +37,7 @@
                         </td>
 
                         <td class="td-name">
-                            <a href="#pablo">{{ product.name }}</a>
+                            <a href="#">{{ product.name }}</a>
                             <br><small class="text-uppercase">{{ product.options.brand }}</small>
                         </td>
 
@@ -91,13 +91,6 @@
                     <tr v-if="this.order.coupon.valid">
                         <td>Промокод</td>
                         <td><span class="text-danger">{{ '-' + define_coupon_discount }}</span> ({{order.coupon.discount}}%)</td>
-                        <td></td>
-                    </tr>
-
-
-                    <tr v-if="this.auth_user">
-                        <td>Любимый клиент</td>
-                        <td><span class="text-danger">{{ '-' + define_loyalty_discount }}</span> ({{order.user.loyalty}}%)</td>
                         <td></td>
                     </tr>
 
@@ -329,7 +322,7 @@
             },
 
           define_total: function () {
-            return this.order.billing_total =  this.order.billing_subtotal - this.order.coupon.value - this.order.user.loyalty_value + this.order.billing_delivery;
+            return this.order.billing_total =  this.order.billing_subtotal - this.order.coupon.value + this.order.billing_delivery;
           }
         },
 

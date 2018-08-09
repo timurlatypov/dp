@@ -13,9 +13,9 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid" style="transform: translate3d(0, -70px,0);">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 pt-3">
+    <div class="container" style="transform: translate3d(0, -70px,0);">
+        <div class="row">
+            <div class="col-12 pt-3">
 
 
                 <div class="card">
@@ -24,16 +24,17 @@
                         <h3 class="title mb-1 mt-4">{{ $categories->name }}</h3>
                     </div>
 
-                    <div class="card-body">
-
+                    <div class="card-body p-0">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-sm-3 col-md-3 px-0">
+                                <div class="col-12 col-sm-3">
                                     <h5 class="title">Линии бренда</h5>
                                 </div>
 
-                                <div class="col-12 col-sm-9 col-md-9 d-flex flex-wrap justify-content-start">
+                                <div class="col-12 col-sm-9 d-flex flex-wrap flex-row card-col-9">
+
                                     @each('layouts.partials.product.card', $products, 'product')
+
                                 </div>
                             </div>
 

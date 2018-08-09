@@ -16,6 +16,10 @@
         @if(auth()->check())<add-favorite endpoint="{{ route('attach.product.to.favorite', $product) }}"></add-favorite>@endif
     @endslot
 
+    @slot('link')
+        /brand/{{$product->brand->slug}}/{{$product->slug}}
+    @endslot
+
     @slot('title_eng')
         {{ $product->title_eng }}
     @endslot
@@ -27,8 +31,8 @@
     @slot('price')
         @if($product->discount)
             <div>
-                <h5 class="title my-0 opacity-50"><strike>{{ $product->price }} <i class="fas fa-ruble-sign fa-sm"></i></strike></h5>
-                <h5 class="title my-0 text-danger">{{ $product->definePriceToShow() }} <i class="fas fa-ruble-sign fa-sm"></i></h5>
+                <h4 class="title my-0 opacity-50"><strike>{{ $product->price }} <i class="fas fa-ruble-sign fa-sm"></i></strike></h4>
+                <h4 class="title my-0 text-danger">{{ $product->definePriceToShow() }} <i class="fas fa-ruble-sign fa-sm"></i></h4>
             </div>
         @else
             <h4 class="title my-0 text-success">{{ $product->definePriceToShow() }} <i class="fas fa-ruble-sign fa-sm"></i></h4>

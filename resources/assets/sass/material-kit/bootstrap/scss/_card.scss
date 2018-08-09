@@ -5,6 +5,10 @@
 .card {
   position: relative;
   display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
@@ -154,6 +158,10 @@
 
     .card {
       display: flex;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
       flex: 1 0 0%;
       flex-direction: column;

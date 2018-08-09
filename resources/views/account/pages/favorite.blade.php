@@ -26,7 +26,7 @@
                 </td>
 
                 <td class="td-name w-25">
-                    <a href="#pablo">{{ $product->title_eng }}</a>
+                    <a href="/brand/{{$product->brand->slug}}/{{$product->slug}}">{{ $product->title_eng }}</a>
                     <br><small class="text-uppercase">{{ $product->brand->name }}</small>
                 </td>
 
