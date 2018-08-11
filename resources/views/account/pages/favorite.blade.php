@@ -1,7 +1,7 @@
 @extends('account.index')
 
 @section('information')
-    <h5 class="title mt-0 mb-3">Ваши любимые товары</h5>
+    <h4 class="title">Ваши любимые товары</h4>
 
     @if(count($favorites))
     <table class="table table-shopping">

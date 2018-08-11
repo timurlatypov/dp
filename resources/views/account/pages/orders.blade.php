@@ -1,7 +1,7 @@
 @extends('account.index')
 
 @section('information')
-    <h5 class="title mt-0 mb-3">Ваши заказы</h5>
+    <h4 class="title">Ваши заказы</h4>
 
     @if (count($orders))
         <table class="table table-shopping table-user-orders">

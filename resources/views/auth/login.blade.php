@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container p-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-6">
+
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header card-header-doctorproffi text-center">
+                        <h3 class="card-title mb-1 mt-0">Авторизация на сайте</h3>
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
@@ -39,26 +42,21 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
+                            <div class="form-group">
+
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
                                         </label>
                                     </div>
-                                </div>
+
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Войти</button>
+                                <span class="text-muted"> или </span>
+                                <a href="{{ route('register') }}" class="btn btn-info">Регистрация</a>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">Забыли свой пароль?</a>
                             </div>
                         </form>
                     </div>

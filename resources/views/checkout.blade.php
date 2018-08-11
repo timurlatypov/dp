@@ -8,7 +8,7 @@
                         :session_cart="{{ $cart }}"
                         :session_cart_subtotal="{{ $subtotal }}"
                         :session_coupon="@if( session()->exists('coupon') ){{ session()->get('coupon') }}@else null @endif"
-                        :auth_user="@if( auth()->check() ){{ auth()->user() }}@else null @endif"
+                        :auth_user="@if(auth()->check()) {{ auth()->user() }}@else null @endif"
                         :auth_user_addresses="@if( auth()->check() ){{ auth()->user()->addresses }}@else null @endif"></order-checkout-form>
             </div>
         </div>

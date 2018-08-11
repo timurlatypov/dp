@@ -17,10 +17,15 @@ class CreateBrandsTable extends Migration
             $table->increments('id');
             $table->integer('order_id')->nullable();
 	        $table->string('image_path')->nullable();
+	        $table->string('brand_image_path')->nullable();
 	        $table->string('slug')->unique();
 	        $table->string('name');
+	        $table->string('title')->nullable();;
 	        $table->longText('description');
-            $table->timestamps();
+	        $table->string('meta_title')->nullable();;
+	        $table->string('meta_description')->nullable();;
+	        $table->string('meta_keywords')->nullable();;
+	        $table->timestamps();
         });
     }
 

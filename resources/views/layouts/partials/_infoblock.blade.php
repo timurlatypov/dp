@@ -10,7 +10,7 @@
                                 <div>
                                     <h4 class="title mt-3 mb-0">Мы рекомендуем!</h4>
                                 </div>
-                                <div class="d-flex flex-wrap justify-content-around">
+                                <div class="d-flex">
                                     @each('layouts.partials.product.card', $recommend, 'product')
                                 </div>
                             </div>

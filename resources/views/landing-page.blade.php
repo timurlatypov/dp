@@ -5,8 +5,12 @@
     @include('layouts.partials._carousel')
 @endsection
 
+{{--@section('content')--}}
+    {{--@include('layouts.partials._seasonal')--}}
+{{--@endsection--}}
+
 @section('content')
-    @include('layouts.partials._seasonal')
+    @include('layouts.partials._bestsellers')
 @endsection
 
 @section('brands')

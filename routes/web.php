@@ -3,11 +3,13 @@
 Auth::routes();
 
 Route::get('/managers', function() {
+
+	dd( optional(auth()->user()) );
+
+	$managers = \App\Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
+
 	dd($managers);
 });
-
-
-
 
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
@@ -73,6 +75,8 @@ Route::group(['prefix' => '/order'], function() {
 /////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Account'], function() {
 	Route::get('/profile', 'AccountController@profile')->name('account.profile');
+	Route::patch('/profile/update', 'AccountController@profile_update')->name('account.profile.update');
+
 	Route::get('/addresses', 'AccountController@addresses')->name('account.addresses');
 	Route::get('/orders', 'AccountController@orders')->name('account.orders');
 	Route::get('/favorite', 'AccountController@favorites')->name('account.favorite');

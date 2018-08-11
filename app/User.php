@@ -33,7 +33,7 @@ class User extends Authenticatable
 		return $this->belongsToMany(Product::class, 'users_products');
 	}
 
-	private function totalSum()
+	public function totalSum()
 	{
 		return array_sum($this->orders->where('order_status', 'Доставлен')->pluck('billing_total')->toArray());
 	}
@@ -47,16 +47,14 @@ class User extends Authenticatable
 	{
 		$totalSum = $this->totalSum();
 
-		if ( $totalSum > 0 && $totalSum <= 3000) {
+		if ( $totalSum > 0 && $totalSum <= 15000) {
 			$this->loyalty_discount = 0;
-		} elseif ( $totalSum > 3000 && $totalSum <= 6000 ) {
-			$this->loyalty_discount = 3;
-		} elseif ($totalSum > 6000 && $totalSum <= 9000) {
-			$this->loyalty_discount = 6;
-		} elseif ($totalSum > 9000 && $totalSum <= 12000) {
-			$this->loyalty_discount = 9;
-		} elseif ($totalSum > 12000) {
-			$this->loyalty_discount = 12;
+		} elseif ( $totalSum > 15000 && $totalSum <= 30000 ) {
+			$this->loyalty_discount = 5;
+		} elseif ($totalSum > 30000 && $totalSum <= 60000) {
+			$this->loyalty_discount = 7;
+		} elseif ($totalSum > 60000) {
+			$this->loyalty_discount = 10;
 		}
 		return $this->loyalty_discount;
 	}

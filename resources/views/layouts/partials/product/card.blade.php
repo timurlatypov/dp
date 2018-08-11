@@ -9,8 +9,16 @@
     @endslot
 
     @slot('ph')
-        @if($product->ph)<small class="font-weight-bold">pH: {{ $product->ph }}</small>@endif
+        @if($product->ph)<div><small class="font-weight-bold">pH: {{ $product->ph }}</small></div>@endif
     @endslot
+
+    @slot('discount')
+        @if($product->discount)
+            <span class="badge badge-pill badge-danger font-weight-bold">-{{ $product->discount }}%</span>
+        @endif
+    @endslot
+
+
 
     @slot('add_favorite')
         @if(auth()->check())<add-favorite endpoint="{{ route('attach.product.to.favorite', $product) }}"></add-favorite>@endif

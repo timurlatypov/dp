@@ -4,12 +4,24 @@
     <div style="
             position: relative;
             width: 100%;
-            height: 300px;
-            background-image: url('/storage/banners/{{ $brand->image_path }}');
+            height: 400px;
+            background-image: url('/storage/banners/{{ $brand->brand_image_path }}');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            "></div>
+            text-align: right;
+            ">
+
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 text-right align-self-center">
+                    <div class="brand-logo-banner"><img src="/storage/brands/{{ $brand->image_path }}" alt="Логотип {{ $brand->name }}"></div>
+                    <h6 class="py-3">{{ $brand->title }}</h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
 @endsection
 
 @section('content')
@@ -20,14 +32,15 @@
 
                 <div class="card">
                     <div class="text-center">
-                        <h3 class="title mb-1 mt-4"></h3>
+                        <h3 class="title mb-1 mt-4">Описание продукта</h3>
                     </div>
 
                     <div class="card-body p-0">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-sm-3">
-                                    <h5 class="title">Каталог</h5>
+                                    <h5 class="title">Для лица</h5>
+                                    <p></p>
                                 </div>
 
                                 <div class="col-12 col-sm-9">
@@ -41,6 +54,9 @@
                                                 <div class="brand-logo"><img src="/storage/brands/{{ $brand->image_path }}" alt="Логотип {{ $brand->name }}"></div>
                                                 <h1 class="title mb-1 mt-4">{{ $product->title_eng }}</h1>
                                                 <span>{{ $product->title_rus }}</span><br>
+                                                @if($product->discount)
+                                                    <span class="badge badge-pill badge-danger font-weight-bold">-{{ $product->discount }}%</span>
+                                                @endif
                                                 @if($product->ph)<small class="font-weight-bold">pH: {{ $product->ph }}</small>@endif
 
                                                 @if($product->discount)

@@ -2,10 +2,10 @@
 
 
     <div class="card" v-if="!show_checkout">
-      <div class="px-4 py-3 mx-auto text-center">
-          <h3 class="title">Корзина</h3>
-          <p class="p-5">В вашей корзине нет товаров</p>
-      </div>
+        <div class="px-4 py-3 mx-auto text-center">
+            <h3 class="title">Корзина</h3>
+            <p class="p-5">В вашей корзине нет товаров</p>
+        </div>
     </div>
 
 
@@ -18,95 +18,102 @@
             <table class="table table-shopping">
 
                 <thead>
-                    <tr>
-                        <th class="text-center" style="width: 80px;"></th>
-                        <th>Товары</th>
-                        <th class="th-description">Цена</th>
-                        <th class="th-description">Количество</th>
-                        <th class="">Сумма</th>
-                        <th class="text-center" style="width: 60px;">Удалить</th>
-                    </tr>
+                <tr>
+                    <th class="text-center" style="width: 80px;"></th>
+                    <th>Товары</th>
+                    <th class="th-description">Цена</th>
+                    <th class="th-description">Количество</th>
+                    <th class="">Сумма</th>
+                    <th class="text-center" style="width: 60px;">Удалить</th>
+                </tr>
                 </thead>
 
                 <tbody>
-                    <tr v-for="product, index in order.cart">
-                        <td>
-                            <div class="img-container">
-                                <img :src="'storage/products/thumb/'+product.options.image" alt="...">
-                            </div>
-                        </td>
+                <tr v-for="product, index in order.cart">
+                    <td>
+                        <div class="img-container">
+                            <img :src="'storage/products/thumb/'+product.options.image" alt="...">
+                        </div>
+                    </td>
 
-                        <td class="td-name">
-                            <a href="#">{{ product.name }}</a>
-                            <br><small class="text-uppercase">{{ product.options.brand }}</small>
-                        </td>
+                    <td class="td-name">
+                        <a href="#">{{ product.name }}</a>
+                        <br><small class="text-uppercase">{{ product.options.brand }}</small>
+                    </td>
 
-                        <td>{{ product.price }}</td>
+                    <td>{{ product.price }}</td>
 
-                        <td class="td-actions">
-                            <ul role="navigation" class="pagination my-0">
-                                <li class="page-item">
-                                    <button class="page-link" @click.prevent="removeItem(index)">-</button>
-                                </li>
-                                <li class="page-item active">
-                                    <span class="page-link">{{ product.qty }}</span>
-                                </li>
-                                <li class="page-item">
-                                    <button class="page-link" @click.prevent="addItem(index)">+</button>
-                                </li>
-                            </ul>
-                        </td>
+                    <td class="td-actions">
+                        <ul role="navigation" class="pagination my-0">
+                            <li class="page-item">
+                                <button class="page-link" @click.prevent="removeItem(index)">-</button>
+                            </li>
+                            <li class="page-item active">
+                                <span class="page-link">{{ product.qty }}</span>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link" @click.prevent="addItem(index)">+</button>
+                            </li>
+                        </ul>
+                    </td>
 
-                        <td class="td-number">{{ product.subtotal }}</td>
+                    <td class="td-number">{{ product.subtotal }}</td>
 
-                        <td class="td-actions text-center">
-                            <button type="button" class="btn btn-simple" @click.prevent="deleteItem(index)">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </td>
-                    </tr>
+                    <td class="td-actions text-center">
+                        <button type="button" class="btn btn-simple" @click.prevent="deleteItem(index)">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td colspan="3" rowspan="10" style="vertical-align: top">
+                <tr>
+                    <td colspan="3" rowspan="10" style="vertical-align: top">
 
-                            <div class="card p-2 mx-auto" style="width: 300px;">
-                                <div class="card-body text-center">
-                                    <h4 class="title my-1">Промокод</h4>
-                                    <div class="form-group mx-auto" :class="order.coupon.valid ? ' has-success' : ''" style="width: 150px;">
-                                        <input class="form-control font-weight-bold text-center" type="text" v-model="order.coupon.coupon" v-on:change="validateCoupon" :disabled="coupon_input_disabled" placeholder="Промокод">
-                                        <small class="form-text text-danger" v-if="!order.coupon.valid">{{ order.coupon.error }}</small>
-                                        <small class="form-text text-success" v-if="order.coupon.valid">{{ order.coupon.success }}</small>
-                                    </div>
+                        <div class="card p-2 mx-auto" style="width: 300px;">
+                            <div class="card-body text-center">
+                                <h4 class="title my-1">Промокод</h4>
+                                <div class="form-group mx-auto" :class="order.coupon.valid ? ' has-success' : ''" style="width: 150px;">
+                                    <input class="form-control font-weight-bold text-center" type="text" v-model="order.coupon.coupon" v-on:change="validateCoupon" :disabled="coupon_input_disabled" placeholder="Промокод">
+                                    <small class="form-text text-danger" v-if="!order.coupon.valid">{{ order.coupon.error }}</small>
+                                    <small class="form-text text-success" v-if="order.coupon.valid">{{ order.coupon.success }}</small>
                                 </div>
-
                             </div>
 
-                        </td>
-                        <td>Общая сумма</td>
-                        <td>{{ order.billing_subtotal }}</td>
-                        <td></td>
-                    </tr>
+                        </div>
+
+                    </td>
+                    <td>Общая сумма</td>
+                    <td>{{ order.billing_subtotal }}</td>
+                    <td></td>
+                </tr>
 
 
-                    <tr v-if="this.order.coupon.valid">
-                        <td>Промокод</td>
-                        <td><span class="text-danger">{{ '-' + define_coupon_discount }}</span> ({{order.coupon.discount}}%)</td>
-                        <td></td>
-                    </tr>
+                <tr v-if="this.order.coupon.valid">
+                    <td>Промокод</td>
+                    <td><span class="text-danger">{{ '-' + define_coupon_discount }}</span> ({{order.coupon.discount}}%)</td>
+                    <td></td>
+                </tr>
 
 
-                    <tr>
-                        <td>Доставка</td>
-                        <td>{{ define_delivery_costs }}</td>
-                        <td></td>
-                    </tr>
+                <tr v-if="this.auth_user">
+                    <td>Любимый клиент</td>
+                    <td><span class="text-danger">{{ '-' + define_loyalty_discount }}</span> ({{order.user.loyalty}}%)</td>
+                    <td></td>
+                </tr>
 
 
-                    <tr>
-                        <td><h5 class="title my-0">Итого</h5></td>
-                        <td><h5 class="title my-0">{{ define_total }} <i class="fas fa-ruble-sign fa-sm"></i></h5></td>
-                        <td></td>
-                    </tr>
+                <tr>
+                    <td>Доставка</td>
+                    <td>{{ define_delivery_costs }}</td>
+                    <td></td>
+                </tr>
+
+
+                <tr>
+                    <td><h5 class="title my-0">Итого</h5></td>
+                    <td><h5 class="title my-0">{{ define_total }} <i class="fas fa-ruble-sign fa-sm"></i></h5></td>
+                    <td></td>
+                </tr>
 
                 </tbody>
             </table>
@@ -284,31 +291,31 @@
         },
 
         computed: {
-          show_checkout: function () {
-            if (Number(this.order.billing_subtotal) > 0) {
-              return true;
-            } else {
-              return false;
-            }
-          },
+            show_checkout: function () {
+                if (Number(this.order.billing_subtotal) > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
 
-          define_delivery_costs: function () {
-            if (Number(this.order.billing_subtotal) > 3000) {
-              this.order.billing_delivery = 0;
-              return 0;
-            } else {
-              this.order.billing_delivery = 300;
-              return 300;
-            }
-          },
+            define_delivery_costs: function () {
+                if (Number(this.order.billing_subtotal) > 3000) {
+                    this.order.billing_delivery = 0;
+                    return 0;
+                } else {
+                    this.order.billing_delivery = 300;
+                    return 300;
+                }
+            },
 
-          define_coupon_discount: function() {
-            if (this.order.coupon.valid) {
-              this.order.coupon.value = Math.round(Number(this.order.billing_subtotal) * (this.order.coupon.discount/100));
-              return this.order.coupon.value;
-            }
-            return this.order.coupon.value;
-          },
+            define_coupon_discount: function() {
+                if (this.order.coupon.valid) {
+                    this.order.coupon.value = Math.round(Number(this.order.billing_subtotal) * (this.order.coupon.discount/100));
+                    return this.order.coupon.value;
+                }
+                return this.order.coupon.value;
+            },
 
             define_loyalty_discount: function() {
                 if ( this.order.user.loyalty > 0) {
@@ -321,9 +328,9 @@
                 }
             },
 
-          define_total: function () {
-            return this.order.billing_total =  this.order.billing_subtotal - this.order.coupon.value + this.order.billing_delivery;
-          }
+            define_total: function () {
+                return this.order.billing_total =  this.order.billing_subtotal - this.order.coupon.value - this.order.user.loyalty_value + this.order.billing_delivery;
+            }
         },
 
         methods: {
@@ -383,7 +390,7 @@
 
                     }).catch( (e) => {
 
-                    })
+                })
             },
 
             applySavedAddress(index) {

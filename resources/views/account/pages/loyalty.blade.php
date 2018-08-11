@@ -1,5 +1,10 @@
 @extends('account.index')
 
 @section('information')
-    <h5 class="title mt-0 mb-3">Программа лояльности "Любимый клиент"</h5>
+    <h4 class="title">Программа лояльности "Любимый клиент"</h4>
+
+    <p>Ваша персональная скидка: {{ $user->loyalty }}%</p>
+    <p>Общая сумма заказов: {{ $user->totalSum() }} &#x20BD;</p>
+
 @endsection
+

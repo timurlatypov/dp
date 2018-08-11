@@ -13,6 +13,8 @@
                 <div class="col-12 align-self-start p-0">
                     @yield('carousel')
                     @yield('banner')
+                    @yield('seasonal')
+                    @yield('bestsellers')
                     @yield('content')
                     @yield('infoblock')
                     @yield('brands')

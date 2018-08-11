@@ -1,31 +1,37 @@
 @extends('layouts.app')
 
 @section('banner')
-
+    <div style="
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-image: url('/storage/banners/@if( isset($categories) ){{ $categories->image_path }}@endif');
+            background-position: center;
+            background-repeat: repeat;
+            background-size: auto;
+            "></div>
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 pt-3">
 
 
                 <div class="card">
 
-                    <div class="card-header card-header-danger text-center">
+                    <div class="card-header card-header-danger text-center mb-4">
                         <h4 class="card-title mb-1 mt-0">Продукция со скидками!</h4>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body p-0">
 
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-sm-3 col-md-3 px-0">
-                                    <h5 class="title">Линии бренда</h5>
-
+                                <div class="col-12 col-sm-3">
+                                    <h5 class="title"></h5>
                                 </div>
-
-                                <div class="col-12 col-sm-9 col-md-9 d-flex flex-wrap justify-content-start">
+                                <div class="col-12 col-sm-9 d-flex flex-wrap flex-row card-col-9">
                                     @each('layouts.partials.product.card', $products, 'product')
                                 </div>
                             </div>

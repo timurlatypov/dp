@@ -20272,11 +20272,6 @@ footer .pull-center {
   right: 0;
 }
 
-.brand-logo img {
-  width: 120px;
-  height: auto;
-}
-
 .header-logo svg {
   width: 180px;
   fill: #ca9f5e;
@@ -20285,6 +20280,16 @@ footer .pull-center {
 .footer-logo svg {
   width: 120px;
   fill: #bdbdbd;
+}
+
+.brand-logo img {
+  width: 120px;
+  height: auto;
+}
+
+.brand-logo-banner img {
+  width: 220px;
+  height: auto;
 }
 
 .header-top-line {
@@ -20442,6 +20447,10 @@ footer .pull-center {
   width: 245px;
   height: auto;
   margin-top: 10px;
+}
+
+.form-group.account input {
+  max-width: 250px;
 }
 
 .wrapper {

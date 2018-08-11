@@ -67365,6 +67365,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['session_cart', 'session_cart_subtotal', 'session_coupon', 'auth_user', 'auth_user_addresses'],
@@ -67446,7 +67453,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         define_total: function define_total() {
-            return this.order.billing_total = this.order.billing_subtotal - this.order.coupon.value + this.order.billing_delivery;
+            return this.order.billing_total = this.order.billing_subtotal - this.order.coupon.value - this.order.user.loyalty_value + this.order.billing_delivery;
         }
     },
 
@@ -67766,6 +67773,21 @@ var render = function() {
                           _vm._v(_vm._s("-" + _vm.define_coupon_discount))
                         ]),
                         _vm._v(" (" + _vm._s(_vm.order.coupon.discount) + "%)")
+                      ]),
+                      _vm._v(" "),
+                      _c("td")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                this.auth_user
+                  ? _c("tr", [
+                      _c("td", [_vm._v("Любимый клиент")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s("-" + _vm.define_loyalty_discount))
+                        ]),
+                        _vm._v(" (" + _vm._s(_vm.order.user.loyalty) + "%)")
                       ]),
                       _vm._v(" "),
                       _c("td")

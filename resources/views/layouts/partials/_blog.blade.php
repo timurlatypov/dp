@@ -16,54 +16,55 @@
                             <div class="card-header card-header-image">
                                 <a href="#pablo">
                                     <img class="img" src="/storage/blog/acne.jpg">
-                                    <div class="card-title">
-                                        Без следа: как правильно избавиться от акне
-                                    </div>
                                 </a>
                                 <div class="colored-shadow" style="background-image: url('/storage/blog/acne.jpg'); opacity: 1;"></div></div>
                             <div class="card-body">
                                 <h6 class="card-category text-info">Лечение</h6>
+                                <h4 class="card-title">
+                                    <a href="#pablo">Без следа: как правильно избавиться от акне?</a>
+                                </h4>
                                 <p class="card-description">
                                     Угри – это не только косметический недостаток. Их «обладатели» хорошо знают, что это также и неуверенность в себе, боязнь новых знакомств и нового общения.
                                 </p>
                             </div>
                         </div>
-                        <div class="card bg-info">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#pablo">Купероз на носу – что реально поможет избавиться от проблемы?</a>
-                                </h4>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-description">
-                                    Купероз на носу – это неприятная болезнь, которая проявляется сосудистыми звездочками на коже. Реально ли избавиться от них? Какие стадии болезни и симптомы? Почему развивается заболевание?
-                                </p>
-                                <div class="card-stats justify-content-center">
-                                    <a href="#pablo" class="btn btn-white btn-round">Читать статью</a>
-                                </div>
-                            </div>
-                        </div>
+
+                        {{--<div class="card bg-info">--}}
+                            {{--<div class="card-body">--}}
+                                {{--<h4 class="card-title">--}}
+                                    {{--<a href="#pablo">Купероз на носу – что реально поможет избавиться от проблемы?</a>--}}
+                                {{--</h4>--}}
+                            {{--</div>--}}
+                            {{--<div class="card-body">--}}
+                                {{--<p class="card-description">--}}
+                                    {{--Купероз на носу – это неприятная болезнь, которая проявляется сосудистыми звездочками на коже. Реально ли избавиться от них? Какие стадии болезни и симптомы? Почему развивается заболевание?--}}
+                                {{--</p>--}}
+                                {{--<div class="card-stats justify-content-center">--}}
+                                    {{--<a href="#pablo" class="btn btn-white btn-round">Читать статью</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                     </div>
 
                     <div class="col-lg-4 col-md-6">
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-category text-danger">
-                                    <i class="material-icons">trending_up</i> АКТУАЛЬНО
-                                </h6>
-                                <h4 class="card-title">
-                                    <a href="#pablo">Как определить тип кожи?</a>
-                                </h4>
-                                <p class="card-description">
-                                    В зависимости от имеющейся на коже естественной жировой смазки и содержания влаги кожу условно подразделяют на нормальную, жирную, сухую и комбинированную (смешанного типа).
-                                </p>
-                                <div class="card-stats justify-content-center">
-                                    <a href="#pablo" class="btn btn-primary btn-round">Читать статью</a>
-                                </div>
-                            </div>
-                        </div>
+                        {{--<div class="card">--}}
+                            {{--<div class="card-body">--}}
+                                {{--<h6 class="card-category text-danger">--}}
+                                    {{--<i class="material-icons">trending_up</i> АКТУАЛЬНО--}}
+                                {{--</h6>--}}
+                                {{--<h4 class="card-title">--}}
+                                    {{--<a href="#pablo">Как определить тип кожи?</a>--}}
+                                {{--</h4>--}}
+                                {{--<p class="card-description">--}}
+                                    {{--В зависимости от имеющейся на коже естественной жировой смазки и содержания влаги кожу условно подразделяют на нормальную, жирную, сухую и комбинированную (смешанного типа).--}}
+                                {{--</p>--}}
+                                {{--<div class="card-stats justify-content-center">--}}
+                                    {{--<a href="#pablo" class="btn btn-primary btn-round">Читать статью</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="card card-blog">
                             <div class="card-header card-header-image">
                                 <a href="#pablo">
@@ -105,20 +106,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card bg-success">
-                                    <div class="card-body ">
-                                        <h4 class="card-title">
-                                            <a href="#pablo">Как подтянуть овал лица: домашние, салонные и радикальные методы</a>
-                                        </h4>
-                                        <p class="card-description">
-                                            Как подтянуть овал лица после 35, 40 и 50 лет? Наши эксперты подготовили выжимку эффективных методов для каждой из групп. Какие из домашних методов и процедур в салоне красоты дают максимальный результат? Какие методы коррекции обвисших щек популярны и зарекомендовали себя? Мнения экспертов и отзывы пациентов.
-                                        </p>
 
-                                        <div class="card-stats justify-content-center">
-                                            <a href="#pablo" class="btn btn-white btn-round">Читать статью</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            {{--<div class="card bg-success">--}}
+                                    {{--<div class="card-body ">--}}
+                                        {{--<h4 class="card-title">--}}
+                                            {{--<a href="#pablo">Как подтянуть овал лица: домашние, салонные и радикальные методы</a>--}}
+                                        {{--</h4>--}}
+                                        {{--<p class="card-description">--}}
+                                            {{--Как подтянуть овал лица после 35, 40 и 50 лет? Наши эксперты подготовили выжимку эффективных методов для каждой из групп. Какие из домашних методов и процедур в салоне красоты дают максимальный результат? Какие методы коррекции обвисших щек популярны и зарекомендовали себя? Мнения экспертов и отзывы пациентов.--}}
+                                        {{--</p>--}}
+
+                                        {{--<div class="card-stats justify-content-center">--}}
+                                            {{--<a href="#pablo" class="btn btn-white btn-round">Читать статью</a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
                     </div>
                 </div>
