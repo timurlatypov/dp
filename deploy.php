@@ -26,7 +26,12 @@ host('94.142.139.93')
 	->user('deployer')
 	->identityFile('~/.ssh/deployer')
     ->set('deploy_path', '/var/www/html/laravel');
-    
+
+
+set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-scripts');
+
+
+
 // Tasks
 
 task('build', function () {
