@@ -2,7 +2,7 @@
     <section class="bg-dark">
         <div class="container">
             <div class="row d-flex justify-content-between align-items-center header-top-line">
-                <div class="pl-2"><h6><i class="fa fa-gift"></i>&nbsp;&nbsp;ПРОГРАММА ЛОЯЛЬНОСТИ</h6></div>
+                <div class="pl-2"><h6><i class="fa fa-gift"></i>&nbsp;&nbsp;ПРОГРАММА</h6></div>
                 <div class=""><h6><i class="fa fa-truck"></i>&nbsp;&nbsp;БЕСПЛАТНАЯ ДОСТАВКА ОТ 3000р.</h6></div>
                 <div class=""><h6><i class="fa fa-user-md"></i>&nbsp;&nbsp;КОНСУЛЬТАЦИЯ КОСМЕТОЛОГА</h6></div>
                 <div class=""><h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" data-toggle="tooltip" data-placement="bottom" title="Написать в Whatsapp"><i class="fab fa-whatsapp fa-lg"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6></div>
