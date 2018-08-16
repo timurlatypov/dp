@@ -28,7 +28,7 @@ host('94.142.139.93')
     ->set('deploy_path', '/var/www/html/laravel');
 
 
-set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-scripts');
+set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader');
 
 
 
