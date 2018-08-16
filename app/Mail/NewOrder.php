@@ -7,20 +7,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyManagers extends Mailable
+class NewOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
-	public $new_order;
+	public $order;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($event)
+    public function __construct($order)
     {
-        $this->new_order = $event;
+	    $this->order = $order;
     }
 
     /**
@@ -30,6 +30,6 @@ class NotifyManagers extends Mailable
      */
     public function build()
     {
-	    return $this->view('emails.order.notification.manager');
+        return $this->subject('Ваш заказ '.$this->order->order_id)->markdown('emails.orders.new');
     }
 }

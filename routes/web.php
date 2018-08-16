@@ -2,19 +2,21 @@
 
 Auth::routes();
 
-Route::get('/managers', function() {
-
-	dd( optional(auth()->user()) );
-
-	$managers = \App\Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
-	dd($managers);
-});
-
+//Route::get('/managers', function() {
+//
+//	dd( optional(auth()->user()) );
+//
+//	$managers = \App\Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
+//	dd($managers);
+//});
+//
+//
 
 Route::get('/order', function() {
 
-	$order = \App\Order::find(50);
-	dd($order->manager);
+	$order = \App\Order::find(120);
+	//dd($order);
+	return new \App\Mail\NewOrder($order);
 
 });
 

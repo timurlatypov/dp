@@ -43,8 +43,6 @@ class ProductController extends Controller
      */
     public function store(StoreNewProductRequest $request)
     {
-	    //dd($request);
-
 	    $product = Product::create([
 		    'brand_id' => $request->brand_id,
 		    'line_id' => $request->line_id,
@@ -60,6 +58,8 @@ class ProductController extends Controller
 		    'meta_description' => $request->meta_description,
 		    'meta_keywords' => $request->meta_keywords,
 	    ]);
+
+	    $product->save();
 
 	    return redirect()->route('admin.product.index');
     }

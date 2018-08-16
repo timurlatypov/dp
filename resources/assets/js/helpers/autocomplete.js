@@ -1,10 +1,10 @@
 import autocomplete from 'autocomplete.js';
 import algolia from 'algoliasearch';
 
-var index = algolia('FR73EZT098', '10a2c8e639eab374e4054645135393e8')
+var index = algolia('K64IOX67YH', '648a56e19c5957ed4c49e89c69c69cc9')
 
 export const productautocomplete = (selector, { hitsPerPage }) => {
-    index = index.initIndex('doctorproffi_index')
+    index = index.initIndex('products')
 
     return autocomplete(selector, {
         hint: true
@@ -14,7 +14,7 @@ export const productautocomplete = (selector, { hitsPerPage }) => {
         templates: {
             suggestion (suggestion) {
                 console.log(suggestion)
-                return '<span><a href="/brand/' + suggestion.brand.slug + '/' + suggestion.slug + '">' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title.value + '</a></span>';
+                return '<span><a href="/brand/' + suggestion.brand.slug + '/' + suggestion.slug + '">' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title_eng.value + " - " + suggestion._highlightResult.title_rus.value + '</a></span>';
             },
             empty: '<div class="p-3">No results</div>'
         }

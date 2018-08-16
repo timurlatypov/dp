@@ -1,18 +1,13 @@
 <template>
-    <div class="container px-2 py-5">
-        <div class="row">
-            <div class="col-10 offset-1">
-                <form action="#" @submit.prevent="send">
-                    <div class="d-flex justify-content-center align-items-center py-2">
-                        <div class="divider mb-2"></div>
-                        <h6 class="text-center text-uppercase px-3">Поиск по каталогу</h6>
-                        <div class="divider mb-2"></div>
-                    </div>
-                    <input type="text"  name="products" id="products" class="form-control" placeholder="Название препарата">
-                </form>
-            </div>
+    <form class="form-inline pt-3" action="#" @submit.prevent="send">
+        <div class="form-group bmd-form-group pt-0 ">
+            <input type="text" name="products" id="products" class="algolia-form-control" placeholder="Поиск по каталогу">
         </div>
-    </div>
+        <button type="submit" class="btn btn-fab-search btn-white ml-1">
+            <i class="material-icons" style="color: #888;">search</i>
+            <div class="ripple-container"></div>
+        </button>
+    </form>
 </template>
 
 <script>
@@ -21,10 +16,10 @@
     export default {
         mounted() {
             productautocomplete('#products', {
-                hitsPerPage: 30
+                hitsPerPage: 20
             })
                 .on('autocomplete:selected', (e, selection) => {
-                    console.log(selection)
+                    window.location.href = '/brand/' + selection.brand.name + '/' + selection.slug;
                 })
         }
     }

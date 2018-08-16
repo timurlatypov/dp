@@ -29,6 +29,6 @@ class SendConfirmationToCustomer
     public function handle(NewOrderCreated $event)
     {
 	    Mail::to($event->customer)
-		    ->queue(new \App\Mail\NewOrderCreated($event->order));
+		    ->queue(new \App\Mail\NewOrder($event->order));
     }
 }

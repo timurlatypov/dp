@@ -55,7 +55,7 @@
                                 <td class="td-actions">
                                     <ul role="navigation" class="pagination my-0">
                                         <li class="page-item active">
-                                            <span class="page-link">{{ $product->qty }}</span>
+                                            <span class="page-link"><strong>{{ $product->qty }}</strong></span>
                                         </li>
                                     </ul>
                                 </td>

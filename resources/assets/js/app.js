@@ -29,6 +29,7 @@ require('./plugins/bootstrap-datetimepicker');
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
+Vue.component('search', require('./components/Search.vue'));
 Vue.component('cart', require('./components/cart/Cart.vue'));
 Vue.component('add-button', require('./components/cart/AddButton.vue'));
 Vue.component('add-favorite', require('./components/favorite/AddFavorite.vue'));

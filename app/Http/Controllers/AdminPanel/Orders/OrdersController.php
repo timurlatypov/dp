@@ -48,7 +48,7 @@ class OrdersController extends Controller
 
 		$order->delete();
 
-		return redirect()->back();
+		return redirect()->back()->with('flash', 'Заказ '.$order->order_id.' удалён');
 	}
 
 

@@ -13,7 +13,7 @@
         <flash message="{{ session('flash') }}" ></flash>
         <div class="container-fluid p-0 h-100">
             <div class="row h-100 m-0">
-                <div class="col-12 align-self-start p-0">
+                <div class="col-12 align-self-start p-0" id="background-id">
                     @yield('carousel')
                     @yield('banner')
                     @yield('seasonal')

@@ -49,7 +49,7 @@
                                 <button class="page-link" @click.prevent="removeItem(index)">-</button>
                             </li>
                             <li class="page-item active">
-                                <span class="page-link">{{ product.qty }}</span>
+                                <span class="page-link"><strong>{{ product.qty }}</strong></span>
                             </li>
                             <li class="page-item">
                                 <button class="page-link" @click.prevent="addItem(index)">+</button>
@@ -347,6 +347,7 @@
                     .then( response => {
                         this.order.cart = response.data.cart;
                         this.order.billing_subtotal = response.data.subtotal;
+                        window.cartUpdate();
                     })
 
             },
@@ -362,6 +363,7 @@
                     .then( response => {
                         this.order.cart = response.data.cart;
                         this.order.billing_subtotal = response.data.subtotal;
+                        window.cartUpdate();
                     })
 
             },

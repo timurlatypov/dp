@@ -1,13 +1,13 @@
 /* Base */
 
 body, body *:not(html):not(style):not(br):not(tr):not(code) {
-    font-family: Avenir, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
 body {
     background-color: #f5f8fa;
-    color: #74787E;
+    color: #313131;
     height: 100%;
     hyphens: auto;
     line-height: 1.4;
@@ -30,7 +30,7 @@ blockquote {
 }
 
 a {
-    color: #3869D4;
+    color: #ca9f5e;
 }
 
 a img {

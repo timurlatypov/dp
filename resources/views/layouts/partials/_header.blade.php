@@ -23,17 +23,11 @@
                     </div>
                 </div>
 
-                <div class="col-6 align-self-center">
-                    <form class="form-inline pt-3">
-                        <div class="form-group bmd-form-group pt-0 ">
-                            <input type="text" class="form-control" placeholder="поиск">
-                        </div>
-                        <button type="submit" class="btn btn-fab btn-round btn-white">
-                            <i class="material-icons">search</i>
-                            <div class="ripple-container"></div>
-                        </button>
-                    </form>
+
+                <div class="col-6 align-self-center algolia-search">
+                    <search></search>
                 </div>
+
 
                 <div class="col-3 text-right align-self-center px-0">
                     @guest

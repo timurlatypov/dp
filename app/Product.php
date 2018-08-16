@@ -21,9 +21,9 @@ class Product extends Model
 
 	public function toSearchableArray ()
 	{
-		$properties = $this->toArray();
-//		$properties['brand'] = $this->brand->only('name', 'slug');
-//		$properties['line'] = $this->line;
+		$properties = $this->only('title_rus', 'title_eng', 'slug')->toArray();
+		$properties['brand'] = $this->brand->only('name', 'slug');
+		$properties['line'] = $this->line;
 		return $properties;
 	}
 

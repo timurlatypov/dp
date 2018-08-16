@@ -23,14 +23,13 @@
 </head>
 <body>
     <div id="app">
+        <flash message="{{ session('flash') }}" ></flash>
         <div class="wrapper">
-
             <div class="sidebar" data-color="primary" data-background-color="white">
                 <div class="sidebar-wrapper">
                     @include('admin.partials._nav')
                 </div>
             </div>
-
             <div class="main-panel">
                 @yield('content')
             </div>

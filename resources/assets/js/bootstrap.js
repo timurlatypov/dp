@@ -74,4 +74,14 @@ $(document).ready(function() {
         im.mask(phone);
     }
 
+    if (document.getElementById("register-id")) {
+        console.log('add class');
+        $("#background-id").addClass('register-background');
+    }
+
+    if (document.getElementById("login-id")) {
+        console.log('add class');
+        $("#background-id").addClass('login-background');
+    }
+
 });

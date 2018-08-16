@@ -8,7 +8,7 @@
     <title></title>
 </head>
 <body>
-<h4>Новый заказ</h4>
+<h2>Заказ</h2>
 <p>
     <b>Клиент: {{ $order->id }}</b><br>
 </body>

@@ -66,7 +66,7 @@ class OrderController extends Controller
 			'billing_floor' => $request->address['billing_floor'],
 			'billing_comment' => $request->address['billing_comment'],
 			'billing_subtotal' => $request->billing_subtotal,
-			'billing_loyalty' => $request->user['loyalty'],
+			'billing_loyalty' => $request->user['loyalty_value'],
 			'billing_delivery' => $request->billing_delivery,
 			'billing_total' => $request->billing_total,
 
