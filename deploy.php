@@ -30,6 +30,7 @@ host('94.142.139.93')
 
 set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader');
 
+set('cleanup_use_sudo', true);
 
 
 // Tasks
