@@ -6,6 +6,5 @@
     <p>Ваша персональная скидка: {{ $user->loyalty }}%</p>
     <p>Общая сумма заказов: {{ $user->totalSum() }} &#x20BD;</p>
 
-    <p>Hello World</p>
 @endsection
 

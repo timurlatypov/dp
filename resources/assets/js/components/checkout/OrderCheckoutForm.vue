@@ -15,8 +15,8 @@
             <h3 class="title">Ваш заказ</h3>
         </div>
         <div class="table-responsive px-5">
-            <table class="table table-shopping">
 
+            <table class="table table-shopping">
                 <thead>
                 <tr>
                     <th class="text-center" style="width: 80px;"></th>
@@ -146,8 +146,8 @@
                 <div class="col-12 col-md-5 offset-md-1">
                     <div class="form-group">
                         <label for="phone">Телефон</label>
-                        <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" v-model="order.user.phone">
-                        <small id="phoneHelp" class="form-text text-muted"></small>
+                        <input id="phone" type="text" class="form-control" v-model="order.user.phone">
+                        <small class="form-text text-muted"></small>
                     </div>
                 </div>
                 <div class="col-12 col-md-5">
@@ -285,6 +285,7 @@
                     },
                     billing_subtotal: '',
                     billing_delivery: 0,
+                    billing_loyalty: '',
                     billing_total: ''
                 }
             }

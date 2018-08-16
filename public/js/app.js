@@ -32274,6 +32274,7 @@ window.Vue = __webpack_require__(144);
 // Vue.use(VeeValidate);
 
 __webpack_require__(146);
+__webpack_require__(228);
 __webpack_require__(0);
 
 __webpack_require__(168);
@@ -32303,13 +32304,12 @@ var app = new Vue({
   el: '#app'
 });
 
-var Inputmask = __webpack_require__(214);
-
-if (document.getElementById("phone")) {
-  var selector = document.getElementById("phone");
-  var im = new Inputmask("9 (999) 999-99-99");
-  im.mask(selector);
-}
+// let Inputmask = require('inputmask');
+// if (document.getElementById("phone")) {
+//     var phone = document.getElementById("phone");
+//     var im = new Inputmask("9 (999) 999-99-99");
+//     im.mask(phone);
+// }
 
 /***/ }),
 /* 144 */
@@ -43494,6 +43494,8 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+window.Inputmask = __webpack_require__(214);
+
 window.axios = __webpack_require__(148);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -43541,6 +43543,12 @@ window.cartUpdate = function () {
 
 $(document).ready(function () {
     $('body').bootstrapMaterialDesign();
+
+    if (document.getElementById("phone")) {
+        var phone = document.getElementById("phone");
+        var im = new Inputmask("9 (999) 999-99-99");
+        im.mask(phone);
+    }
 });
 
 /***/ }),
@@ -67408,6 +67416,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 },
                 billing_subtotal: '',
                 billing_delivery: 0,
+                billing_loyalty: '',
                 billing_total: ''
             }
         };
@@ -67914,11 +67923,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "phone",
-                    "aria-describedby": "phoneHelp"
-                  },
+                  attrs: { id: "phone", type: "text" },
                   domProps: { value: _vm.order.user.phone },
                   on: {
                     input: function($event) {
@@ -67930,10 +67935,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("small", {
-                  staticClass: "form-text text-muted",
-                  attrs: { id: "phoneHelp" }
-                })
+                _c("small", { staticClass: "form-text text-muted" })
               ])
             ]),
             _vm._v(" "),
@@ -71636,6 +71638,57 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */
+/***/ (function(module, exports) {
+
+$(function () {
+    $('#assignOrderManagerModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('id'); // Extract info from data-* attributes
+        var order = button.data('order'); // Extract info from data-* attributes
+        var manager = button.data('manager'); // Extract info from data-* attributes
+        var managerid = button.data('managerid'); // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        modal.find('#id').val(id);
+        modal.find('#order').val(order);
+        modal.find('#manager').val(manager);
+        modal.find('#managerid').val(managerid);
+    });
+});
+
+$(function () {
+    $('#deleteOrderModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('id'); // Extract info from data-* attributes
+        var order = button.data('order'); // Extract info from data-* attributes
+        var modal = $(this);
+        modal.find('#id').val(id);
+        modal.find('#order').val(order);
+    });
+});
+
+$(function () {
+    $('#changeOrderStatusModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('id'); // Extract info from data-* attributes
+        var order = button.data('order'); // Extract info from data-* attributes
+        var modal = $(this);
+        modal.find('#id').val(id);
+        modal.find('#order').text(order);
+    });
+});
 
 /***/ })
 /******/ ]);

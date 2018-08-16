@@ -7,8 +7,15 @@ Route::get('/managers', function() {
 	dd( optional(auth()->user()) );
 
 	$managers = \App\Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
-
 	dd($managers);
+});
+
+
+Route::get('/order', function() {
+
+	$order = \App\Order::find(50);
+	dd($order->manager);
+
 });
 
 Route::get('/', 'HomeController@index')->name('landing-page');
@@ -100,7 +107,7 @@ Route::group(['prefix' => '/coupon'], function() {
 //          ADMIN PANEL CONTROLLER
 //
 /////////////////////////////////////////////////////////////////
-Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin', 'namespace' => 'AdminPanel'], function() {
+Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 'namespace' => 'AdminPanel'], function() {
 	Route::get('/', 'AdminController@index')->name('admin.index');
 	//
 	// PRODUCTS GROUP
@@ -121,14 +128,23 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin', 'namespa
 		// API 'live' toggle
 		Route::post('/live/toggle', 'ProductController@toggle')->name('api.product.live.toggle');
 	});
-
 	//
-	// CATEGORIES / SUBCATEGORIES ROUTES GROUP
+	// CATEGORIES / SUBCATEGORIES GROUP
 	//
 	Route::group(['prefix' => '/categories', 'namespace' => 'Categories'], function() {
 		Route::get('/', 'CategoriesController@index')->name('');
 
 		Route::post('/{categories}/store', 'SubcategoriesController@store')->name('store.new.subcategory');
+	});
+	//
+	// ORDERS GROUP
+	//
+	Route::group(['prefix' => '/orders', 'namespace' => 'Orders'], function() {
+		Route::get('/', 'OrdersController@index')->name('admin.orders.index');
+		Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
+		Route::post('/assign', 'OrdersController@assign')->name('admin.orders.assign');
+		Route::delete('/delete', 'OrdersController@destroy')->name('admin.orders.destroy');
+		Route::post('/change', 'OrdersController@change')->name('admin.orders.change.status');
 	});
 
 

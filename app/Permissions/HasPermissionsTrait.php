@@ -18,7 +18,6 @@ trait HasPermissionsTrait
 
 		return $this;
 	}
-
 	public function withdrawPermissionTo(...$permisisons)
 	{
 		$permissions = $this->getAllPermissions(array_flatten($permisisons));
@@ -28,8 +27,10 @@ trait HasPermissionsTrait
 		return $this;
 	}
 
-	public function hasRole(...$roles)
+
+	public function hasRole($roles)
 	{
+
 		foreach ($roles as $role) {
 			if ($this->roles->contains('name', $role)) {
 				return true;
@@ -53,7 +54,6 @@ trait HasPermissionsTrait
 		return false;
 	}
 
-
 	protected function hasPermission($permission)
 	{
 		return (bool) $this->permissions->where('name', $permission->name)->count();
@@ -71,10 +71,6 @@ trait HasPermissionsTrait
 	{
 		return $this->belongsToMany(Role::class, 'users_roles');
 	}
-
-
-
-
 	public function permissions()
 	{
 		return $this->belongsToMany(Permission::class, 'users_permissions');

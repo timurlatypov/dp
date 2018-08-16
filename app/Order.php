@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
+	use SoftDeletes;
+
 	protected $guarded = [];
 
 	protected $appends = ['order_id'];
@@ -45,5 +48,10 @@ class Order extends Model
 	public function scopeNewOrders(Builder $builder)
 	{
 		return $builder->where('order_status', 'Новый');
+	}
+
+	public function manager()
+	{
+		return $this->belongsTo(User::class, 'manager_id');
 	}
 }

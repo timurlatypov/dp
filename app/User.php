@@ -58,4 +58,10 @@ class User extends Authenticatable
 		}
 		return $this->loyalty_discount;
 	}
+
+	public function getFullNameAttribute()
+	{
+		return $this->name.' '. $this->surname;
+	}
+
 }

@@ -13,6 +13,7 @@ window.Vue = require('vue');
 // Vue.use(VeeValidate);
 
 require('./bootstrap');
+require('./scripts');
 require('moment');
 
 require('./material-kit');
@@ -44,10 +45,9 @@ const app = new Vue({
 });
 
 
-let Inputmask = require('inputmask');
-
-if (document.getElementById("phone")) {
-    var selector = document.getElementById("phone");
-    var im = new Inputmask("9 (999) 999-99-99");
-    im.mask(selector);
-}
+// let Inputmask = require('inputmask');
+// if (document.getElementById("phone")) {
+//     var phone = document.getElementById("phone");
+//     var im = new Inputmask("9 (999) 999-99-99");
+//     im.mask(phone);
+// }

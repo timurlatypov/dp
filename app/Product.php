@@ -5,10 +5,12 @@ namespace App;
 use App\Traits\LiveAware;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-	use LiveAware;
+	use SoftDeletes, LiveAware, Searchable;
 
 	protected $guarded = [];
 
@@ -16,6 +18,16 @@ class Product extends Model
 	{
 		return 'slug';
 	}
+
+	public function toSearchableArray ()
+	{
+		$properties = $this->toArray();
+//		$properties['brand'] = $this->brand->only('name', 'slug');
+//		$properties['line'] = $this->line;
+		return $properties;
+	}
+
+
 
 	public function definePriceToShow()
 	{
@@ -47,17 +59,6 @@ class Product extends Model
 		return $this->belongsToMany(Subcategory::class, 'product_subcategory');
 	}
 
-
-
-	public function thumb()
-	{
-		return asset( $this->thumb_path ? '/storage/thumbs/'.$this->thumb_path : '/storage/thumbs/default.jpg');
-	}
-
-	public function image()
-	{
-		return asset( $this->image_path ? '/storage/images/'.$this->image_path : '/storage/thumbs/default.jpg');
-	}
 
 	public function scopeDiscount(Builder $builder)
 	{

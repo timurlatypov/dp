@@ -13,7 +13,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('bestsellers') }}">Бестселлеры</a></li>
                 <li class="dropdown nav-item">
-                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Уход за кожей</a>
+                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Для женщин</a>
                     <div class="dropdown-menu">
                         <div class="megamenu mx-3 my-2">
                             <div style="min-width: 200px;">

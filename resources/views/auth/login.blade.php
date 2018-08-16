@@ -15,11 +15,9 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
+                                <label for="email" class="col-sm-6 col-form-label">Email</label>
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -29,11 +27,9 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
+                                <label for="password" class="col-md-6 col-form-label">Пароль</label>
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -43,13 +39,11 @@
                             </div>
 
                             <div class="form-group">
-
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                        </label>
-                                    </div>
-
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="form-group text-center">

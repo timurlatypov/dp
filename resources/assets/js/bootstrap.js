@@ -18,6 +18,8 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+window.Inputmask = require('inputmask');
+
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -63,4 +65,13 @@ window.cartUpdate = function () {
     window.events.$emit('cartUpdate');
 }
 
-$(document).ready(function() { $('body').bootstrapMaterialDesign(); });
+$(document).ready(function() {
+    $('body').bootstrapMaterialDesign();
+
+    if (document.getElementById("phone")) {
+        var phone = document.getElementById("phone");
+        var im = new Inputmask("9 (999) 999-99-99");
+        im.mask(phone);
+    }
+
+});

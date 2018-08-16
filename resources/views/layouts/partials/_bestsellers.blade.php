@@ -9,7 +9,7 @@
                     @each('layouts.partials.product.card', $bestsellers, 'product')
                 </div>
                 <div class="footer text-center pb-3">
-                    <a href="#pablo" class="btn btn-primary">Все предложения</a>
+                    <a href="{{ route('bestsellers') }}" class="btn btn-primary">Все предложения</a>
                 </div>
             </div>
         </div>

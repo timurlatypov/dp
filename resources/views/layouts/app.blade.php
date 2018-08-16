@@ -2,10 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('layouts.partials._head')
+
+
+
 </head>
 <body>
-    @include('layouts.partials._header')
     <div id="app">
+        @include('layouts.partials._header')
         @include('layouts.partials._nav')
         <flash message="{{ session('flash') }}" ></flash>
         <div class="container-fluid p-0 h-100">
@@ -16,8 +19,8 @@
                     @yield('seasonal')
                     @yield('bestsellers')
                     @yield('content')
-                    @yield('infoblock')
                     @yield('brands')
+                    @yield('infoblock')
                     @yield('about')
                     @yield('blog')
                 </div>

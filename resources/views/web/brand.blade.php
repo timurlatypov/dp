@@ -33,7 +33,7 @@
             <div class="card">
 
             <div class="card-header card-header-doctorproffi text-center mb-4">
-                <h4 class="card-title mb-1 mt-0">Все продукты {{ $brand->name }}</h4>
+                <h4 class="card-title mb-1 mt-0">{{ $brand->name }}</h4>
             </div>
 
             <div class="card-body p-0">
@@ -61,9 +61,12 @@
 
                     <div class="row">
                         <div class="col-3"></div>
-                        <div class="col-9 align-content-center">
-                            <div class="mx-auto p-4 text-center">
-                                {{ $products->links() }}
+                        <div class="col-9">
+                            <div class="row justify-content-center">
+                                <div class="mx-auto pb-4 text-center">
+                                    <h4 class="title">Страницы</h4>
+                                    {{ $products->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>

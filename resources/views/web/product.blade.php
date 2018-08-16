@@ -31,9 +31,6 @@
 
 
                 <div class="card">
-                    <div class="text-center">
-                        <h3 class="title mb-1 mt-4">Описание продукта</h3>
-                    </div>
 
                     <div class="card-body p-0">
                         <div class="container-fluid">
@@ -47,10 +44,11 @@
 
                                    <div class="container-fluid">
                                         <div class="row align-content-center">
-                                            <div class="col-12 col-md-6">
+                                            <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
                                                 <img src="/storage/products/image/{{$product->image_path}}" width="100%" alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
+                                                <div>100% гарантия подлинности</div>
                                             </div>
-                                            <div class="col-12 col-md-6 align-self-center">
+                                            <div class="col-12 col-sm-6 col-md-5 p-5 px-sm-0 py-sm-2 align-self-center">
                                                 <div class="brand-logo"><img src="/storage/brands/{{ $brand->image_path }}" alt="Логотип {{ $brand->name }}"></div>
                                                 <h1 class="title mb-1 mt-4">{{ $product->title_eng }}</h1>
                                                 <span>{{ $product->title_rus }}</span><br>
