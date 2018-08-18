@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container translate-top-30">
     <div class="row">
         <div class="col-12 pt-3">
             <div class="card">

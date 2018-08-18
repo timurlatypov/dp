@@ -25,8 +25,6 @@
                 </div>
                 <div class="text-right"><a class="btn btn-primary btn-sm" href="/checkout">Оформить заказ</a></div>
             </div>
-
-
         </div>
     </li>
 </template>
@@ -58,7 +56,6 @@
         mounted() {
             this.items = this.cart_items;
             this.count = this.cart_count;
-
         }
     }
 </script>

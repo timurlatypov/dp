@@ -45,7 +45,6 @@ class BrandController extends Controller
 	public function show_product(Brand $brand, Product $product)
 	{
 		$product = Product::find($product->id);
-
 		return view('web.product', compact(['brand', 'product']));
 	}
 

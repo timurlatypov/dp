@@ -19,7 +19,7 @@
                 hitsPerPage: 20
             })
                 .on('autocomplete:selected', (e, selection) => {
-                    window.location.href = '/brand/' + selection.brand.name + '/' + selection.slug;
+                    window.location.href = '/brand/' + selection.brand.slug + '/' + selection.slug;
                 })
         }
     }

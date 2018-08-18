@@ -8,9 +8,14 @@
         </div>
     </div>
 
+    <div class="card" v-else-if="new_order_created">
+        <div class="px-4 py-3 mx-auto text-center">
+            <h4 class="title">Мы получили Ваш заказ!</h4>
+            <p class="p-5"></p>
+        </div>
+    </div>
 
     <div class="card" v-else>
-
         <div class="px-4 py-3 mx-auto">
             <h3 class="title">Ваш заказ</h3>
         </div>
@@ -68,7 +73,6 @@
 
                 <tr>
                     <td colspan="3" rowspan="10" style="vertical-align: top">
-
                         <div class="card p-2 mx-auto" style="width: 300px;">
                             <div class="card-body text-center">
                                 <h4 class="title my-1">Промокод</h4>
@@ -78,15 +82,12 @@
                                     <small class="form-text text-success" v-if="order.coupon.valid">{{ order.coupon.success }}</small>
                                 </div>
                             </div>
-
                         </div>
-
                     </td>
                     <td>Общая сумма</td>
                     <td>{{ order.billing_subtotal }}</td>
                     <td></td>
                 </tr>
-
 
                 <tr v-if="this.order.coupon.valid">
                     <td>Промокод</td>
@@ -94,13 +95,11 @@
                     <td></td>
                 </tr>
 
-
                 <tr v-if="this.auth_user">
                     <td>Любимый клиент</td>
                     <td><span class="text-danger">{{ '-' + define_loyalty_discount }}</span> ({{order.user.loyalty}}%)</td>
                     <td></td>
                 </tr>
-
 
                 <tr>
                     <td>Доставка</td>
@@ -108,10 +107,9 @@
                     <td></td>
                 </tr>
 
-
                 <tr>
-                    <td><h5 class="title my-0">Итого</h5></td>
-                    <td><h5 class="title my-0">{{ define_total }} <i class="fas fa-ruble-sign fa-sm"></i></h5></td>
+                    <td><h4 class="title my-0">Итого</h4></td>
+                    <td><h4 class="title my-0">{{ define_total }} <i class="fas fa-ruble-sign fa-sm"></i></h4></td>
                     <td></td>
                 </tr>
 
@@ -254,6 +252,7 @@
         props: ['session_cart', 'session_cart_subtotal', 'session_coupon', 'auth_user', 'auth_user_addresses'],
         data() {
             return {
+                new_order_created: false,
                 total: '',
                 payload: {
                     rowId: '',
@@ -320,7 +319,6 @@
 
             define_loyalty_discount: function() {
                 if ( this.order.user.loyalty > 0) {
-                    console.log(' > 0 ')
                     this.order.user.loyalty_value = Math.round(Number(this.order.billing_subtotal) * (this.order.user.loyalty/100));
                     return this.order.user.loyalty_value;
                 } else {
@@ -337,7 +335,7 @@
         methods: {
             addItem(index) {
                 if (this.order.cart[index].qty >= 5) {
-                    return
+                    return;
                 }
 
                 this.payload.rowId = index;
@@ -380,19 +378,15 @@
             validateCoupon() {
                 axios.post('/coupon/validate', this.order.coupon)
                     .then( response => {
-
                         if( response.status === 202) {
                             this.order.coupon.error = response.data.message;
                             return;
                         }
-
                         this.order.coupon = response.data.coupon;
                         this.coupon_input_disabled = true;
                         this.order.coupon.valid = true;
                         this.order.coupon.success = 'Промокод применён';
-
                     }).catch( (e) => {
-
                 })
             },
 
@@ -400,11 +394,12 @@
                 this.order.address = this.user_addresses[index];
             },
 
-
             storeOrder() {
                 axios.post('/order/store', this.order)
                     .then(response => {
-                        console.log(response);
+                        window.flash('Заказ получен!')
+                        this.new_order_created = true;
+                        window.cartUpdate();
                     })
             }
         },
@@ -413,9 +408,6 @@
 
             if (this.auth_user) {
                 this.order.user = this.auth_user;
-
-                console.log(this.auth_user);
-                console.log(this.order.user);
             }
 
             if (this.auth_user_addresses) {

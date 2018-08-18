@@ -47,8 +47,8 @@ class User extends Authenticatable
 	{
 		$totalSum = $this->totalSum();
 
-		if ( $totalSum > 0 && $totalSum <= 15000) {
-			$this->loyalty_discount = 0;
+		if ( $totalSum >= 0 && $totalSum <= 15000) {
+			$this->loyalty_discount = 3;
 		} elseif ( $totalSum > 15000 && $totalSum <= 30000 ) {
 			$this->loyalty_discount = 5;
 		} elseif ($totalSum > 30000 && $totalSum <= 60000) {

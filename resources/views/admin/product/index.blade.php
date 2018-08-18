@@ -11,8 +11,8 @@
                         <thead>
                         <tr>
                             <th class="text-center">ID</th>
-                            <th class="w-25">Название</th>
-                            <th class="w-25">Бренд</th>
+                            <th>Название</th>
+                            <th>Бренд</th>
                             <th>Цена</th>
                             <th>Скидка</th>
                             <th>Новинка</th>

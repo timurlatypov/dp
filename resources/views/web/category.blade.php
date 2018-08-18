@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <div class="container" style="transform: translate3d(0, -60px,0);">
+    <div class="container translate-top-60">
         <div class="row">
             <div class="col-12 pt-3">
 

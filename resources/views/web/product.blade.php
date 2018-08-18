@@ -1,4 +1,22 @@
 @extends('layouts.app')
+@push('meta')
+
+<title>Купить {{ $product->title_eng }} за {{ $product->definePriceToShow() }}&#x20BD; - {{ $brand->name }} {{ $product->title_rus }} в ДокторПроффи.ру</title>
+<meta name="description" content="{{ $product->meta_description }}">
+<meta name="keywords" content="{{ $product->meta_keywords }}">
+<meta name="geo.region" content="RU" />
+<meta name="geo.placename" content="Москва" />
+<meta name="geo.position" content="55.7522200, 37.6155600" />
+<meta property="og:site_name" content="{{ config('app.name') }}">
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="{{ url()->current() }}"/>
+<meta property="og:title" content="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }}"/>
+<meta property="og:description" content="{{ $product->meta_description }}"/>
+<meta property="og:image" content="{{ url('/storage/products/thumbs/'.$product->thumb_path) }}"/>
+<meta property="article:author" content="https://www.facebook.com/DoctorProffi.ru/"/>
+<meta property="og:locale" content="ru_RU"/>
+
+@endpush
 
 @section('banner')
     <div style="

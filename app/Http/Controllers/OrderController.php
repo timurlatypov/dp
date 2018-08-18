@@ -87,6 +87,8 @@ class OrderController extends Controller
 
 		request()->session()->forget('coupon');
 
+		$cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
+
 	}
 
 	/**

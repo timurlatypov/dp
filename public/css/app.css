@@ -6906,7 +6906,7 @@ button.close {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 450px;
+  height: 300px;
 }
 
 .carousel-item {
@@ -6923,10 +6923,9 @@ button.close {
   transition: transform 0.6s ease, -webkit-transform 0.6s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
   background-position: center center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .carousel-item.active,
@@ -16021,7 +16020,6 @@ textarea {
   position: relative;
   color: inherit;
   padding: 0.9375rem;
-  font-weight: 500;
   font-size: 12px;
   text-transform: uppercase;
   border-radius: 3px;
@@ -20244,20 +20242,6 @@ footer .pull-center {
   }
 }
 
-.register-background {
-  background-image: url("/storage/auth/register.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.login-background {
-  background-image: url("/storage/auth/register.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
 .opacity-25 {
   opacity: 0.25;
 }
@@ -20465,6 +20449,23 @@ footer .pull-center {
 
 .form-group.account input {
   max-width: 250px;
+}
+
+.translate-top-30 {
+  -webkit-transform: translate3d(0, -35px, 0);
+          transform: translate3d(0, -35px, 0);
+  margin-bottom: -30px;
+}
+
+.translate-top-60 {
+  -webkit-transform: translate3d(0, -60px, 0);
+          transform: translate3d(0, -60px, 0);
+}
+
+.carousel-bg-image {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .wrapper {

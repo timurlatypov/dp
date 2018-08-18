@@ -73,15 +73,4 @@ $(document).ready(function() {
         var im = new Inputmask("9 (999) 999-99-99");
         im.mask(phone);
     }
-
-    if (document.getElementById("register-id")) {
-        console.log('add class');
-        $("#background-id").addClass('register-background');
-    }
-
-    if (document.getElementById("login-id")) {
-        console.log('add class');
-        $("#background-id").addClass('login-background');
-    }
-
 });

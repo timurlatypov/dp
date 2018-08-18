@@ -22,9 +22,10 @@
     @slot('footer')
         @component('mail::footer')
                 <div>
+                    <p>Интернет-магазин профессиональной косметики</p>
                     <a href="tel:84953801141">8 (495) 380-11-41</a>&nbsp;|&nbsp;<a href="https://api.whatsapp.com/send?phone=79654433130">8 (965) 443-31-30</a>
                     <br><br>
-                    <span>&copy; {{ date('Y') }} DoctorProffi.ru</span>
+                    <p>&copy; {{ date('Y') }} DoctorProffi.ru</p>
                 </div>
         @endcomponent
     @endslot

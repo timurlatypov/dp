@@ -14,7 +14,7 @@
 
     @slot('discount')
         @if($product->discount)
-            <span class="badge badge-pill badge-danger font-weight-bold">-{{ $product->discount }}%</span>
+            <span class="badge badge-pill badge-danger">-{{ $product->discount }}%</span>
         @endif
     @endslot
 

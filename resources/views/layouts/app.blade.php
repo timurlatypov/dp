@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    @include('layouts.partials._head')
-
-
-
+@stack('meta')
+@include('layouts.partials._head')
 </head>
 <body>
     <div id="app">
         @include('layouts.partials._header')
         @include('layouts.partials._nav')
         <flash message="{{ session('flash') }}" ></flash>
-        <div class="container-fluid p-0 h-100">
-            <div class="row h-100 m-0">
-                <div class="col-12 align-self-start p-0" id="background-id">
+        <div class="container-fluid p-0">
+            <div class="row m-0">
+                <div class="col-12 h-100 align-self-start p-0" id="@yield('background-class')">
                     @yield('carousel')
                     @yield('banner')
                     @yield('seasonal')

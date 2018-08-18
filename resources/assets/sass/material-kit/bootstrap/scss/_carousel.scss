@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 450px;
+  height: 300px;
 }
 
 .carousel-item {
@@ -18,9 +18,10 @@
   height: 100%;
   @include transition($carousel-transition);
   backface-visibility: hidden;
-  perspective: 1000px;
+  //perspective: 1000px;
   background-position: center center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .carousel-item.active,

@@ -13,11 +13,8 @@ Auth::routes();
 //
 
 Route::get('/order', function() {
-
-	$order = \App\Order::find(120);
-	//dd($order);
+	$order = \App\Order::first();
 	return new \App\Mail\NewOrder($order);
-
 });
 
 Route::get('/', 'HomeController@index')->name('landing-page');
