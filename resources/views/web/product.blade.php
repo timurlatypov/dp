@@ -12,7 +12,7 @@
 <meta property="og:url" content="{{ url()->current() }}"/>
 <meta property="og:title" content="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }}"/>
 <meta property="og:description" content="{{ $product->meta_description }}"/>
-<meta property="og:image" content="{{ url('/storage/products/thumbs/'.$product->thumb_path) }}"/>
+<meta property="og:image" content="{{ url('/storage/products/images/'.$product->image_path) }}"/>
 <meta property="article:author" content="https://www.facebook.com/DoctorProffi.ru/"/>
 <meta property="og:locale" content="ru_RU"/>
 
@@ -22,7 +22,7 @@
     <div style="
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 300px;
             background-image: url('/storage/banners/{{ $brand->brand_image_path }}');
             background-position: center;
             background-repeat: no-repeat;
@@ -64,7 +64,7 @@
                                         <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
                                                 <img src="/storage/products/image/{{$product->image_path}}" width="100%" alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
-                                                <div>100% гарантия подлинности</div>
+                                                @include('layouts.partials._yandex_share')
                                             </div>
                                             <div class="col-12 col-sm-6 col-md-5 p-5 px-sm-0 py-sm-2 align-self-center">
                                                 <div class="brand-logo"><img src="/storage/brands/{{ $brand->image_path }}" alt="Логотип {{ $brand->name }}"></div>
