@@ -22,7 +22,6 @@
                             <h6><a href="#" class="text-white">Программа лояльности</a></h6>
                             <h6><a href="#" class="text-white">Обратная связь</a></h6>
                             <h6><a href="#" class="text-white">Реквизиты</a></h6>
-                            <h6><a href="#" class="text-white">Карта сайта</a></h6>
                         </div>
                         <div class="col-3">
                             <h4 class="title text-white mt-2">Контакты</h4>

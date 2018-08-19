@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@push('meta')
+    <title>@if(isset($subcategory)){{ $subcategory->body }}@else{{ $categories->body }}@endif</title>
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:url" content="{{ url()->current() }}"/>
+    <meta property="og:title" content="@if(isset($subcategory)){{ $subcategory->name }}@else{{ $categories->title }}@endif"/>
+@endpush
+
 @section('banner')
     <div style="
     position: relative;
@@ -13,7 +20,7 @@
 @endsection
 
 @section('content')
-    <div class="container translate-top-60">
+    <div class="container translate-top-30">
         <div class="row">
             <div class="col-12 pt-3">
 
@@ -21,7 +28,7 @@
                 <div class="card">
 
                     <div class="text-center">
-                        <h3 class="title mb-4 mt-4">{{ $categories->name }}</h3>
+                        <h3 class="title mb-4 mt-4">{{ $categories->title }}</h3>
                     </div>
 
                     <div class="card-body p-0">

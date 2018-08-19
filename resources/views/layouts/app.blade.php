@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+        <cart-modal payload="{{ session('cartModal') }}" ></cart-modal>
     </div>
 </body>
 </html>

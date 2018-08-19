@@ -32291,6 +32291,7 @@ __webpack_require__(177);
 Vue.component('flash', __webpack_require__(178));
 Vue.component('search', __webpack_require__(252));
 Vue.component('cart', __webpack_require__(186));
+Vue.component('cart-modal', __webpack_require__(291));
 Vue.component('add-button', __webpack_require__(189));
 Vue.component('add-favorite', __webpack_require__(192));
 Vue.component('editor', __webpack_require__(195));
@@ -43540,6 +43541,10 @@ window.flash = function (message) {
 
 window.cartUpdate = function () {
     window.events.$emit('cartUpdate');
+};
+
+window.cartModal = function (payload) {
+    window.events.$emit('cartModal', payload);
 };
 
 $(document).ready(function () {
@@ -66670,7 +66675,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (this.message) {
             this.flash(this.message);
         }
-
         window.events.$on('flash', function (message) {
             _this.flash(message);
         });
@@ -67057,7 +67061,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post(this.endpoint, this.payload).then(function (response) {
                 window.cartUpdate();
-                window.flash('Продукт ' + _this.payload.title_eng + ' добавлен в корзину');
+                window.cartModal(_this.payload);
                 _this.disabled = true;
             });
         }
@@ -82497,6 +82501,267 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7cdae69f", module.exports)
+  }
+}
+
+/***/ }),
+/* 291 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(292)
+/* template */
+var __vue_template__ = __webpack_require__(293)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/cart/CartModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ab987416", Component.options)
+  } else {
+    hotAPI.reload("data-v-ab987416", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 292 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['payload'],
+    data: function data() {
+        return {
+            product: null,
+            cart: null
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        if (this.message) {
+            this.cartModal(this.message);
+        }
+        window.events.$on('cartModal', function (payload) {
+            axios.get('/cart/refresh').then(function (response) {
+                _this.cartModal(payload, response);
+            });
+        });
+    },
+
+    methods: {
+        cartModal: function cartModal(payload, response) {
+            $('#cartModal').modal('show');
+            this.product = payload;
+            this.cart = response.data;
+        }
+    }
+});
+
+/***/ }),
+/* 293 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "cartModal",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "ModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm.product
+            ? _c("div", { staticClass: "modal-body" }, [
+                _c("table", { staticClass: "table table-shopping" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [
+                        _c("div", { staticClass: "img-container" }, [
+                          _c("img", {
+                            attrs: {
+                              src:
+                                "/storage/products/thumb/" +
+                                _vm.product.thumb_path,
+                              alt: ""
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "td-name" }, [
+                        _c("a", { attrs: { href: "#" } }, [
+                          _vm._v(_vm._s(_vm.product.title_eng))
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _c("small", { staticClass: "text-uppercase" }, [
+                          _vm._v(_vm._s(_vm.product.brand.name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(_vm.product.priceToShow) + " ₽")])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ])
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "title my-0", attrs: { id: "ModalLabel" } }, [
+        _vm._v("Товар добавлен в корзину!")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer mx-auto" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default btn-sm mr-2",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Продолжить покупки")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "btn btn-primary btn-sm", attrs: { href: "/checkout" } },
+        [_vm._v("Оформить заказ")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ab987416", module.exports)
   }
 }
 

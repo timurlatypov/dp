@@ -42,24 +42,39 @@ class BrandController extends Controller
     }
 
 
+
+
 	public function show_product(Brand $brand, Product $product)
 	{
-		$product = Product::find($product->id);
+		$product = $brand->products()->where('slug', $product->slug)->first();
+
+		//dd($product);
+
 		return view('web.product', compact(['brand', 'product']));
 	}
+
+
 
 
     public function show_brand_products(Brand $brand)
     {
     	$products = $brand->products()->live()->paginate(21);
+
+	    //dd($products);
+
         return view('web.brand', compact(['brand', 'products']));
     }
+
+
 
     public function show_brand_line_products(Brand $brand, Line $line)
     {
 	    $products = $line->products()->orderBy('order_id', 'asc')->live()->paginate(21);
 	    return view('web.brand', compact(['brand', 'line', 'products']));
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -14,6 +14,8 @@ class Product extends Model
 
 	protected $guarded = [];
 
+	protected $appends = ['brand'];
+
 	public function getRouteKeyName()
 	{
 		return 'slug';
@@ -26,7 +28,6 @@ class Product extends Model
 		$properties['line'] = $this->line;
 		return $properties;
 	}
-
 
 
 	public function definePriceToShow()
@@ -73,6 +74,11 @@ class Product extends Model
 	public function scopeBestsellers(Builder $builder)
 	{
 		return $builder->where('bestseller', true);
+	}
+
+	public function getBrandAttribute()
+	{
+		return $this->brand()->first();
 	}
 
 }

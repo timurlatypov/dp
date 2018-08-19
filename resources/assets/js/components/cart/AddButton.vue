@@ -21,9 +21,9 @@
                 axios.post(this.endpoint, this.payload)
                     .then( response => {
                         window.cartUpdate();
-                        window.flash('Продукт '+this.payload.title_eng+' добавлен в корзину');
+                        window.cartModal(this.payload);
                         this.disabled = true;
-                    } )
+                    })
             }
         },
         mounted() {

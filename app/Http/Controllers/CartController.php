@@ -86,7 +86,8 @@ class CartController extends Controller
 	{
 		$cart_items = \Gloudemans\Shoppingcart\Facades\Cart::content();
 		$cart_count = $cart_items->count();
+		$cart_total = \Gloudemans\Shoppingcart\Facades\Cart::total();
 
-		return response(['cart_items' => $cart_items, 'cart_count' => $cart_count], 200);
+		return response(['cart_items' => $cart_items, 'cart_count' => $cart_count, 'cart_total' => $cart_total], 200);
 	}
 }

@@ -1,29 +1,21 @@
 @extends('layouts.app')
 
 @push('meta')
-
-    <title>Купить {{ $product->title_eng }} за {{ $product->definePriceToShow() }}&#x20BD; - {{ $brand->name }} {{ $product->title_rus }} в ДокторПроффи.ру</title>
-    <meta name="description" content="{{ $product->meta_description }}">
-    <meta name="keywords" content="{{ $product->meta_keywords }}">
-    <meta name="geo.region" content="RU" />
-    <meta name="geo.placename" content="Москва" />
-    <meta name="geo.position" content="55.7522200, 37.6155600" />
+    <title>Косметика {{ $brand->name }} - купить в интернет-магазине ДокторПроффи.ру</title>
+    <meta name="description" content="{{ $brand->meta_description }}">
+    <meta name="keywords" content="{{ $brand->meta_keywords }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
-    <meta property="og:type" content="article"/>
     <meta property="og:url" content="{{ url()->current() }}"/>
-    <meta property="og:title" content="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }}"/>
-    <meta property="og:description" content="{{ $product->meta_description }}"/>
-    <meta property="og:image" content="{{ url('/storage/products/images/'.$product->image_path) }}"/>
-    <meta property="article:author" content="https://www.facebook.com/DoctorProffi.ru/"/>
-    <meta property="og:locale" content="ru_RU"/>
-
+    <meta property="og:title" content="Вся косметика {{ $brand->name }} - Купить в интернет-магазине ДокторПроффи.ру"/>
+    <meta property="og:description" content="{{ $brand->meta_description }}"/>
+    <meta property="og:image" content="{{ url('/storage/brands/'.$brand->image_path) }}"/>
 @endpush
 
 @section('banner')
     <div style="
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 300px;
             background-image: url('/storage/banners/{{ $brand->brand_image_path }}');
             background-position: center;
             background-repeat: no-repeat;
@@ -44,7 +36,7 @@
 @endsection
 
 @section('content')
-    <div class="container" style="transform: translate3d(0, -60px,0);">
+    <div class="container translate-top-30">
         <div class="row">
             <div class="col-12 pt-3">
 

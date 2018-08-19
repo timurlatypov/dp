@@ -65,6 +65,10 @@ window.cartUpdate = function () {
     window.events.$emit('cartUpdate');
 }
 
+window.cartModal = function (payload) {
+    window.events.$emit('cartModal', payload);
+}
+
 $(document).ready(function() {
     $('body').bootstrapMaterialDesign();
 
