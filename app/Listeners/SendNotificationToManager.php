@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\NewOrderCreated;
-use App\Role;
-use App\User;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;

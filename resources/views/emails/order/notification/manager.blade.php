@@ -8,8 +8,8 @@
     <title></title>
 </head>
 <body>
-<h4>Примите заказ</h4>
-<p>
-    <b>Менеджер:</b><br>
+<h4>Новый заказ: {{ $order->order_id }}</h4>
+Клиент: {{ $order->billing_name }} {{ $order->billing_surname }}<br><br>
+{{ $order->created_at->format('d.m.Y') }}
 </body>
 </html>
