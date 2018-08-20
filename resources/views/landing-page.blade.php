@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@push('meta')
+    <title>Купить профессиональную косметику в Москве в интернет-магазине ДокторПроффи.ру</title>
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:url" content="{{ url()->current() }}"/>
+    <meta property="og:title" content="Интернет-магазин профессиональной косметики в Москве - ДокторПроффи.ру"/>
+@endpush
+
 @section('carousel')
     @include('layouts.partials._carousel')
 @endsection

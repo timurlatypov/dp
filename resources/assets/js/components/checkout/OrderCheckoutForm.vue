@@ -42,7 +42,7 @@
                     </td>
 
                     <td class="td-name">
-                        <a href="#">{{ product.name }}</a>
+                        <a :href="'/brand/'+product.options.brand_slug+'/'+product.options.product_slug">{{ product.name }}</a>
                         <br><small class="text-uppercase">{{ product.options.brand }}</small>
                     </td>
 

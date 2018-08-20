@@ -5,9 +5,15 @@
             <draggable :list="subcategories" :options="{}" @start="drag=true" @end="drag=false" @change="update">
 
                 <div v-for="subcategory, index in subcategories">
-                    <div class="d-flex my-1 rounded" style="border: 1px solid lightgrey">
+                    <div class="d-flex justify-content-between my-1 rounded" style="border: 1px solid lightgrey">
                         <div class="my-auto ml-2 p-2">{{ subcategory.order_id }} - {{ subcategory.name }}</div>
+                        <div>
+                            <a :href="'/admin-panel/categories/'+category_slug+'/'+subcategory.slug+'/products'" rel="tooltip" class="btn btn-white btn-fab btn-sm mx-2">
+                                <i class="material-icons">assignment</i>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
 
             </draggable>
@@ -24,7 +30,7 @@
         components: {
             draggable
         },
-        props: ['data'],
+        props: ['category_slug','data'],
         data() {
             return {
                 subcategories: [],
@@ -57,7 +63,7 @@
             },
 
             submit() {
-                axios.patch('/admin/specialists/update', this.specialists)
+                axios.patch('/', )
                     .then((response) => {
                         // set success message
                     }).catch((error) => {
@@ -79,7 +85,6 @@
         },
         mounted () {
             this.subcategories = this.data;
-            console.log(this.subcategories);
         }
     }
 </script>

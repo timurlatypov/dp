@@ -14,7 +14,7 @@ class Product extends Model
 
 	protected $guarded = [];
 
-	protected $appends = ['brand'];
+	protected $appends = ['brand', 'new_product'];
 
 	public function getRouteKeyName()
 	{
@@ -44,12 +44,10 @@ class Product extends Model
     {
     	return $this->belongsTo(Brand::class);
     }
-
 	public function line()
 	{
 		return $this->belongsTo(Line::class);
 	}
-
 	public function categories()
 	{
 		return $this->belongsToMany(Categories::class, 'product_category', 'product_id', 'category_id');
@@ -60,25 +58,44 @@ class Product extends Model
 		return $this->belongsToMany(Subcategory::class, 'product_subcategory');
 	}
 
+	public function related()
+	{
+		return $this->belongsToMany(Product::class, 'product_related','product_id','related_id');
+	}
 
+	/*
+	 *
+	 * SCOPES
+	 *
+	 */
 	public function scopeDiscount(Builder $builder)
 	{
 		return $builder->where('discount', '>', '0')->orderBy('discount', 'desc');
 	}
-
 	public function scopeNovelties(Builder $builder)
 	{
 		return $builder->where('novelty', true);
 	}
-
 	public function scopeBestsellers(Builder $builder)
 	{
 		return $builder->where('bestseller', true);
 	}
 
+
+	/*
+	 *
+	 * ATRIBUTES
+	 *
+	 */
 	public function getBrandAttribute()
 	{
 		return $this->brand()->first();
 	}
+	public function getNewProductAttribute()
+	{
+		return $this->categories()->where('slug', 'new-products')->first();
+	}
+
+
 
 }

@@ -20,14 +20,22 @@ class HomeController extends Controller
 
     public function novelties()
     {
-	    $products = Product::novelties()->live()->paginate(21);
-	    return view('web.novelties', compact(['products']));
+    	$categories = Categories::where('slug', 'new-products')->first();
+	    $products = $categories->products()->live()->paginate(21);
+	    return view('web.template', compact(['products','categories']));
     }
 
 	public function bestsellers()
 	{
-		$products = Product::bestsellers()->live()->paginate(21);
-		return view('web.bestsellers', compact(['products']));
+		$categories = Categories::where('slug', 'bestsellers')->first();
+		$products = $categories->products()->live()->paginate(21);
+		return view('web.template', compact(['products','categories']));
+	}
+
+	public function discounts()
+	{
+		$products = Product::discount()->live()->paginate(21);
+		return view('web.discounts', compact(['products']));
 	}
 
 
@@ -53,10 +61,5 @@ class HomeController extends Controller
 		return view('web.for-kids');
 	}
 
-	public function discounts()
-	{
-		$products = Product::discount()->live()->paginate(21);
-		return view('web.discounts', compact(['products']));
-	}
 
 }

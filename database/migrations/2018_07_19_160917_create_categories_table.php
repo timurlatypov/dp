@@ -19,8 +19,9 @@ class CreateCategoriesTable extends Migration
             $table->string('slug')->unique();
             $table->string('name');
             $table->string('title');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->longText('body')->nullable();
+	        $table->string('title')->nullable();
         });
     }
 

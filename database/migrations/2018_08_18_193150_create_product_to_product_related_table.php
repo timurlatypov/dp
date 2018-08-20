@@ -14,8 +14,13 @@ class CreateProductToProductRelatedTable extends Migration
     public function up()
     {
         Schema::create('product_related', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+	        $table->integer('product_id')->unsigned();
+	        $table->integer('related_id')->unsigned();
+
+	        $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+	        $table->foreign('related_id')->references('id')->on('products')->onDelete('cascade');
+
+	        $table->primary(['product_id', 'related_id']);
         });
     }
 

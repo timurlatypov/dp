@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-    	$products = Product::orderBy('id', 'asc')->paginate(100);
+    	$products = Product::orderBy('title_eng', 'asc')->paginate(100);
         return view('admin.product.index', compact('products'));
     }
 
@@ -182,5 +182,17 @@ class ProductController extends Controller
 		$product->update(['discount' => $request->value]);
 
 		return response(['data' => 'Успешно'], 200);
+	}
+
+	public function productAssociateRelated (Product $product, Request $request)
+	{
+
+		$products = $request->toArray();
+
+		//dd($product);
+
+		$productsID = array_column($products, 'id');
+
+		$product->related()->sync($productsID);
 	}
 }

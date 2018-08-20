@@ -41,7 +41,9 @@ class CartController extends Controller
 	        'qty' => 1,
 	        'price' => $request->priceToShow,
 	        'options' => [
+	        	'product_slug' => $request->slug,
 	        	'brand' => $request->brand['name'],
+	        	'brand_slug' => $request->brand['slug'],
 		        'image' => $request->thumb_path
 	        ]
         ]);

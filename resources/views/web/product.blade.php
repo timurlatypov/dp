@@ -12,27 +12,7 @@
 @endpush
 
 @section('banner')
-    <div style="
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background-image: url('/storage/banners/{{ $brand->brand_image_path }}');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            text-align: right;
-            ">
-
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-12 text-right align-self-center">
-                    <div class="brand-logo-banner"><img src="/storage/brands/{{ $brand->image_path }}" alt="Логотип {{ $brand->name }}"></div>
-                    <h6 class="py-3">{{ $brand->title }}</h6>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    @include('layouts.partials.banner.banner')
 @endsection
 
 @section('content')
@@ -40,9 +20,7 @@
         <div class="row">
             <div class="col-12 pt-3">
 
-
                 <div class="card">
-
                     <div class="card-body p-0">
                         <div class="container-fluid">
                             <div class="row">
@@ -52,7 +30,6 @@
                                 </div>
 
                                 <div class="col-12 col-sm-9">
-
                                    <div class="container-fluid">
                                         <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
@@ -66,7 +43,6 @@
                                                     <span class="badge badge-pill badge-danger font-weight-bold mt-3">-{{ $product->discount }}%</span>
                                                 @endif
                                                 @if($product->ph)<small class="font-weight-bold">pH: {{ $product->ph }}</small>@endif
-
                                                 @if($product->discount)
                                                     <div class="pt-3">
                                                         <h3 class="title my-0 opacity-50"><strike>{{ $product->price }} <i class="fas fa-ruble-sign fa-sm"></i></strike></h3>
@@ -83,21 +59,33 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12 p-5">
-                                                <h4 class="title">Описание</h4>
+
+                                       <div class="row">
+                                            <div class="col-12 px-0">
+                                                <h4 class="title text-uppercase">Описание</h4>
                                                 <p>{!! $product->description_full !!}</p>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
+
+                        <div class="container-fluid pb-3">
+                            <div class="row">
+                                <div class="col-12 col-sm-9 offset-sm-3">
+                                    <h4 class="title text-uppercase">Похожие продукты:</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-9 offset-sm-3 d-flex flex-wrap flex-row card-col-9">
+                                    @each('layouts.partials.product.card', $product->related->take(3), 'product')
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

@@ -1,31 +1,25 @@
 @extends('layouts.app')
 
-@section('banner')
-    <div style="
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background-image: url('/storage/banners/@if( isset($categories) ){{ $categories->image_path }}@endif');
-            background-position: center;
-            background-repeat: repeat;
-            background-size: auto;
-            "></div>
+@push('meta')
+    <title>Скидки на профессиональную косметику в интернет-магазине ДокторПроффи.ру</title>
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:url" content="{{ url()->current() }}"/>
+    <meta property="og:title" content="Скидки на профессиональную косметику в интернет-магазине ДокторПроффи.ру "/>
+@endpush
+
+@section('carousel')
+    @include('layouts.partials._carousel')
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container translate-top-30">
         <div class="row">
             <div class="col-12 pt-3">
-
-
                 <div class="card">
-
-                    <div class="card-header card-header-danger text-center mb-4">
-                        <h4 class="card-title mb-1 mt-0">Продукция со скидками!</h4>
+                    <div class="card-header text-center mb-4 card-header-danger">
+                        <h4 class="card-title mb-1 mt-0">Продукты со скидками!</h4>
                     </div>
-
                     <div class="card-body p-0">
-
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-sm-3">
@@ -35,22 +29,12 @@
                                     @each('layouts.partials.product.card', $products, 'product')
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="mx-auto p-4 text-center">
-                                        {{--<h4 class="title">Страницы</h4>--}}
-                                        {{ $products->links() }}
-                                    </div>
-                                </div>
-                            </div>
-
+                            @if ($products->hasMorePages())
+                                @include('layouts.partials._pagination')
+                            @endif
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

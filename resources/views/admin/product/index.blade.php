@@ -6,19 +6,15 @@
             <div class="col-12">
                 <div class="card">
 
-
                     <table class="table">
                         <thead>
                         <tr>
                             <th class="text-center">ID</th>
-                            <th>Название</th>
-                            <th>Бренд</th>
-                            <th>Цена</th>
-                            <th>Скидка</th>
-                            <th>Новинка</th>
-                            <th>Сезонный</th>
-                            <th>Бестселлер</th>
-                            <th>На сайте</th>
+                            <th class="w-25">Название</th>
+                            <th class="w-25">Бренд</th>
+                            <th class="w-25">Цена</th>
+                            <th class="w-25">Скидка</th>
+                            <th><nobr>На сайте</nobr></th>
                             <th class="text-right">Действие</th>
                         </tr>
                         </thead>
@@ -35,18 +31,6 @@
 
                             <td>
                                 <input-field value="{{ $product->discount }}" endpoint="{{ route('api.product.discount.update') }}" product_id="{{ $product->id }}" fontawesome="fa fa-percentage" placeholder="Скидка" id="inputDiscount"></input-field>
-                            </td>
-
-                            <td>
-                                <toggle-switch toggle="{{ $product->novelty }}" endpoint="{{ route('api.novelty.toggle') }}" product_id="{{ $product->id }}"></toggle-switch>
-                            </td>
-
-                            <td>
-                                <toggle-switch toggle="{{ $product->seasonal }}" endpoint="{{ route('api.seasonal.toggle') }}" product_id="{{ $product->id }}"></toggle-switch>
-                            </td>
-
-                            <td>
-                                <toggle-switch toggle="{{ $product->bestseller }}" endpoint="{{ route('api.bestseller.toggle') }}" product_id="{{ $product->id }}"></toggle-switch>
                             </td>
 
                             <td>

@@ -12,10 +12,15 @@ Auth::routes();
 //
 //
 
-Route::get('/order', function() {
-	$order = \App\Order::first();
-	return new \App\Mail\NewOrder($order);
-});
+//Route::get('/order', function() {
+////	$order = \App\Order::first();
+////	return new \App\Mail\NewOrder($order);
+//
+//	$pdf = Barryvdh\DomPDF\PDF::make('dompdf.wrapper');
+//	$pdf->loadHTML('<h1>Test</h1>');
+//	return $pdf->stream();
+//
+//});
 
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
@@ -117,6 +122,7 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::post('/store', 'ProductController@store')->name('admin.product.store');
 		Route::get('/{id}/edit', 'ProductController@edit')->name('admin.product.edit');
 		Route::patch('/{product}', 'ProductController@update')->name('admin.product.update');
+		Route::patch('/{product}/associate/related', 'ProductController@productAssociateRelated')->name('admin.product.associate.related');
 
 		// API input field 'price' update
 		Route::post('/price/update', 'ProductController@price')->name('api.product.price.update');
@@ -127,13 +133,24 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		// API 'live' toggle
 		Route::post('/live/toggle', 'ProductController@toggle')->name('api.product.live.toggle');
 	});
+
+
 	//
 	// CATEGORIES / SUBCATEGORIES GROUP
 	//
 	Route::group(['prefix' => '/categories', 'namespace' => 'Categories'], function() {
-		Route::get('/', 'CategoriesController@index')->name('');
+		Route::get('/', 'CategoriesController@index')->name('admin.categories.index');
+
+		Route::get('/{categories}/products', 'CategoriesController@categoriesProducts')->name('admin.categories.products');
+		Route::get('/{categories}/{subcategory}/products', 'CategoriesController@subcategoriesProducts')->name('admin.categories.subcategory.products');
+
+
+		Route::patch('/{categories}/products/associate', 'CategoriesController@categoryAssociateProducts')->name('admin.categories.associate.products');
+		Route::patch('/{categories}/{subcategory}/products/associate', 'CategoriesController@subcategoryAssociateProducts')->name('admin.categories.subcategory.associate.products');
+
 
 		Route::post('/{categories}/store', 'SubcategoriesController@store')->name('store.new.subcategory');
+
 	});
 	//
 	// ORDERS GROUP
@@ -161,17 +178,6 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::post('/lines', 'LineController@show_all_lines_for_brand')->name('api.get.product.lines');
 	});
 
-	Route::group(['prefix' => '/api', 'namespace' => 'Seasonal'], function() {
-		Route::post('/seasonal/toggle', 'SeasonalController@toggle')->name('api.seasonal.toggle');
-	});
-
-	Route::group(['prefix' => '/api', 'namespace' => 'Bestseller'], function() {
-		Route::post('/bestseller/toggle', 'BestsellerController@toggle')->name('api.bestseller.toggle');
-	});
-
-	Route::group(['prefix' => '/api', 'namespace' => 'Novelty'], function() {
-		Route::post('/novelty/toggle', 'NoveltyController@toggle')->name('api.novelty.toggle');
-	});
 });
 
 

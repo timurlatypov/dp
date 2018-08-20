@@ -46,22 +46,18 @@ class BrandController extends Controller
 
 	public function show_product(Brand $brand, Product $product)
 	{
-		$product = $brand->products()->where('slug', $product->slug)->first();
-
-		//dd($product);
-
+		if(!$product = $brand->products()->where('slug', $product->slug)->live()->first())
+		{
+			abort(404);
+		}
 		return view('web.product', compact(['brand', 'product']));
 	}
-
 
 
 
     public function show_brand_products(Brand $brand)
     {
     	$products = $brand->products()->live()->paginate(21);
-
-	    //dd($products);
-
         return view('web.brand', compact(['brand', 'products']));
     }
 

@@ -26,16 +26,25 @@
             <p>Заказы @if($new_orders_count)<span class="badge badge-pill badge-success">{{$new_orders_count}}</span>@endif</p>
         </a>
     </li>
+
     <li class="nav-item ">
         <a class="nav-link" href="#pablo">
             <i class="material-icons">assignment_ind</i>
             <p>Клиенты</p>
         </a>
     </li>
+
     <li class="nav-item {{ Request::is('admin-panel/products*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.product.index') }}">
             <i class="material-icons">shopping_cart</i>
             <p>Продукты</p>
+        </a>
+    </li>
+
+    <li class="nav-item {{ Request::is('admin-panel/categories*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.categories.index') }}">
+            <i class="material-icons">close</i>
+            <p>Категории</p>
         </a>
     </li>
 

@@ -152,6 +152,7 @@ return [
          */
 	    Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 	    //Barryvdh\Debugbar\ServiceProvider::class,
+	    Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -212,6 +213,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 	    'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 	    //'Debugbar' => Barryvdh\Debugbar\Facade::class
+	    'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

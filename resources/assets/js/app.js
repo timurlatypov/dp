@@ -42,6 +42,10 @@ Vue.component('select-brand-line', require('./components/products/SelectBrandLin
 Vue.component('order-checkout-form', require('./components/checkout/OrderCheckoutForm.vue'));
 Vue.component('order-subcategories', require('./components/OrderSubcategories.vue'));
 
+Vue.component('associate-products', require('./components/categories/AssociateProduct.vue'));
+
+
+
 const app = new Vue({
     el: '#app'
 });

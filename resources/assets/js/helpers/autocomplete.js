@@ -13,8 +13,7 @@ export const productautocomplete = (selector, { hitsPerPage }) => {
         displayKey: 'title',
         templates: {
             suggestion (suggestion) {
-                console.log(suggestion)
-                return '<span><a href="/brand/' + suggestion.brand.slug + '/' + suggestion.slug + '">' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title_eng.value + " - " + suggestion._highlightResult.title_rus.value + '</a></span>';
+                return '<span>' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title_eng.value + " - " + suggestion._highlightResult.title_rus.value + '</span>';
             },
             empty: '<div class="p-3">No results</div>'
         }

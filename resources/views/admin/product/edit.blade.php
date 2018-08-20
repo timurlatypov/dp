@@ -77,6 +77,10 @@
 
 
                             <div class="form-group pt-3">
+                                <div class="card">
+                                    <div class="card-body">
+
+                            <div class="form-group pt-3">
                                 <h4 class="title">META ДАННЫЕ ПРОДУКТА (SEO)</h4>
                             </div>
 
@@ -103,14 +107,26 @@
                                     <small class="invalid-feedback">{{ $errors->first('meta_keywords') }}</small>
                                 @endif
                             </div>
-
-
-                            <div class="form-group pb-3">
-                                <h4 class="title">Калегории продукта</h4>
+                                    </div>
+                                </div>
                             </div>
 
 
-                            @foreach($categories as $category)
+                            <div class="form-group pt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="title">ПОХОЖИЕ ПРОДУКТЫ (RELATED)</h4>
+                                        <associate-products endpoint="{{route('admin.product.associate.related', $product)}}" :object="{{ $product }}" :items="@if($product->related){{ $product->related }}@else null @endif"></associate-products>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group pt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="title">КАТЕГОРИИ ПРОДУКТА</h4>
+                                        @foreach($categories as $category)
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" id="categories{{ $category->id }}" {{ $product->categories->contains($category->id) ? ' checked' : ''}}>
@@ -136,6 +152,9 @@
                                     </div>
                                 @endif
                             @endforeach
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="form-group pt-3">

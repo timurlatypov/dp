@@ -1,5 +1,5 @@
 <template>
-    <div class="input-group" :class="success ? ' has-success' : ''" style="max-width: 70px;">
+    <div class="input-group" :class="success ? ' has-success' : ''" style="max-width: 80px;">
         <div class="input-group-prepend">
           <span class="input-group-text pl-0 pr-1">
               <i :class="[fontawesome, success ? ' text-success' : '']"></i>

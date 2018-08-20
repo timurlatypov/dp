@@ -4,7 +4,7 @@
         <div class="position-absolute top-0 p-2">
             <h6 class="text-muted my-1">{{ $brand_name }}</h6>
             {{ $discount }}
-            {{ $new }}
+            {{ $new_product }}
             {{ $ph }}
         </div>
         <div class="position-absolute top-0 right-0 pr-1">

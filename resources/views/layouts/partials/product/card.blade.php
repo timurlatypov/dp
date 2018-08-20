@@ -18,8 +18,8 @@
         @endif
     @endslot
 
-    @slot('new')
-        @if($product->novelty)
+    @slot('new_product')
+        @if($product->new_product)
             <span class="badge badge-pill badge-success font-weight-bold">новинка</span>
         @endif
     @endslot

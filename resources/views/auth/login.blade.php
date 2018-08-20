@@ -5,7 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
 
-                <div class="card" id="login-id">
+
+                <div class="card">
                     <div class="card-header card-header-doctorproffi text-center">
                         <h3 class="card-title mb-1 mt-0">Авторизация на сайте</h3>
                     </div>

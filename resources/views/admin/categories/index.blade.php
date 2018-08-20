@@ -20,18 +20,15 @@
                             @foreach($categories as $category)
                                 <tr>
                                     <td style="vertical-align: top;">{{ $category->id }}</td>
-                                    <td style="vertical-align: top;">{{ $category->name }}</td>
+                                    <td style="vertical-align: top;">{{ $category->name }} @if($category->subcategories)({{ count($category->subcategories) }})@endif</td>
                                     <td>
                                         @if($category->subcategories)
-                                        <order-subcategories :data="{{ $category->subcategories }}"></order-subcategories>
+                                        <order-subcategories category_slug="{{ $category->slug }}" :data="{{ $category->subcategories }}"></order-subcategories>
                                         @endif
-                                        {{--@foreach($category->subcategories as $subcategory)--}}
-                                            {{--<p>{{ $subcategory->name }}</p>--}}
-                                        {{--@endforeach--}}
                                     </td>
                                     <td class="td-actions text-right">
-                                        <a href="" rel="tooltip" class="btn btn-success">
-                                            <i class="material-icons">edit</i>
+                                        <a href="{{ route('admin.categories.products', $category) }}" rel="tooltip" class="btn btn-success">
+                                            <i class="material-icons">assignment</i>
                                         </a>
                                         <button type="button" rel="tooltip" class="btn btn-danger">
                                             <i class="material-icons">close</i>
