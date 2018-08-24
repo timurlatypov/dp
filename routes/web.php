@@ -26,17 +26,22 @@ Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
 Route::get('/discounts', 'HomeController@discounts')->name('discounts');
+Route::get('/contacts', 'HomeController@contacts')->name('contacts');
+Route::get('/confidentiality', 'HomeController@confidentiality')->name('confidentiality');
+Route::get('/delivery', 'HomeController@delivery')->name('delivery');
+
+
+
+
 
 Route::group(['prefix' => '/category'], function() {
 	Route::get('/{categories}', 'HomeController@category')->name('show.category');;
 	Route::get('/{categories}/{subcategory}', 'HomeController@subcategory')->name('show.category.subcategory');;
 });
 
-
 Route::get('/brand/{brand}/{product}', 'AdminPanel\Brand\BrandController@show_product')->name('show.product');
 Route::get('/brand/{brand}', 'AdminPanel\Brand\BrandController@show_brand_products')->name('show.brand.products');
 Route::get('/brand/{brand}/line/{line}', 'AdminPanel\Brand\BrandController@show_brand_line_products')->name('show.brand.line.products');
-
 
 //Route::group(['middleware' => 'role:admin'], function() {
 //
@@ -121,6 +126,10 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::get('/create', 'ProductController@create')->name('admin.product.create');
 		Route::post('/store', 'ProductController@store')->name('admin.product.store');
 		Route::get('/{id}/edit', 'ProductController@edit')->name('admin.product.edit');
+
+		Route::get('/{id}/delete', 'ProductController@destroy')->name('admin.product.delete');
+		Route::get('/{id}/forceDelete', 'ProductController@forceDelete')->name('admin.product.forceDelete');
+
 		Route::patch('/{product}', 'ProductController@update')->name('admin.product.update');
 		Route::patch('/{product}/associate/related', 'ProductController@productAssociateRelated')->name('admin.product.associate.related');
 
@@ -183,4 +192,3 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-

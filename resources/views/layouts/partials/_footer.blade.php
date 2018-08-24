@@ -8,14 +8,17 @@
                         <div class="col-3">
                             <div class="footer-logo">@include('layouts.partials._logo')</div>
                             <h6>Интернет-магазин<br>профессиональной косметики</h6>
-                            <div class="py-2"><i class="fab fa-facebook fa-lg pr-3"></i><i class="fab fa-instagram fa-lg"></i></div>
+                            <div class="py-2">
+                                <a class="text-white" href="https://www.facebook.com/DoctorProffi.ru/" target="_blank"><i class="fab fa-facebook fa-lg pr-3"></i></a>
+                                <a class="text-white" href="https://www.instagram.com/doctorproffi/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+                            </div>
                             <h6 class="text-white">© 2018 Все права защищены</h6>
                         </div>
                         <div class="col-3">
                             <h4 class="title text-white mt-2">Покупки</h4>
                             <h6><a href="#" class="text-white">Доставка и оплата</a></h6>
                             <h6><a href="#" class="text-white">Возврат товара</a></h6>
-                            <h6><a href="#" class="text-white">Политика конфиденциальности</a></h6>
+                            <h6><a href="#" class="text-white">Конфиденциальность</a></h6>
                         </div>
                         <div class="col-3">
                             <h4 class="title text-white mt-2">Информация</h4>
@@ -23,7 +26,7 @@
                             <h6><a href="#" class="text-white">Обратная связь</a></h6>
                             <h6><a href="#" class="text-white">Реквизиты</a></h6>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 hidden-md">
                             <h4 class="title text-white mt-2">Контакты</h4>
                             <h6><a class="text-white" href="tel:84953801141"><i class="fa fa-phone-volume"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6>
                             <h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" data-toggle="tooltip" data-placement="bottom" title="Написать в Whatsapp"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6>

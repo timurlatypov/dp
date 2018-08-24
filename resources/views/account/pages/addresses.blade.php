@@ -9,6 +9,5 @@
     @endforeach
     @else
         <p>У вас нет сохраненных адресов</p>
-        <p>Новый адрес</p>
     @endif
 @endsection

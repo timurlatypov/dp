@@ -8,12 +8,16 @@
             Профиль
         </a>
     </li>
+
+    @isset($address)
     <li class="nav-item">
         <a class="nav-link {{ Request::is('account/addresses') ? 'active' : '' }}" href="{{ route('account.addresses') }}">
             <i class="material-icons">room</i>
             Адреса
         </a>
     </li>
+    @endisset
+
     <li class="nav-item">
         <a class="nav-link {{ Request::is('account/orders') ? 'active' : '' }}" href="{{ route('account.orders') }}">
             <i class="material-icons">assignment</i>

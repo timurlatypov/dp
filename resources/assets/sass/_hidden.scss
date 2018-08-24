@@ -1,0 +1,38 @@
+.hidden-sm,
+.hidden-md,
+.hidden-lg {
+  display: none;
+}
+
+.show-sm,
+.show-md,
+.show-lg {
+  display: block;
+}
+
+@media (min-width: 576px) {
+  .hidden-sm {
+    display: block;
+  }
+  .show-sm {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden-md {
+    display: block;
+  }
+  .show-md {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .hidden-lg {
+    display: block;
+  }
+  .show-lg {
+    display: none;
+  }
+}

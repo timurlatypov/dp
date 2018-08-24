@@ -1,23 +1,21 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-12">
-            <div class="card">
-                <div class="card-body">
+
 
                     <div class="container-fluid">
                         <div class="row">
+
                             <div class="col-12 col-md-8">
                                 <div>
-                                    <h4 class="title mt-3 mb-0">Мы рекомендуем!</h4>
+                                    <h2 class="title text-center mt-3 mb-0">Мы рекомендуем!</h2>
                                 </div>
-                                <div class="d-flex">
+                                <div class="d-flex card-recommend">
                                     @each('layouts.partials.product.card', $recommend, 'product')
                                 </div>
                             </div>
+
                             <div class="col-12 col-md-4">
-                                <div>
-                                    <h4 class="title mt-3 mb-0">Консультация косметолога</h4>
-                                </div>
                                 <div class="card card-blog">
                                     <div class="card-header card-header-image">
                                         <a href="#pablo">
@@ -27,23 +25,22 @@
                                         <h6 class="card-category text-success"></h6>
 
                                         <h4 class="card-title">
-                                            <a href="#pablo">Нужна помощь?</a>
+                                            <a href="#pablo">Консультация косметолога</a>
                                         </h4>
                                         <p class="card-description">
                                             Наш консультант, врач косметолог-дерматолог проведет для Вас бесплатную консультацию и поможет подобрать средства, которые лучше подойдут для вашего типа кожи.
                                         </p>
                                         <div class="card-stats justify-content-center pt-3">
-                                            <a href="#pablo" class="btn btn-primary"><i class="material-icons">perm_phone_msg</i>&nbsp;&nbsp;Заказать консультацию</a>
+                                            <a href="#pablo" class="btn btn-primary"><i class="material-icons">perm_phone_msg</i>&nbsp;&nbsp;Заказать</a>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
 
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

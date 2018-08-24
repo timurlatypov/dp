@@ -25,8 +25,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-sm-3">
-                                    <h5 class="title">Для лица</h5>
-                                    <p></p>
+                                    @include('layouts.partials._in_product_nav')
                                 </div>
 
                                 <div class="col-12 col-sm-9">
@@ -74,12 +73,12 @@
                         <div class="container-fluid pb-3">
                             <div class="row">
                                 <div class="col-12 col-sm-9 offset-sm-3">
-                                    <h4 class="title text-uppercase">Похожие продукты:</h4>
+                                    <h4 class="title text-uppercase">Также рекомендуем:</h4>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-9 offset-sm-3 d-flex flex-wrap flex-row card-col-9">
-                                    @each('layouts.partials.product.card', $product->related->take(3), 'product')
+                                    @each('layouts.partials.product.card', $product->related->random(3), 'product')
                                 </div>
                             </div>
                         </div>

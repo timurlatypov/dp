@@ -30,6 +30,6 @@ class NotifyManagers extends Mailable
      */
     public function build()
     {
-	    return $this->subject('Новый заказ '.$this->order->order_id)->view('emails.order.notification.manager');
+	    return $this->view('emails.order.notification.manager')->subject('Новый заказ '.$this->order->order_id);
     }
 }

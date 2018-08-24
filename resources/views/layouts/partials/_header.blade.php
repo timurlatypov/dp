@@ -1,5 +1,5 @@
 <header>
-    <section class="bg-dark">
+    <div class="hidden-lg bg-dark">
         <div class="container">
             <div class="row d-flex justify-content-between align-items-center header-top-line">
                 <div class=""><h6><i class="fa fa-gift"></i>&nbsp;&nbsp;ПРОГРАММА ЛОЯЛЬНОСТИ</h6></div>
@@ -7,14 +7,11 @@
                 <div class=""><h6><i class="fa fa-user-md"></i>&nbsp;&nbsp;КОНСУЛЬТАЦИЯ КОСМЕТОЛОГА</h6></div>
                 <div class=""><h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" data-toggle="tooltip" data-placement="bottom" title="Написать в Whatsapp"><i class="fab fa-whatsapp fa-lg"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6></div>
                 <div class=""><h6><a class="text-white" href="tel:84953801141"><i class="fa fa-phone-volume fa-lg"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6></div>
-                @if(  auth()->check() && auth()->user()->hasRole(['admin','manager']))
-                    <div class=""><a class="text-white" href="/admin-panel/"><i class="fa fa-unlock-alt"></i></a></div>
-                @endif
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="bg-white">
+    <div class="bg-white hidden-lg">
         <div class="container">
             <div class="row">
                 <div class="col-3 align-self-center">
@@ -45,6 +42,6 @@
             </div>
         </div>
 
-    </section>
+    </div>
 
 </header>

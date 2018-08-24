@@ -1,0 +1,20 @@
+@media (max-width: 991.98px) {
+  .navbar .navbar-nav .nav-item .nav-link {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar .navbar-nav .nav-item .nav-link {
+    font-size: $mdb-btn-font-size-lg;
+  }
+  .dropdown-menu .dropdown-item {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar .navbar-nav .nav-item .nav-link {
+    padding: 0.6rem;
+  }
+}

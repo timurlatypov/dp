@@ -140,10 +140,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->delete();
+        return back();
     }
+
+
+    public function forceDelete($id)
+    {
+        $product = Product::withTrashed()->where('id', $id)->first();
+        $product->forceDelete();
+    }
+
 
 	/**
 	 * Toggle the specified resource from storage.

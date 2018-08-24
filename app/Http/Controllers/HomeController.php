@@ -17,7 +17,6 @@ class HomeController extends Controller
         return view('landing-page');
     }
 
-
     public function novelties()
     {
     	$categories = Categories::where('slug', 'new-products')->first();
@@ -38,7 +37,20 @@ class HomeController extends Controller
 		return view('web.discounts', compact(['products']));
 	}
 
+	public function contacts()
+	{
+		return view('web.contacts');
+	}
 
+	public function confidentiality()
+	{
+		return view('web.confidentiality');
+	}
+
+	public function delivery()
+	{
+		return view('web.delivery');
+	}
 
 	public function category(Categories $categories)
 	{
@@ -46,15 +58,12 @@ class HomeController extends Controller
 		return view('web.category', compact(['products', 'categories']));
 	}
 
-
 	public function subcategory(Categories $categories, Subcategory $subcategory)
 	{
 		$products = $subcategory->products()->paginate(21);
 
 		return view('web.category', compact(['products', 'categories', 'subcategory']));
 	}
-
-
 
 	public function forKids()
 	{

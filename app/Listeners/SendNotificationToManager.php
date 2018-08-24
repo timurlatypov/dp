@@ -30,6 +30,6 @@ class SendNotificationToManager
     public function handle(NewOrderCreated $event)
     {
 	    Mail::to($event->managers)
-		    ->queue(new \App\Mail\NotifyManagers($event));
+		    ->queue(new \App\Mail\NotifyManagers($event->order));
     }
 }

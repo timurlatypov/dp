@@ -18,20 +18,22 @@
 @endif
 
 @section('content')
-    <div class="container translate-top-60">
+    <div class="container translate-top-30">
         <div class="row">
             <div class="col-12 pt-3">
                 <div class="card">
-                    <div class="text-center">
-                        <h3 class="title mb-4 mt-4">{{ $categories->title }}@isset($subcategory) / {{$subcategory->title}}@endisset</h3>
+
+                    <div class="card-header card-header-doctorproffi text-center mb-4">
+                        <h4 class="card-title mb-1 mt-0">{{ $categories->title }}@isset($subcategory) / {{$subcategory->title}}@endisset</h4>
                     </div>
+
                     <div class="card-body p-0">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-sm-3">
-                                    <h5 class="title"></h5>
+                                <div class="col-12 col-sm-4 col-md-3">
+                                    @include('layouts.partials._in_product_nav')
                                 </div>
-                                <div class="col-12 col-sm-9 d-flex flex-wrap flex-row card-col-9">
+                                <div class="col-12 col-sm-8 col-md-9 d-flex flex-wrap flex-row card-col-9">
                                     @each('layouts.partials.product.card', $products, 'product')
                                 </div>
                             </div>
@@ -39,15 +41,15 @@
                                 @include('layouts.partials._pagination')
                             @endif
 
-                            @if(isset($categories->body) || isset($subcategory->body))
-                            <div class="row p-4">
-                                <div class="col-12 col-sm-3"></div>
-                                <div class="col-12 col-sm-9">
-                                    <h4 class="title">@if(isset($subcategory->title)){{$subcategory->title}}@else{{$categories->title}}@endif</h4>
-                                    <p class="text-justify">@if(isset($subcategory->body)){!! $subcategory->body !!}@else{{$categories->body}}@endif</p>
-                                </div>
-                            </div>
-                            @endif
+                            {{--@if(isset($categories->body) || isset($subcategory->body))--}}
+                            {{--<div class="row p-4">--}}
+                                {{--<div class="col-12 col-sm-3"></div>--}}
+                                {{--<div class="col-12 col-sm-9">--}}
+                                    {{--<h4 class="title">@if(isset($subcategory->title)){{$subcategory->title}}@else{{$categories->title}}@endif</h4>--}}
+                                    {{--<p class="text-justify">@if(isset($subcategory->body)){!! $subcategory->body !!}@else{{$categories->body}}@endif</p>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--@endif--}}
 
                         </div>
                     </div>

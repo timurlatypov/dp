@@ -28,15 +28,23 @@ class AppServiceProvider extends ServiceProvider
 		    $nav->with('direct_care', \App\Categories::where('slug', 'direct-care')->first() );
 	    });
 
+
+
+	    view()->composer('layouts.partials._in_product_nav', function($nav) {
+		    $nav->with('for_face', \App\Categories::where('slug', 'for-face')->first() );
+		    $nav->with('for_body', \App\Categories::where('slug', 'for-body')->first() );
+		    $nav->with('direct_care', \App\Categories::where('slug', 'direct-care')->first() );
+	    });
+
+
+
 	    view()->composer('layouts.partials._seasonal', function($seasonal) {
 		    $seasonal->with('seasonal', \App\Product::where('seasonal', true)->take(4)->get());
 	    });
 
-
 	    view()->composer('layouts.partials._bestsellers', function($bestsellers) {
 		    $bestsellers->with('bestsellers', \App\Product::where('bestseller', true)->take(4)->get());
 	    });
-
 
 	    view()->composer('layouts.partials._infoblock', function($recommend) {
 		    $recommend->with('recommend', \App\Product::where('bestseller', true)->take(2)->get());

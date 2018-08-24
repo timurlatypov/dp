@@ -9,20 +9,21 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th class="text-center">ID</th>
+                            <th class="text-center">IMG</th>
                             <th class="w-25">Название</th>
                             <th class="w-25">Бренд</th>
                             <th class="w-25">Цена</th>
                             <th class="w-25">Скидка</th>
+                            <th>Related</th>
                             <th><nobr>На сайте</nobr></th>
                             <th class="text-right">Действие</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($products as $key => $product)
-                        <tr>
-                            <td class="text-center">{{ $product->id }}</td>
-                            <td>{{ $product->title_eng }}</td>
+                        <tr class="tr-hover">
+                            <td style="width: 60px;"><img src="/storage/products/thumb/{{ $product->thumb_path }}" width="45px" height="45px" alt=""></td>
+                            <td><a href="{{ route('admin.product.edit', $product->id) }}">{{ $product->title_eng }}</a><br><small>{{ $product->title_rus }}</small></td>
                             <td>{{ $product->brand->name }}</td>
 
                             <td>
@@ -34,16 +35,20 @@
                             </td>
 
                             <td>
+                              <span class="badge badge-pill badge-success">{{ count( $product->related ) }}</span>
+                            </td>
+
+                            <td>
                                 <toggle-switch toggle="{{ $product->live }}" endpoint="{{ route('api.product.live.toggle') }}" product_id="{{ $product->id }}"></toggle-switch>
                             </td>
 
                             <td class="td-actions text-right">
-                                <a href="{{ route('admin.product.edit', $product->id) }}" rel="tooltip" class="btn btn-success">
+                                <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-success">
                                     <i class="material-icons">edit</i>
                                 </a>
-                                <button type="button" rel="tooltip" class="btn btn-danger">
+                                <a href="{{ route('admin.product.delete', $product->id) }}" class="btn btn-danger">
                                     <i class="material-icons">close</i>
-                                </button>
+                                </a>
                             </td>
                         </tr>
                         @endforeach

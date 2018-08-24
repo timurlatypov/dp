@@ -8,6 +8,7 @@
     <div id="app">
         @include('layouts.partials._header')
         @include('layouts.partials._nav')
+        @include('layouts.partials._mobile-search')
         <flash message="{{ session('flash') }}" ></flash>
         <div class="container-fluid p-0">
             <div class="row m-0">

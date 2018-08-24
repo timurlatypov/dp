@@ -32,18 +32,19 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-sm-3 px-3">
-                                    <h4 class="title mt-1 mb-3">Линии бренда</h4>
                                     @if(count($brand->lines))
-
-                                        <ul class="nav flex-column">
+                                        <h4 class="title mt-0 mb-3"><nobr>Линии бренда</nobr></h4>
+                                        <ul class="list-group py-0">
                                             @foreach($brand->lines as $line)
-                                                <li class="nav-item">
-                                                    <a class="btn text-left {{ url()->current() === route('show.brand.line.products', [$brand, $line]) ? 'btn-warning' : 'btn-white' }}" href="{{ route('show.brand.line.products', [$brand, $line]) }}"><b>{{ $line->name }}</b><div class="ripple-container"></div></a>
+                                                <li class="list-group-item py-0">
+                                                    <a class="btn btn-sm text-dark text-left {{ url()->current() === route('show.brand.line.products', [$brand, $line]) ? 'btn-warning' : 'btn-white' }}" href="{{ route('show.brand.line.products', [$brand, $line]) }}"><b>{{ $line->name }}</b><div class="ripple-container"></div></a>
                                                 </li>
                                             @endforeach
                                         </ul>
-
+                                    @else
+                                        @include('layouts.partials._in_product_nav')
                                     @endif
+
                                 </div>
                                 <div class="col-12 col-sm-9 col-md-9 d-flex flex-wrap card-col-9">
                                     @each('layouts.partials.product.card', $products, 'product')

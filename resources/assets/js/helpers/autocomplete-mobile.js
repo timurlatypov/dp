@@ -3,7 +3,7 @@ import algolia from 'algoliasearch';
 
 var index = algolia('K64IOX67YH', '648a56e19c5957ed4c49e89c69c69cc9')
 
-export const productautocomplete = (selector, { hitsPerPage }) => {
+export const productautocompletemobile = (selector, { hitsPerPage }) => {
     index = index.initIndex('products')
 
     return autocomplete(selector, {
