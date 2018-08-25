@@ -13,14 +13,17 @@
   margin-top: 5px;
 }
 
-.card-col-9 .card-product {
-  width: 216px;
+.card-recommend {
+  flex-wrap: wrap;
 }
 
+.card-recommend .card-product {
+  width: 100%;
+}
+
+
 @media (min-width: 576px) {
-  .card-col-9 .card-product {
-    width: 250px;
-  }
+
 }
 
 @media (min-width: 768px) {
@@ -34,6 +37,12 @@
     width: 300px;
     margin-right: 15px;
   }
+
+  .card-recommend .card-product {
+    width: 200px;
+    margin-right: 15px;
+  }
+
 }
 
 
@@ -45,6 +54,10 @@
   .card-col-12 .card-product {
     width: 210px;
     margin-right: 6px;
+  }
+  .card-recommend .card-product {
+    width: 278px;
+    margin-right: 15px;
   }
 }
 
@@ -64,6 +77,10 @@
     margin-bottom: 15px;
     margin-top: 5px;
   }
+  .card-recommend .card-product {
+    width: 340px;
+    margin-right: 15px;
+  }
 }
 
 
@@ -75,11 +92,6 @@
   flex: 1 1 auto;
   padding: $card-product-spacer-x;
 }
-
- .card-recommend .card-product {
-   width: 330px;
-   margin-right: 20px;
- }
 
 .card-product-recomendation {
   width: 47%;

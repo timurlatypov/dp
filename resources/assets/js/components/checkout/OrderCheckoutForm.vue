@@ -11,7 +11,7 @@
     <div class="card" v-else-if="new_order_created">
         <div class="px-4 py-3 mx-auto text-center">
             <h4 class="title">Мы получили Ваш заказ!</h4>
-            <p class="p-5"></p>
+            <p class="pb-5">В ближайшее время мы Вам позвоним по указанному телефону. Ожидайте подтверждения <заказа class=""></заказа></p>
         </div>
     </div>
 
@@ -122,7 +122,7 @@
             <h3 class="title">Покупатель</h3>
         </div>
 
-        <div class="container">
+        <div class="container px-5">
             <div class="row pb-3">
                 <div class="col-12 col-md-5 offset-md-1">
                     <div class="form-group">
@@ -174,7 +174,7 @@
             </div>
         </div>
 
-        <div class="container pb-5">
+        <div class="container px-5 pb-5">
 
             <div class="row pb-3">
                 <div class="col-12 col-md-5 offset-md-1">
@@ -230,15 +230,15 @@
                 <div class="col-12 col-md-10 offset-md-1">
                     <div class="form-group">
                         <label for="billing_comment">Комментарий к заказу</label>
-                        <textarea class="form-control" id="billing_comment" rows="auto" v-model="order.address.billing_comment"></textarea>
+                        <textarea class="form-control" id="billing_comment" rows="5" v-model="order.address.billing_comment"></textarea>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <div class="px-4 py-5 mx-auto">
-            <button type="submit" class="btn btn-default" @click.prevent="storeOrder">
+        <div class="px-4 pb-5 mx-auto">
+            <button type="submit" class="btn btn-primary" @click.prevent="storeOrder">
                 <i class="material-icons pb-1">check</i> Отправить заказ<div class="ripple-container"></div>
             </button>
         </div>

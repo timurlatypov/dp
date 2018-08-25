@@ -4,34 +4,35 @@
             <div class="col-12 col-md-10">
 
                 <div class="container-fluid">
-                    <div class="row pt-4 text-white text-left">
-                        <div class="col-3">
+                    <div class="row pt-4 text-white text-center text-md-left">
+                        <div class="col-12 col-md-3">
                             <div class="footer-logo">@include('layouts.partials._logo')</div>
                             <h6>Интернет-магазин<br>профессиональной косметики</h6>
+                            <h6 class="text-white">Только 100% оригинальная продукция!</h6>
                             <div class="py-2">
                                 <a class="text-white" href="https://www.facebook.com/DoctorProffi.ru/" target="_blank"><i class="fab fa-facebook fa-lg pr-3"></i></a>
                                 <a class="text-white" href="https://www.instagram.com/doctorproffi/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
                             </div>
-                            <h6 class="text-white">© 2018 Все права защищены</h6>
+                            <h6>© doctorproffi.ru 2016 - {{ date('Y') }}</h6>
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-md-3 hidden-md">
                             <h4 class="title text-white mt-2">Покупки</h4>
-                            <h6><a href="#" class="text-white">Доставка и оплата</a></h6>
-                            <h6><a href="#" class="text-white">Возврат товара</a></h6>
-                            <h6><a href="#" class="text-white">Конфиденциальность</a></h6>
+                            <h6><a href="/delivery" class="text-white">Доставка и оплата</a></h6>
+                            {{--<h6><a href="#" class="text-white">Возврат товара</a></h6>--}}
+                            <h6><a href="/confidentiality" class="text-white">Конфиденциальность</a></h6>
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-md-3 hidden-md">
                             <h4 class="title text-white mt-2">Информация</h4>
-                            <h6><a href="#" class="text-white">Программа лояльности</a></h6>
-                            <h6><a href="#" class="text-white">Обратная связь</a></h6>
-                            <h6><a href="#" class="text-white">Реквизиты</a></h6>
+                            <h6><a href="/loyalty" class="text-white">Программа лояльности</a></h6>
+                            <h6><a href="/contacts" class="text-white">Обратная связь</a></h6>
+                            {{--<h6><a href="#" class="text-white">Реквизиты</a></h6>--}}
                         </div>
-                        <div class="col-3 hidden-md">
+                        <div class="col-12 col-md-3">
                             <h4 class="title text-white mt-2">Контакты</h4>
                             <h6><a class="text-white" href="tel:84953801141"><i class="fa fa-phone-volume"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6>
                             <h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" data-toggle="tooltip" data-placement="bottom" title="Написать в Whatsapp"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6>
-                            <h6><a class="text-white" href=""><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;<b>info@doctorproffi.ru</b></a></h6>
-                            <h6><a class="text-white" href=""><i class="far fa-clock"></i>&nbsp;&nbsp;<b>ОПЕРАТОРЫ: 9:00 - 19:00</b></a></h6>
+                            <h6><a class="text-white" href="mailto:info@doctorproffi.ru"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;<b>info@doctorproffi.ru</b></a></h6>
+                            <h6><i class="far fa-clock"></i>&nbsp;&nbsp;<b>ОПЕРАТОРЫ: 9:00 - 19:00</b></h6>
                         </div>
                     </div>
                 </div>

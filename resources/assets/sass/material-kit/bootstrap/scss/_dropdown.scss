@@ -80,10 +80,12 @@
 // Links, buttons, and more within the dropdown menu
 //
 // `<button>`-specific styles are denoted with `// For <button>s`
+
+
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
-  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  padding: $dropdown-item-padding-y 0.25rem;
   clear: both;
   font-weight: $font-weight-normal;
   color: $dropdown-link-color;

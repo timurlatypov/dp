@@ -29,6 +29,7 @@ Route::get('/discounts', 'HomeController@discounts')->name('discounts');
 Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/confidentiality', 'HomeController@confidentiality')->name('confidentiality');
 Route::get('/delivery', 'HomeController@delivery')->name('delivery');
+Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
 
 
 

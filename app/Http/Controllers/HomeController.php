@@ -52,6 +52,11 @@ class HomeController extends Controller
 		return view('web.delivery');
 	}
 
+	public function loyalty()
+	{
+		return view('web.loyalty');
+	}
+
 	public function category(Categories $categories)
 	{
 		$products = $categories->products()->paginate(21);

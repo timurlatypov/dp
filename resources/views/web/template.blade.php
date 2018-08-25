@@ -35,7 +35,7 @@
                                     @each('layouts.partials.product.card', $products, 'product')
                                 </div>
                             </div>
-                            @if ($products->hasMorePages())
+                            @if ( strlen($products->links()) )
                                 @include('layouts.partials._pagination')
                             @endif
                         </div>

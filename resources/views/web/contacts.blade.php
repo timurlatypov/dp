@@ -6,8 +6,8 @@
 
 @slot('content')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-4">
+        <div class="row pb-5">
+            <div class="col-12 col-md-4">
                 <div class="mx-4">
                     <h4 class="title">Телефоны</h4>
                     <h5><a class="text-dark" href="tel:84953801141"><i class="fa fa-phone-volume"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h5>
@@ -17,7 +17,7 @@
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="mx-4">
                     <h4 class="title">Доставка курьером</h4>
                     <ul>
@@ -30,7 +30,7 @@
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="mx-4">
                     <h4 class="title">Отдел маркетинга</h4>
                     <h5><a class="text-dark" href="mailto:info@doctorproffi.ru"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;<b>info@doctorproffi.ru</b></a></h5>

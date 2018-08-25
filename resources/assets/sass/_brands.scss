@@ -1,5 +1,6 @@
 .brands-preview img {
-  width: 7vw;
+  width: 6em;
+  padding: 15px;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
@@ -8,4 +9,32 @@
   -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
   filter: grayscale(0%);
   cursor: pointer;
+}
+
+.brands-flex {
+  flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+  .brands-preview img {
+    width: 6em;
+  }
+}
+
+@media (min-width: 768px) {
+  .brands-preview img {
+    width: 7em;
+  }
+}
+
+@media (min-width: 992px) {
+  .brands-preview img {
+    width: 8em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .brands-preview img {
+    width: 9em;
+  }
 }

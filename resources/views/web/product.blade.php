@@ -24,17 +24,18 @@
                     <div class="card-body p-0">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-sm-3">
+                                <div class="col-12 col-sm-3 px-3 hidden-sm">
                                     @include('layouts.partials._in_product_nav')
                                 </div>
 
                                 <div class="col-12 col-sm-9">
                                    <div class="container-fluid">
-                                        <div class="row align-content-center">
+
+                                       <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
                                                 <img src="/storage/products/image/{{$product->image_path}}" width="100%" alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
                                             </div>
-                                            <div class="col-12 col-sm-6 col-md-5 p-5 px-sm-0 py-sm-2 align-self-center">
+                                            <div class="col-12 col-sm-6 col-md-5 p-3 px-sm-0 py-sm-2 align-self-center">
                                                 <div class="brand-logo"><img src="/storage/brands/{{ $brand->image_path }}" alt="Логотип {{ $brand->name }}"></div>
                                                 <h1 class="title mb-1 mt-4">{{ $product->title_eng }}</h1>
                                                 <span>{{ $product->title_rus }}</span><br>
@@ -60,8 +61,8 @@
                                         </div>
 
                                        <div class="row">
-                                            <div class="col-12 px-0">
-                                                <h4 class="title text-uppercase">Описание</h4>
+                                            <div class="col-12 p-3 px-sm-0 py-sm-2 ">
+                                                <h4 class="title text-uppercase">Описание продукта</h4>
                                                 <p>{!! $product->description_full !!}</p>
                                             </div>
                                         </div>
@@ -78,7 +79,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-9 offset-sm-3 d-flex flex-wrap flex-row card-col-9">
-                                    @each('layouts.partials.product.card', $product->related->random(3), 'product')
+                                    @each('layouts.partials.product.card', $product->related()->inRandomOrder()->limit(3)->get(), 'product')
                                 </div>
                             </div>
                         </div>

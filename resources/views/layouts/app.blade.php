@@ -12,7 +12,7 @@
         <flash message="{{ session('flash') }}" ></flash>
         <div class="container-fluid p-0">
             <div class="row m-0">
-                <div class="col-12 h-100 align-self-start p-0" id="@yield('background-class')">
+                <div class="col-12 h-100 align-self-start p-0">
                     @yield('carousel')
                     @yield('banner')
                     @yield('seasonal')
@@ -21,7 +21,7 @@
                     @yield('brands')
                     @yield('infoblock')
                     @yield('about')
-                    @yield('blog')
+                    {{--@yield('blog')--}}
                 </div>
                 <div class="col-12 align-self-end p-0">
                     @include('layouts.partials._footer')

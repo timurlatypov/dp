@@ -1,10 +1,11 @@
 <header>
-    <div class="hidden-lg bg-dark">
-        <div class="container">
-            <div class="row d-flex justify-content-between align-items-center header-top-line">
-                <div class=""><h6><i class="fa fa-gift"></i>&nbsp;&nbsp;ПРОГРАММА ЛОЯЛЬНОСТИ</h6></div>
-                <div class=""><h6><i class="fa fa-truck"></i>&nbsp;&nbsp;БЕСПЛАТНАЯ ДОСТАВКА ОТ 3000р.</h6></div>
-                <div class=""><h6><i class="fa fa-user-md"></i>&nbsp;&nbsp;КОНСУЛЬТАЦИЯ КОСМЕТОЛОГА</h6></div>
+    <div class="hidden-lg bg-darkred">
+        <div class="container-fluid px-5">
+            <div class="row d-flex justify-content-around align-items-center header-top-line px-5">
+                <div class=""><h6><i class="fa fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;100% ОРИГИНАЛЬНАЯ ПРОДУКЦИЯ</h6></div>
+                <div><h6><i class="fa fa-percentage fa-lg"></i>&nbsp;&nbsp;СКИДКА -3% ПРИ РЕГИСТРАЦИИ</h6></div>
+                <div class=""><h6><i class="fa fa-gift fa-lg"></i>&nbsp;&nbsp;<a href="/loyalty" class="text-white">ПРОГРАММА ЛОЯЛЬНОСТИ</a></h6></div>
+                <div class=""><h6><i class="fa fa-shipping-fast fa-lg"></i>&nbsp;&nbsp;<a href="/delivery" class="text-white">БЕСПЛАТНАЯ ДОСТАВКА ОТ 3000р.</a></h6></div>
                 <div class=""><h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" data-toggle="tooltip" data-placement="bottom" title="Написать в Whatsapp"><i class="fab fa-whatsapp fa-lg"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6></div>
                 <div class=""><h6><a class="text-white" href="tel:84953801141"><i class="fa fa-phone-volume fa-lg"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6></div>
             </div>

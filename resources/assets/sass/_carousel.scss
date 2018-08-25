@@ -3,3 +3,21 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+@media (min-width: 992px) {
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 253px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 300px;
+  }
+}

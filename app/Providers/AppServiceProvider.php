@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
 	    });
 
 	    view()->composer('layouts.partials._infoblock', function($recommend) {
-		    $recommend->with('recommend', \App\Product::where('bestseller', true)->take(2)->get());
+		    $recommend->with('recommend', \App\Product::where('bestseller', true)->inRandomOrder()->limit(2)->get());
 	    });
 
 	    view()->composer('admin.partials._nav', function($orders) {

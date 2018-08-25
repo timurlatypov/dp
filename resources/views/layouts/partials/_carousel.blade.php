@@ -7,7 +7,7 @@
 
         <div class="carousel-item active" style="background-color: #f2f2f4;">
             <a href="/brand/officina-pelle/soft-peel">
-            <div class="container h-100">
+            <div class="container h-100 px-0">
                 <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/banner-3.jpg')">
                     <div class="col-12 align-self-center px-5">
                         <h4 class="title">Мягкий миндальный пилинг OP Soft Peel<br>который можно использовать круглогодично!</h4>
@@ -21,7 +21,7 @@
 
         <div class="carousel-item" style="background-color: #f9ebde;">
             <a href="/brand/mene-and-moy-system/face-body-cleanser-20-ph-370">
-            <div class="container h-100">
+            <div class="container h-100 px-0">
                 <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/banner-4.jpg')">
 
                     <div class="col-12 align-self-center px-5" style="cursor: pointer;">

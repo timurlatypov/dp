@@ -18,26 +18,33 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mx-auto">
+
+                @guest
+                    <a class="btn btn-primary btn-sm show-lg m-3" href="{{ route('login') }}"><i class="material-icons">account_box</i> Войти<div class="ripple-container"></div></a>
+                @else
+                    <a class="btn btn-primary btn-sm show-lg m-3" href="{{ route('account.profile') }}"><i class="material-icons">account_box</i> Кабинет<div class="ripple-container"></div></a>
+                @endguest
+
                 <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('bestsellers') }}">Бестселлеры</a></li>
                 <li class="dropdown nav-item">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Для женщин</a>
                     <div class="dropdown-menu">
-                        <div class="megamenu mx-3 my-2">
+                        <div class="megamenu mx-md-3 my-md-2">
                             <div style="min-width: 200px;">
-                                <h4 class="title px-4 mt-4 mb-2"><nobr>Для лица</nobr></h4>
+                                <h4 class="title my-0 px-3 px-md-4 mt-md-4 mb-md-2"><nobr>Для лица</nobr></h4>
                                 @foreach($for_face->subcategories as $subcategory)
                                     <a class="dropdown-item{{ request()->is('category/for-face/'.$subcategory->slug) ? ' active' : '' }}" href="{{ route('show.category.subcategory', [$for_face, $subcategory]) }}">{{ $subcategory->name }}</a>
                                 @endforeach
                             </div>
                             <div style="min-width: 200px">
-                                <h4 class="title px-4 mt-4 mb-2"><nobr>Для тела</nobr></h4>
+                                <h4 class="title my-0 px-3 px-md-4 mt-md-4 mb-md-2"><nobr>Для тела</nobr></h4>
                                 @foreach($for_body->subcategories as $subcategory)
                                     <a class="dropdown-item{{ request()->is('category/for-body/'.$subcategory->slug) ? ' active' : '' }}" href="{{ route('show.category.subcategory', [$for_body, $subcategory]) }}">{{ $subcategory->name }}</a>
                                 @endforeach
                             </div>
                             <div style="min-width: 200px;">
-                                <h4 class="title px-4 mt-4 mb-2"><nobr>Направленный уход</nobr></h4>
+                                <h4 class="title my-0 px-3 px-md-4 mt-md-4 mb-md-2"><nobr>Направленный уход</nobr></h4>
                                 @foreach($direct_care->subcategories as $subcategory)
                                     <a class="dropdown-item{{ request()->is('category/direct-care/'.$subcategory->slug) ? ' active' : '' }}" href="{{ route('show.category.subcategory', [$direct_care, $subcategory]) }}">{{ $subcategory->name }}</a>
                                 @endforeach
@@ -63,6 +70,15 @@
                 <li class="nav-item"><a class="nav-link" href="/delivery">Доставка и оплата</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contacts">Контакты</a></li>
                 <cart :cart_items="{{ $cart }}" cart_count="{{ $cart->count() }}"></cart>
+                    @guest
+                    @else
+                        <button type="button" class="btn btn-default btn-sm show-lg m-3" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="material-icons">exit_to_app</i> Выйти
+                        </button>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
             </ul>
         </div>
     </div>
