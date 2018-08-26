@@ -25,7 +25,7 @@
                 <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/banner-4.jpg')">
 
                     <div class="col-12 align-self-center px-5" style="cursor: pointer;">
-                        <h4 class="title">Как избавиться от Акне?<br>Попробуйте Face & Body Cleanser 20%!</h4>
+                        <h4 class="title">Как средство лучше для очищения?<br>Попробуйте Face & Body Cleanser 20%!</h4>
                         <h6>Mene&Moy System</h6>
                         <button class="btn btn-info btn-sm">Купить</button>
                     </div>
