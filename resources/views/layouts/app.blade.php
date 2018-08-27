@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-@stack('meta')
-@include('layouts.partials._head')
-@stack('share')
+    <meta charset="utf-8">
+    @stack('meta')
+    @include('layouts.partials._head')
+    @stack('share')
 </head>
 <body>
     <div id="app">
@@ -31,5 +32,6 @@
         </div>
         <cart-modal payload="{{ session('cartModal') }}" ></cart-modal>
     </div>
+    @include('layouts.partials._metrika')
 </body>
 </html>

@@ -22,7 +22,6 @@
                                             <img class="img" src="/storage/info/consultation.jpg">
                                         </a>
                                         <div class="colored-shadow" style="background-image: url('/storage/info/consultation.jpg'); opacity: 1;"></div></div><div class="card-body ">
-                                        <h6 class="card-category text-success"></h6>
 
                                         <h4 class="card-title">
                                             <a href="#pablo">Консультация косметолога</a>
