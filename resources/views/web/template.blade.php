@@ -28,8 +28,8 @@
                     <div class="card-body p-0">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-sm-3">
-                                    <h5 class="title"></h5>
+                                <div class="col-12 col-sm-4 col-md-3 hidden-sm">
+                                    @include('layouts.partials._in_product_nav')
                                 </div>
                                 <div class="col-12 col-sm-9 d-flex flex-wrap flex-row card-col-9">
                                     @each('layouts.partials.product.card', $products, 'product')
