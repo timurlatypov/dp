@@ -3,6 +3,7 @@
 <head>
 @stack('meta')
 @include('layouts.partials._head')
+@stack('share')
 </head>
 <body>
     <div id="app">

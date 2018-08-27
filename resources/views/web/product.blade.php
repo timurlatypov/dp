@@ -11,6 +11,11 @@
     <meta property="og:image" content="{{ url('/storage/products/image/'.$product->image_path) }}"/>
 @endpush
 
+@push('share')
+    <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+    <script src="//yastatic.net/share2/share.js"></script>
+@endpush
+
 @section('banner')
     @include('layouts.partials.banner.banner')
 @endsection
