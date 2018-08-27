@@ -2,25 +2,24 @@
 
 Auth::routes();
 
-//Route::get('/managers', function() {
-//
-//	dd( optional(auth()->user()) );
-//
-//	$managers = \App\Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
-//	dd($managers);
-//});
-//
-//
 
-//Route::get('/order', function() {
-////	$order = \App\Order::first();
-////	return new \App\Mail\NewOrder($order);
-//
-//	$pdf = Barryvdh\DomPDF\PDF::make('dompdf.wrapper');
-//	$pdf->loadHTML('<h1>Test</h1>');
-//	return $pdf->stream();
-//
-//});
+
+Route::get('/allproducts', function() {
+
+	$category = \App\Categories::where('slug', 'for-face')->first();
+
+
+
+
+
+	dd($category->subcategories);
+
+
+
+
+});
+
+
 
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');

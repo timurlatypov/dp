@@ -32,7 +32,6 @@ class CategoriesController extends Controller
 	    $productsID = array_column($products, 'id');
 	    $categories->products()->sync($productsID);
     }
-
 	public function subcategoryAssociateProducts(Categories $categories, Subcategory $subcategory, Request $request)
 	{
 		$products = $request->toArray();
