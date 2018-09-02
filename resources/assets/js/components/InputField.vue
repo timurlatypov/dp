@@ -12,7 +12,7 @@
                 :disabled="disabled"
                 :placeholder="placeholder"
                 type="number"
-                min="1"
+                min="0"
                 oninput="validity.valid||(value='');">
     </div>
 </template>
