@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Mail;
 class SendNotificationToManager
 {
 
-
     /**
      * Create the event listener.
      *
@@ -30,6 +29,7 @@ class SendNotificationToManager
     public function handle(NewOrderCreated $event)
     {
 	    Mail::to($event->managers)
+		    ->bcc($event->admins)
 		    ->queue(new \App\Mail\NotifyManagers($event->order));
     }
 }

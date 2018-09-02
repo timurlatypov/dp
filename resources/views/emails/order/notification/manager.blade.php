@@ -375,7 +375,7 @@
                                                 <td class="text-center">{{ $product->price }} &#x20BD;</td>
                                                 <td class="text-center">{{ $product->biggest_discount }}%</td>
                                                 <td class="text-center">{{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;</td>
-                                                <td class="text-center">{{ $product->qty }}</td>
+                                                <td class="text-center">{{ $product->qty }} шт.</td>
                                                 <td class="text-center">{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>
                                             </tr>
                                         @endforeach

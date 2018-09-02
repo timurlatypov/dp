@@ -18,17 +18,18 @@ class NewOrderCreated
 	public $order;
 	public $customer;
 	public $managers;
+	public $admins;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Order $order, $customer, $managers)
+    public function __construct(Order $order, $customer, $managers, $admins)
     {
         $this->order = $order;
         $this->customer = $customer;
         $this->managers = $managers;
+        $this->admins = $admins;
     }
-
 }

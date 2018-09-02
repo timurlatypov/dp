@@ -80,8 +80,9 @@ class OrderController extends Controller
 
 		$customer = $request->user['email'];
 		$managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
+		$admins = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
 
-		event(new NewOrderCreated($order, $customer, $managers));
+		event(new NewOrderCreated($order, $customer, $managers, $admins));
 
 		request()->session()->forget('coupon');
 
