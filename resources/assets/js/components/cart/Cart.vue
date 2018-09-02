@@ -42,7 +42,6 @@
             window.events.$on('cartUpdate', () => {
                 this.cartUpdate();
             })
-
         },
         methods: {
             cartUpdate() {

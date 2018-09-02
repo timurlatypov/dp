@@ -4,23 +4,6 @@ Auth::routes();
 
 
 
-Route::get('/allproducts', function() {
-
-	$category = \App\Categories::where('slug', 'for-face')->first();
-
-
-
-
-
-	dd($category->subcategories);
-
-
-
-
-});
-
-
-
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');

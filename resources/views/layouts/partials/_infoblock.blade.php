@@ -8,7 +8,7 @@
 
                             <div class="col-12 col-md-8">
                                 <div>
-                                    <h2 class="title text-center mt-3 mb-0">Мы рекомендуем!</h2>
+                                    <h3 class="title text-center mt-3 mb-0">Мы рекомендуем!</h3>
                                 </div>
                                 <div class="d-flex card-recommend">
                                     @each('layouts.partials.product.card', $recommend, 'product')
@@ -16,6 +16,9 @@
                             </div>
 
                             <div class="col-12 col-md-4">
+                                <div>
+                                    <h3 class="title text-center mt-3 mb-0">Поможем выбрать!</h3>
+                                </div>
                                 <div class="card card-blog">
                                     <div class="card-header card-header-image">
                                         <a href="#pablo">

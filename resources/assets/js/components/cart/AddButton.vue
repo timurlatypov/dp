@@ -1,5 +1,5 @@
 <template>
-    <button type="submit" class="btn btn-default btn-sm" @click.prevent="saveToCart" :disabled="disabled">
+    <button type="submit" :class="'btn btn-sm ' + styling" @click.prevent="saveToCart" :disabled="disabled">
         <i class="material-icons pb-1" v-html="disabled ? 'thumb_up' : 'shopping_cart'"></i> <span class="font-weight-bold">{{ disabled ? 'В корзине' : 'В корзину'}}</span>
         <div class="ripple-container"></div>
     </button>
@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        props: ['endpoint', 'model', 'price_to_show'],
+        props: ['endpoint', 'model', 'price_to_show', 'styling'],
         data() {
             return {
                 payload: {

@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog px-2" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="title my-0" id="ModalLabel">Товар добавлен в корзину!</h4>
@@ -19,8 +19,9 @@
                                 </div>
                             </td>
                             <td class="td-name">
-                                <a href="#">{{ product.title_eng }}</a>
-                                <br><small class="text-uppercase">{{ product.brand.name }}</small>
+                                <b>{{ product.title_eng }}</b><br>
+                                <small>{{ product.title_rus }}</small><br>
+                                <small class="text-uppercase">{{ product.brand.name }}</small>
                             </td>
                             <td>{{ product.priceToShow }}&nbsp;&#x20BD;</td>
                         </tr>
@@ -35,8 +36,8 @@
                 </div>
 
                 <div class="modal-footer mx-auto">
-                    <button type="button" class="btn btn-default btn-sm mr-2" data-dismiss="modal">Продолжить покупки</button type="button">
-                    <a href="/checkout" class="btn btn-primary btn-sm">Оформить заказ</a>
+                    <button type="button" class="btn btn-default mr-2 font-weight-bold" data-dismiss="modal">Продолжить покупки</button>
+                    <a href="/checkout" class="btn btn-primary font-weight-bold">Оформить заказ</a>
                 </div>
 
             </div>

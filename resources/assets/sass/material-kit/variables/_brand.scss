@@ -2,7 +2,8 @@
 
 /*     brand Colors              */
 
-$brand-primary:              #ca9f5e !default;
+//$brand-primary:              #ca9f5e !default;
+$brand-primary:              $orange-500 !default;
 $brand-info:                 $cyan-500 !default;
 $brand-success:              $green-500 !default;
 $brand-warning:              $orange-500 !default;

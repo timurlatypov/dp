@@ -212,7 +212,8 @@
     &.bg-warning,
     &.card-rotate.bg-warning .front,
     &.card-rotate.bg-warning .back{
-      background: linear-gradient(60deg, #dab884, #be8e45);
+      //background: linear-gradient(60deg, #dab884, #be8e45);
+      background: linear-gradient(60deg, $orange-400, $orange-700);
     }
 
     .card-header-primary{

@@ -30,6 +30,6 @@ class NewOrder extends Mailable
      */
     public function build()
     {
-        return $this->subject('Ваш заказ '.$this->order->order_id)->markdown('emails.orders.new');
+        return $this->subject('Ваш заказ '.$this->order->order_id)->view('emails.order.notification.customer');
     }
 }

@@ -12,15 +12,15 @@
 @endsection
 
 @section('content')
-    @include('layouts.partials._bestsellers')
+    <noindex>@include('layouts.partials._bestsellers')</noindex>
 @endsection
 
 @section('brands')
-    @include('layouts.partials._brands')
+    <noindex>@include('layouts.partials._brands')</noindex>
 @endsection
 
 @section('infoblock')
-    @include('layouts.partials._infoblock')
+    <noindex>@include('layouts.partials._infoblock')</noindex>
 @endsection
 
 @section('about')

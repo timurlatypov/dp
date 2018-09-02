@@ -20,61 +20,6 @@ class CheckoutController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Delete the specified item from cart.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -88,19 +33,19 @@ class CheckoutController extends Controller
 	    return response(['cart' => $cart, 'subtotal' => $subtotal], 200);
     }
 
-    public function remove_qty_to_item(Request $request)
-    {
-	    $rowId = $request->rowId;
-	    Cart::update($rowId, $request->qty-1);
-	    $cart = Cart::content();
-	    $subtotal = Cart::subtotal();
-	    return response(['cart' => $cart, 'subtotal' => $subtotal], 200);
-    }
-
 	public function add_qty_to_item(Request $request)
 	{
 		$rowId = $request->rowId;
 		Cart::update($rowId, $request->qty+1);
+		$cart = Cart::content();
+		$subtotal = Cart::subtotal();
+		return response(['cart' => $cart, 'subtotal' => $subtotal], 200);
+	}
+
+	public function remove_qty_to_item(Request $request)
+	{
+		$rowId = $request->rowId;
+		Cart::update($rowId, $request->qty-1);
 		$cart = Cart::content();
 		$subtotal = Cart::subtotal();
 		return response(['cart' => $cart, 'subtotal' => $subtotal], 200);

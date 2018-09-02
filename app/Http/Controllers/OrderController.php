@@ -34,8 +34,6 @@ class OrderController extends Controller
 	public function store(Request $request)
 	{
 
-		//dd($request);
-
 		if ( auth()->check() ) {
 			$user_id = $request->user()->id;
 		} else {
@@ -48,16 +46,20 @@ class OrderController extends Controller
 			$hasCoupon = false;
 		}
 
+		//dd(number_format((float)$request->billing_total, 2, '.', ''));
+
 		$order = Order::create([
 			'user_id' => $user_id,
 			'order_details' => json_encode($request->cart),
 			'order_status' => 'Новый',
 			'coupon' => $hasCoupon,
 			'coupon_details' => json_encode($request->coupon),
+
 			'billing_name' => $request->user['name'],
 			'billing_surname' => $request->user['surname'],
 			'billing_phone' => $request->user['phone'],
 			'billing_email' => $request->user['email'],
+			'billing_loyalty' => $request->user['loyalty'],
 			'billing_city' => $request->address['billing_city'],
 			'billing_street' => $request->address['billing_street'],
 			'billing_house' => $request->address['billing_house'],
@@ -65,15 +67,11 @@ class OrderController extends Controller
 			'billing_entrance' => $request->address['billing_entrance'],
 			'billing_floor' => $request->address['billing_floor'],
 			'billing_comment' => $request->address['billing_comment'],
-			'billing_subtotal' => $request->billing_subtotal,
-			'billing_loyalty' => $request->user['loyalty_value'],
-			'billing_delivery' => $request->billing_delivery,
 			'billing_total' => $request->billing_total,
-
 		]);
 
-		$coupon = Coupon::where('coupon', $request->coupon['coupon'])->first();
 
+		$coupon = Coupon::where('coupon', $request->coupon['coupon'])->first();
 		if ( $coupon && !$coupon->reusable ) {
 			$coupon->update([
 				'used' => true,
@@ -88,7 +86,6 @@ class OrderController extends Controller
 		request()->session()->forget('coupon');
 
 		$cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
-
 	}
 
 	/**
