@@ -59,14 +59,13 @@ class HomeController extends Controller
 
 	public function category(Categories $categories)
 	{
-		$products = $categories->products()->paginate(21);
+		$products = $categories->products()->live()->paginate(21);
 		return view('web.category', compact(['products', 'categories']));
 	}
 
 	public function subcategory(Categories $categories, Subcategory $subcategory)
 	{
-		$products = $subcategory->products()->paginate(21);
-
+		$products = $subcategory->products()->live()->paginate(21);
 		return view('web.category', compact(['products', 'categories', 'subcategory']));
 	}
 
@@ -74,6 +73,4 @@ class HomeController extends Controller
 	{
 		return view('web.for-kids');
 	}
-
-
 }

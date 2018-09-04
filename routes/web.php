@@ -136,14 +136,14 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::get('/{categories}/products', 'CategoriesController@categoriesProducts')->name('admin.categories.products');
 		Route::get('/{categories}/{subcategory}/products', 'CategoriesController@subcategoriesProducts')->name('admin.categories.subcategory.products');
 
-
 		Route::patch('/{categories}/products/associate', 'CategoriesController@categoryAssociateProducts')->name('admin.categories.associate.products');
 		Route::patch('/{categories}/{subcategory}/products/associate', 'CategoriesController@subcategoryAssociateProducts')->name('admin.categories.subcategory.associate.products');
-
 
 		Route::post('/{categories}/store', 'SubcategoriesController@store')->name('store.new.subcategory');
 
 	});
+
+
 	//
 	// ORDERS GROUP
 	//
@@ -156,16 +156,23 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 	});
 
 
+	//
+	// ORDERS GROUP
+	//
+	Route::group(['prefix' => '/design', 'namespace' => 'Design'], function() {
+		Route::get('/', 'DesignController@index')->name('admin.design.index');
+	});
 
 
+	//
+	// API SPECIAL ROUTES
+	//
 	Route::group(['prefix' => '/images', 'namespace' => 'Images'], function() {
 		Route::post('/store', 'ImageController@store_product_image')->name('api.store.product.image');
 	});
-
 	Route::group(['prefix' => '/api', 'namespace' => 'Brand'], function() {
 		Route::post('/brands', 'BrandController@index')->name('api.get.product.brands');
 	});
-
 	Route::group(['prefix' => '/api', 'namespace' => 'Line'], function() {
 		Route::post('/lines', 'LineController@show_all_lines_for_brand')->name('api.get.product.lines');
 	});
