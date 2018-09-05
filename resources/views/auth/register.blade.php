@@ -14,7 +14,7 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <div class="form-group">
+                            <div class="form-group" onclick="$('#name').focus()">
                                 <label for="name" class="col-form-label">Имя</label>
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
                                 @if ($errors->has('name'))
@@ -24,7 +24,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" onclick="$('#surname').focus()">
                                 <label for="surname" class="col-form-label">Фамилия</label>
                                 <input id="surname" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="surname" value="{{ old('surname') }}" required autofocus>
                                 @if ($errors->has('surname'))
@@ -34,11 +34,11 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" onclick="$('#phone').focus()">
                                 <label for="phone" class="ccol-form-label">Телефон</label>
 
                                 <div>
-                                    <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus>
+                                    <input id="phone" type="tel" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus>
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback">
                                             <strong>{{ $errors->first('phone') }}</strong>
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group ">
+                            <div class="form-group" onclick="$('#email').focus()">
                                 <label for="email" class="col-form-label">Email</label>
 
                                 <div class="">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group ">
+                            <div class="form-group" onclick="$('#password').focus()">
                                 <label for="password" class="col-form-label">Пароль</label>
 
                                 <div class="">
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group ">
+                            <div class="form-group" onclick="$('#password-confirm').focus()">
                                 <label for="password-confirm" class="col-form-label">Повторите пароль</label>
 
                                 <div class="">

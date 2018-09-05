@@ -3,7 +3,6 @@
 Auth::routes();
 
 
-
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
@@ -12,9 +11,6 @@ Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/confidentiality', 'HomeController@confidentiality')->name('confidentiality');
 Route::get('/delivery', 'HomeController@delivery')->name('delivery');
 Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
-
-
-
 
 
 Route::group(['prefix' => '/category'], function() {
@@ -157,10 +153,18 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 
 	//
-	// ORDERS GROUP
+	// DESIGN GROUP
 	//
 	Route::group(['prefix' => '/design', 'namespace' => 'Design'], function() {
 		Route::get('/', 'DesignController@index')->name('admin.design.index');
+		// CAROUSEL
+		Route::group(['prefix' => '/carousel', 'namespace' => 'Carousel'], function() {
+			Route::get('/', 'CarouselController@index')->name('admin.design.carousel');
+			Route::get('/create', 'CarouselController@create')->name('admin.design.carousel.create');
+			Route::post('/store', 'CarouselController@store')->name('admin.design.carousel.store');
+			Route::delete('/destroy', 'CarouselController@destroy')->name('admin.design.carousel.destroy');
+			Route::patch('/update', 'CarouselController@update')->name('admin.design.carousel.update');
+		});
 	});
 
 

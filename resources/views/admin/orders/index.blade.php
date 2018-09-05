@@ -102,6 +102,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="modal fade" id="deleteOrderModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">

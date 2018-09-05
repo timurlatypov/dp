@@ -15,7 +15,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
-                            <div class="form-group">
+                            <div class="form-group" onclick="$('#email').focus()">
                                 <label for="email" class="col-form-label">Email</label>
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
                                 @if ($errors->has('email'))
@@ -25,7 +25,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" onclick="$('#password').focus()">
                                 <label for="password" class="col-form-label">Пароль</label>
                                 <div class="">
                                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>

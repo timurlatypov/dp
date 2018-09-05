@@ -7,7 +7,11 @@
                 <div class="card">
                     <div class="card-body">
 
-                        Оформление сайта
+                        <h4 class="title">Design</h4>
+
+                        <a href="{{ route('admin.design.carousel') }}">Carousel</a>
+
+
 
                     </div>
                 </div>

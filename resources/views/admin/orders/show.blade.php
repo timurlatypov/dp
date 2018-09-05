@@ -45,12 +45,12 @@
                                 <td><div class="img-container"><img src="/storage/products/thumb/{{ $product->options->image }}"></div></td>
                                 <td>
                                     <b class="text-primary">{{ $product->name }}</b><br>
-                                    {{ $product->options->title_rus }}<br>
+                                    @isset($product->options->title_rus){{ $product->options->title_rus }}@endisset<br>
                                     <small class="text-uppercase">{{ $product->options->brand }}</small>
                                 </td>
                                 <td>{{ $product->price }} &#x20BD;</td>
-                                <td>-{{ $product->biggest_discount }}%</td>
-                                <td>{{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;</td>
+                                <td>@isset($product->biggest_discount)-{{ $product->biggest_discount }}%@endisset</td>
+                                <td>@isset($product->discounted_price){{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;@endisset</td>
                                 <td>{{ $product->qty }} шт.</td>
                                 <td>{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>
                                 <td class="td-actions text-center"></td>
