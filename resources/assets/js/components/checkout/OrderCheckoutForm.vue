@@ -117,7 +117,7 @@
                 <div class="col-12 col-md-5 offset-md-1">
                     <div class="form-group" @click.prevent="setFocus('phone')">
                         <label for="phone">Телефон</label>
-                        <input id="phone" type="text" class="form-control" v-model="order.user.phone">
+                        <input id="phone" type="tel" class="form-control" v-model="order.user.phone">
                         <small class="form-text text-muted"></small>
                     </div>
                 </div>

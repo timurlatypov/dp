@@ -80314,7 +80314,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { id: "phone", type: "text" },
+                      attrs: { id: "phone", type: "tel" },
                       domProps: { value: _vm.order.user.phone },
                       on: {
                         input: function($event) {
