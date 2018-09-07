@@ -4,6 +4,10 @@
         Политика конфиденциальности
     @endslot
 
+    @slot('translate')
+        'translate-top-30'
+    @endslot
+
     @slot('content')
         <div class="container-fluid">
             <div class="row">

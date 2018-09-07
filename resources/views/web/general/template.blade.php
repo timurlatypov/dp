@@ -7,12 +7,8 @@
     <meta property="og:title" content=""/>
 @endpush
 
-@section('carousel')
-    @include('layouts.partials._carousel')
-@endsection
-
 @section('content')
-    <div class="container translate-top-30">
+    <div class="container {{ $translate }}">
         <div class="row">
             <div class="col-12 pt-3">
 

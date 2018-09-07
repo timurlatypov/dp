@@ -16,6 +16,7 @@
             <div class="row m-0">
                 <div class="col-12 h-100 align-self-start p-0">
                     @yield('carousel')
+                    @stack('carousel')
                     @yield('banner')
                     @yield('seasonal')
                     @yield('bestsellers')

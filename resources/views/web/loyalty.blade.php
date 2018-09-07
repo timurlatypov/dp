@@ -1,7 +1,15 @@
 @component('web.general.template')
 
+    {{--@push('carousel')--}}
+        {{--@include('layouts.partials._carousel')--}}
+    {{--@endpush--}}
+
     @slot('title')
         Программа лояльности "Любимый клиент"
+    @endslot
+
+    @slot('translate')
+        'translate-top-30'
     @endslot
 
     @slot('content')

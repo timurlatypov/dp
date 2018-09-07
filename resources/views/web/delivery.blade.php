@@ -1,7 +1,15 @@
 @component('web.general.template')
 
+    {{--@push('carousel')--}}
+        {{--@include('layouts.partials._carousel')--}}
+    {{--@endpush--}}
+
     @slot('title')
         Доставка и оплата
+    @endslot
+
+    @slot('translate')
+        'translate-top-30'
     @endslot
 
     @slot('content')

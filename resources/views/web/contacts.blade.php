@@ -1,8 +1,16 @@
 @component('web.general.template')
 
-@slot('title')
-Контактная информация
-@endslot
+    {{--@push('carousel')--}}
+        {{--@include('layouts.partials._carousel')--}}
+    {{--@endpush--}}
+
+    @slot('title')
+    Контактная информация
+    @endslot
+
+    @slot('translate')
+        'translate-top-30'
+    @endslot
 
 @slot('content')
     <div class="container-fluid">
