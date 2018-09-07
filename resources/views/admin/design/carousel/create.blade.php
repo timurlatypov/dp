@@ -10,7 +10,9 @@
                             <div class="align-self-center"><h4 class="title my-0"><a href="{{ route('admin.design.index') }}">Design</a> / Carousel Creator</h4></div>
                         </div>
 
-                        <carousel-creator endpoint="{{ route('admin.design.carousel.update') }}"></carousel-creator>
+                        <carousel-creator store_banner_endpoint="{{ route('admin.design.carousel.store') }}"
+                                          store_image_endpoint="{{ route('api.store.product.image') }}"
+                                          store_path="carousel"></carousel-creator>
 
                     </div>
                 </div>

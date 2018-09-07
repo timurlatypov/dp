@@ -26,7 +26,7 @@
                 @endguest
 
                 <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('bestsellers') }}">Бестселлеры</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('bestsellers') }}">Хиты продаж</a></li>
                 <li class="dropdown nav-item">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Для женщин</a>
                     <div class="dropdown-menu">

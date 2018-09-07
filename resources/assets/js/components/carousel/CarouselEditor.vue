@@ -6,7 +6,7 @@
                     <div class="my-auto ml-2 p-2">
                         <small><nobr>ORDER: {{ banner.order_id }}</nobr></small><br>
                         <small><nobr>EXPIRE: {{ banner.expired_at_diff }}</nobr></small><br>
-                        <div class="my-auto"><i :class="banner.live ? 'fa fa-toggle-on fa-lg text-success' : 'fa fa-toggle-off fa-lg text-danger'"></i></div>
+                        <toggle-switch :toggle="String(banner.live)" :endpoint="live_toggle_endpoint" :product_id="banner.id"></toggle-switch>
                     </div>
                     <div class="p-2 w-100 font-weight-bold">
                         <h4 class="title" v-html="banner.title"></h4><br>
@@ -28,7 +28,7 @@
         components: {
             draggable
         },
-        props: ['data', 'endpoint'],
+        props: ['data', 'update_endpoint', 'live_toggle_endpoint'],
         data() {
             return {
                 banners: []
@@ -36,7 +36,7 @@
         },
         methods: {
             submit() {
-                axios.patch(this.endpoint, this.banners)
+                axios.patch(this.update_endpoint, this.banners)
                     .then((response) => {
                         window.flash('Новый порядок сохранён!')
                     }).catch((error) => {

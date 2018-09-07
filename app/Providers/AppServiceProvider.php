@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 	    Carbon::setLocale(config('app.locale'));
-
 	    Schema::defaultStringLength(191);
 
 	    view()->composer('layouts.partials._nav', function($nav) {
@@ -48,6 +47,10 @@ class AppServiceProvider extends ServiceProvider
 
 	    view()->composer('layouts.partials._infoblock', function($recommend) {
 		    $recommend->with('recommend', \App\Product::where('bestseller', true)->inRandomOrder()->limit(2)->get());
+	    });
+
+	    view()->composer('layouts.partials._carousel', function($banners) {
+		    $banners->with('banners', \App\Models\Carousel::expired()->live()->get());
 	    });
 
 	    view()->composer('admin.partials._nav', function($orders) {

@@ -162,8 +162,11 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 			Route::get('/', 'CarouselController@index')->name('admin.design.carousel');
 			Route::get('/create', 'CarouselController@create')->name('admin.design.carousel.create');
 			Route::post('/store', 'CarouselController@store')->name('admin.design.carousel.store');
+			Route::post('/store/image', 'CarouselController@store_image')->name('admin.design.carousel.store.image');
 			Route::delete('/destroy', 'CarouselController@destroy')->name('admin.design.carousel.destroy');
 			Route::patch('/update', 'CarouselController@update')->name('admin.design.carousel.update');
+			// API 'live' toggle
+			Route::post('/live/toggle', 'CarouselController@toggle')->name('api.carousel.live.toggle');
 		});
 	});
 

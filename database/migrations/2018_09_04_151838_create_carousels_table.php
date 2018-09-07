@@ -16,14 +16,19 @@ class CreateCarouselsTable extends Migration
         Schema::create('carousels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->string('hex', 6);
             $table->string('image_path');
+	        $table->string('hex', 6)->nullable();
 	        $table->integer('order_id')->nullable();
-	        $table->string('link');
-	        $table->string('title');
+
+	        $table->string('title')->nullable();
+	        $table->string('title_hex', 6)->nullable();
+
 	        $table->string('body')->nullable();
+	        $table->string('body_hex',6)->nullable();
+
 	        $table->string('brand')->nullable();
 	        $table->string('button')->nullable();
+	        $table->string('link')->default('#');
 	        $table->boolean('live')->default(false);
 	        $table->timestamp('expired_at')->nullable();
 	        $table->softDeletes();

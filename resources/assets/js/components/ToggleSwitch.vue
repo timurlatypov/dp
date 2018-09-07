@@ -3,7 +3,6 @@
         <label>
             <input type="checkbox" v-model="payload.checked" v-on:change="onChange" :disabled="disabled">
             <span class="toggle text-secondary"></span>
-
         </label>
     </div>
 </template>

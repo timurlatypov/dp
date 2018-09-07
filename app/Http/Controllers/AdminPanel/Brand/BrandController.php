@@ -57,7 +57,7 @@ class BrandController extends Controller
 
     public function show_brand_products(Brand $brand)
     {
-    	$products = $brand->products()->live()->paginate(21);
+    	$products = $brand->products()->orderBy('title_eng', 'asc')->live()->paginate(21);
         return view('web.brand', compact(['brand', 'products']));
     }
 

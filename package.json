@@ -25,7 +25,9 @@
     "inputmask": "^3.3.11",
     "moment": "^2.22.2",
     "trix": "^0.11.2",
+    "v-color": "^1.1.2",
     "vee-validate": "^2.1.0-beta.4",
+    "vue-color": "^2.6.0",
     "vue-recaptcha": "^1.1.1",
     "vuedraggable": "^2.16.0"
   }
