@@ -47,7 +47,7 @@
                                 </div>
                             </div>
 
-                            @include('layouts.partials._pagination')=
+                            @include('layouts.partials._pagination')
 
                             {{--@if(isset($categories->body) || isset($subcategory->body))--}}
                             {{--<div class="row p-4">--}}
