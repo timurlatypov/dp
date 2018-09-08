@@ -1,3 +1,4 @@
+@if ( strlen($products->links()) )
 <div class="row">
     <div class="col-12 col-sm-3 hidden-sm"></div>
     <div class="col-12 col-sm-9">
@@ -9,3 +10,4 @@
         </div>
     </div>
 </div>
+@endif

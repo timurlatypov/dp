@@ -25,13 +25,20 @@
                                 <div class="col-12 col-sm-3 px-3 hidden-sm">
                                     @include('layouts.partials._in_product_nav')
                                 </div>
-                                <div class="col-12 col-sm-9 d-flex flex-wrap flex-row card-col-9">
-                                    @each('layouts.partials.product.card', $products, 'product')
+                                <div class="col-12 col-sm-9 col-md-9">
+                                    @if ( strlen($products->links()) )
+                                        <div class="d-flex w-100 justify-content-center">
+                                            <div class="">
+                                                {{ $products->links() }}
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div class=" d-flex flex-wrap card-col-9 align-self-start">
+                                        @each('layouts.partials.product.card', $products, 'product')
+                                    </div>
                                 </div>
                             </div>
-                            @if ( strlen($products->links()) )
-                                @include('layouts.partials._pagination')
-                            @endif
+                            @include('layouts.partials._pagination')
                         </div>
                     </div>
                 </div>

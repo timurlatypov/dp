@@ -125,6 +125,8 @@ class ProductController extends Controller
 		    'meta_keywords' => $request->meta_keywords,
 	    ]);
 
+	    $product->save();
+
 	    $categories = $request->categories;
 	    $product->categories()->sync($categories);
 
