@@ -1,9 +1,12 @@
 window.Vue = require('vue');
 
-// import ru from 'vee-validate/dist/locale/ru';
-// import VeeValidate, { Validator } from 'vee-validate';
-// VeeValidate.Validator.localize('ru', ru);
-// Vue.use(VeeValidate);
+import ru from 'vee-validate/dist/locale/ru';
+import VeeValidate, { Validator } from 'vee-validate';
+VeeValidate.Validator.localize('ru', ru);
+Vue.use(VeeValidate);
+
+import VueRecaptcha from 'vue-recaptcha';
+Vue.use(VueRecaptcha);
 
 require('./bootstrap');
 require('./scripts');
@@ -35,6 +38,7 @@ Vue.component('carousel-editor', require('./components/carousel/CarouselEditor.v
 Vue.component('carousel-creator', require('./components/carousel/CarouselCreator.vue'));
 
 Vue.component('associate-products', require('./components/categories/AssociateProduct.vue'));
+Vue.component('callback', require('./components/Callback.vue'));
 
 // Vue.component('compact-picker', require('vue-color').default);
 //

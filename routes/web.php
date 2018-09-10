@@ -189,3 +189,4 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/callback/store', 'CallbackController@store')->name('callback.store');

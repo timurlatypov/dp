@@ -33,8 +33,11 @@
                                             Наш консультант, врач косметолог-дерматолог проведет для Вас бесплатную консультацию и поможет подобрать средства, которые лучше подойдут для вашего типа кожи.
                                         </p>
                                         <div class="card-stats justify-content-center pt-3">
-                                            <a href="#pablo" class="btn btn-primary"><i class="material-icons">perm_phone_msg</i>&nbsp;&nbsp;Заказать</a>
+                                            <button class="btn btn-primary" onclick="$('#requestCallback').modal('show')"><i class="material-icons">perm_phone_msg</i>&nbsp;&nbsp;Заказать</button>
                                         </div>
+
+                                        <callback endpoint="{{ route('callback.store') }}"></callback>
+
                                     </div>
                                 </div>
                             </div>
