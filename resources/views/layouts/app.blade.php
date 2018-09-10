@@ -5,6 +5,8 @@
     @stack('meta')
     @include('layouts.partials._head')
     @stack('share')
+    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>
+    </script>
 </head>
 <body>
     <div id="app">

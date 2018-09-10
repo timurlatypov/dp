@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="modal fade" id="requestCallback" tabindex="-1" role="dialog" aria-labelledby="requestCallbackLabel" aria-hidden="true">
+        <div class="modal" id="requestCallback" tabindex="-1" role="dialog" aria-labelledby="requestCallbackLabel" aria-hidden="true">
             <form @submit.prevent="validateBeforeSubmit">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="requestCallbackLabel">Обратный звонок</h4>
+                            <h4 class="modal-title" id="requestCallbackLabel">Обратный звонок<br>Консультация косметолога</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="form-group" v-show="success">
-                                <div class="alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                                <div class="alert alert-success" style="position: relative" id="alert-success" role="alert">
                                     <strong>Мы получили Ваше сообщение</strong><br>В ближайшее время мы Вам позвоним!
                                     <button type="button" class="close" @click="hideSuccess">
                                         <span aria-hidden="true">&times;</span>
@@ -51,6 +51,7 @@
                                     </button>
                                 </div>
                             </div>
+
 
                         </div>
                         <div class="modal-footer">
