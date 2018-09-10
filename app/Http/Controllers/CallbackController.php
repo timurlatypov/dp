@@ -9,7 +9,7 @@ class CallbackController extends Controller
 {
 	public function store(Request $request, Mail $mail)
 	{
-		Mail::to(['timur.latypov@gmail.com'])
+		Mail::to(['info@doctorproffi.ru'])
 			->bcc('timur.latypov@gmail.com')
 			->send(new \App\Mail\Callback($request));
 
