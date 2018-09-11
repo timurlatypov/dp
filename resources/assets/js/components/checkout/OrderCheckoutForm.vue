@@ -21,7 +21,7 @@
                 <thead>
                 <tr style="vertical-align: top">
                     <th class="text-center" style="width: 80px;"></th>
-                    <th>Продукт</th>
+                    <th class="w-50">Продукт</th>
                     <th>Цена</th>
                     <th class="text-center">Скидка</th>
                     <th><nobr>Цена со скидкой</nobr></th>
@@ -72,21 +72,28 @@
                 </tr>
 
                 <tr>
-                    <td colspan="5" rowspan="10" style="vertical-align: top">
-                        <!--<div class="card p-2 mx-auto" style="width: 300px;">-->
-                            <!--<div class="card-body text-center">-->
-                                <!--<h4 class="title my-1">Промокод</h4>-->
-                                <!--<div class="form-group mx-auto" :class="order.coupon.valid ? ' has-success' : ''" style="width: 150px;">-->
-                                    <!--<input class="form-control font-weight-bold text-center" type="text" v-model="order.coupon.coupon" v-on:change="validateCoupon" :disabled="coupon_input_disabled" placeholder="Промокод">-->
-                                    <!--<small class="form-text text-danger" v-if="!order.coupon.valid">{{ order.coupon.error }}</small>-->
-                                    <!--<small class="form-text text-success" v-if="order.coupon.valid">{{ order.coupon.success }}</small>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    </td>
-                    <td><h4 class="title my-0">Итого</h4></td>
-                    <td><h4 class="title my-0">{{ order.billing_total.toFixed(decimals) }} <i class="fas fa-ruble-sign fa-sm"></i></h4></td>
                     <td></td>
+                    <td class="td-actions" style="vertical-align: top">
+                        <h3 class="title mb-0 mt-4">Промокод</h3>
+                        <div class="form-group ">
+                            <label for="exampleInput1" class="bmd-label-floating">Промокод</label>
+                            <input type="text" class="form-control" style="width: 210px;" id="exampleInput1" v-model="order.coupon.coupon" :disabled="coupon_input_disabled" autocomplete="false">
+                            <small class="form-text text-danger" v-if="!order.coupon.valid">{{ order.coupon.error }}&nbsp;</small>
+                            <small class="form-text text-success" v-if="order.coupon.valid">{{ order.coupon.success }}&nbsp;</small>
+
+                            <button type="button" class="btn btn-simple btn-primary mr-2 mb-2" @click.prevent="validateCoupon()" :disabled="coupon_apply_button_disabled">
+                                <i class="material-icons">check</i> <b>Применить</b>
+                            </button>
+                            <button type="button" class="btn btn-simple mb-2" @click.prevent="destroyCoupon()" :disabled="coupon_destroy_button_disabled">
+                                <i class="material-icons">close</i> <b>Отменить</b>
+                            </button>
+                        </div>
+                    </td>
+                    <td colspan="6" style="vertical-align: top">
+                        <h3 class="title mt-4">Итого: <nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;&#x20BD;</nobr></h3>
+                        <h5 class="title mb-1 mt-3 text-muted">Доставка</h5>
+                        <p class="text-muted">Бесплатная доставка по Москве при сумме заказа от 3000 руб. Доставка за МКАД по Московской области рассчитывается индивидуально. Доставка осуществляется временно только по Москве и Московской области! Приносим извинения за временные неудобства.</p>
+                    </td>
                 </tr>
 
                 </tbody>
@@ -99,16 +106,16 @@
             <div class="row pb-3">
                 <div class="col-12 col-md-5 offset-md-1">
                     <div class="form-group" @click.prevent="setFocus('name')">
-                        <label for="name">Имя</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="nameHelp" v-model="order.user.name">
-                        <small id="nameHelp" class="form-text text-muted"></small>
+                        <label for="name">Имя <span class="text-danger">*</span></label>
+                        <input type="text" name="name" class="form-control" id="name" v-model="order.user.name" v-validate="'required'">
+                        <small v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</small>
                     </div>
                 </div>
                 <div class="col-12 col-md-5">
                     <div class="form-group" @click.prevent="setFocus('surname')">
-                        <label for="surname">Фамилия</label>
-                        <input type="text" class="form-control" id="surname" aria-describedby="surnameHelp" v-model="order.user.surname">
-                        <small id="surnameHelp" class="form-text text-muted"></small>
+                        <label for="surname">Фамилия <span class="text-danger">*</span></label>
+                        <input type="text" name="surname" class="form-control" id="surname" v-model="order.user.surname" v-validate="'required'">
+                        <small v-show="errors.has('surname')" class="text-danger">{{ errors.first('surname') }}</small>
                     </div>
                 </div>
             </div>
@@ -116,16 +123,16 @@
             <div class="row pb-3">
                 <div class="col-12 col-md-5 offset-md-1">
                     <div class="form-group" @click.prevent="setFocus('phone')">
-                        <label for="phone">Телефон</label>
-                        <input id="phone" type="tel" class="form-control" v-model="order.user.phone">
-                        <small class="form-text text-muted"></small>
+                        <label for="phone">Телефон <span class="text-danger">*</span></label>
+                        <input id="phone" type="tel" name="phone" class="form-control" v-model="order.user.phone" v-validate="'required'">
+                        <small v-show="errors.has('phone')" class="text-danger">{{ errors.first('phone') }}</small>
                     </div>
                 </div>
                 <div class="col-12 col-md-5">
                     <div class="form-group" @click.prevent="setFocus('email')">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="order.user.email">
-                        <small id="emailHelp" class="form-text text-muted"></small>
+                        <label for="email">Email <span class="text-danger">*</span></label>
+                        <input type="email" name="email" class="form-control" id="email" v-model="order.user.email" v-validate="'required|email'">
+                        <small v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</small>
                     </div>
                 </div>
             </div>
@@ -151,16 +158,16 @@
             <div class="row pb-3">
                 <div class="col-12 col-md-5 offset-md-1">
                     <div class="form-group" @click.prevent="setFocus('billing_city')">
-                        <label for="billing_city">Город</label>
-                        <input type="text" class="form-control" id="billing_city" aria-describedby="billing_cityHelp" v-model="order.address.billing_city">
-                        <small id="billing_cityHelp" class="form-text text-muted"></small>
+                        <label for="billing_city">Город <span class="text-danger">*</span></label>
+                        <input type="text" name="billing_city" class="form-control" id="billing_city" v-model="order.address.billing_city" v-validate="'required'">
+                        <small v-show="errors.has('billing_city')" class="text-danger">{{ errors.first('billing_city') }}</small>
                     </div>
                 </div>
                 <div class="col-12 col-md-5">
                     <div class="form-group" @click.prevent="setFocus('billing_street')">
-                        <label for="billing_street">Улица</label>
-                        <input type="text" class="form-control" id="billing_street" aria-describedby="billing_streetHelp" v-model="order.address.billing_street">
-                        <small id="billing_streetHelp" class="form-text text-muted"></small>
+                        <label for="billing_street">Улица <span class="text-danger">*</span></label>
+                        <input type="text" name="billing_street" class="form-control" id="billing_street" v-model="order.address.billing_street" v-validate="'required'">
+                        <small v-show="errors.has('billing_street')" class="text-danger">{{ errors.first('billing_street') }}</small>
                     </div>
                 </div>
             </div>
@@ -168,16 +175,16 @@
             <div class="row pb-3">
                 <div class="col-12 col-md-2 offset-md-1">
                     <div class="form-group" @click.prevent="setFocus('billing_house')">
-                        <label for="billing_house">Дом</label>
-                        <input type="text" class="form-control" id="billing_house" aria-describedby="billing_houseHelp" v-model="order.address.billing_house">
-                        <small id="billing_houseHelp" class="form-text text-muted"></small>
+                        <label for="billing_house">Дом <span class="text-danger">*</span></label>
+                        <input type="text" name="billing_house" class="form-control" id="billing_house" v-model="order.address.billing_house" v-validate="'required'">
+                        <small v-show="errors.has('billing_house')" class="text-danger">{{ errors.first('billing_house') }}</small>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="form-group" @click.prevent="setFocus('billing_apartment')">
-                        <label for="billing_apartment">Квартира</label>
-                        <input type="text" class="form-control" id="billing_apartment" aria-describedby="billing_apartmentHelp" v-model="order.address.billing_apartment">
-                        <small id="billing_apartmentHelp" class="form-text text-muted"></small>
+                        <label for="billing_apartment">Квартира/Офис <span class="text-danger">*</span></label>
+                        <input type="text" name="billing_apartment" class="form-control" id="billing_apartment" v-model="order.address.billing_apartment" v-validate="'required'">
+                        <small v-show="errors.has('billing_apartment')" class="text-danger">{{ errors.first('billing_apartment') }}</small>
                     </div>
                 </div>
 
@@ -209,7 +216,7 @@
 
         </div>
         <div class="px-4 pb-5 mx-auto">
-            <button type="submit" class="btn btn-primary" @click.prevent="storeOrder">
+            <button type="submit" class="btn btn-primary" @click.prevent="validateBeforeSubmit">
                 <i class="material-icons pb-1">check</i> Отправить заказ<div class="ripple-container"></div>
             </button>
         </div>
@@ -229,6 +236,8 @@
                 },
                 user_addresses: {},
                 coupon_input_disabled: false,
+                coupon_apply_button_disabled: false,
+                coupon_destroy_button_disabled: true,
                 order: {
                     cart: [],
                     user: {
@@ -333,6 +342,18 @@
                 });
             },
 
+            destroyCoupon() {
+                axios.get('/coupon/destroy', this.order.coupon)
+                    .then( response => {
+                        this.coupon_input_disabled = false;
+                        this.order.coupon.valid = false;
+                        this.order.coupon.discount = 0;
+                        this.order.coupon.coupon = '';
+                        this.refreshStage(this.order.cart);
+                        this.coupon_apply_button_disabled = false;
+                        this.coupon_destroy_button_disabled = true;
+                    })
+            },
             validateCoupon() {
                 axios.post('/coupon/validate', this.order.coupon)
                     .then( response => {
@@ -344,17 +365,31 @@
                         this.coupon_input_disabled = true;
                         this.order.coupon.valid = true;
                         this.order.coupon.success = 'Промокод применён';
+                        this.refreshStage(this.order.cart);
+                        window.flash('Промокод успешно применён!');
+                        this.coupon_apply_button_disabled = true;
+                        this.coupon_destroy_button_disabled = false;
                     }).catch( (e) => {
-                })
+                        //
+                    })
             },
+
             applySavedAddress(index) {
                 this.order.address = this.user_addresses[index];
+            },
+
+            validateBeforeSubmit() {
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        this.storeOrder();
+                    }
+                });
             },
 
             storeOrder() {
                 axios.post('/order/store', this.order)
                     .then(response => {
-                        window.flash('Заказ получен!')
+                        window.flash('Заказ получен!');
                         this.new_order_created = true;
                         window.cartUpdate();
                     })
@@ -369,6 +404,7 @@
                 this.order.cart = products;
                 this.calcTotal();
             },
+
             initStage() {
                 if (this.session_cart) {
                     this.order.cart = Object.values(this.session_cart);
@@ -387,6 +423,8 @@
                     this.coupon_input_disabled = true;
                     this.order.coupon.valid = true;
                     this.order.coupon.success = 'Промокод применён';
+                    this.coupon_apply_button_disabled = true;
+                    this.coupon_destroy_button_disabled = false;
                 }
 
                 this.order.cart.map((product, index) => {

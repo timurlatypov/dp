@@ -1,15 +1,16 @@
-<div class="admin-panel-logo mx-auto mt-4">
+<div class="admin-panel-logo mx-auto mt-5">
     @include('layouts.partials._logo')
-    <p>{{ auth()->user()->roles->first()->name }}</p>
-    <p>{{ auth()->user()->name }} {{ auth()->user()->surname }}</p>
+    <h5 class="title mb-0">{{ auth()->user()->name }} {{ auth()->user()->surname }}</h5>
+    <p class="text-muted pb-3">{{ auth()->user()->roles->first()->name }}</p>
 </div>
 <ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link" href="#href">
-            <i class="material-icons">dashboard</i>
-            <p>Панель</p>
-        </a>
-    </li>
+
+    {{--<li class="nav-item">--}}
+        {{--<a class="nav-link" href="#href">--}}
+            {{--<i class="material-icons">dashboard</i>--}}
+            {{--<p>Панель</p>--}}
+        {{--</a>--}}
+    {{--</li>--}}
 
     @if(  auth()->check() && auth()->user()->hasRole(['admin']))
     <li class="nav-item">
@@ -27,13 +28,6 @@
         </a>
     </li>
 
-    <li class="nav-item ">
-        <a class="nav-link" href="#pablo">
-            <i class="material-icons">assignment_ind</i>
-            <p>Клиенты</p>
-        </a>
-    </li>
-
     <li class="nav-item {{ Request::is('admin-panel/products*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.product.index') }}">
             <i class="material-icons">shopping_cart</i>
@@ -41,21 +35,28 @@
         </a>
     </li>
 
+    <li class="nav-item ">
+        <a class="nav-link" href="#pablo">
+            <i class="material-icons">assignment_ind</i>
+            <p>Клиенты</p>
+        </a>
+    </li>
+
+    @if(  auth()->check() && auth()->user()->hasRole(['admin']))
     <li class="nav-item {{ Request::is('admin-panel/categories*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.categories.index') }}">
             <i class="material-icons">close</i>
             <p>Категории</p>
         </a>
     </li>
+    @endif
 
-    @if(  auth()->check() && auth()->user()->hasRole(['admin']))
-    <li class="nav-item ">
-        <a class="nav-link" href="#promo">
+    <li class="nav-item {{ Request::is('admin-panel/coupons*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.coupons.index') }}">
             <i class="material-icons">confirmation_number</i>
             <p>Промокоды</p>
         </a>
     </li>
-    @endif
 
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

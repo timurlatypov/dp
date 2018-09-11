@@ -81,11 +81,10 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
 
 /////////////////////////////////////////////////////////////////
 //
-//          COUPON CONTROLLER
+//          USER COUPON CONTROLLER
 //
 /////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/coupon'], function() {
-	Route::get('/', 'CouponController@index')->name('coupon.index');
 	Route::get('/destroy', 'CouponController@destroy')->name('coupon.destroy');
 	Route::post('/validate', 'CouponController@validate_coupon')->name('validate.coupon');
 });
@@ -122,23 +121,18 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::post('/live/toggle', 'ProductController@toggle')->name('api.product.live.toggle');
 	});
 
-
 	//
 	// CATEGORIES / SUBCATEGORIES GROUP
 	//
 	Route::group(['prefix' => '/categories', 'namespace' => 'Categories'], function() {
 		Route::get('/', 'CategoriesController@index')->name('admin.categories.index');
-
 		Route::get('/{categories}/products', 'CategoriesController@categoriesProducts')->name('admin.categories.products');
 		Route::get('/{categories}/{subcategory}/products', 'CategoriesController@subcategoriesProducts')->name('admin.categories.subcategory.products');
-
 		Route::patch('/{categories}/products/associate', 'CategoriesController@categoryAssociateProducts')->name('admin.categories.associate.products');
 		Route::patch('/{categories}/{subcategory}/products/associate', 'CategoriesController@subcategoryAssociateProducts')->name('admin.categories.subcategory.associate.products');
-
 		Route::post('/{categories}/store', 'SubcategoriesController@store')->name('store.new.subcategory');
 
 	});
-
 
 	//
 	// ORDERS GROUP
@@ -151,6 +145,12 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::post('/change', 'OrdersController@change')->name('admin.orders.change.status');
 	});
 
+	//
+	// COUPONS GROUP
+	//
+	Route::group(['prefix' => '/coupons', 'namespace' => 'Coupons'], function() {
+		Route::get('/', 'CouponController@index')->name('admin.coupons.index');
+	});
 
 	//
 	// DESIGN GROUP
@@ -169,7 +169,6 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 			Route::post('/live/toggle', 'CarouselController@toggle')->name('api.carousel.live.toggle');
 		});
 	});
-
 
 	//
 	// API SPECIAL ROUTES

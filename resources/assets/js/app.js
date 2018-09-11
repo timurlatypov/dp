@@ -3,7 +3,32 @@ window.Vue = require('vue');
 import ru from 'vee-validate/dist/locale/ru';
 import VeeValidate, { Validator } from 'vee-validate';
 VeeValidate.Validator.localize('ru', ru);
+
+const dictionary = {
+    ru: {
+        attributes: {
+            name: 'Имя',
+            surname: 'Фамилия',
+            phone: 'Телефон',
+            email: 'Email',
+
+            billing_city: 'Город',
+            billing_street: 'Улица',
+            billing_house: 'Дом',
+            billing_apartment: 'Квартира/Офис',
+        }
+    }
+};
+Validator.localize(dictionary);
+
+Vue.use(VeeValidate, {
+    events: 'change'
+});
+
 Vue.use(VeeValidate);
+
+
+
 
 import VueRecaptcha from 'vue-recaptcha';
 Vue.use(VueRecaptcha);
