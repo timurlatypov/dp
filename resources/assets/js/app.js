@@ -62,6 +62,8 @@ Vue.component('order-subcategories', require('./components/OrderSubcategories.vu
 Vue.component('carousel-editor', require('./components/carousel/CarouselEditor.vue'));
 Vue.component('carousel-creator', require('./components/carousel/CarouselCreator.vue'));
 
+Vue.component('coupon-creator', require('./components/coupon/CouponCreator.vue'));
+
 Vue.component('associate-products', require('./components/categories/AssociateProduct.vue'));
 Vue.component('callback', require('./components/Callback.vue'));
 

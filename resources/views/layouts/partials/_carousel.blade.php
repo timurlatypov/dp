@@ -3,7 +3,6 @@
         @foreach($banners as $key => $banner)
         <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}"@if($key === 0) class="active" @endif></li>
         @endforeach
-
     </ol>
     <div class="carousel-inner">
         @foreach($banners as $key => $banner)

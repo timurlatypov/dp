@@ -36,6 +36,16 @@
 
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="title">Создать промокод</h4>
+
+                        <coupon-creator store_coupon_endpoint="{{ route('admin.coupons.store') }}"></coupon-creator>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

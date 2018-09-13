@@ -11,7 +11,6 @@ class SubcategoriesController extends Controller
 {
     public function store(Categories $categories, Request $request)
     {
-
 		$subcategory = Subcategory::create([
 			'slug' => $request->slug,
 			'name' => $request->name,
@@ -23,7 +22,5 @@ class SubcategoriesController extends Controller
 	    $categories->subcategories()->save($subcategory);
 
 	    return redirect()->back();
-
-
     }
 }

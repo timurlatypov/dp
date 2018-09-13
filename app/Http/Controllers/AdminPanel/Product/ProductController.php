@@ -146,7 +146,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-
         $product->delete();
         return back();
     }
@@ -157,7 +156,6 @@ class ProductController extends Controller
         $product = Product::withTrashed()->where('id', $id)->first();
         $product->forceDelete();
     }
-
 
 	/**
 	 * Toggle the specified resource from storage.
@@ -200,10 +198,7 @@ class ProductController extends Controller
 
 	public function productAssociateRelated (Product $product, Request $request)
 	{
-
 		$products = $request->toArray();
-
-		//dd($product);
 
 		$productsID = array_column($products, 'id');
 

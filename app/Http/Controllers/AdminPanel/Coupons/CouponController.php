@@ -12,7 +12,6 @@ class CouponController extends Controller
 	{
 		$coupons = Coupon::all();
 		return view('admin.coupons.index', compact('coupons'));
-
 	}
 
 	public function create()
@@ -20,22 +19,19 @@ class CouponController extends Controller
 		return view('admin.coupons.create');
 	}
 
-	public function store(Request $request)
+	public function store(Request $request, Coupon $coupon)
 	{
-
-		//$coupon = strtoupper(bin2hex(random_bytes(5)));
-		//echo $coupon;
-
-	}
-
-	public function update(Request $request, $id)
-	{
-		//
+		$number = strtoupper(bin2hex(random_bytes(5)));
+		$coupon->create([
+			'coupon' => $number,
+			'discount' => $request->discount,
+			'reusable' => $request->reusable,
+			'expired_at' => $request->expired_at,
+		]);
 	}
 
 	public function destroy()
 	{
 		return request()->session()->forget('coupon');
 	}
-
 }

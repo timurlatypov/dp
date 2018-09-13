@@ -22,18 +22,6 @@ Route::get('/brand/{brand}/{product}', 'AdminPanel\Brand\BrandController@show_pr
 Route::get('/brand/{brand}', 'AdminPanel\Brand\BrandController@show_brand_products')->name('show.brand.products');
 Route::get('/brand/{brand}/line/{line}', 'AdminPanel\Brand\BrandController@show_brand_line_products')->name('show.brand.line.products');
 
-//Route::group(['middleware' => 'role:admin'], function() {
-//
-//	Route::group(['middleware' => 'role:admin,delete posts'], function() {
-//		Route::get('/admin/users', function () {
-//			return 'you can delete posts';
-//		});
-//	});
-//
-//	Route::get('/admin', function () {
-//		return 'admin panel entered';
-//	});
-//});
 
 Route::group(['prefix' => '/cart'], function() {
 	Route::post('/add', 'CartController@store')->name('add.product.to.cart');
@@ -150,6 +138,7 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 	//
 	Route::group(['prefix' => '/coupons', 'namespace' => 'Coupons'], function() {
 		Route::get('/', 'CouponController@index')->name('admin.coupons.index');
+		Route::post('/store', 'CouponController@store')->name('admin.coupons.store');
 	});
 
 	//
