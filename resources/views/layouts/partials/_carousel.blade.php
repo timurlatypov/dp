@@ -11,7 +11,7 @@
                     <div class="container h-100 px-0">
                         <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/{{ $banner->image_path }}')">
                             <div class="col-12 align-self-center px-5">
-                                <h2 class="title my-1" style="color: #{{$banner->title_hex}}">{!! $banner->title !!}</h2>
+                                <h1 class="open-title my-1" style="color: #{{$banner->title_hex}}">{!! $banner->title !!}</h1>
                                 <p style="color: #{{$banner->body_hex}}">{!! $banner->body !!}</p>
                                 <h6>{{ $banner->brand }}</h6>
                                 @if($banner->button !== null)<button class="btn btn-danger btn-sm">{{ $banner->button }}</button>@endif
