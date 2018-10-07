@@ -1,5 +1,5 @@
 <template>
-    <a class="text-dark" href="#" data-toggle="dropdown">
+    <a class="text-dark" href="/checkout">
         <i class="material-icons">shopping_cart</i><span class="badge badge-pill badge-danger" v-if="count"><b>{{ count }}</b></span>
     </a>
 </template>

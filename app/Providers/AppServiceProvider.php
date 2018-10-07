@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\NewOrderCreated;
 use Carbon\Carbon;
+
+use Illuminate\Support\Facades\Queue;
+
 use Gloudemans\Shoppingcart\Cart;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -55,6 +60,10 @@ class AppServiceProvider extends ServiceProvider
 
 	    view()->composer('admin.partials._nav', function($orders) {
 		    $orders->with('new_orders_count', \App\Order::countNewOrders());
+	    });
+
+	    Queue::failing(function (NewOrderCreated $event) {
+		    Log::error('Could not send notification');
 	    });
     }
 

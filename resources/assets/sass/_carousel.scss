@@ -1,23 +1,110 @@
 .carousel-bg-image {
   background-position: center center;
-  background-size: contain;
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1px) and (max-width: 575px) {
+  .carousel-inner {
+    height: 240px;
+  }
+
+  .carousel-bg-image {
+    background-position: right -190px center;
+    background-size: cover;
+  }
+
+  .container-carousel {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 576px) {
   .carousel-inner {
     position: relative;
     width: 100%;
     overflow: hidden;
+    height: 240px;
+  }
+  .carousel-bg-image {
+    background-position: right -100px center;
+    background-size: cover;
+  }
+
+  .container-carousel {
+    max-width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .carousel-inner {
+    height: 240px;
+  }
+
+  .carousel-bg-image {
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .container-carousel {
+    max-width: 720px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .carousel-inner {
     height: 253px;
+  }
+  .container-carousel {
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
 @media (min-width: 1200px) {
   .carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
     height: 300px;
+  }
+  .container-carousel {
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+
+
+
+
+
+.carousel-indicators {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .carousel-indicators {
+    display: -webkit-box;
+  }
+}
+
+
+
+h1.open-title {
+  font-family: 'Open Sans Bold';
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  h1.open-title {
+    font-size: 1.1rem;
+    font-family: 'Open Sans Bold';
   }
 }

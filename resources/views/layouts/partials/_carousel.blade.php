@@ -8,7 +8,7 @@
         @foreach($banners as $key => $banner)
             <div class="carousel-item @if($key === 0) active @endif" style="background-color: #{{ $banner->hex }}">
                 <a href="{{ $banner->link }}">
-                    <div class="container h-100 px-0">
+                    <div class="container-carousel h-100 px-0">
                         <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/{{ $banner->image_path }}')">
                             <div class="col-12 align-self-center px-5">
                                 <h1 class="open-title my-1" style="color: #{{$banner->title_hex}}">{!! $banner->title !!}</h1>
