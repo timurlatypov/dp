@@ -69,6 +69,7 @@
 
                 <li class="nav-item"><a class="nav-link" href="/delivery">Доставка и оплата</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contacts">Контакты</a></li>
+                <li class="nav-item"><a class="nav-link text-info" href="/bookmarks">Избранное</a></li>
                 <cart :cart_items="{{ $cart }}" cart_count="{{ $cart->count() }}"></cart>
                     @guest
                     @else

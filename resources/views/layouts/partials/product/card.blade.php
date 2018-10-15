@@ -24,7 +24,12 @@
         @endif
     @endslot
 
-
+    @slot('save_bookmark')
+        <save-bookmark
+                endpoint="{{ route('save.product.to.bookmark', $product) }}"
+                :model="{{ $product }}"
+                :price_to_show="{{ $product->definePriceToShow() }}"></save-bookmark>
+    @endslot
 
     @slot('add_favorite')
         @if(auth()->check())<add-favorite endpoint="{{ route('attach.product.to.favorite', $product) }}"></add-favorite>@endif

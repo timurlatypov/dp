@@ -10,6 +10,7 @@ Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/confidentiality', 'HomeController@confidentiality')->name('confidentiality');
 Route::get('/delivery', 'HomeController@delivery')->name('delivery');
 Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
+Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 
 
 Route::group(['prefix' => '/category'], function() {
@@ -177,3 +178,6 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/callback/store', 'CallbackController@store')->name('callback.store');
+
+
+Route::post('/bookmark/store', 'BookmarkController@store')->name('save.product.to.bookmark');

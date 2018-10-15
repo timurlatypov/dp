@@ -6,8 +6,8 @@ use App\Categories;
 use App\Product;
 use App\Subcategory;
 use App\User;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Cart;
 
 class HomeController extends Controller
 {
@@ -40,6 +40,12 @@ class HomeController extends Controller
 	public function contacts()
 	{
 		return view('web.contacts');
+	}
+
+	public function bookmarks(Cart $bookmark)
+	{
+		$bookmarks = $bookmark->instance('bookmark')->content();
+		return view('web.bookmark', compact('bookmarks'));
 	}
 
 	public function confidentiality()
