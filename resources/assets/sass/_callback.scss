@@ -1,0 +1,104 @@
+.cback {
+  width: 130px;
+  height: 130px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: translate(-10%,-10%);
+  cursor: pointer;
+  &-circle {
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+    border-radius: 50%;
+    position: absolute;
+    top:0;
+    left: 0;
+    transform-origin: 50% 50%;
+    &--phone {
+      width: 30%;
+      height: 30%;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    &.fn1 {
+      animation: pin 2.5s linear .4s infinite normal;
+    }
+    &.fn2 {
+      animation: pin 2s linear 0s infinite normal;
+      background: none;
+    }
+  }
+  &:hover {
+    .cback-circle--phone {
+      animation: hvr-phone 1.5s linear infinite normal;
+    }
+  }
+  .phone-icon {
+    width: 20px;
+    height: 20px;
+    background: url(https://brrenat.github.io/content/phone.png);
+    background-size: contain;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: phone-fn 2s infinite ease-in-out;
+  }
+}
+
+.cback-circle {
+  background: #17a2b8;
+  color: #17a2b8;
+}
+
+@keyframes phone-fn {
+  0% {
+    transform: translate(-50%,-50%) rotate(0deg) scale(1) skew(1deg)
+  }
+
+  10% {
+    transform: translate(-50%,-50%) rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  20% {
+    transform: translate(-50%,-50%) rotate(25deg) scale(1) skew(1deg)
+  }
+
+  30% {
+    transform: translate(-50%,-50%) rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  40% {
+    transform: translate(-50%,-50%) rotate(25deg) scale(1) skew(1deg)
+  }
+
+  100%,50% {
+    transform: translate(-50%,-50%) rotate(0deg) scale(1) skew(1deg)
+  }
+}
+@keyframes pin {
+  0% {
+    opacity: .2;
+    transform: scale(.1)
+  }
+  10% {
+    opacity: .5;
+    transform: scale(.3)
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7)
+  }
+}
+@keyframes hvr-phone {
+  0%, 100% {
+    transform: translate(-50%,-50%) scale(1);
+    box-shadow: inset 0 0 20px -14px rgba(0,0,0,.75);
+  }
+  80% {
+    transform: translate(-50%,-50%) scale(1.1);
+    box-shadow: inset 0 0 20px -4px rgba(0,0,0,.75);
+  }
+}

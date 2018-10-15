@@ -36,16 +36,12 @@
                                             <button class="btn btn-primary" onclick="$('#requestCallback').modal('show')"><i class="material-icons">perm_phone_msg</i>&nbsp;&nbsp;Заказать</button>
                                         </div>
 
-                                        <callback endpoint="{{ route('callback.store') }}"></callback>
-
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
-
         </div>
     </div>
 </div>

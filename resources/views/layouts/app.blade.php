@@ -13,6 +13,7 @@
         @include('layouts.partials._header')
         @include('layouts.partials._nav')
         @include('layouts.partials._mobile-search')
+        @include('layouts.partials._callback')
         <flash message="{{ session('flash') }}" ></flash>
         <div class="container-fluid p-0">
             <div class="row m-0">
@@ -36,5 +37,6 @@
         <cart-modal payload="{{ session('cartModal') }}" ></cart-modal>
     </div>
     @include('layouts.partials._metrika')
+    @include('layouts.partials._callback_button')
 </body>
 </html>

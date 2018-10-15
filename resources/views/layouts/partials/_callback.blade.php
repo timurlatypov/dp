@@ -1,0 +1,1 @@
+<callback endpoint="{{ route('callback.store') }}"></callback>
