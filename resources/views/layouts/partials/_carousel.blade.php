@@ -14,7 +14,7 @@
                                 <h1 class="open-title my-1" style="color: #{{$banner->title_hex}}">{!! $banner->title !!}</h1>
                                 <p style="color: #{{$banner->body_hex}}">{!! $banner->body !!}</p>
                                 <h6>{{ $banner->brand }}</h6>
-                                @if($banner->button !== null)<button class="btn btn-danger btn-sm">{{ $banner->button }}</button>@endif
+                                @if($banner->button)<button class="btn btn-danger btn-sm">{{ $banner->button }}</button>@endif
                             </div>
                         </div>
                     </div>
