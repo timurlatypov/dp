@@ -89140,11 +89140,7 @@ var render = function() {
                           [_vm._v("Доставка")]
                         ),
                         _vm._v(" "),
-                        _c("p", { staticClass: "text-muted" }, [
-                          _vm._v(
-                            "Бесплатная доставка по Москве при сумме заказа от 3000 руб. Доставка за МКАД по Московской области рассчитывается индивидуально. Доставка осуществляется временно только по Москве и Московской области! Приносим извинения за временные неудобства."
-                          )
-                        ])
+                        _vm._m(3)
                       ]
                     )
                   ])
@@ -89154,7 +89150,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(3),
+          _vm._m(4),
           _vm._v(" "),
           _c("div", { staticClass: "container px-5" }, [
             _c("div", { staticClass: "row pb-3" }, [
@@ -89171,7 +89167,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(4),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89233,7 +89229,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(5),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89301,7 +89297,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89363,7 +89359,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89414,7 +89410,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(8),
+          _vm._m(9),
           _vm._v(" "),
           _c("div", { staticClass: "container px-5 pb-5" }, [
             _c("div", { staticClass: "row pb-3" }, [
@@ -89431,7 +89427,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(9),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89501,7 +89497,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(10),
+                    _vm._m(11),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89573,7 +89569,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(11),
+                    _vm._m(12),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89643,7 +89639,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._m(12),
+                    _vm._m(13),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -89915,6 +89911,21 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "px-4 py-3 mx-auto" }, [
       _c("h3", { staticClass: "title" }, [_vm._v("Ваш заказ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-muted" }, [
+      _vm._v(
+        "Бесплатная доставка по Москве при сумме заказа от 3000 руб. Доставка за МКАД по Московской области рассчитывается индивидуально. "
+      ),
+      _c("span", { staticStyle: { color: "red" } }, [
+        _vm._v(
+          "Доставка осуществляется временно только по Москве и Московской области! Приносим извинения за временные неудобства."
+        )
+      ])
     ])
   },
   function() {

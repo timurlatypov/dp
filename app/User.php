@@ -40,6 +40,12 @@ class User extends Authenticatable
 
 	public function getLoyaltyAttribute()
 	{
+
+		if ( count($this->orders) === 0 )
+		{
+			return $loyalty_discount = 10;
+		}
+
 		return $this->discountAmount();
 	}
 
