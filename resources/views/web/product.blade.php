@@ -29,7 +29,7 @@
                     <div class="card-body p-0">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-sm-3 px-3 hidden-sm">
+                                <div class="col-12 col-sm-3 px-3 pt-5 hidden-sm">
                                     @include('layouts.partials._in_product_nav')
                                 </div>
 
@@ -38,7 +38,9 @@
 
                                        <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
+                                                
                                                 <img src="/storage/products/image/{{$product->image_path}}" width="100%" alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
+
                                             </div>
                                             <div class="col-12 col-sm-6 col-md-5 p-3 px-sm-0 py-sm-2 align-self-center">
                                                 <div class="brand-logo"><img src="/storage/brands/{{ $brand->image_path }}" alt="Логотип {{ $brand->name }}"></div>
@@ -60,6 +62,11 @@
                                                 @endif
                                                 <div class="pt-3">
                                                     <add-button endpoint="{{ route('add.product.to.cart') }}" :model="{{ $product }}" :price_to_show="{{ $product->definePriceToShow() }}" styling="btn-primary"></add-button>
+
+                                                    <save-bookmark-button
+                                                        endpoint="{{ route('save.product.to.bookmark', $product) }}"
+                                                        :model="{{ $product }}"
+                                                        :price_to_show="{{ $product->definePriceToShow() }}"></save-bookmark-button>
                                                 </div>
                                                 <div class="py-3">
                                                     @include('layouts.partials._yandex_share')

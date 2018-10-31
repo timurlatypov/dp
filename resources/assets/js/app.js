@@ -52,6 +52,7 @@ Vue.component('cart-modal', require('./components/cart/CartModal.vue'));
 Vue.component('add-button', require('./components/cart/AddButton.vue'));
 Vue.component('add-favorite', require('./components/favorite/AddFavorite.vue'));
 Vue.component('save-bookmark', require('./components/bookmark/SaveBookmark.vue'));
+Vue.component('save-bookmark-button', require('./components/bookmark/SaveBookmarkButton.vue'));
 Vue.component('editor', require('./components/Editor.vue'));
 Vue.component('toggle-switch', require('./components/ToggleSwitch.vue'));
 Vue.component('input-field', require('./components/InputField.vue'));
