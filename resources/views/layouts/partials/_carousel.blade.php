@@ -1,9 +1,5 @@
 <div id="carouselExampleIndicators" class="carousel slide">
-    <ol class="carousel-indicators">
-        @foreach($banners as $key => $banner)
-        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}"@if($key === 0) class="active" @endif></li>
-        @endforeach
-    </ol>
+    
     <div class="carousel-inner">
 
             <div class="carousel-item  active " style="background-color: #e7a9b5">
