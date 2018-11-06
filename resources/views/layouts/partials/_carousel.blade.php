@@ -5,16 +5,29 @@
         @endforeach
     </ol>
     <div class="carousel-inner">
-        @foreach($banners as $key => $banner)
-            <div class="carousel-item @if($key === 0) active @endif" style="background-color: #{{ $banner->hex }}">
-                <a href="{{ $banner->link }}">
+
+            <div class="carousel-item  active " style="background-color: #e7a9b5">
+                <a href="https://doctorproffi.ru/discounts" class="banner-mobile h-100">
+                    <div class="row h-100">
+                        <div class="col-12 h-100 align-self-center ">
+                            <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/mobile/mobile-50percent-and-filler-mask-1000x700.jpg')">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://doctorproffi.ru/discounts" class="banner-tablet h-100">
+                    <div class="row h-100">
+                        <div class="col-12 h-100 align-self-center ">
+                            <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/tablet/tablet-50percent-and-filler-mask-1000x600.jpg')">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://doctorproffi.ru/discounts" class="banner-desktop h-100">
                     <div class="container-carousel h-100 px-0">
-                        <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/{{ $banner->image_path }}')">
+                        <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/desktop/desktop-50percent-and-filler-mask-2100x600.jpg')">
                             <div class="col-12 align-self-center px-5">
-                                <h1 class="open-title my-1" style="color: #{{$banner->title_hex}}">{!! $banner->title !!}</h1>
-                                <p style="color: #{{$banner->body_hex}}">{!! $banner->body !!}</p>
-                                <h6>{{ $banner->brand }}</h6>
-                                @if($banner->button)<button class="btn btn-danger btn-sm">{{ $banner->button }}</button>@endif
+
                             </div>
                         </div>
                     </div>
@@ -22,7 +35,35 @@
             </div>
 
 
-        @endforeach
+        <div class="carousel-item " style="background-color: #dbe3ee">
+            <a href="https://doctorproffi.ru/register" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/mobile/mobile-10percent-per-registration.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/register" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/tablet/tablet-10percent-per-registration.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/register" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/desktop/desktop-first-order-10percent.jpg')">
+                        <div class="col-12 align-self-center px-5">
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

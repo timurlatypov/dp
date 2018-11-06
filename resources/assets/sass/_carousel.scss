@@ -1,3 +1,8 @@
+.banner-mobile { display: block; }
+.tablet { display: block; }
+.banner-desktop { display: block; }
+
+
 .carousel-bg-image {
   background-position: center center;
   background-repeat: no-repeat;
@@ -5,50 +10,57 @@
 }
 
 @media (min-width: 1px) and (max-width: 575px) {
-  .carousel-inner {
-    height: 240px;
-  }
+  .banner-mobile { display: block; }
+  .banner-tablet { display: none; }
+  .banner-desktop { display: none; }
 
   .carousel-bg-image {
-    background-position: left -105px center;
     background-size: cover;
+  }
+
+  .carousel-inner {
+    height: 70vw;
   }
 
   .container-carousel {
     max-width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
   }
 }
 
+
+
 @media (min-width: 576px) {
+  .banner-mobile { display: none; }
+  .banner-tablet { display: block; }
+  .banner-desktop { display: none; }
+
   .carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 240px;
+    height: 60vw;
   }
+
   .carousel-bg-image {
-    background-position: right -100px center;
     background-size: cover;
   }
 
   .container-carousel {
     max-width: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
   }
 
 }
 
 @media (min-width: 768px) {
+  .banner-mobile { display: none; }
+  .banner-tablet { display: none; }
+  .banner-desktop { display: block; }
+
+
   .carousel-inner {
-    height: 240px;
+    height: 205px;
   }
 
   .carousel-bg-image {
     background-position: center center;
-    background-size: cover;
+    background-size: contain;
   }
 
   .container-carousel {
@@ -60,24 +72,28 @@
 }
 
 @media (min-width: 992px) {
-  .carousel-inner {
-    height: 253px;
-  }
+
   .container-carousel {
     max-width: 960px;
     margin-right: auto;
     margin-left: auto;
   }
+
+  .carousel-inner {
+    height: 274px;
+  }
 }
 
 @media (min-width: 1200px) {
-  .carousel-inner {
-    height: 300px;
-  }
+
   .container-carousel {
     max-width: 1140px;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .carousel-inner {
+    height: 325px;
   }
 }
 

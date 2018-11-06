@@ -65,13 +65,13 @@ class HomeController extends Controller
 
 	public function category(Categories $categories)
 	{
-		$products = $categories->products()->live()->orderBy('discount', 'desc')->paginate(21);
+		$products = $categories->products()->live()->orderBy('title_eng', 'asc')->paginate(21);
 		return view('web.category', compact(['products', 'categories']));
 	}
 
 	public function subcategory(Categories $categories, Subcategory $subcategory)
 	{
-		$products = $subcategory->products()->live()->orderBy('discount', 'desc')->paginate(21);
+		$products = $subcategory->products()->live()->orderBy('title_eng', 'asc')->paginate(21);
 		return view('web.category', compact(['products', 'categories', 'subcategory']));
 	}
 
