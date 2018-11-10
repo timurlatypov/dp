@@ -28,7 +28,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('bestsellers') }}">Хиты продаж</a></li>
                 <li class="dropdown nav-item">
-                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Для женщин</a>
+                    <a class="nav-link" href="#" data-toggle="dropdown">Для женщин</a>
                     <div class="dropdown-menu">
                         <div class="megamenu mx-md-3 my-md-2">
                             <div style="min-width: 200px;">
@@ -59,10 +59,10 @@
                 <li class="nav-item"><a class="nav-link text-danger" href="{{ route('discounts') }}">Скидки</a></li>
 
                 <li class="dropdown nav-item">
-                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Бренды</a>
+                    <a class="nav-link" href="#" data-toggle="dropdown">Бренды</a>
                     <div class="dropdown-menu dropdown-with-icons">
                        @foreach($brands as $brand)
-                        <a class="dropdown-item" href="{{ route('show.brand.products', $brand) }}">{{ $brand->name }}</a>
+                        <a class="dropdown-item small" href="{{ route('show.brand.products', $brand) }}">{{ $brand->name }}</a>
                         @endforeach
                     </div>
                 </li>

@@ -1,6 +1,6 @@
 <template>
     <li class="dropdown nav-item">
-        <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="material-icons">shopping_cart</i>
+        <a class="nav-link" href="#" data-toggle="dropdown"><i class="material-icons">shopping_cart</i>
             <span class="badge badge-pill badge-danger" v-if="count"><b>{{ count }}</b></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-with-icons px-3 pb-3">

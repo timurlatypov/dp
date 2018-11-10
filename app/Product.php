@@ -29,7 +29,6 @@ class Product extends Model
 		return $properties;
 	}
 
-
 	public function definePriceToShow()
 	{
 		return $this->discount ? $this->discounted_price() : $this->price;

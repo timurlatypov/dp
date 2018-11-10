@@ -1,5 +1,5 @@
 <div id="carouselExampleIndicators" class="carousel slide">
-    
+
     <div class="carousel-inner">
 
             <div class="carousel-item  active " style="background-color: #e7a9b5">

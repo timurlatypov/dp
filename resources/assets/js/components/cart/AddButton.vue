@@ -1,6 +1,6 @@
 <template>
-    <button type="submit" :class="'btn btn-sm ' + styling" @click.prevent="saveToCart" :disabled="disabled">
-        <i class="material-icons pb-1" v-html="disabled ? 'thumb_up' : 'shopping_cart'"></i> <span class="font-weight-bold">{{ disabled ? 'В корзине' : 'В корзину'}}</span>
+    <button type="submit" class="btn btn-sm" :class="disabled ? '' : styling" @click.prevent="saveToCart" :disabled="disabled">
+        <i class="fas fa-sm" :class="disabled ? ' fa-thumbs-up' : ' fa-shopping-cart'"></i>&nbsp;&nbsp;<span class="font-weight-bold">{{ disabled ? 'В корзине' : 'В корзину'}}</span>
         <div class="ripple-container"></div>
     </button>
 </template>

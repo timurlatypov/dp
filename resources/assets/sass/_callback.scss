@@ -1,10 +1,18 @@
+.cback-phones {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: translate(-20px, -17px);
+  cursor: pointer;
+}
+
 .cback {
   width: 130px;
   height: 130px;
   position: fixed;
   bottom: 0;
   right: 0;
-  transform: translate(-10%,-10%);
+  transform: translate(-14px, -57px);
   cursor: pointer;
   &-circle {
     width: 100%;

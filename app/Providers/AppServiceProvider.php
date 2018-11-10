@@ -51,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
 	    });
 
 	    view()->composer('layouts.partials._infoblock', function($recommend) {
-		    $recommend->with('recommend', \App\Product::where('bestseller', true)->inRandomOrder()->limit(2)->get());
+		    $recommend->with('recommend', \App\Product::where('bestseller', true)->inRandomOrder()->limit(4)->get());
 	    });
 
 	    view()->composer('layouts.partials._carousel', function($banners) {

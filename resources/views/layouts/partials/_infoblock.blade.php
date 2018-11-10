@@ -1,47 +1,14 @@
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-12">
-
-
-                    <div class="container-fluid">
-                        <div class="row">
-
-                            <div class="col-12 col-md-8">
-                                <div>
-                                    <h3 class="title text-center mt-3 mb-0">Мы рекомендуем!</h3>
-                                </div>
-                                <div class="d-flex card-recommend">
-                                    @each('layouts.partials.product.card', $recommend, 'product')
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-4">
-                                <div>
-                                    <h3 class="title text-center mt-3 mb-0">Поможем выбрать!</h3>
-                                </div>
-                                <div class="card card-blog">
-                                    <div class="card-header card-header-image">
-                                        <a href="#pablo">
-                                            <img class="img" src="/storage/info/consultation.jpg">
-                                        </a>
-                                        <div class="colored-shadow" style="background-image: url('/storage/info/consultation.jpg'); opacity: 1;"></div></div><div class="card-body ">
-
-                                        <h4 class="card-title">
-                                            <a href="#pablo">Консультация косметолога</a>
-                                        </h4>
-                                        <p class="card-description">
-                                            Наш консультант, врач косметолог-дерматолог проведет для Вас бесплатную консультацию и поможет подобрать средства, которые лучше подойдут для вашего типа кожи.
-                                        </p>
-                                        <div class="card-stats justify-content-center pt-3">
-                                            <button class="btn btn-primary" onclick="$('#requestCallback').modal('show')"><i class="material-icons">perm_phone_msg</i>&nbsp;&nbsp;Заказать</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+        <div class="col-12 pt-3">
+            <div class="card">
+                <div class="card-header card-header-rose text-center">
+                    <h3 class="card-title mb-1 mt-0">Мы рекомендуем!</h3>
+                </div>
+                <div class="card-body d-flex flex-wrap card-col-12">
+                    @each('layouts.partials.product.card', $recommend, 'product')
+                </div>
+            </div>
         </div>
     </div>
 </div>
