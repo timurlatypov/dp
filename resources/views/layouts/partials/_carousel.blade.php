@@ -2,7 +2,37 @@
 
     <div class="carousel-inner">
 
-            <div class="carousel-item  active " style="background-color: #e7a9b5">
+            <div class="carousel-item  active " style="background-color: #d1868f">
+                <a href="https://doctorproffi.ru/discounts" class="banner-mobile h-100">
+                    <div class="row h-100">
+                        <div class="col-12 h-100 align-self-center ">
+                            <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/mobile/mobile-30percent-officina-pelle.jpg')">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://doctorproffi.ru/discounts" class="banner-tablet h-100">
+                    <div class="row h-100">
+                        <div class="col-12 h-100 align-self-center ">
+                            <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/tablet/tablet-30percent-officina-pelle.jpg')">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://doctorproffi.ru/discounts" class="banner-desktop h-100">
+                    <div class="container-carousel h-100 px-0">
+                        <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/desktop/desktop-30percent-officina-pelle.jpg')">
+                            <div class="col-12 align-self-center px-5">
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+
+            <div class="carousel-item" style="background-color: #e7a9b5">
                 <a href="https://doctorproffi.ru/discounts" class="banner-mobile h-100">
                     <div class="row h-100">
                         <div class="col-12 h-100 align-self-center ">
