@@ -54,6 +54,7 @@
         <cart-modal payload="{{ session('cartModal') }}" ></cart-modal>
     </div>
     @include('layouts.partials._metrika')
+    @include('layouts.partials._ga')
     @include('layouts.partials._callback_button')
 </body>
 </html>
