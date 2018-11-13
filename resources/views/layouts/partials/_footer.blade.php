@@ -20,6 +20,20 @@
                             <h6><a href="/delivery" class="text-white">Доставка и оплата</a></h6>
                             {{--<h6><a href="#" class="text-white">Возврат товара</a></h6>--}}
                             <h6><a href="/confidentiality" class="text-white">Конфиденциальность</a></h6>
+                            <br>
+                            <p>Принимаем к оплате</p>
+                            <div class="payment-logo">
+                                <img src="/svg/mir.svg" alt="">
+                            </div>
+                            <div class="payment-logo">
+                                <img src="/svg/visa.svg" alt="">
+                            </div>
+                            <div class="payment-logo">
+                                <img src="/svg/mastercard.svg" alt="">
+                            </div>
+                            <div class="payment-logo">
+                                <img src="/svg/jcb.svg" alt="">
+                            </div>
                         </div>
                         <div class="col-12 col-md-3 hidden-md">
                             <h4 class="title text-white mt-2">Информация</h4>

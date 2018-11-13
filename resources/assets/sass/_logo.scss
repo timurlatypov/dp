@@ -4,6 +4,16 @@
   fill: $orange;
 }
 
+.payment-logo {
+  display: inline-block;
+}
+
+.payment-logo img {
+  height: 16px;
+  margin-right: 3px;
+}
+
+
 .nav-logo svg {
   width: 100px;
   //fill: $orange-500;
