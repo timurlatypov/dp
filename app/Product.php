@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Filters\Product\ProductFilters;
 use App\Traits\LiveAware;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +40,8 @@ class Product extends Model
 		return round($this->price * (($this->discount - 100) / -100));
 	}
 
+
+
     public function brand()
     {
     	return $this->belongsTo(Brand::class);
@@ -62,7 +65,7 @@ class Product extends Model
 		return $this->belongsToMany(Product::class, 'product_related','product_id','related_id');
 	}
 
-	/*
+	/**
 	 *
 	 * SCOPES
 	 *
@@ -81,7 +84,7 @@ class Product extends Model
 	}
 
 
-	/*
+	/**
 	 *
 	 * ATRIBUTES
 	 *
@@ -95,6 +98,16 @@ class Product extends Model
 		return $this->categories()->where('slug', 'new-products')->first();
 	}
 
+
+	/**
+	 *
+	 * FILTERS
+	 *
+	 */
+	public function scopeFilter(Builder $builder, $request, array $filters = [])
+	{
+		return (new ProductFilters($request))->add($filters)->filter($builder);
+	}
 
 
 }

@@ -10,6 +10,9 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Filters\Product\BrandFilter;
+
+
 class ProductController extends Controller
 {
     /**
@@ -17,11 +20,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-    	$products = Product::orderBy('title_eng', 'asc')->paginate(100);
+    	$products = Product::orderBy('title_eng', 'asc')
+		    ->filter($request, $this->getFilters())
+		    ->paginate(100);
         return view('admin.product.index', compact('products'));
     }
+
+	protected function getFilters()
+	{
+		return [
+			'brand' => BrandFilter::class,
+		];
+	}
 
     /**
      * Show the form for creating a new resource.
