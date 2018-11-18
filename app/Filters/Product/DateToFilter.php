@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filters\Investor;
+namespace App\Filters\Product;
 
 use Illuminate\Database\Eloquent\Builder;
 
