@@ -27,14 +27,14 @@ set('branch', 'master');
 host('94.142.139.93')
 	->user('deployer')
 	->identityFile('~/.ssh/deployer')
-	->set('deploy_path', '/var/www/html/')
+	->set('deploy_path', '/var/www/html')
 	->set('master', 'master')
 	->stage('production');
 
 host('185.238.136.113')
 	->user('root')
 	->identityFile('~/.ssh/staging_doctorproffi_ru')
-	->set('deploy_path', '/var/www/html/')
+	->set('deploy_path', '/var/www/html')
 	->set('master', 'master')
 	->stage('staging');
 
