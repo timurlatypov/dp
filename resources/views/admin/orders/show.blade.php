@@ -36,7 +36,6 @@
                                 <th class="th-description">Цена со скидкой</th>
                                 <th class="th-description">Кол-во</th>
                                 <th class="th-description">Сумма</th>
-                                <th class="text-center" style="width: 60px;"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,17 +52,21 @@
                                 <td>@isset($product->discounted_price){{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;@endisset</td>
                                 <td>{{ $product->qty }} шт.</td>
                                 <td>{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>
-                                <td class="td-actions text-center"></td>
                             </tr>
                         @endforeach
                             <tr>
                                 <td colspan="5" rowspan="10">
                                 <td><h4 class="title">Итого</h4></td>
-                                <td><h4 class="title">{{ $order->billing_total }} &#x20BD;</h4></td>
-                                <td></td>
+                                <td>
+                                    <h4 class="title">{{ $order->billing_total }} &#x20BD;</h4>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="text-right">
+                        <a href="/admin-panel/orders/{{ $order->id }}/edit" class="btn btn-danger" >Изменить заказ</a>
+                    </div>
                 </div>
             </div>
         </div>

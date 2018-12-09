@@ -7,10 +7,11 @@ use App\Categories;
 use App\Http\Requests\StoreNewProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Product;
+use App\Traits\LiveAware;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Filters\Product\BrandFilter;
+use App\Filters\Product\{ BrandFilter, StockFilter, LiveFilter };
 
 
 class ProductController extends Controller
@@ -24,7 +25,7 @@ class ProductController extends Controller
     {
     	$products = Product::orderBy('title_eng', 'asc')
 		    ->filter($request, $this->getFilters())
-		    ->paginate(100);
+		    ->paginate(20);
         return view('admin.product.index', compact('products'));
     }
 
@@ -32,6 +33,8 @@ class ProductController extends Controller
 	{
 		return [
 			'brand' => BrandFilter::class,
+			'stock' => StockFilter::class,
+			'live' => LiveFilter::class
 		];
 	}
 
@@ -177,7 +180,6 @@ class ProductController extends Controller
 	 */
 	public function toggle(Request $request)
 	{
-
 		if ($request->checked) {
 			$checked = 1;
 		} else {
@@ -186,6 +188,20 @@ class ProductController extends Controller
 
 		$product = Product::find($request->id);
 		$product->update(['live' => $checked]);
+
+		return response(['data' => 'Успешно'], 200);
+	}
+
+	public function stockToggle(Request $request)
+	{
+		if ($request->checked) {
+			$checked = 1;
+		} else {
+			$checked = 0;
+		}
+
+		$product = Product::find($request->id);
+		$product->update(['stock' => $checked]);
 
 		return response(['data' => 'Успешно'], 200);
 	}

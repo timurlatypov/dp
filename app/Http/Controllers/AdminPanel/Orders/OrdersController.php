@@ -7,16 +7,22 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Filters\Product\{ BrandFilter };
+
 class OrdersController extends Controller
 {
 
 	private $coupon;
 
-	public function index()
+	public function index(Request $request)
 	{
-		$orders = Order::orderBy('created_at', 'desc')->paginate(100);
+		$orders = Order::orderBy('created_at', 'desc')
+			->paginate(20);
 		return view('admin.orders.index', compact('orders'));
 	}
+
+
+
 
 	public function assign(Request $request)
 	{
@@ -31,16 +37,46 @@ class OrdersController extends Controller
 
 	public function show(Order $order)
 	{
-
 		$details = json_decode($order->order_details);
 
-		if($order->coupon_details) {
+		if ($order->coupon_details) {
 			$coupon = json_decode($order->coupon_details);
 		}
 
-
 		return view('admin.orders.show', compact(['order','details','coupon']));
 	}
+
+
+
+
+
+
+	public function edit(Order $order)
+	{
+		$details = json_decode($order->order_details);
+
+		//dd($details);
+
+		return view('admin.orders.edit', compact(['order','details']));
+	}
+
+	public function update(Request $request)
+	{
+		$order = Order::find($request->id);
+
+		$order->update([
+			'order_details' => $request->details,
+			'billing_total' => $request->billing_total
+		]);
+
+		return response(['data' => 'Успешно'], 200);
+	}
+
+
+
+
+
+
 
 	public function destroy(Request $request)
 	{

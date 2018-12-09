@@ -32,7 +32,7 @@ host('94.142.139.93')
 	->stage('production');
 
 host('185.238.136.113')
-	->user('deployer')
+	->user('root')
 	->identityFile('~/.ssh/staging_doctorproffi_ru')
 	->set('deploy_path', '/var/www/html')
 	->set('master', 'master')

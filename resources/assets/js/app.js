@@ -69,6 +69,9 @@ Vue.component('coupon-creator', require('./components/coupon/CouponCreator.vue')
 Vue.component('associate-products', require('./components/categories/AssociateProduct.vue'));
 Vue.component('callback', require('./components/Callback.vue'));
 
+
+Vue.component('order-edit-form', require('./components/admin-panel/order/OrderEditForm.vue'));
+
 // Vue.component('compact-picker', require('vue-color').default);
 //
 

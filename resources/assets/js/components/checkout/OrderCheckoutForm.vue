@@ -99,6 +99,8 @@
                 </tbody>
             </table>
         </div>
+
+
         <div class="px-4 py-3 mx-auto">
             <h3 class="title">Покупатель</h3>
         </div>

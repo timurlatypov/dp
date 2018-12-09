@@ -107,6 +107,9 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 		// API 'live' toggle
 		Route::post('/live/toggle', 'ProductController@toggle')->name('api.product.live.toggle');
+
+		// API 'stock' toggle
+		Route::post('/stock/toggle', 'ProductController@stockToggle')->name('api.product.stock.toggle');
 	});
 
 	//
@@ -128,6 +131,8 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 	Route::group(['prefix' => '/orders', 'namespace' => 'Orders'], function() {
 		Route::get('/', 'OrdersController@index')->name('admin.orders.index');
 		Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
+		Route::get('/{order}/edit', 'OrdersController@edit')->name('admin.orders.edit');
+		Route::patch('/update', 'OrdersController@update')->name('admin.orders.update');
 		Route::post('/assign', 'OrdersController@assign')->name('admin.orders.assign');
 		Route::delete('/delete', 'OrdersController@destroy')->name('admin.orders.destroy');
 		Route::post('/change', 'OrdersController@change')->name('admin.orders.change.status');

@@ -67,6 +67,12 @@
                     </table>
 
 
+                    <div class="mx-auto p-4 text-center">
+                        <h4 class="title">Страницы</h4>
+                        {{ $orders->appends(request()->query())->links() }}
+                    </div>
+
+
                     <div class="modal fade" id="assignOrderManagerModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
