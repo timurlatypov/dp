@@ -32,7 +32,7 @@ host('94.142.139.93')
 	->stage('production');
 
 host('185.238.136.113')
-	->user('root')
+	->user('deployer')
 	->identityFile('~/.ssh/staging_doctorproffi_ru')
 	->set('deploy_path', '/var/www/html')
 	->set('master', 'master')
@@ -45,7 +45,7 @@ host('185.238.136.113')
 //    ->set('deploy_path', '/var/www/html/laravel');
 
 
-set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader');
+set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-scripts');
 set('keep_releases', 15);
 set('cleanup_use_sudo', true);
 
