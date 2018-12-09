@@ -7,7 +7,7 @@
 
                 <div class="card p-5">
                     <h1 class="title my-0">Детали заказа {{ $order->order_id }}</h1>
-                    <h4>Дата: {{ $order->created_at->format('d.m.Y') }}</h4>
+                    <h4>Дата: {{ $order->created_at->format('d.m.Y H:i:s') }}</h4>
 
                     <div class="row pt-3">
                         <div class="col-12">

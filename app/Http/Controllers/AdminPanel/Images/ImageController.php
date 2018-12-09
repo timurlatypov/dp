@@ -22,7 +22,6 @@ class ImageController extends Controller
 
 	public function store_product_image(Request $request)
 	{
-
 		$this->validate(request(), [
 			'image' => ['required', 'image']
 		]);

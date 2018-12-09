@@ -48,7 +48,7 @@
                                     @endif
 
                                 </td>
-                                <td class="text-muted">{{ $order->created_at->format('d.m.Y') }}</td>
+                                <td class="text-muted">{{ $order->created_at->format('d.m.Y H:i:s') }}</td>
                                 <td>{{ $order->billing_total }} &#x20BD;</td>
 
                                 <td class="td-actions text-right">
