@@ -230,8 +230,6 @@
         props: ['session_cart', 'session_cart_subtotal', 'session_coupon', 'auth_user', 'auth_user_addresses'],
         data() {
             return {
-                _ga: null,
-                _ym: null,
 
                 decimals: 2,
                 new_order_created: false,
@@ -244,6 +242,9 @@
                 coupon_apply_button_disabled: false,
                 coupon_destroy_button_disabled: true,
                 order: {
+                    _ga: null,
+                    _ym: null,
+
                     cart: [],
                     user: {
                         loyalty: 0, // Default value 0 if !Auth()->User()
@@ -445,13 +446,13 @@
             this.initStage();
 
             if(this.$cookie.get('_ga', { domain: '.doctorproffi.ru' })) {
-                this._ga = this.$cookie.get('_ga', { domain: '.doctorproffi.ru' })
-                console.log(this._ga)
+                this.order._ga = this.$cookie.get('_ga', { domain: '.doctorproffi.ru' })
+                console.log(this.order._ga)
             }
 
             if(this.$cookie.get('_ym_uid', { domain: '.doctorproffi.ru' })) {
-                this._ym = this.$cookie.get('_ym_uid' , { domain: '.doctorproffi.ru' })
-                console.log(this._ym)
+                this.order._ym = this.$cookie.get('_ym_uid' , { domain: '.doctorproffi.ru' })
+                console.log(this.order._ym)
             }
         }
     }

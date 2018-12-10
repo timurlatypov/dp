@@ -77,6 +77,14 @@ Route::group(['prefix' => '/coupon'], function() {
 	Route::post('/validate', 'CouponController@validate_coupon')->name('validate.coupon');
 });
 
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////////////////////
 //
 //          ADMIN PANEL CONTROLLER

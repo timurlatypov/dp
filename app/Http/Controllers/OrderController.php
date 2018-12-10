@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GoogleAnalytics;
 use App\Order;
 use App\Coupon;
 use App\Events\NewOrderCreated;
@@ -10,20 +11,6 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-	public function index()
-	{
-
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		//
-	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -45,6 +32,7 @@ class OrderController extends Controller
 		} else {
 			$hasCoupon = false;
 		}
+
 
 		//dd(number_format((float)$request->billing_total, 2, '.', ''));
 
@@ -70,6 +58,31 @@ class OrderController extends Controller
 			'billing_total' => $request->billing_total,
 		]);
 
+		$ga = $request->_ga;
+		if ($ga) {
+			try {
+				$ga_exists = GoogleAnalytics::where('ga', $ga)->first();
+
+				if (!$ga_exists) {
+					$ga_save = GoogleAnalytics::create([
+						'ga' =>  $ga
+					])->save();
+
+					$attach_ga = GoogleAnalytics::where('ga', $ga)->first();
+					$order->ga()->attach($attach_ga);
+				}
+
+				$ga_exists = GoogleAnalytics::where('ga', $ga)->first();
+
+				if ( !$order->ga->contains($ga_exists) ) {
+					$order->ga()->attach($ga_exists);
+				}
+
+			} catch (\Throwable $e) {
+				//Handle errors
+			}
+		}
+
 
 		$coupon = Coupon::where('coupon', $request->coupon['coupon'])->first();
 		if ( $coupon && !$coupon->reusable ) {
@@ -87,50 +100,5 @@ class OrderController extends Controller
 		request()->session()->forget('coupon');
 
 		$cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, $id)
-	{
-		//
-	}
-
-	/**
-	 * Delete the specified item from cart.
-	 *
-	 * @param  int $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 }
