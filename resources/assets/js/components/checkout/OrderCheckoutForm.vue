@@ -444,13 +444,13 @@
         mounted() {
             this.initStage();
 
-            if(this.$cookie.get('_ga')) {
-                this._ga = this.$cookie.get('_ga')
+            if(this.$cookie.get('_ga', { domain: '.doctorproffi.ru' })) {
+                this._ga = this.$cookie.get('_ga', { domain: '.doctorproffi.ru' })
                 console.log(this._ga)
             }
 
-            if(this.$cookie.get('_ym')) {
-                this._ym = this.$cookie.get('_ym')
+            if(this.$cookie.get('_ym_uid', { domain: '.doctorproffi.ru' })) {
+                this._ym = this.$cookie.get('_ym_uid' , { domain: '.doctorproffi.ru' })
                 console.log(this._ym)
             }
         }
