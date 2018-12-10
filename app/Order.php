@@ -15,6 +15,7 @@ class Order extends Model
 	protected $appends = ['order_id'];
 
 
+
 	public function getOrderCurrentStatusAttribute()
 	{
 		if ($this->order_status === 'Новый') {
@@ -53,5 +54,15 @@ class Order extends Model
 	public function manager()
 	{
 		return $this->belongsTo(User::class, 'manager_id');
+	}
+
+	public function ym()
+	{
+		return $this->belongsToMany(YandexMetrika::class, 'orders_ym', 'order_id', 'ym');
+	}
+
+	public function ga()
+	{
+		return $this->belongsToMany(GoogleAnalytics::class, 'orders_ga', 'order_id', 'ga');
 	}
 }

@@ -18,6 +18,16 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
+	public function ym()
+	{
+		return $this->belongsToMany(YandexMetrika::class, 'users_ym', 'user_id', 'ym');
+	}
+
+	public function ga()
+	{
+		return $this->belongsToMany(GoogleAnalytics::class, 'users_ym', 'user_id', 'ga');
+	}
+
     public function addresses()
     {
     	return $this->hasMany(Address::class);

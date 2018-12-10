@@ -27,7 +27,7 @@ set('branch', 'master');
 host('94.142.139.93')
 	->user('deployer')
 	->identityFile('~/.ssh/deployer')
-	->set('deploy_path', '/var/www/html')
+	->set('deploy_path', '/var/www/html/laravel')
 	->set('master', 'master')
 	->stage('production');
 

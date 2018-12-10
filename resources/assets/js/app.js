@@ -1,5 +1,8 @@
 window.Vue = require('vue');
 
+let VueCookie = require('vue-cookie');
+Vue.use(VueCookie);
+
 import ru from 'vee-validate/dist/locale/ru';
 import VeeValidate, { Validator } from 'vee-validate';
 VeeValidate.Validator.localize('ru', ru);

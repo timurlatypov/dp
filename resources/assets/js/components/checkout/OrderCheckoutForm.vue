@@ -230,6 +230,9 @@
         props: ['session_cart', 'session_cart_subtotal', 'session_coupon', 'auth_user', 'auth_user_addresses'],
         data() {
             return {
+                _ga: null,
+                _ym: null,
+
                 decimals: 2,
                 new_order_created: false,
                 payload: {
@@ -440,6 +443,16 @@
         },
         mounted() {
             this.initStage();
+
+            if(this.$cookie.get('_ga')) {
+                this._ga = this.$cookie.get('_ga')
+                console.log(this._ga)
+            }
+
+            if(this.$cookie.get('_ym')) {
+                this._ym = this.$cookie.get('_ym')
+                console.log(this._ym)
+            }
         }
     }
 </script>
