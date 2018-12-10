@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Notifications\UserRegistered;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,10 +52,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'surname' => 'required|string|max:255',
-            'phone' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:191',
+            'surname' => 'required|string|max:191',
+            'phone' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ], [
         	'name.required' => 'Введите Имя',

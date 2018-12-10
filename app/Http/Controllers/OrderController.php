@@ -7,6 +7,7 @@ use App\Order;
 use App\Coupon;
 use App\Events\NewOrderCreated;
 use App\Role;
+use App\YandexMetrika;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -59,6 +60,7 @@ class OrderController extends Controller
 		]);
 
 		$ga = $request->_ga;
+
 		if ($ga) {
 			try {
 				$ga_exists = GoogleAnalytics::where('ga', $ga)->first();
@@ -76,6 +78,32 @@ class OrderController extends Controller
 
 				if ( !$order->ga->contains($ga_exists) ) {
 					$order->ga()->attach($ga_exists);
+				}
+
+			} catch (\Throwable $e) {
+				//Handle errors
+			}
+		}
+
+		$ym = $request->_ym;
+
+		if ($ym) {
+			try {
+				$ym_exists = YandexMetrika::where('ym', $ym)->first();
+
+				if (!$ym_exists) {
+					$ym_save = YandexMetrika::create([
+						'ym' =>  $ym
+					])->save();
+
+					$attach_ym = GoogleAnalytics::where('ym', $ym)->first();
+					$order->ym()->attach($attach_ym);
+				}
+
+				$ym_exists = GoogleAnalytics::where('ym', $ym)->first();
+
+				if ( !$order->ym->contains($ym_exists) ) {
+					$order->ym()->attach($ym_exists);
 				}
 
 			} catch (\Throwable $e) {
