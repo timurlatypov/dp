@@ -96,11 +96,11 @@ class OrderController extends Controller
 						'ym' =>  $ym
 					])->save();
 
-					$attach_ym = GoogleAnalytics::where('ym', $ym)->first();
+					$attach_ym = YandexMetrika::where('ym', $ym)->first();
 					$order->ym()->attach($attach_ym);
 				}
 
-				$ym_exists = GoogleAnalytics::where('ym', $ym)->first();
+				$ym_exists = YandexMetrika::where('ym', $ym)->first();
 
 				if ( !$order->ym->contains($ym_exists) ) {
 					$order->ym()->attach($ym_exists);
