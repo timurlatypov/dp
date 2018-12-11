@@ -1,6 +1,9 @@
 @component('layouts.partials.banner._brand')
 
     @isset($brand)
+        @slot('color')
+            {{ $brand->color }}
+        @endslot
         @slot('desktop')
             {{ $brand->banner_path_desktop }}
         @endslot

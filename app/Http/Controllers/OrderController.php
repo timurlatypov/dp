@@ -120,6 +120,7 @@ class OrderController extends Controller
 		}
 
 		$customer = $request->user['email'];
+
 		$managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
 		$admins = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
 
