@@ -62,9 +62,6 @@ class AppServiceProvider extends ServiceProvider
 		    $orders->with('new_orders_count', \App\Order::countNewOrders());
 	    });
 
-	    Queue::failing(function (NewOrderCreated $event) {
-		    Log::error('Could not send notification');
-	    });
     }
 
     /**

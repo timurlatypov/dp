@@ -59,6 +59,13 @@ class OrderController extends Controller
 			'billing_total' => $request->billing_total,
 		]);
 
+		$customer = $request->user['email'];
+
+		$managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
+		$admins = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
+
+		event(new NewOrderCreated($order, $customer, $managers, $admins));
+
 		$ga = $request->_ga;
 
 		if ($ga) {
@@ -118,13 +125,6 @@ class OrderController extends Controller
 				'used' => true,
 			]);
 		}
-
-		$customer = $request->user['email'];
-
-		$managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
-		$admins = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
-
-		event(new NewOrderCreated($order, $customer, $managers, $admins));
 
 		request()->session()->forget('coupon');
 
