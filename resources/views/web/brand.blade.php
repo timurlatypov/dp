@@ -12,7 +12,7 @@
 @endpush
 
 @section('banner')
-    @include('layouts.partials.banner.banner')
+    @include('layouts.partials.banner.brand')
 @endsection
 
 @section('content')

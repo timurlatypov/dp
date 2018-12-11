@@ -447,12 +447,10 @@
 
             if(this.$cookie.get('_ga', { domain: '.doctorproffi.ru' })) {
                 this.order._ga = this.$cookie.get('_ga', { domain: '.doctorproffi.ru' })
-                console.log(this.order._ga)
             }
 
             if(this.$cookie.get('_ym_uid', { domain: '.doctorproffi.ru' })) {
                 this.order._ym = this.$cookie.get('_ym_uid' , { domain: '.doctorproffi.ru' })
-                console.log(this.order._ym)
             }
         }
     }
