@@ -37,9 +37,48 @@
                             <br><small class="text-uppercase">{{ product.options.brand }}</small>
                         </td>
 
-                        <td class="font-weight-bold">{{ product.price }}&nbsp;&#x20BD;</td>
-                        <td class="text-center font-weight-bold text-danger">-{{ product.biggest_discount }}%</td>
-                        <td class="font-weight-bold">{{ product.discounted_price.toFixed(decimals) }}&nbsp;&#x20BD;</td>
+                        <!--<td class="font-weight-bold">-->
+                            <!--{{ product.price }}&nbsp;&#x20BD;-->
+                        <!--</td>-->
+
+                        <td class="text-center font-weight-bold">
+                            <div class="input-group" style="max-width: 80px;">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text pl-0 pr-1">
+                                      <i class="fa fa-ruble-sign fa-sm"></i>
+                                  </span>
+                                </div>
+                                <input
+                                        class="form-control font-weight-bold"
+                                        v-model="order.cart[index].price"
+                                        type="number"
+                                        min="0"
+                                        oninput="validity.valid||(value='');">
+                            </div>
+                        </td>
+
+                        <td class="text-center font-weight-bold">
+                            <div class="input-group" style="max-width: 60px;">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text pl-0 pr-1">
+                                      <i class="fa fa-percentage"></i>
+                                  </span>
+                                </div>
+                                <input
+                                        class="form-control font-weight-bold"
+                                        v-model="order.cart[index].biggest_discount"
+                                        type="number"
+                                        min="0"
+                                        oninput="validity.valid||(value='');">
+                            </div>
+                        </td>
+
+                        <td class="td-actions font-weight-bold">
+                            <button type="button" class="btn btn-danger btn-simple mr-2" @click.prevent="refreshDiscountedPrice(index)">
+                                <i class="material-icons">refresh</i>
+                            </button>
+                            {{ product.discounted_price.toFixed(decimals) }}&nbsp;&#x20BD;
+                        </td>
 
                         <td class="td-actions text-center">
                             <ul role="navigation" class="pagination my-auto mx-auto">
@@ -79,7 +118,7 @@
 </template>
 
 <script>
-    import { productautocomplete } from "../../../helpers/autocomplete"
+    import {productautocomplete} from "../../../helpers/autocomplete"
 
     export default {
         props: {
@@ -109,7 +148,6 @@
                 this.order.cart[index].subtotal = this.calcSubtotal(discounted_price, this.order.cart[index].qty)
                 this.calcTotal();
             },
-
             removeItem(index, discounted_price, qty) {
                 if (qty === 1) {
                     return;
@@ -125,6 +163,7 @@
                 this.order.cart.splice(index, 1);
                 this.calcTotal();
             },
+
             // Checkout form logic
             defineBiggestDiscount(productDiscount, loyaltyDiscount, couponDiscount) {
                 return Math.max(productDiscount, loyaltyDiscount, couponDiscount);
@@ -134,9 +173,17 @@
             discountedPrice(price, discount){
                 return parseFloat((Math.round( (Number(price) - (Number(price) * (discount/100))) * 100 ) / 100).toFixed(2));
             },
+
+            refreshDiscountedPrice(index) {
+                this.order.cart[index].discounted_price = parseFloat((Math.round( (Number(this.order.cart[index].price) - (Number(this.order.cart[index].price) * (this.order.cart[index].biggest_discount/100))) * 100 ) / 100).toFixed(2));
+                this.order.cart[index].subtotal = this.calcSubtotal(this.order.cart[index].discounted_price, this.order.cart[index].qty);
+                this.calcTotal();
+            },
+
             calcSubtotal(discounted_price, qty) {
                 return parseFloat((discounted_price * qty).toFixed(2));
             },
+
             calcTotal() {
                 let that = this;
                 this.order.billing_total = 0;
