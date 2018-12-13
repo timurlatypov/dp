@@ -1,33 +1,6 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        {{--<div class="carousel-item active" style="background-color: #000000">--}}
-            {{--<a href="https://doctorproffi.ru/discounts" class="banner-mobile h-100">--}}
-                {{--<div class="row h-100">--}}
-                    {{--<div class="col-12 h-100 align-self-center ">--}}
-                        {{--<div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/mobile/mobile-black-friday.jpg')">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</a>--}}
-            {{--<a href="https://doctorproffi.ru/discounts" class="banner-tablet h-100">--}}
-                {{--<div class="row h-100">--}}
-                    {{--<div class="col-12 h-100 align-self-center ">--}}
-                        {{--<div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/tablet/tablet-black-friday.jpg')">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</a>--}}
-            {{--<a href="https://doctorproffi.ru/discounts" class="banner-desktop h-100">--}}
-                {{--<div class="container-carousel h-100 px-0">--}}
-                    {{--<div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/desktop/desktop-black-friday.jpg')">--}}
-                        {{--<div class="col-12 align-self-center px-5">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</a>--}}
-        {{--</div>--}}
-
         <div class="carousel-item active" style="background-color: #dbe3ee">
             <a href="https://doctorproffi.ru/register" class="banner-mobile h-100">
                 <div class="row h-100">
@@ -82,6 +55,148 @@
                 </div>
             </a>
         </div>
+
+        <div class="carousel-item" style="background-color: #f6f4f5">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-corpolibero-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-corpolibero-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-corpolibero-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #e3e3e3">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #e8e6eb">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="carousel-item" style="background-color: #e5e5e5">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-officina-pelle-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-officina-pelle-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-officina-pelle-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #d7dcd6">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
 
 
     </div>
