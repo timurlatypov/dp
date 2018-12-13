@@ -4,8 +4,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-
-                <div class="card p-5">
+                <div class="text-left mb-2 mt-2">
+                    <a href="{{ url()->previous() }}" class="btn btn-sm" >
+                        <i class="material-icons">arrow_back</i>
+                        Назад к заказам
+                    </a>
+                </div>
+                <div class="card mt-1 mb-3 p-5">
                     <h1 class="title my-0">Детали заказа {{ $order->order_id }}</h1>
                     <h4>Дата: {{ $order->created_at->format('d.m.Y H:i:s') }}</h4>
 
@@ -55,17 +60,19 @@
                             </tr>
                         @endforeach
                             <tr>
-                                <td colspan="5" rowspan="10">
-                                <td><h4 class="title">Итого</h4></td>
-                                <td>
-                                    <h4 class="title">{{ $order->billing_total }} &#x20BD;</h4>
-                                </td>
+                                <td colspan="7" class="text-right" rowspan="10">
+                                <h4 class="title mt-2 mb-0">Сумма: {{ number_format((float)$order->billing_subtotal, 2, '.', '') ?? 0 }} &#x20BD;</h4>
+                                <h4 class="title mt-2 mb-0">Доставка: {{ number_format((float)$order->billing_delivery, 2, '.', '') ?? 0 }} &#x20BD;</h4>
+                                <h4 class="title mt-2 mb-0">Итого: {{ number_format((float)$order->billing_total, 2, '.', '') }} &#x20BD;</h4>
                             </tr>
                         </tbody>
                     </table>
 
                     <div class="text-right">
-                        <a href="/admin-panel/orders/{{ $order->id }}/edit" class="btn btn-danger" >Изменить заказ</a>
+                        <a href="/admin-panel/orders/{{ $order->id }}/edit" class="btn btn-danger">
+                            <i class="material-icons">edit</i>
+                            Изменить заказ
+                        </a>
                     </div>
                 </div>
             </div>

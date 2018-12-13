@@ -30,3 +30,7 @@
 .bg-darkred {
   background-color: darkred;
 }
+
+.form-control[readonly] {
+  background-color: white;
+}

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card p-4">
+                <div class="card mt-3 mb-3 p-5">
                     <table class="table">
                         <thead>
                         <tr>

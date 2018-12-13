@@ -103,15 +103,77 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="8" class="text-right" style="vertical-align: top">
-                            <h3 class="title mt-4 mb-0">Итого: <nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;&#x20BD;</nobr></h3>
-                            <small class="float-none">Без учёта стоимости доставки</small>
-                            <br>
-                            <button class="btn btn-danger mt-3" @click.prevent="updateOrder">Сохранить заказ</button>
+                        <td colspan="8" class="td-number font-weight-bold" style="vertical-align: top">
+
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <h4 class="title mt-4 mb-0">Сумма:</h4>
+
+                                    <div class="input-group" style="max-width: 120px;">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text pl-0 pr-1">
+                                              <i class="fa fa-ruble-sign fa-sm"></i>
+                                          </span>
+                                        </div>
+                                        <input
+                                                style="padding-left: 6px;"
+                                                class="form-control font-weight-bold"
+                                                :value="order.billing_subtotal"
+                                                type="number"
+                                                min="0"
+                                                readonly>
+                                    </div>
+
+                                    <small class="float-none text-danger">Без учёта стоимости доставки</small>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <h4 class="title mt-4 mb-0">Доставка:</h4>
+                                    <div class="input-group" style="max-width: 120px;">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text pl-0 pr-1">
+                                              <i class="fa fa-ruble-sign fa-sm"></i>
+                                          </span>
+                                        </div>
+                                        <input
+                                                style="padding-left: 6px;"
+                                                class="form-control font-weight-bold"
+                                                v-model="order.billing_delivery"
+                                                type="number"
+                                                min="0"
+                                                @change="calcTotal"
+                                                >
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <h4 class="title mt-4 mb-0">Итого:</h4>
+                                    <div class="input-group" style="max-width: 120px;">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text pl-0 pr-1">
+                                              <i class="fa fa-ruble-sign fa-sm"></i>
+                                          </span>
+                                        </div>
+                                        <input
+                                                style="padding-left: 6px;"
+                                                class="form-control font-weight-bold"
+                                                :value="order.billing_total"
+                                                type="number"
+                                                min="0"
+                                                readonly>
+                                    </div>
+                                    <small class="float-none text-success">Включая стоимости доставки</small>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+
+            <div class="text-right">
+                <a href="#" class="btn btn-danger mt-2 mb-2" @click.prevent="updateOrder">
+                    <i class="material-icons">save</i>
+                    Сохранить изменения
+                </a>
+            </div>
 
         </div>
     </div>
@@ -123,7 +185,10 @@
     export default {
         props: {
             details: Array,
-            id: Number
+            id: Number,
+            billing_subtotal: Number,
+            billing_delivery: Number,
+            billing_total: Number,
         },
         data() {
             return {
@@ -131,11 +196,12 @@
 
                 order: {
                     cart: [],
+                    billing_subtotal: null,
+                    billing_delivery: null,
                     billing_total: 0,
                 }
             }
         },
-
         methods: {
 
             // Checkout actions
@@ -186,10 +252,11 @@
 
             calcTotal() {
                 let that = this;
-                this.order.billing_total = 0;
+                this.order.billing_subtotal = 0;
                 this.order.cart.forEach( function (product, index) {
-                    that.order.billing_total += Number(product.subtotal);
+                    that.order.billing_subtotal += Number(product.subtotal);
                 });
+                this.order.billing_total = Number(this.order.billing_subtotal) + Number(this.order.billing_delivery)
             },
 
             refreshStage(products) {
@@ -246,7 +313,9 @@
                 let payload = {
                     id: this.id,
                     details: JSON.stringify(this.order.cart),
-                    billing_total: this.order.billing_total
+                    billing_total: this.order.billing_total,
+                    billing_delivery: this.order.billing_delivery,
+                    billing_subtotal: this.order.billing_subtotal,
                 }
                 await axios.patch('/admin-panel/orders/update', payload)
                     .then((response) => {
@@ -261,6 +330,9 @@
         mounted() {
 
             this.order.cart = this.details
+            this.order.billing_delivery = this.billing_delivery
+            this.order.billing_total = this.billing_total
+            this.order.billing_subtotal = this.billing_subtotal
 
             productautocomplete('#selection', {
                 hitsPerPage: 10

@@ -56,7 +56,10 @@ class OrderController extends Controller
 			'billing_entrance' => $request->address['billing_entrance'],
 			'billing_floor' => $request->address['billing_floor'],
 			'billing_comment' => $request->address['billing_comment'],
-			'billing_total' => $request->billing_total,
+
+			'billing_subtotal' => $request->billing_total,
+			'billing_delivery' => 0,
+			'billing_total' => $request->billing_total
 		]);
 
 		$customer = $request->user['email'];

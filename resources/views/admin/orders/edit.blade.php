@@ -4,8 +4,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-
-                <div class="card p-5">
+                <div class="text-left mb-2 mt-2">
+                    <a href="{{ url()->previous() }}" class="btn btn-sm" >
+                        <i class="material-icons">arrow_back</i>
+                        Назад
+                    </a>
+                </div>
+                <div class="card mt-1 mb-3 p-5">
                     <h1 class="title my-0">Детали заказа {{ $order->order_id }}</h1>
                     <h4>Дата: {{ $order->created_at->format('d.m.Y H:i:s') }}</h4>
 
@@ -26,49 +31,8 @@
                         </div>
                     </div>
 
+                    <order-edit-form :details="{{ json_encode($details) }}" :id="{{ $order->id }}" :billing_subtotal="{{ $order->billing_subtotal ?? 0 }}" :billing_delivery="{{ $order->billing_delivery ?? 0 }}" :billing_total="{{ $order->billing_total }}"></order-edit-form>
 
-
-                    <order-edit-form :details="{{ json_encode($details) }}" :id="{{ $order->id }}"></order-edit-form>
-
-                    {{--<table class="table table-shopping">--}}
-                        {{--<thead>--}}
-                        {{--<tr>--}}
-                            {{--<th style="width: 80px"></th>--}}
-                            {{--<th class="w-25">Товары</th>--}}
-                            {{--<th class="th-description">Цена</th>--}}
-                            {{--<th class="th-description">Скидка</th>--}}
-                            {{--<th class="th-description">Цена со скидкой</th>--}}
-                            {{--<th class="th-description">Кол-во</th>--}}
-                            {{--<th class="th-description">Сумма</th>--}}
-                            {{--<th class="text-center" style="width: 60px;"></th>--}}
-                        {{--</tr>--}}
-                        {{--</thead>--}}
-                        {{--<tbody>--}}
-
-                        {{--@foreach($details as $product)--}}
-                            {{--<tr class="font-weight-bold">--}}
-                                {{--<td><div class="img-container"><img src="/storage/products/thumb/{{ $product->options->image }}"></div></td>--}}
-                                {{--<td>--}}
-                                    {{--<b class="text-primary">{{ $product->name }}</b><br>--}}
-                                    {{--@isset($product->options->title_rus){{ $product->options->title_rus }}@endisset<br>--}}
-                                    {{--<small class="text-uppercase">{{ $product->options->brand }}</small>--}}
-                                {{--</td>--}}
-                                {{--<td>{{ $product->price }} &#x20BD;</td>--}}
-                                {{--<td>@isset($product->biggest_discount)-{{ $product->biggest_discount }}%@endisset</td>--}}
-                                {{--<td>@isset($product->discounted_price){{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;@endisset</td>--}}
-                                {{--<td>{{ $product->qty }} шт.</td>--}}
-                                {{--<td>{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>--}}
-                                {{--<td class="td-actions text-center"></td>--}}
-                            {{--</tr>--}}
-                        {{--@endforeach--}}
-                        {{--<tr>--}}
-                            {{--<td colspan="5" rowspan="10">--}}
-                            {{--<td><h4 class="title">Итого</h4></td>--}}
-                            {{--<td><h4 class="title">{{ $order->billing_total }} &#x20BD;</h4></td>--}}
-                            {{--<td></td>--}}
-                        {{--</tr>--}}
-                        {{--</tbody>--}}
-                    {{--</table>--}}
                 </div>
             </div>
         </div>

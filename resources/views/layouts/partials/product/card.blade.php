@@ -59,7 +59,11 @@
     @endslot
 
     @slot('add_button')
-        <add-button endpoint="{{ route('add.product.to.cart') }}" :model="{{ $product }}" :price_to_show="{{ $product->definePriceToShow() }}" styling="btn-primary"></add-button>
+        @if ($product->stock)
+            <add-button endpoint="{{ route('add.product.to.cart') }}" :model="{{ $product }}" :price_to_show="{{ $product->definePriceToShow() }}" styling="btn-primary"></add-button>
+        @else
+            <button class="btn btn-sm font-weight-bold" disabled>Нет в наличии</button>
+        @endif
     @endslot
 
 @endcomponent

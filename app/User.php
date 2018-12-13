@@ -45,7 +45,7 @@ class User extends Authenticatable
 
 	public function totalSum()
 	{
-		return array_sum($this->orders->where('order_status', 'Доставлен')->pluck('billing_total')->toArray());
+		return array_sum($this->orders->where('order_status', 'Доставлен')->pluck('billing_subtotal')->toArray());
 	}
 
 	public function getLoyaltyAttribute()

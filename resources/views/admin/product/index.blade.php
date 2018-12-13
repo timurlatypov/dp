@@ -4,8 +4,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
 
+                <div class="card my-3 p-3">
+                    <h4 class="title mt-2 mb-2">Фильтры</h4>
+                    <div class="d-flex flex-wrap">
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 1 ])) }}" class="btn btn-sm {{ request('brand') === '1' ? 'btn-primary' : 'btn-secondary' }}">Mene & Moy</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 2 ])) }}" class="btn btn-sm {{ request('brand') === '2' ? 'btn-primary' : 'btn-secondary' }}">Corpolibero</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 3 ])) }}" class="btn btn-sm {{ request('brand') === '3' ? 'btn-primary' : 'btn-secondary' }}">Professional Solutions</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 5 ])) }}" class="btn btn-sm {{ request('brand') === '5' ? 'btn-primary' : 'btn-secondary' }}">Skin Renu</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 7 ])) }}" class="btn btn-sm {{ request('brand') === '7' ? 'btn-primary' : 'btn-secondary' }}">Officina Pelle</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 8 ])) }}" class="btn btn-sm {{ request('brand') === '8' ? 'btn-primary' : 'btn-secondary' }}">Evolash</a>
+                    </div>
+                </div>
+
+                <div class="card my-3 p-3">
+                    <h4 class="title mt-2 mb-2">Продукты</h4>
                     <table class="table">
                         <thead>
                         <tr>

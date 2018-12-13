@@ -9,9 +9,12 @@
             <thead>
             <tr>
                 <th>Номер</th>
-                <th>Дата</th>
-                <th class="th-description">Сумма заказа</th>
                 <th class="th-description">Статус</th>
+                <th>Дата</th>
+                <th class="th-description">Сумма</th>
+                <th class="th-description">Доставка</th>
+                <th class="th-description">Итого</th>
+                <th class="th-description">Оплатить онлайн</th>
             </tr>
             </thead>
 
@@ -19,9 +22,12 @@
             @foreach ($orders as $order)
                 <tr>
                     <td>{{ $order->order_id }}</td>
-                    <td>{{ $order->created_at->format('d M Y') }}</td>
-                    <td>{{ $order->billing_total }} &#x20BD;</td>
                     <td>{!! $order->order_current_status !!}</td>
+                    <td>{{ $order->created_at->format('d M Y') }}</td>
+                    <td>{{ $order->billing_subtotal ?? $order->billing_total }} &#x20BD;</td>
+                    <td>{{ $order->billing_delivery ?? number_format((float) 0, 2, '.', '') }} &#x20BD;</td>
+                    <td>{{ $order->billing_total }} &#x20BD;</td>
+                    <td></td>
                 </tr>
 
             @endforeach

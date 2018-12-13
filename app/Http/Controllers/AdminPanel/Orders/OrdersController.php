@@ -66,7 +66,9 @@ class OrdersController extends Controller
 
 		$order->update([
 			'order_details' => $request->details,
-			'billing_total' => $request->billing_total
+			'billing_total' => $request->billing_total,
+			'billing_delivery' => $request->billing_delivery,
+			'billing_subtotal' => $request->billing_subtotal,
 		]);
 
 		return response(['data' => 'Успешно'], 200);

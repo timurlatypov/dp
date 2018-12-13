@@ -61,7 +61,12 @@
                                                     <h3 class="title my-0 text-success pb-3 pt-0">{{ $product->definePriceToShow() }} <i class="fas fa-ruble-sign fa-sm"></i></h3>
                                                 @endif
                                                 <div class="pt-3">
-                                                    <add-button endpoint="{{ route('add.product.to.cart') }}" :model="{{ $product }}" :price_to_show="{{ $product->definePriceToShow() }}" styling="btn-primary"></add-button>
+
+                                                    @if ($product->stock)
+                                                        <add-button endpoint="{{ route('add.product.to.cart') }}" :model="{{ $product }}" :price_to_show="{{ $product->definePriceToShow() }}" styling="btn-primary"></add-button>
+                                                    @else
+                                                        <button class="btn btn-sm font-weight-bold" disabled>Нет в наличии</button>
+                                                    @endif
 
                                                     <save-bookmark-button
                                                         endpoint="{{ route('save.product.to.bookmark', $product) }}"
