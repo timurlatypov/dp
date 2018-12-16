@@ -21,9 +21,9 @@
                         <tbody>
 
                         @foreach($orders as $key => $order)
-                            <tr style="@if($order->order_status === 'Новый')background-color: rgba(0,255,0,0.1)@endif">
+                            <tr style="@if($order->order_status === 'Новый')background-color: rgba(0,255,0,0.1)@elseif($order->order_status === 'В работе')background-color: rgba(255,255,0,0.1)@endif">
                                 <td>
-                                    <a href="#" class="{{ $order->order_status === 'Новый' ? 'text-success' : 'text-muted' }}">{{ $order->order_id }}</a>
+                                    <a href="{{ route('admin.orders.show', $order) }}" class="text-muted font-weight-bold">{{ $order->order_id }}</a>
                                 </td>
                                 <td>
                                     <span class="{{ $order->manager_id === auth()->user()->id ? 'font-weight-bold' : 'text-muted' }}">{{ $order->billing_name }} {{ $order->billing_surname }}</span>

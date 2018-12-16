@@ -190,7 +190,6 @@
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">
-
                         </div>
                     </div>
                 </div>
