@@ -20,9 +20,14 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
-	public function toSearchableArray ()
+	public function searchableAs()
 	{
-		$properties = $this->only('name', 'surname', 'phone', 'email')->toArray();
+		return config('scout.prefix').'users';
+	}
+
+	public function toSearchableArray()
+	{
+		$properties = $this->toArray();
 		return $properties;
 	}
 

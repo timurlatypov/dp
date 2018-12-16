@@ -22,7 +22,12 @@ class Product extends Model
 		return 'slug';
 	}
 
-	public function toSearchableArray ()
+	public function searchableAs()
+	{
+		return config('scout.prefix').'products';
+	}
+
+	public function toSearchableArray()
 	{
 		$properties = $this->toArray();
 		$properties['brand'] = $this->brand->only('name', 'slug');
@@ -39,8 +44,6 @@ class Product extends Model
 	{
 		return round($this->price * (($this->discount - 100) / -100));
 	}
-
-
 
     public function brand()
     {

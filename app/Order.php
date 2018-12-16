@@ -15,7 +15,6 @@ class Order extends Model
 	protected $appends = ['order_id'];
 
 
-
 	public function getOrderCurrentStatusAttribute()
 	{
 		if ($this->order_status === 'Новый') {
