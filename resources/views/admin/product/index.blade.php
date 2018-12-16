@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card my-3 p-3">
+                <div class="card my-3 p-4">
                     <h4 class="title mt-2 mb-2">Фильтры</h4>
                     <div class="d-flex flex-wrap">
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 1 ])) }}" class="btn btn-sm {{ request('brand') === '1' ? 'btn-primary' : 'btn-secondary' }}">Mene & Moy</a>
@@ -17,8 +17,8 @@
                     </div>
                 </div>
 
-                <div class="card my-3 p-3">
-                    <h4 class="title mt-2 mb-2">Продукты</h4>
+                <div class="card mt-3 mb-3 p-4">
+                    <h4 class="title mt-2 pb-2 mb-2">Продукты</h4>
                     <table class="table">
                         <thead>
                         <tr>

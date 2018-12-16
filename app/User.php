@@ -3,12 +3,14 @@
 namespace App;
 
 use App\Permissions\HasPermissionsTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasPermissionsTrait;
+    use Notifiable, HasPermissionsTrait, SoftDeletes, Searchable;
 
 	protected $loyalty_discount = 0;
 
@@ -17,6 +19,12 @@ class User extends Authenticatable
     protected $fillable = ['name', 'surname', 'phone', 'email', 'password'];
 
     protected $hidden = ['password', 'remember_token'];
+
+	public function toSearchableArray ()
+	{
+		$properties = $this->only('name', 'surname', 'phone', 'email')->toArray();
+		return $properties;
+	}
 
 	public function ym()
 	{

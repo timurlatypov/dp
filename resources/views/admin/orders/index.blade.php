@@ -5,7 +5,18 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card mt-3 mb-3 p-5">
+                <div class="card my-3 p-4">
+                    <h4 class="title mt-2 mb-2">Настройки</h4>
+                    <div class="d-flex flex-wrap">
+                        <a href="{{ route('admin.orders.create') }}" class="btn btn-sm btn-success font-weight-bold">
+                            <i class="material-icons">add</i>
+                            Создать заказ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card mt-3 mb-3 p-4">
+                    <h4 class="title mt-2 pb-2 mb-2">Заказы</h4>
                     <table class="table">
                         <thead>
                         <tr>

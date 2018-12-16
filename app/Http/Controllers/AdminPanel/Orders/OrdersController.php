@@ -21,6 +21,11 @@ class OrdersController extends Controller
 		return view('admin.orders.index', compact('orders'));
 	}
 
+	public function create()
+	{
+		return view('admin.orders.create');
+	}
+
 
 
 

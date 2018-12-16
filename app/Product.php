@@ -98,7 +98,6 @@ class Product extends Model
 		return $this->categories()->where('slug', 'new-products')->first();
 	}
 
-
 	/**
 	 *
 	 * FILTERS

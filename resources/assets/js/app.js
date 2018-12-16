@@ -74,6 +74,7 @@ Vue.component('callback', require('./components/Callback.vue'));
 
 
 Vue.component('order-edit-form', require('./components/admin-panel/order/OrderEditForm.vue'));
+Vue.component('order-create-form', require('./components/admin-panel/order/OrderCreateForm.vue'));
 
 // Vue.component('compact-picker', require('vue-color').default);
 //
