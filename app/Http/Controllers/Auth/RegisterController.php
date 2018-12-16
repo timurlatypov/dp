@@ -65,7 +65,6 @@ class RegisterController extends Controller
 	        'password.required' => 'Укажите пароль',
 	        'password.confirmed' => 'Пароли не совпадают',
 	        'password.min' => 'Не менее 6 символов',
-
         ]);
     }
 

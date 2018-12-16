@@ -26,6 +26,45 @@ class OrdersController extends Controller
 		return view('admin.orders.create');
 	}
 
+	public function store(Request $request)
+	{
+		if ( $request->user_id ) {
+			$user_id = $request->user_id;
+		} else {
+			$user_id = null;
+		}
+
+		$order = Order::create([
+			'user_id' => $user_id,
+			'order_details' => $request->details,
+			'order_status' => 'Новый',
+			'coupon' => 0,
+			'coupon_details' => null,
+
+			'billing_name' => $request->user['name'],
+			'billing_surname' => $request->user['surname'],
+			'billing_phone' => $request->user['phone'],
+			'billing_email' => $request->user['email'],
+			'billing_city' => $request->address['billing_city'],
+			'billing_street' => $request->address['billing_street'],
+			'billing_house' => $request->address['billing_house'],
+			'billing_apartment' => $request->address['billing_apartment'],
+			'billing_entrance' => $request->address['billing_entrance'],
+			'billing_floor' => $request->address['billing_floor'],
+			'billing_comment' => $request->address['billing_comment'],
+
+			'billing_subtotal' => $request->billing_total,
+			'billing_delivery' => $request->billing_delivery,
+			'billing_total' => $request->billing_total
+		]);
+
+		return response()->json([
+			'success' => [
+				'message' => [ 'Заказ создан' ],
+			]
+		], 200);
+	}
+
 
 
 
@@ -51,11 +90,6 @@ class OrdersController extends Controller
 		return view('admin.orders.show', compact(['order','details','coupon']));
 	}
 
-
-
-
-
-
 	public function edit(Order $order)
 	{
 		$details = json_decode($order->order_details);
@@ -79,12 +113,6 @@ class OrdersController extends Controller
 		return response(['data' => 'Успешно'], 200);
 	}
 
-
-
-
-
-
-
 	public function destroy(Request $request)
 	{
 		$order = Order::find($request->id);
@@ -93,7 +121,6 @@ class OrdersController extends Controller
 
 		return redirect()->back()->with('flash', 'Заказ '.$order->order_id.' удалён');
 	}
-
 
 	public function change(Request $request)
 	{

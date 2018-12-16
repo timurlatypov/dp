@@ -139,6 +139,7 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 	Route::group(['prefix' => '/orders', 'namespace' => 'Orders'], function() {
 		Route::get('/', 'OrdersController@index')->name('admin.orders.index');
 		Route::get('/create', 'OrdersController@create')->name('admin.orders.create');
+		Route::post('/store', 'OrdersController@store')->name('admin.orders.store');
 		Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
 		Route::get('/{order}/edit', 'OrdersController@edit')->name('admin.orders.edit');
 		Route::patch('/update', 'OrdersController@update')->name('admin.orders.update');

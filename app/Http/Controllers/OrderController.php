@@ -70,7 +70,6 @@ class OrderController extends Controller
 		event(new NewOrderCreated($order, $customer, $managers, $admins));
 
 		$ga = $request->_ga;
-
 		if ($ga) {
 			try {
 				$ga_exists = GoogleAnalytics::where('ga', $ga)->first();
@@ -96,7 +95,6 @@ class OrderController extends Controller
 		}
 
 		$ym = $request->_ym;
-
 		if ($ym) {
 			try {
 				$ym_exists = YandexMetrika::where('ym', $ym)->first();
@@ -133,4 +131,5 @@ class OrderController extends Controller
 
 		$cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
 	}
+
 }

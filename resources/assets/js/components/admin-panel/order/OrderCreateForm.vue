@@ -284,7 +284,7 @@
             </table>
         </div>
         <div class="text-right">
-            <a href="#" class="btn btn-success font-weight-bold" @click.prevent="validateBeforeSubmit">Создать заказ</a>
+            <a href="#" class="btn btn-success font-weight-bold" @click.prevent="createOrder">Создать заказ</a>
         </div>
     </div>
 </template>
@@ -331,8 +331,6 @@
             setFocus(el) {
                 document.getElementById(el).focus();
             },
-
-
             addItem(index, discounted_price, qty) {
                 if (qty >= 10) {
                     return;
@@ -342,7 +340,6 @@
                 this.order.cart[index].subtotal = this.calcSubtotal(discounted_price, this.order.cart[index].qty)
                 this.calcTotal();
             },
-
             removeItem(index, discounted_price, qty) {
                 if (qty === 1) {
                     return;
@@ -358,7 +355,6 @@
                 this.order.cart.splice(index, 1);
                 this.calcTotal();
             },
-
             // Checkout form logic
             defineBiggestDiscount(productDiscount, loyaltyDiscount, couponDiscount) {
                 return Math.max(productDiscount, loyaltyDiscount, couponDiscount);
@@ -426,18 +422,20 @@
                 this.calcTotal()
             },
 
-            async updateOrder() {
+            async createOrder() {
                 let payload = {
-                    id: this.id,
+                    user_id: null,
+                    user: this.order.user,
+                    address: this.order.address,
                     details: JSON.stringify(this.order.cart),
                     billing_total: this.order.billing_total,
                     billing_delivery: this.order.billing_delivery,
                     billing_subtotal: this.order.billing_subtotal,
                 }
-                await axios.patch('/admin-panel/orders/update', payload)
+                await axios.post('/admin-panel/orders/store', payload)
                     .then((response) => {
                         console.log(response)
-                        window.location = `/admin-panel/orders/${this.id}/show`;
+                        window.location = `/admin-panel/orders`;
                     })
                     .catch((error) => {
                         console.log(error)
