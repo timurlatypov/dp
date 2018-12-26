@@ -14,7 +14,7 @@
                 <th class="th-description">Сумма</th>
                 <th class="th-description">Доставка</th>
                 <th class="th-description">Итого</th>
-                <th class="th-description">Оплатить онлайн</th>
+                <th>Оплатить онлайн</th>
             </tr>
             </thead>
 
@@ -27,9 +27,18 @@
                     <td>{{ $order->billing_subtotal ?? $order->billing_total }} &#x20BD;</td>
                     <td>{{ $order->billing_delivery ?? number_format((float) 0, 2, '.', '') }} &#x20BD;</td>
                     <td>{{ $order->billing_total }} &#x20BD;</td>
-                    <td></td>
+                    <td>@if(count($order->payments))
+                            @foreach($order->payments as $payment)
+                                @if($payment->status === 'В ожидании')
+                                    <a href="{{ $payment->payment_link }}" class="btn btn-success btn-sm my-0">Оплатить онлайн</a>
+                                @elseif($payment->status === 'Оплачен')
+                                    <span class="font-weight-bold text-success">Заказ оплачен онлайн</span>
+                                @else
+                                    <span class="font-weight-bold text-muted">Нет информации</span>
+                                @endif
+                            @endforeach
+                        @else @endif</td>
                 </tr>
-
             @endforeach
             </tbody>
         </table>

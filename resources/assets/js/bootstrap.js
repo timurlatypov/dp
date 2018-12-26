@@ -50,6 +50,10 @@ window.flash = function (message) {
     window.events.$emit('flash', message);
 }
 
+window.flash = function (message) {
+    window.events.$emit('flash-error', message);
+}
+
 window.cartUpdate = function () {
     window.events.$emit('cartUpdate');
 }

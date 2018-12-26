@@ -2,6 +2,8 @@
 
 Auth::routes();
 
+
+
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
@@ -11,6 +13,13 @@ Route::get('/confidentiality', 'HomeController@confidentiality')->name('confiden
 Route::get('/delivery', 'HomeController@delivery')->name('delivery');
 Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
 Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
+
+// Online payment routes for SUCCESS and FAILURE statuses
+Route::get('/payment-success', 'OrderController@success')->name('payment.success');
+Route::get('/success', 'HomeController@success')->name('page.success');
+
+Route::get('/payment-failure', 'OrderController@failure')->name('payment.failure');
+Route::get('/failure', 'HomeController@failure')->name('page.failure');
 
 
 Route::group(['prefix' => '/category'], function() {
@@ -142,6 +151,15 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::post('/store', 'OrdersController@store')->name('admin.orders.store');
 		Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
 		Route::get('/{order}/edit', 'OrdersController@edit')->name('admin.orders.edit');
+
+
+		Route::get('/{order}/register', 'OrdersController@registerOrder')->name('admin.orders.registerOrder');
+		Route::get('/{id}/reverse', 'OrdersController@reverseOrder')->name('admin.orders.reverseOrder');
+		Route::get('/{id}/delete', 'OrdersController@deleteLink')->name('admin.orders.deleteLink');
+		Route::get('/{id}/status', 'OrdersController@orderStatus')->name('admin.orders.orderStatus');
+		Route::get('/{order}/send-link', 'OrdersController@sendLink')->name('admin.orders.sendLink');
+
+
 		Route::patch('/update', 'OrdersController@update')->name('admin.orders.update');
 		Route::post('/assign', 'OrdersController@assign')->name('admin.orders.assign');
 		Route::delete('/delete', 'OrdersController@destroy')->name('admin.orders.destroy');

@@ -7,8 +7,12 @@ use App\Order;
 use App\Coupon;
 use App\Events\NewOrderCreated;
 use App\Role;
+use App\Sberbank;
 use App\YandexMetrika;
 use Illuminate\Http\Request;
+use Voronkovich\SberbankAcquiring\Client;
+use Voronkovich\SberbankAcquiring\HttpClient\GuzzleAdapter;
+use GuzzleHttp\Client as Guzzle;
 
 class OrderController extends Controller
 {
@@ -132,4 +136,24 @@ class OrderController extends Controller
 		$cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
 	}
 
+
+
+	public function success(Request $request)
+	{
+		if($request->query('orderId'))
+		{
+			$id = $request->query('orderId');
+			$check_order_payment = Sberbank::where('payment_id', $id)->first();
+
+			if ($check_order_payment->status === 'В ожидании') {
+				$check_order_payment->update([
+					'status' => 'Оплачен'
+				]);
+				return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
+			}
+			abort(404);
+		}
+
+		abort(404);
+	}
 }

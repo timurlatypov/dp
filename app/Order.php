@@ -14,7 +14,6 @@ class Order extends Model
 
 	protected $appends = ['order_id'];
 
-
 	public function getOrderCurrentStatusAttribute()
 	{
 		if ($this->order_status === 'Новый') {
@@ -63,5 +62,10 @@ class Order extends Model
 	public function ga()
 	{
 		return $this->belongsToMany(GoogleAnalytics::class, 'orders_ga', 'order_id', 'ga');
+	}
+
+	public function payments()
+	{
+		return $this->belongsToMany(Sberbank::class, 'orders_payments', 'order_id', 'payment_id');
 	}
 }

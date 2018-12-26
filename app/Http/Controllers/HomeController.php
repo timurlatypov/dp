@@ -79,4 +79,14 @@ class HomeController extends Controller
 	{
 		return view('web.for-kids');
 	}
+
+	public function success()
+	{
+		return view('web.status.success');
+	}
+
+	public function failure()
+	{
+		return view('web.status.failure');
+	}
 }

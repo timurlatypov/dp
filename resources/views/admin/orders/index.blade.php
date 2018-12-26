@@ -24,8 +24,9 @@
                             <th>Покупатель</th>
                             <th>Менеджер</th>
                             <th>Статус заказа</th>
-                            <th>Дата</th>
+                            <th>Дата заказа</th>
                             <th>Сумма</th>
+                            <th>Способ оплаты</th>
                             <th class="text-right">Действие</th>
                         </tr>
                         </thead>
@@ -61,6 +62,21 @@
                                 </td>
                                 <td class="text-muted">{{ $order->created_at->format('d.m.Y H:i:s') }}</td>
                                 <td>{{ $order->billing_total }} &#x20BD;</td>
+                                <td>
+                                    @if(count($order->payments))
+                                        @foreach($order->payments as $payment)
+                                            @if($payment->status === 'В ожидании')
+                                                <span class="text-warning">Ожидает оплату</span>
+                                            @elseif($payment->status === 'Оплачен')
+                                                <span class="font-weight-bold text-success">Оплачен онлайн</span>
+                                            @else
+                                                <span class="font-weight-bold text-muted">Нет информации</span>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <span class="text-muted">Наличные</span>
+                                    @endif
+                                </td>
 
                                 <td class="td-actions text-right">
                                     <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-primary mr-2">
