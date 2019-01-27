@@ -218,8 +218,9 @@
 
         </div>
         <div class="px-4 pb-5 mx-auto">
-            <button type="submit" class="btn btn-primary" @click.prevent="validateBeforeSubmit">
-                <i class="material-icons pb-1">check</i> Отправить заказ<div class="ripple-container"></div>
+            <button type="submit" class="btn btn-primary" @click.prevent="validateBeforeSubmit" :disabled="is_disabled">
+                <!--<i class="material-icons pb-1">check</i> Отправить заказ<div class="ripple-container"></div>-->
+                <i class="fas " :class="is_disabled ? ' fa-spinner fa-spin' : ' fa-check'"></i>&nbsp;&nbsp;<b>Отправить заказ</b><div class="ripple-container"></div>
             </button>
         </div>
     </div>
@@ -230,7 +231,7 @@
         props: ['session_cart', 'session_cart_subtotal', 'session_coupon', 'auth_user', 'auth_user_addresses'],
         data() {
             return {
-
+                is_disabled: false,
                 decimals: 2,
                 new_order_created: false,
                 payload: {
@@ -393,13 +394,21 @@
             },
 
             storeOrder() {
-                axios.post('/order/store', this.order)
-                    .then(response => {
-                        window.yaCounter35424225.reachGoal('new-order');
-                        window.flash('Заказ получен!');
-                        this.new_order_created = true;
-                        window.cartUpdate();
-                    })
+                if(!this.is_disabled) {
+                    this.is_disabled = true
+
+                    axios.post('/order/store', this.order)
+                        .then(response => {
+                            window.yaCounter35424225.reachGoal('new-order');
+                            window.flash('Заказ получен!');
+                            this.new_order_created = true;
+                            window.cartUpdate();
+                            this.is_disabled = false
+                        })
+                        .catch((error) => {
+                            this.is_disabled = false
+                        })
+                }
             },
 
             refreshStage(products) {

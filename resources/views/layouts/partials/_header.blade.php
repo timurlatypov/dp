@@ -1,5 +1,4 @@
 <header>
-    
     <div class="hidden-lg bg-info">
         <div class="container-fluid px-5">
             <div class="row d-flex justify-content-around align-items-center header-top-line px-5">
@@ -7,27 +6,26 @@
                 <div class="px-2"><h6><i class="fa fa-percentage fa-lg"></i>&nbsp;&nbsp;СКИДКА -10% ПРИ РЕГИСТРАЦИИ!</h6></div>
                 <div class="px-2"><h6><i class="fa fa-gift fa-lg"></i>&nbsp;&nbsp;<a href="/loyalty" class="text-white">ПРОГРАММА ЛОЯЛЬНОСТИ</a></h6></div>
                 <div class="px-2"><h6><i class="fa fa-shipping-fast fa-lg"></i>&nbsp;&nbsp;<a href="/delivery" class="text-white">БЕСПЛАТНАЯ ДОСТАВКА ОТ 3000р.</a></h6></div>
-                <div class="px-2"><h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" data-toggle="tooltip" data-placement="bottom" title="Написать в Whatsapp"><i class="fab fa-whatsapp fa-lg"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6></div>
-                <div class="px-2"><h6><a class="text-white" href="tel:84953801141"><i class="fa fa-phone-volume fa-lg"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6></div>
+                <div class="px-2"><h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" onclick="yaCounter35424225.reachGoal('whatsapp'); return true;"><i class="fab fa-whatsapp fa-lg"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6></div>
+                <div class="px-2"><h6><a class="text-white" href="tel:84953801141" onclick="yaCounter35424225.reachGoal('phone'); return true;"><i class="fa fa-phone-volume fa-lg"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6></div>
             </div>
         </div>
     </div>
-
     <div class="bg-white hidden-lg">
         <div class="container">
+
             <div class="row">
                 <div class="col-3 align-self-center">
                     <div class="header-logo py-4" style="min-height: 100px;">
                         <a href="/">@include('layouts.partials._logo')</a>
                     </div>
                 </div>
-
-
                 <div class="col-6 align-self-center algolia-search">
                     <search></search>
+                    <div class="text-center">
+                        <h6 class="p-0 m-0 text-info">БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ ВРАЧА-КОСМЕТОЛОГА с 09:00 до 18:00</h6>
+                    </div>
                 </div>
-
-
                 <div class="col-3 text-right align-self-center px-0">
                     @guest
                         <a class="btn btn-primary btn-sm font-weight-bold" href="{{ route('login') }}"><i class="fas fa-sign-in-alt fa-sm"></i>&nbsp;&nbsp;Войти</a><br>
@@ -45,7 +43,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </header>

@@ -179,7 +179,6 @@ class OrdersController extends Controller
 
 		$reverse = $client->reverseOrder($id);
 
-
 	}
 
 	public function deleteLink($id, Request $request)

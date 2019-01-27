@@ -9,38 +9,6 @@
 </head>
 <body>
     <div id="app">
-        <div class="snowflakes" aria-hidden="true">
-                <div class="snowflake">
-                    ❅
-                </div>
-                <div class="snowflake">
-                    ❅
-                </div>
-                <div class="snowflake">
-                    ❆
-                </div>
-                <div class="snowflake">
-                    ❄
-                </div>
-                <div class="snowflake">
-                    ❅
-                </div>
-                <div class="snowflake">
-                    ❆
-                </div>
-                <div class="snowflake">
-                    ❄
-                </div>
-                <div class="snowflake">
-                    ❅
-                </div>
-                <div class="snowflake">
-                    ❆
-                </div>
-                <div class="snowflake">
-                    ❄
-                </div>
-            </div>
         @include('layouts.partials._header')
         @include('layouts.partials._nav')
         @include('layouts.partials._mobile-search')

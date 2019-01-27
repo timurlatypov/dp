@@ -50,7 +50,7 @@ window.flash = function (message) {
     window.events.$emit('flash', message);
 }
 
-window.flash = function (message) {
+window.flash_error = function (message) {
     window.events.$emit('flash-error', message);
 }
 

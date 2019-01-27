@@ -46,12 +46,14 @@ class AppServiceProvider extends ServiceProvider
 		    $seasonal->with('seasonal', \App\Product::where('seasonal', true)->take(4)->get());
 	    });
 
+
 	    view()->composer('layouts.partials._bestsellers', function($bestsellers) {
 		    $bestsellers->with('bestsellers', \App\Product::where('bestseller', true)->take(4)->get());
 	    });
 
+
 	    view()->composer('layouts.partials._infoblock', function($recommend) {
-		    $recommend->with('recommend', \App\Product::where('bestseller', true)->inRandomOrder()->limit(4)->get());
+		    $recommend->with('recommend', \App\Product::where('recommend', true)->inRandomOrder()->limit(4)->get());
 	    });
 
 	    view()->composer('layouts.partials._carousel', function($banners) {
