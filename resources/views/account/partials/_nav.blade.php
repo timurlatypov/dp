@@ -32,11 +32,11 @@
         </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link {{ Request::is('account/loyalty') ? 'active' : '' }}" href="{{ route('account.loyalty') }}">
-            <i class="material-icons">star</i>
-            Моя скидка
-        </a>
-    </li>
+    {{--<li class="nav-item">--}}
+        {{--<a class="nav-link {{ Request::is('account/loyalty') ? 'active' : '' }}" href="{{ route('account.loyalty') }}">--}}
+            {{--<i class="material-icons">star</i>--}}
+            {{--Моя скидка--}}
+        {{--</a>--}}
+    {{--</li>--}}
 
 </ul>

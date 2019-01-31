@@ -22,33 +22,32 @@
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/desktop-st-valentine.jpg')">
                         <div class="col-12 align-self-center px-5">
-
                         </div>
                     </div>
                 </div>
             </a>
         </div>
 
-        <div class="carousel-item" style="background-color: #dbe3ee">
-            <a href="https://doctorproffi.ru/register" class="banner-mobile h-100">
+        <div class="carousel-item" style="background-color: #e3e3e3">
+            <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/mobile/mobile-10percent-per-registration.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-mobile-30.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/register" class="banner-tablet h-100">
+            <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/tablet/tablet-10percent-per-registration.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-tablet-30.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/register" class="banner-desktop h-100">
+            <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/desktop/desktop-first-order-10percent.jpg')">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-desktop-30.jpg')">
                         <div class="col-12 align-self-center px-5">
 
                         </div>
@@ -56,6 +55,37 @@
                 </div>
             </a>
         </div>
+
+
+        {{--<div class="carousel-item" style="background-color: #dbe3ee">--}}
+            {{--<a href="https://doctorproffi.ru/register" class="banner-mobile h-100">--}}
+                {{--<div class="row h-100">--}}
+                    {{--<div class="col-12 h-100 align-self-center ">--}}
+                        {{--<div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/mobile/mobile-10percent-per-registration.jpg')">--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</a>--}}
+            {{--<a href="https://doctorproffi.ru/register" class="banner-tablet h-100">--}}
+                {{--<div class="row h-100">--}}
+                    {{--<div class="col-12 h-100 align-self-center ">--}}
+                        {{--<div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/tablet/tablet-10percent-per-registration.jpg')">--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</a>--}}
+            {{--<a href="https://doctorproffi.ru/register" class="banner-desktop h-100">--}}
+                {{--<div class="container-carousel h-100 px-0">--}}
+                    {{--<div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/desktop/desktop-first-order-10percent.jpg')">--}}
+                        {{--<div class="col-12 align-self-center px-5">--}}
+
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</a>--}}
+        {{--</div>--}}
+
+
 
         <div class="carousel-item " style="background-color: #ecedf1">
             <a href="https://doctorproffi.ru/brand/professional-solutions" class="banner-mobile h-100">
@@ -83,6 +113,8 @@
                 </div>
             </a>
         </div>
+
+
 
         <div class="carousel-item" style="background-color: #f6f4f5">
             <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
@@ -112,36 +144,9 @@
             </a>
         </div>
 
-        <div class="carousel-item" style="background-color: #e3e3e3">
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-mobile.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-tablet.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
-                <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-desktop.jpg')">
-                        <div class="col-12 align-self-center px-5">
-
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
 
         <div class="carousel-item" style="background-color: #e8e6eb">
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+            <a href="https://doctorproffi.ru/brand/skin-renu" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-mobile.jpg')">
@@ -149,7 +154,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+            <a href="https://doctorproffi.ru/brand/skin-renu" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-tablet.jpg')">
@@ -157,7 +162,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+            <a href="https://doctorproffi.ru/brand/skin-renu" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">
@@ -170,7 +175,7 @@
 
 
         <div class="carousel-item" style="background-color: #e5e5e5">
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+            <a href="https://doctorproffi.ru/brand/officina-pelle" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-officina-pelle-mobile.jpg')">
@@ -178,7 +183,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+            <a href="https://doctorproffi.ru/brand/officina-pelle" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-officina-pelle-tablet.jpg')">
@@ -186,7 +191,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+            <a href="https://doctorproffi.ru/brand/officina-pelle" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-officina-pelle-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">
@@ -198,7 +203,7 @@
         </div>
 
         <div class="carousel-item" style="background-color: #d7dcd6">
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+            <a href="https://doctorproffi.ru/brand/evolash" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-mobile.jpg')">
@@ -206,7 +211,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+            <a href="https://doctorproffi.ru/brand/evolash" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-tablet.jpg')">
@@ -214,7 +219,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+            <a href="https://doctorproffi.ru/brand/evolash" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">

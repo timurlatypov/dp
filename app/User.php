@@ -66,12 +66,14 @@ class User extends Authenticatable
 		return array_sum($this->orders->where('order_status', 'Доставлен')->pluck('billing_subtotal')->toArray());
 	}
 
+
+
 	public function getLoyaltyAttribute()
 	{
 
 		if ( count($this->orders) === 0 )
 		{
-			return $loyalty_discount = 10;
+			return $loyalty_discount = 0;
 		}
 
 		return $this->discountAmount();
@@ -82,13 +84,13 @@ class User extends Authenticatable
 		$totalSum = $this->totalSum();
 
 		if ( $totalSum >= 0 && $totalSum <= 15000) {
-			$this->loyalty_discount = 3;
+			$this->loyalty_discount = 0;
 		} elseif ( $totalSum > 15000 && $totalSum <= 30000 ) {
-			$this->loyalty_discount = 5;
+			$this->loyalty_discount = 0;
 		} elseif ($totalSum > 30000 && $totalSum <= 60000) {
-			$this->loyalty_discount = 7;
+			$this->loyalty_discount = 0;
 		} elseif ($totalSum > 60000) {
-			$this->loyalty_discount = 10;
+			$this->loyalty_discount = 0;
 		}
 		return $this->loyalty_discount;
 	}

@@ -3,8 +3,8 @@
         <div class="container-fluid px-5">
             <div class="row d-flex justify-content-around align-items-center header-top-line px-5">
                 <div class="px-2"><h6><i class="fa fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;100% ОРИГИНАЛЬНАЯ ПРОДУКЦИЯ</h6></div>
-                <div class="px-2"><h6><i class="fa fa-percentage fa-lg"></i>&nbsp;&nbsp;СКИДКА -10% ПРИ РЕГИСТРАЦИИ!</h6></div>
-                <div class="px-2"><h6><i class="fa fa-gift fa-lg"></i>&nbsp;&nbsp;<a href="/loyalty" class="text-white">ПРОГРАММА ЛОЯЛЬНОСТИ</a></h6></div>
+                {{--<div class="px-2"><h6><i class="fa fa-percentage fa-lg"></i>&nbsp;&nbsp;СКИДКА -10% ПРИ РЕГИСТРАЦИИ!</h6></div>--}}
+                {{--<div class="px-2"><h6><i class="fa fa-gift fa-lg"></i>&nbsp;&nbsp;<a href="/loyalty" class="text-white">ПРОГРАММА ЛОЯЛЬНОСТИ</a></h6></div>--}}
                 <div class="px-2"><h6><i class="fa fa-shipping-fast fa-lg"></i>&nbsp;&nbsp;<a href="/delivery" class="text-white">БЕСПЛАТНАЯ ДОСТАВКА ОТ 3000р.</a></h6></div>
                 <div class="px-2"><h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" onclick="yaCounter35424225.reachGoal('whatsapp'); return true;"><i class="fab fa-whatsapp fa-lg"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6></div>
                 <div class="px-2"><h6><a class="text-white" href="tel:84953801141" onclick="yaCounter35424225.reachGoal('phone'); return true;"><i class="fa fa-phone-volume fa-lg"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6></div>

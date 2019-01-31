@@ -11,7 +11,7 @@ Route::get('/discounts', 'HomeController@discounts')->name('discounts');
 Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/confidentiality', 'HomeController@confidentiality')->name('confidentiality');
 Route::get('/delivery', 'HomeController@delivery')->name('delivery');
-Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
+//Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
 Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 
 // Online payment routes for SUCCESS and FAILURE statuses
@@ -72,7 +72,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
 	Route::get('/addresses', 'AccountController@addresses')->name('account.addresses');
 	Route::get('/orders', 'AccountController@orders')->name('account.orders');
 	Route::get('/favorite', 'AccountController@favorites')->name('account.favorite');
-	Route::get('/loyalty', 'AccountController@loyalty')->name('account.loyalty');
+//	Route::get('/loyalty', 'AccountController@loyalty')->name('account.loyalty');
 
 });
 

@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-12 col-md-3 hidden-md">
                             <h4 class="title text-white mt-2">Информация</h4>
-                            <h6><a href="/loyalty" class="text-white">Программа лояльности</a></h6>
+                            {{--<h6><a href="/loyalty" class="text-white">Программа лояльности</a></h6>--}}
                             <h6><a href="/contacts" class="text-white">Обратная связь</a></h6>
                             {{--<h6><a href="#" class="text-white">Реквизиты</a></h6>--}}
                         </div>
