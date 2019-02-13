@@ -32,7 +32,7 @@
             <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-mobile-30.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-mobile.jpg')">
                         </div>
                     </div>
                 </div>
@@ -40,14 +40,14 @@
             <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-tablet-30.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-tablet.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
             <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-desktop-30.jpg')">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mene-and-moy-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">
 
                         </div>

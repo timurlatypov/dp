@@ -123,6 +123,8 @@ class OrdersController extends Controller
 		return redirect()->back()->with('flash', 'Заказ '.$order->order_id.' удалён');
 	}
 
+
+
 	public function change(Request $request)
 	{
 
@@ -133,6 +135,15 @@ class OrdersController extends Controller
 		return redirect()->back();
 	}
 
+
+	public function changePayment(Request $request)
+	{
+		$order = Order::find($request->id);
+		$order->update([
+			'order_payment' => $request->order_payment
+		]);
+		return redirect()->back();
+	}
 
 
 	public function registerOrder(Request $request, Order $order)

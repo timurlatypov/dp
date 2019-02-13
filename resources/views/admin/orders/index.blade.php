@@ -74,7 +74,10 @@
                                             @endif
                                         @endforeach
                                     @else
-                                        <span class="text-muted">Наличные</span>
+                                        <b>{{ $order->order_payment }}</b>&nbsp;
+                                        <button style="opacity: 0.25;" type="button" class="btn btn-success btn-sm btn-fab" data-id="{{ $order->id }}" data-order="{{ $order->order_id }}" data-toggle="modal" data-target="#changeOrderPaymentModal">
+                                             <i class="material-icons">refresh</i>
+                                        </button>
                                     @endif
                                 </td>
 
@@ -231,7 +234,52 @@
                         </div>
                     </div>
 
+                    <div class="modal fade" id="changeOrderPaymentModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-danger" id="ModalLabel">Подтвердите действие</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="post" action="{{ route('admin.orders.change.payment') }}">
+                                    {{ csrf_field() }}
 
+                                    <input type="text" class="form-control" name="id" id="id" hidden>
+
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <h4 class="modal-title">Способ оплаты заказа <span id="order"></span></h4>
+                                        </div>
+
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label text-default">
+                                                <input class="form-check-input" type="radio" name="order_payment" value="Наличные" checked>
+                                                Наличные
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="order_payment" value="Счет">
+                                                Счет
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-sm mr-2" data-dismiss="modal">Отмена</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Изменить</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>

@@ -49,3 +49,14 @@ $(function () {
         modal.find('#order').text(order)
     })
 })
+
+$(function () {
+    $('#changeOrderPaymentModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('id') // Extract info from data-* attributes
+        var order = button.data('order') // Extract info from data-* attributes
+        var modal = $(this)
+        modal.find('#id').val(id)
+        modal.find('#order').text(order)
+    })
+})
