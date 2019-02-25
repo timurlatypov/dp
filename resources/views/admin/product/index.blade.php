@@ -15,6 +15,7 @@
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 7 ])) }}" class="btn btn-sm {{ request('brand') === '7' ? 'btn-primary' : 'btn-secondary' }}">Officina Pelle</a>
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 8 ])) }}" class="btn btn-sm {{ request('brand') === '8' ? 'btn-primary' : 'btn-secondary' }}">Evolash</a>
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 10 ])) }}" class="btn btn-sm {{ request('brand') === '10' ? 'btn-primary' : 'btn-secondary' }}">Profillers</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 9 ])) }}" class="btn btn-sm {{ request('brand') === '9' ? 'btn-primary' : 'btn-secondary' }}">MR</a>
                     </div>
                 </div>
 

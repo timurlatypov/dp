@@ -1,11 +1,11 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        <div class="carousel-item active" style="background-color: #ffeb55">
+        <div class="carousel-item active" style="background-color: #ffbdc7">
             <a href="#" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/mobile-st-valentine.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/mobile-15-10.jpg')">
                         </div>
                     </div>
                 </div>
@@ -13,14 +13,14 @@
             <a href="#" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/tablet-st-valentine.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/tablet-15-10.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
             <a href="#" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/desktop-st-valentine.jpg')">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/desktop-15-10.jpg')">
                         <div class="col-12 align-self-center px-5">
                         </div>
                     </div>
@@ -28,7 +28,34 @@
             </a>
         </div>
 
-        <div class="carousel-item" style="background-color: #e3e3e3">
+        <div class="carousel-item" style="background-color: #ffb600">
+            <a href="/brand/mens-routine" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/2-for-him-version-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/mens-routine" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/2-for-him-version-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/mens-routine" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/2-for-him-version-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item active" style="background-color: #e3e3e3">
             <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">

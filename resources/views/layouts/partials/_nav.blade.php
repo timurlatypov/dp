@@ -27,6 +27,7 @@
 
                 <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('bestsellers') }}">Хиты продаж</a></li>
+                <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
                 <li class="dropdown nav-item">
                     <a class="nav-link" href="#" data-toggle="dropdown">Для женщин</a>
                     <div class="dropdown-menu">
@@ -50,8 +51,6 @@
                                 @endforeach
                             </div>
                         </div>
-
-
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-men') }}">Для мужчин</a></li>
@@ -66,7 +65,6 @@
                         @endforeach
                     </div>
                 </li>
-
                 <li class="nav-item"><a class="nav-link" href="/delivery">Доставка и оплата</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contacts">Контакты</a></li>
                 <li class="nav-item"><a class="nav-link text-info" href="/bookmarks">Избранное</a></li>

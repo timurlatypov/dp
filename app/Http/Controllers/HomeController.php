@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Categories;
+use App\Filters\Product\BrandFilter;
 use App\Product;
 use App\Subcategory;
 use App\User;
@@ -29,6 +31,13 @@ class HomeController extends Controller
 		$categories = Categories::where('slug', 'bestsellers')->first();
 		$products = $categories->products()->live()->paginate(21);
 		return view('web.template', compact(['products','categories']));
+	}
+
+	public function set()
+	{
+		$brand = Brand::where('slug', 'sets')->first();
+		$products = $brand->products()->live()->paginate(21);
+		return view('web.sets', compact(['products','brand']));
 	}
 
 	public function discounts()

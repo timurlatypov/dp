@@ -63,7 +63,7 @@
                                 <div class="row p-4">
                                     <div class="col-12 col-sm-3"></div>
                                     <div class="col-12 col-sm-9">
-                                        <h1 class="title text-primary">Косметика {{ $brand->name }}</h1>
+                                        <h1 class="title text-primary">{{ $brand->name }}</h1>
                                         <p class="text-justify">{{ $brand->description }}</p>
                                     </div>
                                 </div>
