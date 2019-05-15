@@ -44,7 +44,7 @@
                         <div class="col-12 col-md-3">
                             <h4 class="title text-white mt-2">Контакты</h4>
                             <h6><a class="text-white" href="tel:84953801141" onclick="yaCounter35424225.reachGoal('phone'); return true;"><i class="fa fa-phone-volume"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6>
-                            <h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79654433130" onclick="yaCounter35424225.reachGoal('whatsapp'); return true;"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<b>8 (965) 443-31-30</b></a></h6>
+                            <h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79253170148" onclick="yaCounter35424225.reachGoal('whatsapp'); return true;"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<b>8 (925) 317-01-48</b></a></h6>
                             <h6><a class="text-white" href="mailto:info@doctorproffi.ru" onclick="yaCounter35424225.reachGoal('email'); return true;"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;<b>info@doctorproffi.ru</b></a></h6>
                             <h6><i class="far fa-clock"></i>&nbsp;&nbsp;<b>ОПЕРАТОРЫ: 9:00 - 19:00</b></h6>
                         </div>

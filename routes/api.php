@@ -13,3 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+
+Route::group(['prefix' => '/auth', 'namespace' => 'Auth\Api'], function() {
+	Route::post('register', 'RegisterController@register')->name('api.register');
+});

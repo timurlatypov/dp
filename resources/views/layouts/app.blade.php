@@ -13,6 +13,7 @@
         @include('layouts.partials._nav')
         @include('layouts.partials._mobile-search')
         @include('layouts.partials._callback')
+        @include('layouts.partials.auth._register')
         <flash message="{{ session('flash') }}" ></flash>
         <flash message="{{ session('flash-error') }}" ></flash>
         <div class="container-fluid p-0">
@@ -21,11 +22,11 @@
                     @yield('carousel')
                     @stack('carousel')
                     @yield('banner')
+                    @yield('infoblock')
+                    @yield('brands')
                     @yield('seasonal')
                     @yield('bestsellers')
                     @yield('content')
-                    @yield('brands')
-                    @yield('infoblock')
                     @yield('about')
                     {{--@yield('blog')--}}
                 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container translate-top-30">
     <div class="row">
         <div class="col-12 pt-3">
             <div class="card">
@@ -7,6 +7,9 @@
                 </div>
                 <div class="card-body d-flex flex-wrap card-col-12">
                     @each('layouts.partials.product.card', $recommend, 'product')
+                </div>
+                <div class="footer text-center pb-3">
+                    <a href="/brand/sets" class="btn btn-rose">Все наборы</a>
                 </div>
             </div>
         </div>

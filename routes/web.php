@@ -4,6 +4,15 @@ Auth::routes();
 
 
 
+
+Route::get('/get-all-emails', function () {
+	$emails = \App\Order::all()->pluck('billing_email');
+	foreach($emails as $email) {
+		echo $email.'<br />';
+	}
+});
+
+
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
@@ -49,6 +58,9 @@ Route::group(['prefix' => '/checkout'], function() {
 	Route::post('/remove', 'CheckoutController@remove_qty_to_item')->name('add.qty.to.item');
 	Route::delete('/delete/{rowId}', 'CheckoutController@destroy')->name('delete.item.from.cart');
 });
+
+
+
 
 /////////////////////////////////////////////////////////////////
 //

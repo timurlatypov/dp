@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Categories;
 use App\Filters\Product\BrandFilter;
+use App\Order;
 use App\Product;
 use App\Subcategory;
 use App\User;

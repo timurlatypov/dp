@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="modal" id="requestCallback" tabindex="-1" role="dialog" aria-labelledby="requestCallbackLabel" aria-hidden="true">
+        <div class="modal" id="register" tabindex="-1" role="dialog" aria-labelledby="registerLabel" aria-hidden="true">
             <form @submit.prevent="validateBeforeSubmit">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="requestCallbackLabel">Обратный звонок<br>Консультация косметолога</h4>
+                            <h4 class="modal-title" id="registerLabel">Регистрация</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -13,20 +13,21 @@
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <label for="name">Меня зовут <span class="text-danger">*</span></label>
+                                <label for="name">Имя <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" v-model="data.name" v-validate="'required|alpha'">
                                 <small v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</small>
                             </div>
 
                             <div class="form-group">
-                                <label for="phone">Номер телефона <span class="text-danger">*</span></label>
-                                <input type="tel" class="form-control" id="phone" name="phone" v-model="data.phone" v-validate="'required'">
-                                <small v-show="errors.has('phone')" class="text-danger">{{ errors.first('phone') }}</small>
+                                <label for="phone">Email <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="phone" name="phone" v-model="data.email" v-validate="'required'">
+                                <small v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</small>
                             </div>
 
                             <div class="form-group">
-                                <label for="comment">Комментарий</label>
-                                <textarea class="form-control" v-model="data.comment" name="comment"></textarea>
+                                <label for="password">Пароль <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="password" name="password" v-model="data.password" v-validate="'required'">
+                                <small v-show="errors.has('password')" class="text-danger">{{ errors.first('password') }}</small>
                             </div>
 
                             <div class="form-group">
@@ -51,13 +52,11 @@
                                     </button>
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="modal-footer">
                             <button type="submit" :class="sending ? 'btn shadow btn-secondary' : 'btn btn-private shadow inverse'" :disabled="sending">
-                                <span v-if="sending"><i class="fa fa-spin fa-spinner color-white"></i>&nbsp;&nbsp;Отправляем</span>
-                                <span v-else><i class="fa fa-paper-plane color-white"></i>&nbsp;&nbsp;Заказать</span>
+                                <span v-if="sending"><i class="fa fa-spin fa-spinner color-white"></i>&nbsp;&nbsp;Подождите</span>
+                                <span v-else><i class="fa fa-paper-plane color-white"></i>&nbsp;&nbsp;Регистрация</span>
                             </button>
                         </div>
                     </div>
@@ -86,8 +85,8 @@
                 },
                 data: {
                     name: null,
-                    phone: null,
-                    comment: null
+                    email: null,
+                    password: null,
                 },
                 success: false,
                 error: false,
@@ -114,14 +113,14 @@
             },
             submitForm() {
                 this.sending = true;
-
                 axios.post(this.endpoint, this.data)
                     .then((response) => {
                         this.success= true;
                         this.sending = false;
                     }).catch((error) => {
-                    this.error= true;
-                    this.sending = false;
+                        console.log(error);
+                        this.error= true;
+                        this.sending = false;
                 })
             },
             markRecaptchaAsVerified(response) {

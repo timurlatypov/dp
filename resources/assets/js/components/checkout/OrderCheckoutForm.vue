@@ -158,14 +158,24 @@
         <div class="container px-5 pb-5">
 
             <div class="row pb-3">
-                <div class="col-12 col-md-5 offset-md-1">
+
+                <div class="col-12 col-md-2 offset-md-1">
+                    <div class="form-group" @click.prevent="setFocus('billing_index')">
+                        <label for="billing_city">Индекс</label>
+                        <input type="text" name="billing_index" class="form-control" id="billing_index" v-model="order.address.billing_index">
+                        <small v-show="errors.has('billing_index')" class="text-danger">{{ errors.first('billing_index') }}</small>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
                     <div class="form-group" @click.prevent="setFocus('billing_city')">
                         <label for="billing_city">Город <span class="text-danger">*</span></label>
                         <input type="text" name="billing_city" class="form-control" id="billing_city" v-model="order.address.billing_city" v-validate="'required'">
                         <small v-show="errors.has('billing_city')" class="text-danger">{{ errors.first('billing_city') }}</small>
                     </div>
                 </div>
-                <div class="col-12 col-md-5">
+
+                <div class="col-12 col-md-4">
                     <div class="form-group" @click.prevent="setFocus('billing_street')">
                         <label for="billing_street">Улица <span class="text-danger">*</span></label>
                         <input type="text" name="billing_street" class="form-control" id="billing_street" v-model="order.address.billing_street" v-validate="'required'">
@@ -182,7 +192,22 @@
                         <small v-show="errors.has('billing_house')" class="text-danger">{{ errors.first('billing_house') }}</small>
                     </div>
                 </div>
-                <div class="col-12 col-md-3">
+
+                <div class="col-12 col-md-2">
+                    <div class="form-group" @click.prevent="setFocus('billing_building')">
+                        <label for="billing_apartment">Корпус/Строение</label>
+                        <input
+                                type="text"
+                                name="billing_apartment"
+                                class="form-control"
+                                id="billing_building"
+                                v-model="order.address.billing_building"
+                        >
+                        <small v-show="errors.has('billing_building')" class="text-danger">{{ errors.first('billing_building') }}</small>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-2">
                     <div class="form-group" @click.prevent="setFocus('billing_apartment')">
                         <label for="billing_apartment">Квартира/Офис <span class="text-danger">*</span></label>
                         <input type="text" name="billing_apartment" class="form-control" id="billing_apartment" v-model="order.address.billing_apartment" v-validate="'required'">
@@ -190,7 +215,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-2">
                     <div class="form-group" @click.prevent="setFocus('billing_entrance')">
                         <label for="billing_entrance">Подъезд</label>
                         <input type="text" class="form-control" id="billing_entrance" aria-describedby="billing_entranceHelp" v-model="order.address.billing_entrance">
@@ -207,6 +232,7 @@
                 </div>
             </div>
 
+
             <div class="row">
                 <div class="col-12 col-md-10 offset-md-1">
                     <div class="form-group" @click.prevent="setFocus('billing_comment')">
@@ -219,7 +245,6 @@
         </div>
         <div class="px-4 pb-5 mx-auto">
             <button type="submit" class="btn btn-primary" @click.prevent="validateBeforeSubmit" :disabled="is_disabled">
-                <!--<i class="material-icons pb-1">check</i> Отправить заказ<div class="ripple-container"></div>-->
                 <i class="fas " :class="is_disabled ? ' fa-spinner fa-spin' : ' fa-check'"></i>&nbsp;&nbsp;<b>Отправить заказ</b><div class="ripple-container"></div>
             </button>
         </div>
@@ -259,10 +284,12 @@
                     },
 
                     address: {
+                        billing_index: '',
                         billing_city: '',
                         billing_street: '',
                         billing_house: '',
                         billing_apartment: '',
+                        billing_building: '',
                         billing_entrance: '',
                         billing_floor: '',
                         billing_comment: '',

@@ -4,13 +4,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="text-left mb-2 mt-2">
-                    <a href="{{ url()->previous() }}" class="btn btn-sm" >
-                        <i class="material-icons">arrow_back</i>
-                        Назад к заказам
-                    </a>
-                </div>
-                <div class="card mt-1 mb-3 p-5">
+
+                <div class="card mt-3 mb-3 p-5">
                     <h1 class="title my-0">Заказ {{ $order->order_id }}</h1>
                     <h5 class="text-muted">Дата: {{ $order->created_at->format('d.m.Y H:i:s') }}</h5>
 
@@ -23,9 +18,14 @@
                                 Email: <b>{{ $order->billing_email }}</b>
                                 <br>
                                 <h4 class="title mb-0">Адрес доставки:</h4>
-                                {{ $order->billing_city }}, {{ $order->billing_street }}, д. {{ $order->billing_house }}, кв/офис: {{ $order->billing_apartment }}<br>
-                                Подъезд: {{ $order->billing_entrance }}<br>
-                                Этаж: {{ $order->billing_floor }}
+                                @if($order->billing_index){{ $order->billing_index }},&nbsp;@endif
+                                @if($order->billing_city){{ $order->billing_city }}@endif
+                                @if($order->billing_street),&nbsp;{{ $order->billing_street }}@endif
+                                @if($order->billing_house),&nbsp;дом {{ $order->billing_house }}@endif
+                                @if($order->billing_building),&nbsp;корпус/строение: {{ $order->billing_building }}@endif
+                                @if($order->billing_apartment),&nbsp;кв/офис: {{ $order->billing_apartment }}@endif
+                                @if($order->billing_entrance),&nbsp;подъезд: {{ $order->billing_entrance }}@endif
+                                @if($order->billing_floor),&nbsp;этаж: {{ $order->billing_floor }}@endif
                                 <br>
                                 <h4 class="title mb-0">Комментарий:</h4>
                                 {{ $order->billing_comment }}

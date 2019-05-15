@@ -1,15 +1,12 @@
 <template>
     <div>
         <h4 class="title mt-2 mb-2 text-muted">Клиент</h4>
-        <div class="pb-2">
-            <a href="#" class="btn btn-sm btn-success font-weight-bold">Новый</a> или
-            <a href="#" class="btn btn-sm font-weight-bold">Зарегистрированный</a>
-        </div>
 
         <div class="container-fluid px-0 pb-3">
             <div class="row">
                 <div class="col-12 col-xs-6 col-md-8 px-0">
                     <div class="container-fluid">
+
                         <div class="row pb-1">
                             <div class="col-12 col-md-6">
                                 <div class="form-group" @click.prevent="setFocus('name')">
@@ -18,6 +15,7 @@
                                     <small v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</small>
                                 </div>
                             </div>
+
                             <div class="col-12 col-md-6">
                                 <div class="form-group" @click.prevent="setFocus('surname')">
                                     <label for="surname">Фамилия <span class="text-danger">*</span></label>
@@ -26,6 +24,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row pb-1">
                             <div class="col-12 col-md-6">
                                 <div class="form-group" @click.prevent="setFocus('phone')">
@@ -55,31 +54,55 @@
 
                     <div class="container-fluid">
                         <div class="row pb-1">
-                            <div class="col-12 col-md-6">
+
+                            <div class="col-12 col-md-2">
+                                <div class="form-group" @click.prevent="setFocus('billing_index')">
+                                    <label for="billing_index">Индекс</label>
+                                    <input type="text" name="billing_index" class="form-control" id="billing_index" v-model="order.address.billing_index">
+                                    <small v-show="errors.has('billing_index')" class="text-danger">{{ errors.first('billing_index') }}</small>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
                                 <div class="form-group" @click.prevent="setFocus('billing_city')">
                                     <label for="billing_city">Город <span class="text-danger">*</span></label>
                                     <input type="text" name="billing_city" class="form-control" id="billing_city" v-model="order.address.billing_city" v-validate="'required'">
                                     <small v-show="errors.has('billing_city')" class="text-danger">{{ errors.first('billing_city') }}</small>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-5">
                                 <div class="form-group" @click.prevent="setFocus('billing_street')">
                                     <label for="billing_street">Улица <span class="text-danger">*</span></label>
                                     <input type="text" name="billing_street" class="form-control" id="billing_street" v-model="order.address.billing_street" v-validate="'required'">
                                     <small v-show="errors.has('billing_street')" class="text-danger">{{ errors.first('billing_street') }}</small>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="row pb-1">
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <div class="form-group" @click.prevent="setFocus('billing_house')">
                                     <label for="billing_house">Дом <span class="text-danger">*</span></label>
                                     <input type="text" name="billing_house" class="form-control" id="billing_house" v-model="order.address.billing_house" v-validate="'required'">
                                     <small v-show="errors.has('billing_house')" class="text-danger">{{ errors.first('billing_house') }}</small>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-3">
+
+                            <div class="col-12 col-md-2">
+                                <div class="form-group" @click.prevent="setFocus('billing_building')">
+                                    <label for="billing_apartment">Корпус/Строение</label>
+                                    <input
+                                            type="text"
+                                            name="billing_apartment"
+                                            class="form-control"
+                                            id="billing_building"
+                                            v-model="order.address.billing_building"
+                                    >
+                                    <small v-show="errors.has('billing_building')" class="text-danger">{{ errors.first('billing_building') }}</small>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-2">
                                 <div class="form-group" @click.prevent="setFocus('billing_apartment')">
                                     <label for="billing_apartment">Кв / Офис <span class="text-danger">*</span></label>
                                     <input type="text" name="billing_apartment" class="form-control" id="billing_apartment" v-model="order.address.billing_apartment" v-validate="'required'">
@@ -87,7 +110,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <div class="form-group" @click.prevent="setFocus('billing_entrance')">
                                     <label for="billing_entrance">Подъезд</label>
                                     <input type="text" class="form-control" id="billing_entrance" aria-describedby="billing_entranceHelp" v-model="order.address.billing_entrance">
@@ -95,7 +118,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <div class="form-group" @click.prevent="setFocus('billing_floor')">
                                     <label for="billing_floor">Этаж</label>
                                     <input type="text" class="form-control" id="billing_floor" aria-describedby="billing_floorHelp" v-model="order.address.billing_floor">
@@ -313,10 +336,12 @@
                     },
                     cart: [],
                     address: {
+                        billing_index: '',
                         billing_city: '',
                         billing_street: '',
                         billing_house: '',
                         billing_apartment: '',
+                        billing_building: '',
                         billing_entrance: '',
                         billing_floor: '',
                         billing_comment: '',

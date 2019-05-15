@@ -14,8 +14,9 @@
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 5 ])) }}" class="btn btn-sm {{ request('brand') === '5' ? 'btn-primary' : 'btn-secondary' }}">Skin Renu</a>
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 7 ])) }}" class="btn btn-sm {{ request('brand') === '7' ? 'btn-primary' : 'btn-secondary' }}">Officina Pelle</a>
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 8 ])) }}" class="btn btn-sm {{ request('brand') === '8' ? 'btn-primary' : 'btn-secondary' }}">Evolash</a>
-                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 10 ])) }}" class="btn btn-sm {{ request('brand') === '10' ? 'btn-primary' : 'btn-secondary' }}">Profillers</a>
                         <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 9 ])) }}" class="btn btn-sm {{ request('brand') === '9' ? 'btn-primary' : 'btn-secondary' }}">MR</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 10 ])) }}" class="btn btn-sm {{ request('brand') === '10' ? 'btn-primary' : 'btn-secondary' }}">Profillers</a>
+                        <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => 11 ])) }}" class="btn btn-sm {{ request('brand') === '11' ? 'btn-primary' : 'btn-secondary' }}">Наборы</a>
                     </div>
                 </div>
 
@@ -23,16 +24,16 @@
                     <h4 class="title mt-2 pb-2 mb-2">Продукты</h4>
                     <table class="table">
                         <thead>
-                        <tr>
-                            <th class="text-center">IMG</th>
-                            <th><nobr>В наличии</nobr></th>
-                            <th class="w-25">Название</th>
-                            <th class="w-25">Бренд</th>
-                            <th class="w-25">Цена</th>
-                            <th class="w-25">Скидка</th>
-                            <th><nobr>На сайте</nobr></th>
-                            <th class="text-right">Действие</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">IMG</th>
+                                <th><nobr>В наличии</nobr></th>
+                                <th class="w-25">Название</th>
+                                <th class="w-25">Бренд</th>
+                                <th class="w-25">Цена</th>
+                                <th class="w-25">Скидка</th>
+                                <th><nobr>На сайте</nobr></th>
+                                <th class="text-right">Действие</th>
+                            </tr>
                         </thead>
                         <tbody>
                         @foreach($products as $key => $product)

@@ -49,15 +49,18 @@ class OrdersController extends Controller
 			'billing_surname' => $request->user['surname'],
 			'billing_phone' => $request->user['phone'],
 			'billing_email' => $request->user['email'],
+
+			'billing_index' => $request->address['billing_index'],
 			'billing_city' => $request->address['billing_city'],
 			'billing_street' => $request->address['billing_street'],
 			'billing_house' => $request->address['billing_house'],
 			'billing_apartment' => $request->address['billing_apartment'],
+			'billing_building' => $request->address['billing_building'],
 			'billing_entrance' => $request->address['billing_entrance'],
 			'billing_floor' => $request->address['billing_floor'],
 			'billing_comment' => $request->address['billing_comment'],
 
-			'billing_subtotal' => $request->billing_total,
+			'billing_subtotal' => $request->billing_subtotal,
 			'billing_delivery' => $request->billing_delivery,
 			'billing_total' => $request->billing_total
 		]);

@@ -1,7 +1,9 @@
 window.Vue = require('vue');
 
+
 let VueCookie = require('vue-cookie');
 Vue.use(VueCookie);
+
 
 import ru from 'vee-validate/dist/locale/ru';
 import VeeValidate, { Validator } from 'vee-validate';
@@ -32,9 +34,10 @@ Vue.use(VeeValidate);
 
 
 
-
 import VueRecaptcha from 'vue-recaptcha';
 Vue.use(VueRecaptcha);
+
+
 
 require('./bootstrap');
 require('./scripts');
@@ -63,21 +66,17 @@ Vue.component('product-image-upload', require('./components/products/ProductImag
 Vue.component('select-brand-line', require('./components/products/SelectBrandLine.vue'));
 Vue.component('order-checkout-form', require('./components/checkout/OrderCheckoutForm.vue'));
 Vue.component('order-subcategories', require('./components/OrderSubcategories.vue'));
-
 Vue.component('carousel-editor', require('./components/carousel/CarouselEditor.vue'));
 Vue.component('carousel-creator', require('./components/carousel/CarouselCreator.vue'));
-
 Vue.component('coupon-creator', require('./components/coupon/CouponCreator.vue'));
-
 Vue.component('associate-products', require('./components/categories/AssociateProduct.vue'));
-Vue.component('callback', require('./components/Callback.vue'));
 
+Vue.component('register', require('./components/Register'));
+Vue.component('callback', require('./components/Callback.vue'));
 
 Vue.component('order-edit-form', require('./components/admin-panel/order/OrderEditForm.vue'));
 Vue.component('order-create-form', require('./components/admin-panel/order/OrderCreateForm.vue'));
 
-// Vue.component('compact-picker', require('vue-color').default);
-//
 
 
 const app = new Vue({
