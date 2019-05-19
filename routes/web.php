@@ -3,8 +3,6 @@
 Auth::routes();
 
 
-
-
 Route::get('/get-all-emails', function () {
 	$emails = \App\Order::all()->pluck('billing_email');
 	foreach($emails as $email) {
@@ -27,6 +25,7 @@ Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 // Online payment routes for SUCCESS and FAILURE statuses
 Route::get('/payment-success', 'OrderController@success')->name('payment.success');
 Route::get('/success', 'HomeController@success')->name('page.success');
+
 
 Route::get('/payment-failure', 'OrderController@failure')->name('payment.failure');
 Route::get('/failure', 'HomeController@failure')->name('page.failure');

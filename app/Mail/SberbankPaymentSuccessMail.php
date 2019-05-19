@@ -8,22 +8,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SberbankPaymentMail extends Mailable
+class SberbankPaymentSuccessMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $order;
-    public $payment_link;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Order $order, $payment_link)
+    public function __construct(Order $order)
     {
         $this->order = $order;
-        $this->payment_link = $payment_link;
     }
 
     /**
@@ -33,6 +31,6 @@ class SberbankPaymentMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Ссылка для онлайн-оплаты заказа '.$this->order->order_id)->view('emails.order.notification.payment');
+	    return $this->subject('Оплачен заказ '.$this->order->order_id)->view('emails.order.notification.payment-success');
     }
 }

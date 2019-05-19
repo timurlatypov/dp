@@ -340,56 +340,16 @@
                             <!-- Body content -->
                             <tr>
                                 <td class="content-cell">
-                                    Новый заказ <b>{{ $order->order_id }}</b>
-                                    <br><br>
-                                    Клиент: <b>{{ $order->billing_name }} {{ $order->billing_surname }}</b><br>
-                                    Телефон: <b>{{ $order->billing_phone }}</b><br>
-                                    Email: <b>{{ $order->billing_email }}</b>
-                                    <br><br>
-                                    Адрес доставки: {{ $order->billing_city }}, {{ $order->billing_street }}, д. {{ $order->billing_house }}, кв/офис: {{ $order->billing_apartment }}<br>
-                                    Подъезд: {{ $order->billing_entrance }}<br>
-                                    Этаж: {{ $order->billing_floor }}
-                                    <br><br>
-                                    Комментарий: {{ $order->billing_comment }}
-                                    <br><br>
-                                    Заказ:
-                                    <table class="table" width="100%" cellpadding="4px" cellspacing="2px">
-                                        <thead>
-                                        <tr style="background-color: #dddddd">
-                                            <th>Продукт</th>
-                                            <th>Цена</th>
-                                            <th>Скидка</th>
-                                            <th>Цена со скидкой</th>
-                                            <th>Кол-во</th>
-                                            <th>Сумма</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach(json_decode($order->order_details) as $product)
-                                            <tr style="background-color: #f9f9f9">
-                                                <td>
-                                                    <b>{{ $product->name }}</b><br>
-                                                    <small>{{ $product->options->title_rus }}</small><br>
-                                                    <small>{{ $product->options->brand }}</small>
-                                                </td>
-                                                <td class="text-center">{{ $product->price }} &#x20BD;</td>
-                                                <td class="text-center">{{ $product->biggest_discount }}%</td>
-                                                <td class="text-center">{{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;</td>
-                                                <td class="text-center">{{ $product->qty }} шт.</td>
-                                                <td class="text-center">{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <b>Итого: {{ $order->billing_total }} &#x20BD;</b>
-
-
+                                    <h3><b style="color: green">Заказ оплачен</b><br>
+                                        Номер заказа: <b>{{ $order->order_id }}</b> от {{ $order->created_at->format('d.m.Y') }}<br>
+                                    </h3>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+
+
 
                 <tr>
                     <td>

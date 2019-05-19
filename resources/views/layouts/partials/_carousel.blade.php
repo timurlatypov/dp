@@ -1,7 +1,34 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-         <div class="carousel-item active" style="background-color: #ff8fa3">
+        <div class="carousel-item active" style="background-color: #ff0580">
+            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+         <div class="carousel-item" style="background-color: #ff8fa3">
             <a href="#" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
@@ -27,8 +54,6 @@
                 </div>
             </a>
         </div>
-
-
 
         <div class="carousel-item" style="background-color: #fcd8a4">
             <a href="/category/for-face/zashchita-ot-solntsa-spf" class="banner-mobile h-100">
@@ -116,37 +141,6 @@
             </a>
         </div>
 
-
-        {{--<div class="carousel-item" style="background-color: #dbe3ee">--}}
-        {{--<a href="https://doctorproffi.ru/register" class="banner-mobile h-100">--}}
-        {{--<div class="row h-100">--}}
-        {{--<div class="col-12 h-100 align-self-center ">--}}
-        {{--<div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/mobile/mobile-10percent-per-registration.jpg')">--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-        {{--<a href="https://doctorproffi.ru/register" class="banner-tablet h-100">--}}
-        {{--<div class="row h-100">--}}
-        {{--<div class="col-12 h-100 align-self-center ">--}}
-        {{--<div class="h-100 carousel-bg-image" style="background-image: url('/storage/carousel/tablet/tablet-10percent-per-registration.jpg')">--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-        {{--<a href="https://doctorproffi.ru/register" class="banner-desktop h-100">--}}
-        {{--<div class="container-carousel h-100 px-0">--}}
-        {{--<div class="row h-100 carousel-bg-image" style="background-image: url('/storage/carousel/desktop/desktop-first-order-10percent.jpg')">--}}
-        {{--<div class="col-12 align-self-center px-5">--}}
-
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</a>--}}
-        {{--</div>--}}
-
-
-
         <div class="carousel-item " style="background-color: #ecedf1">
             <a href="https://doctorproffi.ru/brand/professional-solutions" class="banner-mobile h-100">
                 <div class="row h-100">
@@ -173,8 +167,6 @@
                 </div>
             </a>
         </div>
-
-
 
         <div class="carousel-item" style="background-color: #f6f4f5">
             <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
@@ -203,7 +195,6 @@
                 </div>
             </a>
         </div>
-
 
         <div class="carousel-item" style="background-color: #e8e6eb">
             <a href="https://doctorproffi.ru/brand/skin-renu" class="banner-mobile h-100">

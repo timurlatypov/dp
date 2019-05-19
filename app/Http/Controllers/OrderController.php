@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\GoogleAnalytics;
+use App\Jobs\SendSberbankPaymentSuccessMessage;
 use App\Order;
 use App\Coupon;
 use App\Events\NewOrderCreated;
@@ -149,11 +150,19 @@ class OrderController extends Controller
 			$check_order_payment = Sberbank::where('payment_id', $id)->first();
 
 			if ($check_order_payment->status === 'В ожидании') {
+
+				$find_order = $check_order_payment->order;
+				$order = Order::where('id', $find_order[0]->id)->first();
+
 				$check_order_payment->update([
 					'status' => 'Оплачен'
 				]);
+
+				SendSberbankPaymentSuccessMessage::dispatch($order);
+
 				return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
 			}
+
 			abort(404);
 		}
 
