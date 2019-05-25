@@ -44,9 +44,9 @@
                         <br><small class="text-uppercase">{{ product.options.brand }}</small>
                     </td>
 
-                    <td class="font-weight-bold">{{ product.price }}&nbsp;&#x20BD;</td>
+                    <td class="font-weight-bold"><nobr>{{ product.price }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr></td>
                     <td class="text-center font-weight-bold text-danger">-{{ product.biggest_discount }}%</td>
-                    <td class="font-weight-bold">{{ product.discounted_price.toFixed(decimals) }}&nbsp;&#x20BD;</td>
+                    <td class="font-weight-bold"><nobr>{{ product.discounted_price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr></td>
 
                     <td class="td-actions text-center">
                         <ul role="navigation" class="pagination my-auto mx-auto">
@@ -62,7 +62,7 @@
                         </ul>
                     </td>
 
-                    <td class="td-number font-weight-bold">{{ product.subtotal.toFixed(decimals) }}&nbsp;&#x20BD;</td>
+                    <td class="td-number font-weight-bold"><nobr>{{ product.subtotal.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr></td>
 
                     <td class="td-actions text-center">
                         <button type="button" class="btn btn-simple" @click.prevent="deleteItem(product.rowId)">
@@ -90,7 +90,7 @@
                         </div>
                     </td>
                     <td colspan="6" style="vertical-align: top">
-                        <h3 class="title mt-4">Итого: <nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;&#x20BD;</nobr></h3>
+                        <h3 class="title mt-4">Итого: <nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr></h3>
                         <h5 class="title mb-1 mt-3 text-muted">Доставка</h5>
                         <p class="text-muted">Бесплатная доставка по Москве(в пределах МКАД) при сумме заказа от 3000 руб. Доставка за МКАД по Московской области и по России рассчитывается индивидуально после оформления заказа.</p>
                     </td>

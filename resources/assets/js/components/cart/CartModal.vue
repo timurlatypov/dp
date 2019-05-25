@@ -23,7 +23,7 @@
                                 <small>{{ product.title_rus }}</small><br>
                                 <small class="text-uppercase">{{ product.brand.name }}</small>
                             </td>
-                            <td>{{ product.priceToShow }}&nbsp;&#x20BD;</td>
+                            <td>{{ product.priceToShow }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></td>
                         </tr>
                         <tr>
                             <td></td>
