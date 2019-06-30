@@ -34,7 +34,7 @@ class SendSberbankPaymentSuccessMessage implements ShouldQueue
      */
 	public function handle()
 	{
-		Mail::to('timur.e61@gmail.com')
+		Mail::to('info@doctorproffi.ru')
 			->bcc('timur.latypov@gmail.com')
 			->send(new SberbankPaymentSuccessMail($this->order));
 	}

@@ -17,7 +17,7 @@
 @endpush
 
 @section('banner')
-    @include('layouts.partials.banner.banner')
+    @include('layouts.partials.banner.brand')
 @endsection
 
 @section('content')
@@ -38,7 +38,7 @@
 
                                        <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
-                                                
+
                                                 <img src="/storage/products/image/{{$product->image_path}}" width="100%" alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
 
                                             </div>

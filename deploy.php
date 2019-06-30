@@ -10,13 +10,13 @@ set('application', 'doctorproffi');
 set('repository', 'https://github.com/timurlatypov/dp.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true); 
+set('git_tty', true);
 
-// Shared files/dirs between deploys 
+// Shared files/dirs between deploys
 add('shared_files', []);
 add('shared_dirs', []);
 
-// Writable dirs by web server 
+// Writable dirs by web server
 add('writable_dirs', []);
 
 
@@ -31,18 +31,13 @@ host('94.142.139.93')
 	->set('master', 'master')
 	->stage('production');
 
-host('185.238.136.113')
-	->user('root')
-	->identityFile('~/.ssh/staging_doctorproffi_ru')
+
+host('194.67.213.95')
+	->user('deployer')
+	->identityFile('~/.ssh/id_rsa_doctorproffi')
 	->set('deploy_path', '/var/www/html')
 	->set('master', 'master')
 	->stage('staging');
-
-
-//host('94.142.139.93')
-//	->user('deployer')
-//	->identityFile('~/.ssh/deployer')
-//    ->set('deploy_path', '/var/www/html/laravel');
 
 
 set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-scripts');

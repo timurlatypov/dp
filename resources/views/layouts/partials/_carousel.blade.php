@@ -1,7 +1,35 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        <div class="carousel-item active" style="background-color: #ff0580">
+        <div class="carousel-item active" style="background-color: #ecedf1">
+            <a href="https://doctorproffi.ru/brand/professional-solutions" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/mobile-professional-solutions-17-30-june.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/professional-solutions" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/tablet-professional-solutions-17-30-june.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/professional-solutions" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/desktop-professional-solutions-17-30-june.jpg')">
+                        <div class="col-12 align-self-center px-5">
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #ff0580">
             <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
@@ -21,33 +49,6 @@
             <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-desktop.jpg')">
-                        <div class="col-12 align-self-center px-5">
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-         <div class="carousel-item" style="background-color: #ff8fa3">
-            <a href="#" class="banner-mobile h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/patches-mobile.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="banner-tablet h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/patches-tablet.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="banner-desktop h-100">
-                <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/patches-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">
                         </div>
                     </div>
@@ -81,7 +82,6 @@
                 </div>
             </a>
         </div>
-
 
 
         <div class="carousel-item" style="background-color: #fec7d6">
@@ -141,7 +141,7 @@
             </a>
         </div>
 
-        <div class="carousel-item " style="background-color: #ecedf1">
+        <div class="carousel-item" style="background-color: #ecedf1">
             <a href="https://doctorproffi.ru/brand/professional-solutions" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
