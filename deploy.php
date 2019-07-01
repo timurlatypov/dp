@@ -21,24 +21,22 @@ add('writable_dirs', []);
 
 
 // Hosts
-set('default_stage', 'staging');
+set('default_stage', 'dev');
 set('branch', 'master');
-
-host('94.142.139.93')
-	->user('deployer')
-	->identityFile('~/.ssh/deployer')
-	->set('deploy_path', '/var/www/html/laravel')
-	->set('master', 'master')
-	->stage('production');
-
 
 host('194.67.213.95')
 	->user('deployer')
 	->identityFile('~/.ssh/id_rsa_doctorproffi')
 	->set('deploy_path', '/var/www/html')
 	->set('master', 'master')
-	->stage('staging');
+	->stage('production');
 
+host('194.67.213.95')
+	->user('deployer')
+	->identityFile('~/.ssh/id_rsa_doctorproffi')
+	->set('deploy_path', '/var/www/dev/doctorproffi')
+	->set('master', 'master')
+	->stage('dev');
 
 set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-scripts');
 set('keep_releases', 15);
