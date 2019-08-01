@@ -1,7 +1,61 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        <div class="carousel-item active" style="background-color: #ff0580">
+        <div class="carousel-item active" style="background-color: #141414">
+            <a href="/brand/b-selfie" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-b-selfie-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/b-selfie" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-b-selfie-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/b-selfie" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-b-selfie-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #d7dcd6">
+            <a href="https://doctorproffi.ru/brand/evolash" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/evolash" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/evolash" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #ff0580">
             <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
@@ -27,6 +81,7 @@
                 </div>
             </a>
         </div>
+
 
         <div class="carousel-item" style="background-color: #fec7d6">
             <a href="/brand/sets" class="banner-mobile h-100">
@@ -54,8 +109,6 @@
                 </div>
             </a>
         </div>
-
-
 
         <div class="carousel-item" style="background-color: #e3e3e3">
             <a href="https://doctorproffi.ru/brand/mene-and-moy-system" class="banner-mobile h-100">

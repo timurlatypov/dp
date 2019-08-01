@@ -11,7 +11,6 @@
 <body>
     <div id="app">
         @include('layouts.partials._header')
-
         @include('layouts.partials._mobile-search')
         @include('layouts.partials._callback')
         @include('layouts.partials.auth._register')

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\AdminPanel\Orders;
 
+use App\Events\NewOrderCreated;
 use App\Jobs\SendSberbankPaymentLink;
 use App\Order;
+use App\Role;
 use App\Sberbank;
 use App\User;
 use Carbon\Carbon;
@@ -124,6 +126,17 @@ class OrdersController extends Controller
 		$order->delete();
 
 		return redirect()->back()->with('flash', 'Заказ '.$order->order_id.' удалён');
+	}
+
+	public function resendConfirmationEmail(Order $order, Request $request)
+	{
+		$customer = $order->billing_email;
+		$managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
+		$admins = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
+
+		event(new NewOrderCreated($order, $customer, $managers, $admins));
+
+		return redirect()->back()->with('flash', 'Письмо отправлено клиенту!');
 	}
 
 

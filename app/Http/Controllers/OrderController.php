@@ -40,8 +40,6 @@ class OrderController extends Controller
 		}
 
 
-		//dd(number_format((float)$request->billing_total, 2, '.', ''));
-
 		$order = Order::create([
 			'user_id' => $user_id,
 			'order_details' => json_encode($request->cart),

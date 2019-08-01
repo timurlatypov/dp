@@ -31,8 +31,9 @@
                                 {{ $order->billing_comment }}
                                 <br><br>
                             </div>
-                            @if(count($order->payments))
-                                <div class="col-12 col-sm-6 px-0">
+                            <div class="col-12 col-sm-6 px-0">
+
+                                @if(count($order->payments))
                                     <h4 class="title mt-2 mb-2">Управление онлайн-оплатой</h4>
                                     @foreach($order->payments as $payment)
                                         @if($payment->status === 'В ожидании')
@@ -51,14 +52,16 @@
                                             <span class="font-weight-bold text-success">Заказ оплачен онлайн</span>
                                         @endif
                                     @endforeach
-                                </div>
-                            @else
-                            <div class="col-12 col-sm-6 px-0">
+                                @else
                                 <h4 class="title mt-2 mb-2">Сбербанк-онлайн</h4>
                                 <p class="text-danger font-weight-bold">Убедитесь, что в заказе сумма и стоимость доставки правильные!</p>
                                 <a href="{{ route('admin.orders.registerOrder', $order) }}" class="btn btn-success btn-sm">Создать ссылку</a>
+                                @endif
+                                <br><br>
+                                <h4 class="title mt-2 mb-2">Подтверждение заказа по Email</h4>
+                                <a href="{{ route('admin.orders.resendConfirmation', $order) }}" class="btn btn-info btn-sm">Выслать письмо</a>
+
                             </div>
-                            @endif
                         </div>
                     </div>
 

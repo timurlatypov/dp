@@ -10,7 +10,6 @@ Route::get('/get-all-emails', function () {
 	}
 });
 
-
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
@@ -164,8 +163,10 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
 		Route::get('/{order}/edit', 'OrdersController@edit')->name('admin.orders.edit');
 
-
 		Route::get('/{order}/register', 'OrdersController@registerOrder')->name('admin.orders.registerOrder');
+		Route::get('/{order}/resend', 'OrdersController@resendConfirmationEmail')->name('admin.orders.resendConfirmation');
+
+
 		Route::get('/{id}/reverse', 'OrdersController@reverseOrder')->name('admin.orders.reverseOrder');
 		Route::get('/{id}/delete', 'OrdersController@deleteLink')->name('admin.orders.deleteLink');
 		Route::get('/{id}/status', 'OrdersController@orderStatus')->name('admin.orders.orderStatus');

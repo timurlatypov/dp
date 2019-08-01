@@ -29,7 +29,7 @@
                 <div class="col-3 text-right align-self-center px-0">
                     @guest
                         <a class="btn btn-primary btn-sm font-weight-bold" href="{{ route('login') }}"><i class="fas fa-sign-in-alt fa-sm"></i>&nbsp;&nbsp;Войти</a><br>
-                        <a class="btn btn-primary btn-sm font-weight-bold" href="#" onclick="$('#register').modal('show')"><i class="fas fa-user fa-sm"></i>&nbsp;&nbsp;Регистрация</a>
+                        <a class="btn btn-primary btn-sm font-weight-bold" href="{{ route('register') }}"><i class="fas fa-user fa-sm"></i>&nbsp;&nbsp;Регистрация</a>
                         <a class="btn btn-info btn-sm font-weight-bold" href="#" onclick="$('#requestCallback').modal('show')"><i class="fas fa-phone fa-sm"></i>&nbsp;&nbsp;Заказать консультацию</a>
                         @else
                             <a class="btn btn-secondary" href="{{ route('account.profile') }}"><i class="material-icons">account_box</i> Кабинет<div class="ripple-container"></div></a>
