@@ -9,7 +9,15 @@
 
 <script>
     export default {
-        props: ['saved_image_path', 'handle_errors', 'store_path', 'input_name', 'slug', 'description', 'endpoint'],
+        props: [
+            'saved_image_path',
+            'handle_errors',
+            'store_path',
+            'input_name',
+            'slug',
+            'description',
+            'endpoint'
+        ],
         data() {
             return {
                 image: '/storage/products/default.jpg',
