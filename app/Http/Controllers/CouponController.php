@@ -15,7 +15,7 @@ class CouponController extends Controller
 		return request()->session()->forget('coupon');
 	}
 
-	public function validate_coupon(Request $request)
+	public function validateCoupon(Request $request)
 	{
 		if ( $coupon = Coupon::where('coupon', $request->coupon)->first() ) {
 			if ( $coupon->expired_at > now() ) {

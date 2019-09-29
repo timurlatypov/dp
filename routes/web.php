@@ -94,7 +94,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
 /////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/coupon'], function() {
 	Route::get('/destroy', 'CouponController@destroy')->name('coupon.destroy');
-	Route::post('/validate', 'CouponController@validate_coupon')->name('validate.coupon');
+	Route::post('/validate', 'CouponController@validateCoupon')->name('validate.coupon');
 });
 
 
