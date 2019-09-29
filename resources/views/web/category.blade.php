@@ -42,7 +42,13 @@
                                         </div>
                                     @endif
                                     <div class=" d-flex flex-wrap card-col-9 align-self-start">
-                                        @each('layouts.partials.product.card', $products, 'product')
+                                        {{--@each('layouts.partials.product.card', $products, 'product')--}}
+                                        @foreach($products as $index => $product)
+                                            @if($index == 2)
+                                                @include('layouts.partials.product.card_delivery')
+                                            @endif
+                                            @include('layouts.partials.product.card', $product)
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

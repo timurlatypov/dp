@@ -27,16 +27,18 @@ set('branch', 'master');
 host('194.67.213.95')
 	->user('deployer')
 	->identityFile('~/.ssh/id_rsa_doctorproffi')
-	->set('deploy_path', '/var/www/html')
+	->set('deploy_path', '/var/www/dev/doctorproffi')
 	->set('master', 'master')
-	->stage('production');
+	->stage('dev');
+
 
 host('194.67.213.95')
 	->user('deployer')
 	->identityFile('~/.ssh/id_rsa_doctorproffi')
-	->set('deploy_path', '/var/www/dev/doctorproffi')
+	->set('deploy_path', '/var/www/html')
 	->set('master', 'master')
-	->stage('dev');
+	->stage('prod');
+
 
 set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-scripts');
 set('keep_releases', 15);

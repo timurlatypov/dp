@@ -127,15 +127,15 @@
                                     <div class="card-body">
                                         <h4 class="title">КАТЕГОРИИ ПРОДУКТА</h4>
                                         @foreach($categories as $category)
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" id="categories{{ $category->id }}" {{ $product->categories->contains($category->id) ? ' checked' : ''}}>
-                                    {{ $category->name }}
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                </label>
-                            </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" id="categories{{ $category->id }}" {{ $product->categories->contains($category->id) ? ' checked' : ''}}>
+                                                {{ $category->name }}
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
                                 @if($category->subcategories)
                                     <div class="pl-5">
                                         @foreach($category->subcategories as $subcategory)
