@@ -98,9 +98,8 @@
                         @endforeach
                             <tr>
                                 <td colspan="3" class="">
-
                                 </td>
-                                <td colspan="4" class="text-right" rowspan="10">
+                                <td colspan="5" class="text-right" rowspan="10">
                                     <h4 class="title mt-2 mb-0">Сумма: {{ number_format((float)$order->billing_subtotal, 2, '.', '') ?? 0 }} &#x20BD;</h4>
                                     <h4 class="title mt-2 mb-0">Доставка: {{ number_format((float)$order->billing_delivery, 2, '.', '') ?? 0 }} &#x20BD;</h4>
                                     <h4 class="title mt-2 mb-0">Итого: {{ number_format((float)$order->billing_total, 2, '.', '') }} &#x20BD;</h4>
