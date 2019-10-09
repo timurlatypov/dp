@@ -1,11 +1,11 @@
 <template>
     <table class="table">
         <thead>
-        <tr>
-            <th>Скидка</th>
-            <th>Многоразовый</th>
-            <th><nobr>Действует до</nobr></th>
-        </tr>
+            <tr>
+                <th>Скидка</th>
+                <th>Многоразовый</th>
+                <th><nobr>Действует до</nobr></th>
+            </tr>
         </thead>
         <tbody>
             <tr>
@@ -63,7 +63,6 @@
         },
         methods: {
             store() {
-                console.log(this.coupon);
                 axios.post(this.store_coupon_endpoint, this.coupon)
                     .then(response => {
                         window.flash('Сохранен');

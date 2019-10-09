@@ -2,7 +2,6 @@
 
 Auth::routes();
 
-
 Route::get('/get-all-emails', function () {
 	$emails = \App\Order::all()->pluck('billing_email');
 	foreach($emails as $email) {
