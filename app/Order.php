@@ -37,7 +37,7 @@ class Order extends Model
 	public static function countNewOrders()
 	{
 		$o = Order::newOrders()->get();
-		if(count($o))
+		if (count($o))
 		{
 			return count($o);
 		}

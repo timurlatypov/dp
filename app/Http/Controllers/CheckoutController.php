@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
+    private $cart;
+
+    public function __construct(\Gloudemans\Shoppingcart\Cart $cart)
+    {
+        $this->cart = $cart;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +21,8 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-    	$cart = Cart::content();
-    	$subtotal = Cart::subtotal();
+    	$cart = $this->cart->content();
+    	$subtotal = $this->cart->subtotal();
 	    return view('checkout', compact(['cart', 'subtotal']));
     }
 
@@ -27,27 +34,21 @@ class CheckoutController extends Controller
      */
     public function destroy($rowId)
     {
-	    Cart::remove($rowId);
-	    $cart = Cart::content();
-	    $subtotal = Cart::subtotal();
-	    return response(['cart' => $cart, 'subtotal' => $subtotal], 200);
+        $this->cart->remove($rowId);
+	    return response(['cart' => $this->cart->content()], 200);
     }
 
 	public function add_qty_to_item(Request $request)
 	{
 		$rowId = $request->rowId;
-		Cart::update($rowId, $request->qty+1);
-		$cart = Cart::content();
-		$subtotal = Cart::subtotal();
-		return response(['cart' => $cart, 'subtotal' => $subtotal], 200);
+        $this->cart->update($rowId, $request->qty+1);
+		return response(['cart' => $this->cart->content()], 200);
 	}
 
 	public function remove_qty_to_item(Request $request)
 	{
 		$rowId = $request->rowId;
-		Cart::update($rowId, $request->qty-1);
-		$cart = Cart::content();
-		$subtotal = Cart::subtotal();
-		return response(['cart' => $cart, 'subtotal' => $subtotal], 200);
+        $this->cart->update($rowId, $request->qty-1);
+		return response(['cart' => $this->cart->content()], 200);
 	}
 }

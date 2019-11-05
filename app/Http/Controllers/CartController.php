@@ -7,37 +7,75 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    private $cart;
+
+    /**
+     * Helper function
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    private function isCouponDiscount($id)
+    {
+        $value = 0;
+        $coupon = session()->get('coupon');
+        if ($coupon && $coupon->brand_id == $id) {
+            $value = $coupon->discount;
+        }
+
+        return $value;
+    }
+
+    /**
+     * CartController constructor.
+     *
+     * @param Cart $cart
+     */
+    public function __construct(Cart $cart)
+    {
+        $this->cart = $cart;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $addToCart = \Gloudemans\Shoppingcart\Facades\Cart::add([
-        	'id' => $request->id,
-	        'name' => $request->title_eng,
-	        'qty' => 1,
-	        'price' => $request->price,
-	        'options' => [
-		        'title_rus' => $request->title_rus,
-	        	'discount' => $request->discount,
-	        	'product_slug' => $request->slug,
-	        	'brand' => $request->brand['name'],
-	        	'brand_slug' => $request->brand['slug'],
-		        'image' => $request->thumb_path
-	        ]
+        $this->cart->add([
+            'id'      => $request->id,
+            'name'    => $request->title_eng,
+            'qty'     => 1,
+            'price'   => $request->price,
+            'options' => [
+                'title_rus'    => $request->title_rus,
+                'discount'     => $request->discount,
+                'product_slug' => $request->slug,
+                'brand'        => $request->brand['name'],
+                'brand_id'     => $request->brand['id'],
+                'brand_slug'   => $request->brand['slug'],
+                'image'        => $request->thumb_path,
+                'coupon'       => $this->isCouponDiscount($request->brand['id']),
+            ],
         ]);
-        return response(['data' => \Gloudemans\Shoppingcart\Facades\Cart::content()], 200);
+
+        return response(['data' => $this->cart->content()], 200);
     }
 
-	public function refresh()
-	{
-		$cart_items = \Gloudemans\Shoppingcart\Facades\Cart::content();
-		$cart_count = $cart_items->count();
-		$cart_total = \Gloudemans\Shoppingcart\Facades\Cart::total();
+    public function refresh()
+    {
+        $cart_items = $this->cart->content();
+        $cart_count = $cart_items->count();
+        $cart_total = $this->cart->total();
 
-		return response(['cart_items' => $cart_items, 'cart_count' => $cart_count, 'cart_total' => $cart_total], 200);
-	}
+        return response([
+            'cart_items' => $cart_items,
+            'cart_count' => $cart_count,
+            'cart_total' => $cart_total,
+        ], 200);
+    }
 }

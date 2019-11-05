@@ -159,7 +159,8 @@
                         <th class="text-center" style="width: 80px;"></th>
                         <th class="w-25">Продукт</th>
                         <th class="th-description">Цена</th>
-                        <th class="th-descriptiontext-center">Скидка</th>
+                        <th class="th-description text-center">Скидка</th>
+                        <th class="th-description text-center">Промокод</th>
                         <th><nobr>Цена со скидкой</nobr></th>
                         <th>Кол-во</th>
                         <th class="">Сумма</th>
@@ -174,10 +175,6 @@
                             <br><small>{{ product.options.title_rus }}</small>
                             <br><small class="text-uppercase">{{ product.options.brand }}</small>
                         </td>
-
-                        <!--<td class="font-weight-bold">-->
-                        <!--{{ product.price }}&nbsp;&#x20BD;-->
-                        <!--</td>-->
 
                         <td class="text-center font-weight-bold">
                             <div class="input-group" style="max-width: 80px;">
@@ -204,7 +201,23 @@
                                 </div>
                                 <input
                                         class="form-control font-weight-bold"
-                                        v-model="order.cart[index].biggest_discount"
+                                        v-model="order.cart[index].options.discount"
+                                        type="number"
+                                        min="0"
+                                        oninput="validity.valid||(value='');">
+                            </div>
+                        </td>
+
+                        <td class="text-center font-weight-bold">
+                            <div class="input-group" style="max-width: 60px;">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text pl-0 pr-1">
+                                      <i class="fa fa-percentage"></i>
+                                  </span>
+                                </div>
+                                <input
+                                        class="form-control font-weight-bold"
+                                        v-model="order.cart[index].options.coupon"
                                         type="number"
                                         min="0"
                                         oninput="validity.valid||(value='');">
@@ -215,7 +228,7 @@
                             <button type="button" class="btn btn-danger btn-simple mr-2" @click.prevent="refreshDiscountedPrice(index)">
                                 <i class="material-icons">refresh</i>
                             </button>
-                            {{ product.discounted_price.toFixed(decimals) }}&nbsp;&#x20BD;
+                            {{ product.discounted_price | formatDecimals }}&nbsp;&#x20BD;
                         </td>
 
                         <td class="td-actions text-center">
@@ -232,7 +245,7 @@
                             </ul>
                         </td>
 
-                        <td class="td-number font-weight-bold">{{ product.subtotal.toFixed(decimals) }}&nbsp;&#x20BD;</td>
+                        <td class="td-number font-weight-bold">{{ product.subtotal | formatDecimals }}&nbsp;&#x20BD;</td>
 
                         <td class="td-actions text-center">
                             <button type="button" class="btn btn-simple" @click.prevent="deleteItem(index)">
@@ -314,8 +327,10 @@
 
 <script>
     import {productautocomplete} from "../../../helpers/autocomplete"
+    import { priceFilters } from '../../../filters/priceFilters'
 
     export default {
+        mixins: [priceFilters],
         props: {
             details: Array,
             id: Number,
@@ -369,52 +384,52 @@
                 if (qty === 1) {
                     return;
                 }
-
                 this.order.cart[index].qty--;
-
                 this.order.cart[index].subtotal = this.calcSubtotal(discounted_price, this.order.cart[index].qty)
                 this.calcTotal();
-
             },
             deleteItem(index) {
                 this.order.cart.splice(index, 1);
                 this.calcTotal();
             },
-            // Checkout form logic
-            defineBiggestDiscount(productDiscount, loyaltyDiscount, couponDiscount) {
-                return Math.max(productDiscount, loyaltyDiscount, couponDiscount);
-            },
 
-            discountedPrice(price, discount){
-                return parseFloat((Math.round( (Number(price) - (Number(price) * (discount/100))) * 100 ) / 100).toFixed(2));
+            discountedPrice(price, discount, coupon) {
+                let couponDiscount = 0
+                if (coupon && coupon > 0) {
+                    couponDiscount = coupon
+                }
+                return Number(price * ((100 - (discount + couponDiscount)) / 100))
             },
 
             refreshDiscountedPrice(index) {
-                this.order.cart[index].discounted_price = parseFloat((Math.round( (Number(this.order.cart[index].price) - (Number(this.order.cart[index].price) * (this.order.cart[index].biggest_discount/100))) * 100 ) / 100).toFixed(2));
-                this.order.cart[index].subtotal = this.calcSubtotal(this.order.cart[index].discounted_price, this.order.cart[index].qty);
+                this.order.cart[index].discounted_price = Number(this.discountedPrice(Number(this.order.cart[index].price), Number(this.order.cart[index].options.discount), Number(this.order.cart[index].options.coupon)))
+                this.order.cart[index].subtotal = Number(this.calcSubtotal(Number(this.order.cart[index].discounted_price), Number(this.order.cart[index].qty)));
                 this.calcTotal();
             },
 
             calcSubtotal(discounted_price, qty) {
-                return parseFloat((discounted_price * qty).toFixed(2));
+                return Number(discounted_price * qty).toFixed(2)
             },
 
             calcTotal() {
                 let that = this;
                 this.order.billing_subtotal = 0;
-                this.order.cart.forEach( function (product, index) {
+                this.order.cart.forEach(function (product) {
                     that.order.billing_subtotal += Number(product.subtotal);
                 });
                 this.order.billing_total = Number(this.order.billing_subtotal) + Number(this.order.billing_delivery)
             },
 
             refreshStage(products) {
-                products.map((product, index) => {
-                    product.biggest_discount = Number(this.defineBiggestDiscount(product.options.discount, this.order.user.loyalty, this.order.coupon.discount));
-                    product.discounted_price =  Number(this.discountedPrice(product.price, product.biggest_discount));
+                products.map((product) => {
+                    product.discounted_price =  Number(this.discountedPrice(product.price, product.options.discount, product.options.coupon));
                     product.subtotal = Number(this.calcSubtotal(product.discounted_price, product.qty));
                 });
                 this.order.cart = products;
+                this.calcTotal();
+            },
+
+            setCart() {
                 this.calcTotal();
             },
 
@@ -432,8 +447,10 @@
                     options: {
                         title_rus: selection.title_rus,
                         discount: selection.discount,
+                        coupon: 0,
                         product_slug: selection.slug,
                         brand: selection.brand.name,
+                        brand_id: selection.brand.id,
                         brand_slug: selection.brand.slug,
                         image: selection.thumb_path
                     },
@@ -468,13 +485,14 @@
             }
         },
         mounted() {
-
             productautocomplete('#selection', {
                 hitsPerPage: 10
             })
                 .on('autocomplete:selected', (e, selection) => {
                     this.add(selection);
                 })
+
+            this.setCart();
         }
     }
 </script>

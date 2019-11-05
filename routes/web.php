@@ -161,6 +161,7 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::post('/store', 'OrdersController@store')->name('admin.orders.store');
 		Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
 		Route::get('/{order}/edit', 'OrdersController@edit')->name('admin.orders.edit');
+        Route::patch('/update', 'OrdersController@update')->name('admin.orders.update');
 
 		Route::get('/{order}/register', 'OrdersController@registerOrder')->name('admin.orders.registerOrder');
 		Route::get('/{order}/resend', 'OrdersController@resendConfirmationEmail')->name('admin.orders.resendConfirmation');
@@ -172,7 +173,6 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::get('/{order}/send-link', 'OrdersController@sendLink')->name('admin.orders.sendLink');
 
 
-		Route::patch('/update', 'OrdersController@update')->name('admin.orders.update');
 		Route::post('/assign', 'OrdersController@assign')->name('admin.orders.assign');
 		Route::delete('/delete', 'OrdersController@destroy')->name('admin.orders.destroy');
 		Route::post('/change', 'OrdersController@change')->name('admin.orders.change.status');

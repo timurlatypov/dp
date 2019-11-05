@@ -12,7 +12,6 @@ class NewOrder extends Mailable
     use Queueable, SerializesModels;
 
 	public $order;
-	public $coupon;
 
     /**
      * Create a new message instance.
@@ -22,7 +21,6 @@ class NewOrder extends Mailable
     public function __construct($order)
     {
 	    $this->order = $order;
-	    $this->coupon = json_decode($order->coupon_details);
     }
 
     /**

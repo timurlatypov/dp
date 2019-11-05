@@ -345,7 +345,9 @@
                                     <br>
                                     Ваш заказ: <b>{{ $order->order_id }}</b> от {{ $order->created_at->format('d.m.Y') }}<br>
                                     Мы обязательно свяжемся с Вами в ближайшее время по номеру:<br><b>{{ $order->billing_phone }}</b>.
-                                    <br><br>
+                                    <br>
+                                    Если вдруг Вы заметили, что контактные данные заполнены неверно - просьба перезвонить нам для внесения корректных данных в заказ. Иначе мы не сможем выйти на связь с Вами.
+                                        <br><br>
                                     Вы заказзали:
                                     </p>
 
@@ -355,7 +357,7 @@
                                                 <th>Продукт</th>
                                                 <th>Цена</th>
                                                 <th>Скидка</th>
-                                                @isset($coupon)<th>Промокод</th>@endisset
+                                                <th>Промокод</th>
                                                 <th>Цена со скидкой</th>
                                                 <th>Кол-во</th>
                                                 <th>Сумма</th>
@@ -370,8 +372,8 @@
                                                     <small>{{ $product->options->brand }}</small>
                                                 </td>
                                                 <td class="text-center">{{ $product->price }} &#x20BD;</td>
-                                                <td class="text-center">{{ $product->biggest_discount }}%</td>
-                                                @isset($coupon)<td class="text-center">{{ $coupon->discount }}%</td>@endisset
+                                                <td class="text-center">-{{ $product->options->discount }}%</td>
+                                                <td class="text-center">-{{ $product->options->coupon }}%</td>
                                                 <td class="text-center">{{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;</td>
                                                 <td class="text-center">{{ $product->qty }} шт.</td>
                                                 <td class="text-center">{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>

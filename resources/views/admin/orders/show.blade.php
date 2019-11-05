@@ -32,7 +32,6 @@
                                 <br><br>
                             </div>
                             <div class="col-12 col-sm-6 px-0">
-
                                 @if(count($order->payments))
                                     <h4 class="title mt-2 mb-2">Управление онлайн-оплатой</h4>
                                     @foreach($order->payments as $payment)
@@ -85,12 +84,12 @@
                                 <td><div class="img-container"><img src="/storage/products/thumb/{{ $product->options->image }}"></div></td>
                                 <td>
                                     <b class="text-primary">{{ $product->name }}</b><br>
-                                    @isset($product->options->title_rus){{ $product->options->title_rus }}@endisset<br>
-                                    <small class="text-uppercase">{{ $product->options->brand }}</small>
+                                    @if(isset($product->options->product->title_rus)){{ $product->options->product->title_rus }}@else{{ $product->options->title_rus }}@endif<br>
+                                    <small class="text-uppercase">@if(isset($product->options->brand->name)){{ $product->options->brand->name }}@else {{ $product->options->brand }} @endif</small>
                                 </td>
                                 <td>{{ $product->price }} &#x20BD;</td>
-                                <td>@isset($product->biggest_discount)-{{ $product->biggest_discount }}%@endisset</td>
-                                <td>@isset($coupon)-{{ $coupon->discount }}%@endisset</td>
+                                <td class="text-danger">@if(isset($product->options->discount))-{{ $product->options->discount }}%@endif</td>
+                                <td class="text-success">@if(isset($product->options->coupon))-{{ $product->options->coupon }}%@else @endif</td>
                                 <td>@isset($product->discounted_price){{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;@endisset</td>
                                 <td>{{ $product->qty }} шт.</td>
                                 <td>{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>
@@ -100,9 +99,9 @@
                                 <td colspan="3" class="">
                                 </td>
                                 <td colspan="5" class="text-right" rowspan="10">
-                                    <h4 class="title mt-2 mb-0">Сумма: {{ number_format((float)$order->billing_subtotal, 2, '.', '') ?? 0 }} &#x20BD;</h4>
-                                    <h4 class="title mt-2 mb-0">Доставка: {{ number_format((float)$order->billing_delivery, 2, '.', '') ?? 0 }} &#x20BD;</h4>
-                                    <h4 class="title mt-2 mb-0">Итого: {{ number_format((float)$order->billing_total, 2, '.', '') }} &#x20BD;</h4>
+                                    <h4 class="title mt-2 mb-0">Сумма: {{ number_format((float)$order->billing_subtotal, 2, '.', '') ?? 0 }}</h4>
+                                    <h4 class="title mt-2 mb-0">Доставка: {{ number_format((float)$order->billing_delivery, 2, '.', '') ?? 0 }}</h4>
+                                    <h4 class="title mt-2 mb-0">Итого: {{ number_format((float)$order->billing_total, 2, '.', '') }}</h4>
                                 </td>
                             </tr>
                         </tbody>

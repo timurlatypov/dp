@@ -6,13 +6,14 @@
             <p class="p-5">В вашей корзине нет товаров</p>
         </div>
     </div>
-
     <div class="card" v-else-if="new_order_created">
         <div class="px-4 py-3 mx-auto text-center">
             <h4 class="title">Мы получили Ваш заказ!</h4>
             <p class="pb-5">В ближайшее время мы Вам позвоним по указанному телефону. Ожидайте подтверждение заказа</p>
         </div>
     </div>
+
+
     <div class="card" v-else>
         <div class="px-4 py-3 mx-auto">
             <h3 class="title">Ваш заказ</h3>
@@ -26,62 +27,59 @@
                     <th class="w-50">Продукт</th>
                     <th>Цена</th>
                     <th class="text-center">Скидка</th>
-                    <th>
-                        <nobr>Цена со скидкой</nobr>
-                    </th>
-                    <th>Кол-во</th>
+                    <th class="text-center">Промокод</th>
+                    <th><nobr>Цена со скидкой</nobr></th>
+                    <th class="text-center">Кол-во</th>
                     <th class="">Сумма</th>
                     <th class="text-center" style="width: 60px;">Удалить</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="product, index in order.cart">
+                <tr v-for="(item, index) in order.cart">
                     <td>
                         <div class="img-container">
-                            <img :src="'storage/products/thumb/'+product.options.image" alt="...">
+                            <img :src="'storage/products/thumb/' + item.options.image">
                         </div>
                     </td>
-
                     <td class="td-name">
-                        <a class="font-weight-bold"
-                           :href="'/brand/'+product.options.brand_slug+'/'+product.options.product_slug">{{ product.name
-                            }}</a>
+                        <a class="font-weight-bold" :href="'/brand/' + item.options.brand_slug + '/' + item.options.product_slug">{{ item.name }}</a>
                         <br>
-                        <small>{{ product.options.title_rus }}</small>
+                        <small>{{ item.options.title_rus }}</small>
                         <br>
-                        <small class="text-uppercase">{{ product.options.brand }}</small>
+                        <small class="text-uppercase">{{ item.options.brand }}</small>
                     </td>
+                    <td class="font-weight-bold">
+                        <nobr>{{ item.price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr>
+                    </td>
+                    <td class="text-center font-weight-bold text-danger">-{{ item.options.discount }}%</td>
+
+                        <td class="text-center font-weight-bold text-success">
+                            <template v-if="item.options.coupon > 0">-{{ item.options.coupon }}%</template>
+                        </td>
 
                     <td class="font-weight-bold">
-                        <nobr>{{ product.price }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr>
+                        <nobr>{{ item.discounted_price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr>
                     </td>
-                    <td class="text-center font-weight-bold text-danger">-{{ product.sumDiscount }}%</td>
-                    <td class="font-weight-bold">
-                        <nobr>{{ product.discounted_price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign"
-                                                                                       style="font-size: 90%"></i>
-                        </nobr>
-                    </td>
-
                     <td class="td-actions text-center">
                         <ul role="navigation" class="pagination my-auto mx-auto">
                             <li class="page-item">
-                                <button class="page-link" @click.prevent="removeItem(index, product.rowId, product.qty)">-</button>
+                                <button class="page-link" @click.prevent="removeItem(index, item.rowId, item.qty)">-</button>
                             </li>
                             <li class="page-item active">
-                                <span class="page-link"><strong>{{ product.qty }}</strong></span>
+                                <span class="page-link"><strong>{{ item.qty }}</strong></span>
                             </li>
                             <li class="page-item">
-                                <button class="page-link" @click.prevent="addItem(index, product.rowId, product.qty)">+</button>
+                                <button class="page-link" @click.prevent="addItem(index, item.rowId, item.qty)">+</button>
                             </li>
                         </ul>
                     </td>
 
                     <td class="td-number font-weight-bold">
-                        <nobr>{{ product.subtotal.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr>
+                        <nobr>{{ item.subtotal.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr>
                     </td>
 
                     <td class="td-actions text-center">
-                        <button type="button" class="btn btn-simple" @click.prevent="deleteItem(product.rowId)">
+                        <button type="button" class="btn btn-simple" @click.prevent="deleteItem(item.rowId)">
                             <i class="material-icons">close</i>
                         </button>
                     </td>
@@ -95,6 +93,7 @@
                             <label for="exampleInput1" class="bmd-label-floating">Промокод</label>
                             <input type="text" class="form-control" style="width: 210px;" id="exampleInput1"
                                    v-model="order.coupon.coupon" :disabled="coupon_input_disabled" autocomplete="false">
+
                             <small class="form-text text-danger" v-if="!order.coupon.valid">{{ order.coupon.error }}&nbsp;</small>
                             <small class="form-text text-success" v-if="order.coupon.valid">{{ order.coupon.success }}&nbsp;</small>
 
@@ -113,8 +112,7 @@
                     </td>
                     <td colspan="6" style="vertical-align: top">
                         <h3 class="title mt-4">Итого:
-                            <nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign"
-                                                                                      style="font-size: 90%"></i></nobr>
+                            <nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr>
                         </h3>
                         <h5 class="title mb-1 mt-3 text-muted">Доставка</h5>
                         <p class="text-muted">Бесплатная доставка по Москве(в пределах МКАД) при сумме заказа от 3000
@@ -122,7 +120,6 @@
                             оформления заказа.</p>
                     </td>
                 </tr>
-
                 </tbody>
             </table>
         </div>
@@ -181,21 +178,23 @@
                 <div class="col-12 col-md-2 offset-md-1">
                     <div class="form-group" @click.prevent="setFocus('billing_index')">
                         <label for="billing_city">Индекс</label>
-                        <input type="text" name="billing_index" class="form-control" id="billing_index"
-                               v-model="order.address.billing_index">
-                        <small v-show="errors.has('billing_index')" class="text-danger">{{ errors.first('billing_index')
-                            }}
-                        </small>
+                        <input type="text" name="billing_index" class="form-control" id="billing_index" v-model="order.address.billing_index">
+                        <small v-show="errors.has('billing_index')" class="text-danger">{{ errors.first('billing_index') }}</small>
                     </div>
                 </div>
 
                 <div class="col-12 col-md-4">
                     <div class="form-group" @click.prevent="setFocus('billing_city')">
                         <label for="billing_city">Город <span class="text-danger">*</span></label>
-                        <input type="text" name="billing_city" class="form-control" id="billing_city"
-                               v-model="order.address.billing_city" v-validate="'required'">
-                        <small v-show="errors.has('billing_city')" class="text-danger">{{ errors.first('billing_city')
-                            }}
+                        <input type="text"
+                               name="billing_city"
+                               class="form-control"
+                               id="billing_city"
+                               v-model="order.address.billing_city"
+                               v-validate="'required'">
+                        <small v-show="errors.has('billing_city')"
+                               class="text-danger">
+                            {{ errors.first('billing_city') }}
                         </small>
                     </div>
                 </div>
@@ -203,10 +202,14 @@
                 <div class="col-12 col-md-4">
                     <div class="form-group" @click.prevent="setFocus('billing_street')">
                         <label for="billing_street">Улица <span class="text-danger">*</span></label>
-                        <input type="text" name="billing_street" class="form-control" id="billing_street"
-                               v-model="order.address.billing_street" v-validate="'required'">
-                        <small v-show="errors.has('billing_street')" class="text-danger">{{
-                            errors.first('billing_street') }}
+                        <input type="text"
+                               name="billing_street"
+                               class="form-control"
+                               id="billing_street"
+                               v-model="order.address.billing_street"
+                               v-validate="'required'">
+                        <small v-show="errors.has('billing_street')"
+                               class="text-danger">{{ errors.first('billing_street') }}
                         </small>
                     </div>
                 </div>
@@ -360,7 +363,7 @@
 
                 axios.post('/checkout/add', this.payload)
                     .then(response => {
-                        this.refreshStage(Object.values(response.data.cart));
+                        this.refreshCart(Object.values(response.data.cart));
                         window.cartUpdate();
                     })
 
@@ -375,34 +378,25 @@
 
                 axios.post('/checkout/remove', this.payload)
                     .then(response => {
-                        this.refreshStage(Object.values(response.data.cart));
+                        this.refreshCart(Object.values(response.data.cart));
                         window.cartUpdate();
                     })
             },
             deleteItem(rowId) {
                 axios.delete('/checkout/delete/' + rowId)
                     .then(response => {
-                        this.refreshStage(Object.values(response.data.cart));
+                        this.refreshCart(Object.values(response.data.cart));
                         window.cartUpdate();
                     })
             },
-            // Checkout form logic
-            defineBiggestDiscount(productDiscount, loyaltyDiscount, couponDiscount) {
-                return Math.max(productDiscount, loyaltyDiscount, couponDiscount);
-            },
 
             discountedPrice(price, discount, coupon) {
-                return (Math.round((Number(price) - (Number(price) * (discount / 100)) - (Number(price) * (coupon / 100))) * 100) / 100).toFixed(2);
-            },
-
-            sumCouponDiscount(discount, coupon){
-                return Number(discount + coupon);
+                return (price * ((100 - (discount + coupon)) / 100)).toFixed(2);
             },
 
             calcSubtotal(discounted_price, qty) {
                 return (discounted_price * qty).toFixed(2);
             },
-
             calcTotal() {
                 let that = this;
                 this.order.billing_total = 0;
@@ -418,9 +412,11 @@
                         this.order.coupon.valid = false;
                         this.order.coupon.discount = 0;
                         this.order.coupon.coupon = '';
-                        this.refreshStage(this.order.cart);
                         this.coupon_apply_button_disabled = false;
                         this.coupon_destroy_button_disabled = true;
+
+                        this.refreshCart(Object.values(response.data.cart));
+                        window.cartUpdate();
                     })
             },
             validateCoupon() {
@@ -434,10 +430,12 @@
                         this.coupon_input_disabled = true;
                         this.order.coupon.valid = true;
                         this.order.coupon.success = 'Промокод применён';
-                        this.refreshStage(this.order.cart);
-                        window.flash('Промокод успешно применён!');
                         this.coupon_apply_button_disabled = true;
                         this.coupon_destroy_button_disabled = false;
+
+                        this.refreshCart(Object.values(response.data.cart));
+                        window.cartUpdate();
+                        window.flash('Промокод успешно применён!');
                     }).catch((e) => {
                     //
                 })
@@ -468,22 +466,16 @@
                 }
             },
 
-            refreshStage(products) {
+            refreshCart(products) {
                 products.map((product, index) => {
-
-                    product.biggest_discount = Number(this.defineBiggestDiscount(product.options.discount, this.order.user.loyalty, this.order.coupon.discount));
-
-                    product.sumDiscount = Number(this.sumCouponDiscount(product.biggest_discount, this.order.coupon.discount));
-
-                    product.discounted_price = Number(this.discountedPrice(product.price, product.biggest_discount, this.order.coupon.discount));
-
+                    product.discounted_price = Number(this.discountedPrice(product.price, product.options.discount, product.options.coupon));
                     product.subtotal = Number(this.calcSubtotal(product.discounted_price, product.qty));
                 });
                 this.order.cart = products;
                 this.calcTotal();
             },
 
-            initStage() {
+            setCart() {
                 if (this.session_cart) {
                     this.order.cart = Object.values(this.session_cart);
                 }
@@ -506,18 +498,17 @@
                 }
 
                 this.order.cart.map((product, index) => {
-                    product.biggest_discount = Number(this.defineBiggestDiscount(product.options.discount, this.order.user.loyalty, this.order.coupon.discount));
-                    product.sumDiscount = Number(this.sumCouponDiscount(product.biggest_discount, this.order.coupon.discount));
-                    product.discounted_price = Number(this.discountedPrice(product.price, product.biggest_discount, this.order.coupon.discount));
+                    product.discounted_price = Number(this.discountedPrice(product.price, product.options.discount, product.options.coupon));
                     product.subtotal = Number(this.calcSubtotal(product.discounted_price, product.qty));
                 });
 
                 this.calcTotal();
+
+                console.log(this.order.cart)
             }
         },
         mounted() {
-            this.initStage();
-
+            this.setCart();
             if (this.$cookie.get('_ga', {domain: '.doctorproffi.ru'})) {
                 this.order._ga = this.$cookie.get('_ga', {domain: '.doctorproffi.ru'})
             }

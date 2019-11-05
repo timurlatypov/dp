@@ -359,7 +359,7 @@
                                             <th>Продукт</th>
                                             <th>Цена</th>
                                             <th>Скидка</th>
-                                            @isset($coupon)<th>Промокод</th>@endisset
+                                            <th>Промокод</th>
                                             <th>Цена со скидкой</th>
                                             <th>Кол-во</th>
                                             <th>Сумма</th>
@@ -374,8 +374,8 @@
                                                     <small>{{ $product->options->brand }}</small>
                                                 </td>
                                                 <td class="text-center">{{ $product->price }} &#x20BD;</td>
-                                                <td class="text-center">{{ $product->biggest_discount }}%</td>
-                                                @isset($coupon)<td class="text-center">{{ $coupon->discount }}%</td>@endisset
+                                                <td class="text-center">-{{ $product->options->discount }}%</td>
+                                                <td class="text-center">-{{ $product->options->coupon }}%</td>
                                                 <td class="text-center">{{ number_format((float)$product->discounted_price, 2, '.', '') }} &#x20BD;</td>
                                                 <td class="text-center">{{ $product->qty }} шт.</td>
                                                 <td class="text-center">{{ number_format((float)$product->subtotal, 2, '.', '') }} &#x20BD;</td>
