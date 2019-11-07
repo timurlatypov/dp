@@ -5,10 +5,12 @@
     @stack('meta')
     @include('layouts.partials._head')
     @stack('share')
+    @include('layouts.partials._gtm')
     <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
     <script src="//code.jivosite.com/widget.js" jv-id="NBcIYDWKSE" async></script>
 </head>
 <body>
+@include('layouts.partials._gtm_body')
     <div id="app">
         @include('layouts.partials._header')
         @include('layouts.partials._mobile-search')
@@ -41,7 +43,5 @@
     @include('layouts.partials._ga')
     @include('layouts.partials._facebook_pixel')
     @include('layouts.partials._callback_button')
-    @include('layouts.partials._sourcebuster')
-
 </body>
 </html>
