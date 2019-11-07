@@ -53,6 +53,7 @@
             }
         },
         mounted() {
+            window.sbjs.init();
             this.items = this.cart_items;
             this.count = this.cart_count;
         }

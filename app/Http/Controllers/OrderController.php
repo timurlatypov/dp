@@ -39,7 +39,6 @@ class OrderController extends Controller
 			$hasCoupon = false;
 		}
 
-
 		$order = Order::create([
 			'user_id' => $user_id,
 			'order_details' => json_encode($request->cart),
@@ -65,7 +64,14 @@ class OrderController extends Controller
 
 			'billing_subtotal' => $request->billing_total,
 			'billing_delivery' => 0,
-			'billing_total' => $request->billing_total
+			'billing_total' => $request->billing_total,
+
+            'utm_source' => $request->_sbjs['src'],
+            'utm_term' => $request->_sbjs['trm'],
+            'utm_medium' => $request->_sbjs['mdm'],
+            'utm_campaign' => $request->_sbjs['cmp'],
+            'utm_content' => $request->_sbjs['cnt'],
+            'traffic' => $request->_sbjs['typ'],
 		]);
 
 		$customer = $request->user['email'];
