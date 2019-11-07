@@ -315,6 +315,7 @@
                 order: {
                     _ga: null,
                     _ym: null,
+                    _sbjs: null,
 
                     cart: [],
                     user: {
@@ -450,7 +451,8 @@
             },
             storeOrder() {
                 if (!this.is_disabled) {
-                    this.is_disabled = true
+                    this.is_disabled = true;
+                    this.order._sbjs = window.sbjs.get.current
 
                     axios.post('/order/store', this.order)
                         .then(response => {

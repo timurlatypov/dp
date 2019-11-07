@@ -35,8 +35,6 @@ Vue.use(VeeValidate);
 import VueRecaptcha from 'vue-recaptcha';
 Vue.use(VueRecaptcha);
 
-
-
 require('./bootstrap');
 require('./scripts');
 require('moment');
@@ -74,8 +72,6 @@ Vue.component('callback', require('./components/Callback.vue'));
 
 Vue.component('order-edit-form', require('./components/admin-panel/order/OrderEditForm.vue'));
 Vue.component('order-create-form', require('./components/admin-panel/order/OrderCreateForm.vue'));
-
-
 
 const app = new Vue({
     el: '#app',
