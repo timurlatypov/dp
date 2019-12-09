@@ -1,27 +1,53 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-
-        <div class="carousel-item active" style="background-color: #ffffff">
-            <a href="/discounts" class="banner-mobile h-100">
+        <div class="carousel-item active" style="background-color: #FFF">
+            <a href="#" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/mobile-promo-october.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promocode-ps-mobile.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="/discounts" class="banner-tablet h-100">
+            <a href="#" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/tablet-promo-october.jpg')">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promocode-ps-tablet.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="/discounts" class="banner-desktop h-100">
+            <a href="#" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/desktop-promo-october.jpg')">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/promocode-ps-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #e3e3e5">
+            <a href="/brand/corpolibero/icon-eye-patch" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/mobile-promo-november.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/corpolibero/icon-eye-patch" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/tablet-promo-november.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/corpolibero/icon-eye-patch" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/desktop-promo-november.jpg')">
                         <div class="col-12 align-self-center px-5">
                         </div>
                     </div>

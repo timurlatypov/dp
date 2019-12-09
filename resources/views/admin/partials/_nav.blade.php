@@ -5,13 +5,6 @@
 </div>
 <ul class="nav">
 
-    {{--<li class="nav-item">--}}
-        {{--<a class="nav-link" href="#href">--}}
-            {{--<i class="material-icons">dashboard</i>--}}
-            {{--<p>Панель</p>--}}
-        {{--</a>--}}
-    {{--</li>--}}
-
     @if(  auth()->check() && auth()->user()->hasRole(['admin']))
     <li class="nav-item">
         <a class="nav-link" href="#href">
@@ -32,6 +25,13 @@
         <a class="nav-link" href="{{ route('admin.product.index') }}">
             <i class="material-icons">shopping_cart</i>
             <p>Продукты</p>
+        </a>
+    </li>
+
+    <li class="nav-item {{ Request::is('admin-panel/discount*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.discount.index') }}">
+            <i class="material-icons">local_offer</i>
+            <p>Скидки</p>
         </a>
     </li>
 

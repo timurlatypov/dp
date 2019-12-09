@@ -139,6 +139,14 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::post('/stock/toggle', 'ProductController@stockToggle')->name('api.product.stock.toggle');
 	});
 
+    //
+    // DISCOUNT
+    //
+    Route::group(['prefix' => '/discount', 'namespace' => 'Discount'], function() {
+        Route::get('/', 'DiscountsController@index')->name('admin.discount.index');
+        Route::post('/update', 'DiscountsController@update')->name('admin.discount.update');
+    });
+
 	//
 	// CATEGORIES / SUBCATEGORIES GROUP
 	//

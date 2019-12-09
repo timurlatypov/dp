@@ -40,7 +40,8 @@ class CouponController extends Controller
                     $request->session()->put('coupon', $coupon);
 
                     foreach ($this->cart->content() as $rowId => $item) {
-                        if ($item->options['brand_id'] == $coupon->brand_id) {
+                        // чтобы отключить наборы && $item->options['brand_id'] != 11
+                        if ($item->options['brand_id'] == $coupon->brand_id || $coupon->brand_id == 0) {
                             $item->options['coupon'] = $coupon->discount;
                             $this->cart->update($rowId, ['options' => $item->options]);
                         }
