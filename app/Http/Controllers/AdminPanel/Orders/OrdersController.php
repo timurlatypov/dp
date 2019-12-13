@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 use Voronkovich\SberbankAcquiring\Client;
 use Voronkovich\SberbankAcquiring\OrderStatus;
 
-use App\Filters\Product\{ BrandFilter };
+use App\Filters\Order\{DateFromFilter, DateToFilter, SurnameFilter};
 
 class OrdersController extends Controller
 {
@@ -23,9 +23,19 @@ class OrdersController extends Controller
 	public function index(Request $request)
 	{
 		$orders = Order::orderBy('created_at', 'desc')
+            ->filter($request, $this->getFilters())
 			->paginate(20);
 		return view('admin.orders.index', compact('orders'));
 	}
+
+    protected function getFilters()
+    {
+        return [
+            'surname' => SurnameFilter::class,
+            'from' => DateFromFilter::class,
+            'to' => DateToFilter::class
+        ];
+    }
 
 	public function create()
 	{
@@ -76,8 +86,8 @@ class OrdersController extends Controller
 
 	public function assign(Request $request)
 	{
-		$order = Order::find( (int)$request->id );
-		$manager = User::find( (int)$request->managerid );
+		$order = Order::find((int)$request->id);
+		$manager = User::find((int)$request->managerid);
 
 		$order->manager()->associate($manager);
 		$order->save();
@@ -99,8 +109,6 @@ class OrdersController extends Controller
 	public function edit(Order $order)
 	{
 		$details = json_decode($order->order_details);
-
-		//dd($details);
 
 		return view('admin.orders.edit', compact(['order','details']));
 	}
@@ -139,18 +147,14 @@ class OrdersController extends Controller
 		return redirect()->back()->with('flash', 'Письмо отправлено клиенту!');
 	}
 
-
-
 	public function change(Request $request)
 	{
-
 		$order = Order::find($request->id);
 		$order->update([
 			'order_status' => $request->order_status
 		]);
 		return redirect()->back();
 	}
-
 
 	public function changePayment(Request $request)
 	{
@@ -160,7 +164,6 @@ class OrdersController extends Controller
 		]);
 		return redirect()->back();
 	}
-
 
 	public function registerOrder(Request $request, Order $order)
 	{
@@ -215,7 +218,6 @@ class OrdersController extends Controller
 
 	}
 
-
 	public function sendLink(Order $order, Request $request)
 	{
 		$link = $order->payments()->latest()->first();
@@ -228,7 +230,6 @@ class OrdersController extends Controller
 		return back()->with('flash-error', 'Ccылка не отправлена');
 
 	}
-
 
 	public function orderStatus($id)
 	{

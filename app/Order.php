@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Filters\Order\OrderFilters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -68,4 +69,14 @@ class Order extends Model
 	{
 		return $this->belongsToMany(Sberbank::class, 'orders_payments', 'order_id', 'payment_id');
 	}
+
+    /**
+     *
+     * FILTERS
+     *
+     */
+    public function scopeFilter(Builder $builder, $request, array $filters = [])
+    {
+        return (new OrderFilters($request))->add($filters)->filter($builder);
+    }
 }

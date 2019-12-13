@@ -44,6 +44,7 @@ set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progre
 set('keep_releases', 15);
 set('cleanup_use_sudo', true);
 
+set('use_relative_symlink', false);
 
 // Tasks
 

@@ -22,9 +22,6 @@
                 </div>
                 <div class="col-6 align-self-center algolia-search">
                     <search></search>
-                    <div class="text-center">
-                        <h6 class="p-0 m-0 text-info">БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ ВРАЧА-КОСМЕТОЛОГА с 09:00 до 18:00</h6>
-                    </div>
                 </div>
                 <div class="col-3 text-right align-self-center px-0">
                     @guest

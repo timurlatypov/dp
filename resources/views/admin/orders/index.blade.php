@@ -5,14 +5,41 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card my-3 p-4">
-                    <h4 class="title mt-2 mb-2">Настройки</h4>
+                <div class="card my-3 p-2">
                     <div class="d-flex flex-wrap">
                         <a href="{{ route('admin.orders.create') }}" class="btn btn-sm btn-success font-weight-bold">
                             <i class="material-icons">add</i>
                             Создать заказ
                         </a>
                     </div>
+                </div>
+
+                <div class="card my-3 p-4">
+
+                        <form action="{{ route('admin.orders.index') }}" method="GET">
+                            <div class="d-flex">
+                                <div class="form-group">
+                                    <label for="surname">Фамилия</label>
+                                    <input id="surname" name="surname" type="text" class="form-control" value="{{  request()->query('surname') ?? null }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="from">From</label>
+                                    <input id="from" name="from" type="date" class="form-control" value="{{  request()->query('from') ?? null }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="to">To</label>
+                                    <input id="to" name="to" type="date" class="form-control" value="{{  request()->query('to') ?? null }}">
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-success font-weight-bold">
+                                Применить
+                            </button>
+                        </form>
+
+
                 </div>
 
                 <div class="card mt-3 mb-3 p-4">

@@ -39,7 +39,8 @@
                             <h4 class="title text-white mt-2">Информация</h4>
                             {{--<h6><a href="/loyalty" class="text-white">Программа лояльности</a></h6>--}}
                             <h6><a href="/contacts" class="text-white">Обратная связь</a></h6>
-                            {{--<h6><a href="#" class="text-white">Реквизиты</a></h6>--}}
+                            <h6>БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ<br>ПО ТЕЛЕФОНУ ГОРЯЧЕЙ ЛИНИИ: <a class="text-white" href="tel:88005006620"><nobr>8 (800) 500-66-20</nobr></a></h6>
+
                         </div>
                         <div class="col-12 col-md-3">
                             <h4 class="title text-white mt-2">Контакты</h4>
