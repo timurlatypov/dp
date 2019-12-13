@@ -2,13 +2,6 @@
 
 Auth::routes();
 
-Route::get('/get-all-emails', function () {
-	$emails = \App\Order::all()->pluck('billing_email');
-	foreach($emails as $email) {
-		echo $email.'<br />';
-	}
-});
-
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
