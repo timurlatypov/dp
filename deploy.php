@@ -21,7 +21,7 @@ add('writable_dirs', []);
 
 
 // Hosts
-set('default_stage', 'dev');
+set('default_stage', 'prod');
 set('branch', 'master');
 
 host('188.225.73.98')
