@@ -1,7 +1,34 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        <div class="carousel-item active" style="background-color: #FFF">
+        <div class="carousel-item active" style="background-color: #f6f4f3">
+            <a href="#" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/ny-corpolibero-sets-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/ny-corpolibero-sets-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/ny-corpolibero-sets-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #FFF">
             <a href="#" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">

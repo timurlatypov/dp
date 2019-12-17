@@ -24,21 +24,12 @@ add('writable_dirs', []);
 set('default_stage', 'dev');
 set('branch', 'master');
 
-host('194.67.213.95')
-	->user('deployer')
-	->identityFile('~/.ssh/id_rsa_doctorproffi')
-	->set('deploy_path', '/var/www/dev/doctorproffi')
-	->set('master', 'master')
-	->stage('dev');
-
-
-host('194.67.213.95')
-	->user('deployer')
-	->identityFile('~/.ssh/id_rsa_doctorproffi')
-	->set('deploy_path', '/var/www/html')
+host('188.225.73.98')
+	->user('root')
+	->identityFile('~/.ssh/id_rsa_doctorproffi_timeweb')
+	->set('deploy_path', '/var/www/doctorproffi/production/')
 	->set('master', 'master')
 	->stage('prod');
-
 
 set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-scripts');
 set('keep_releases', 15);
