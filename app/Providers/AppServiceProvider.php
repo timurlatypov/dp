@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
 	    Schema::defaultStringLength(191);
 
 	    view()->composer('layouts.partials._nav', function($nav) {
-		    $nav->with('brands', \App\Brand::orderBy('order_id')->get());
+		    $nav->with('brands', \App\Brand::orderBy('order_id')->live()->get());
 		    $nav->with('cart', \Gloudemans\Shoppingcart\Facades\Cart::content() );
 		    $nav->with('for_face', \App\Categories::where('slug', 'for-face')->first() );
 		    $nav->with('for_body', \App\Categories::where('slug', 'for-body')->first() );

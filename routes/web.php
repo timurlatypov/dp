@@ -2,6 +2,11 @@
 
 Auth::routes();
 
+Route::get('/ask', function () {
+    return redirect('https://api.whatsapp.com/send?phone=79253170148');
+});
+
+
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
