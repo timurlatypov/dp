@@ -22,6 +22,9 @@
                 </div>
                 <div class="col-6 align-self-center algolia-search">
                     <search></search>
+                    <div class="text-center">
+                        <h6 class="p-0 m-0 text-info">ТЕЛЕФОН ГОРЯЧЕЙ ЛИНИИ: <a class="text-dark" href="tel:88005006620"><nobr>8 (800) 500-66-20</nobr></a></h6>
+                    </div>
                 </div>
                 <div class="col-3 text-right align-self-center px-0">
                     @guest
