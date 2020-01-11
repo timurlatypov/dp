@@ -2,11 +2,6 @@
 
 Auth::routes();
 
-Route::get('/ask', function () {
-    return redirect('https://api.whatsapp.com/send?phone=79253170148');
-});
-
-
 Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
@@ -233,3 +228,7 @@ Route::post('/callback/store', 'CallbackController@store')->name('callback.store
 
 
 Route::post('/bookmark/store', 'BookmarkController@store')->name('save.product.to.bookmark');
+
+//Route::get('/ask', function () {
+////    return redirect('https://api.whatsapp.com/send?phone=79253170148');
+////});
