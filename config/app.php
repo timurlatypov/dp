@@ -151,7 +151,6 @@ return [
          * Package Service Providers...
          */
 	    Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-	    Barryvdh\Debugbar\ServiceProvider::class,
 	    Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
@@ -212,7 +211,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 	    'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-	    'Debugbar' => Barryvdh\Debugbar\Facade::class,
 	    'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
