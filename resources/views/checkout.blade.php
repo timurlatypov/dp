@@ -11,8 +11,6 @@
                         :auth_user="@if(auth()->check()) {{ auth()->user() }}@else null @endif"
                         :auth_user_addresses="@if( auth()->check() ) {{ auth()->user()->addresses }} @else null @endif"></order-checkout-form>
             </div>
-
-
         </div>
     </div>
 @endsection
