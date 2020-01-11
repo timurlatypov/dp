@@ -83,8 +83,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                                <label class="control-label">Поставьте галочку</label>
+                                <div>
+                                    {!! app('captcha')->display() !!}
+                                    @if ($errors->has('g-recaptcha-response'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group text-center py-3 mb-0">
-                                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                                    <button type="submit" class="btn font-weight-bold btn-primary">Зарегистрироваться</button>
                             </div>
                         </form>
                     </div>
