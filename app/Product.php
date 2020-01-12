@@ -15,7 +15,7 @@ class Product extends Model
 
 	protected $guarded = [];
 
-	protected $appends = ['brand', 'new_product'];
+	protected $appends = ['new_product'];
 
 	public function getRouteKeyName()
 	{
@@ -92,10 +92,11 @@ class Product extends Model
 	 * ATRIBUTES
 	 *
 	 */
-	public function getBrandAttribute()
-	{
-		return $this->brand()->first();
-	}
+//	public function getBrandAttribute()
+//	{
+//		return $this->brand()->first();
+//	}
+    //FIXME
 	public function getNewProductAttribute()
 	{
 		return $this->categories()->where('slug', 'new-products')->first();
