@@ -161,8 +161,10 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 		Route::get('/create', 'OrdersController@create')->name('admin.orders.create');
 		Route::post('/store', 'OrdersController@store')->name('admin.orders.store');
 		Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
+		Route::get('/{order}/edit_details', 'OrdersController@edit_details')->name('admin.orders.edit_details');
 		Route::get('/{order}/edit', 'OrdersController@edit')->name('admin.orders.edit');
         Route::patch('/update', 'OrdersController@update')->name('admin.orders.update');
+        Route::patch('/{order}/update_details', 'OrdersController@update_details')->name('admin.orders.update_details');
 
 		Route::get('/{order}/register', 'OrdersController@registerOrder')->name('admin.orders.registerOrder');
 		Route::get('/{order}/resend', 'OrdersController@resendConfirmationEmail')->name('admin.orders.resendConfirmation');
