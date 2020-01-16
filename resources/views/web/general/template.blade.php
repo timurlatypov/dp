@@ -7,6 +7,12 @@
     <meta property="og:title" content=""/>
 @endpush
 
+@if(isset($script))
+    @push('js')
+        {{ $script }}
+    @endpush
+@endif
+
 @section('content')
     <div class="container {{ $translate }}">
         <div class="row">
