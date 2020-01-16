@@ -26,4 +26,4 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<script src="{{ asset('js/app.js') }}" async></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
