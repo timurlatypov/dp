@@ -45,33 +45,33 @@ require('./core/bootstrap-material-design.min');
 require('./plugins/bootstrap-datetimepicker');
 
 
-Vue.component('flash', require('./components/Flash.vue'));
-Vue.component('search', require('./components/Search.vue'));
-Vue.component('search-mobile', require('./components/SearchMobile.vue'));
-Vue.component('cart', require('./components/cart/Cart.vue'));
-Vue.component('cart-mobile', require('./components/cart/CartMobile.vue'));
-Vue.component('cart-modal', require('./components/cart/CartModal.vue'));
-Vue.component('add-button', require('./components/cart/AddButton.vue'));
-Vue.component('add-favorite', require('./components/favorite/AddFavorite.vue'));
-Vue.component('save-bookmark', require('./components/bookmark/SaveBookmark.vue'));
-Vue.component('save-bookmark-button', require('./components/bookmark/SaveBookmarkButton.vue'));
-Vue.component('editor', require('./components/Editor.vue'));
-Vue.component('toggle-switch', require('./components/ToggleSwitch.vue'));
-Vue.component('input-field', require('./components/InputField.vue'));
-Vue.component('product-image-upload', require('./components/products/ProductImageUpload.vue'));
-Vue.component('select-brand-line', require('./components/products/SelectBrandLine.vue'));
-Vue.component('order-checkout-form', require('./components/checkout/OrderCheckoutForm.vue'));
-Vue.component('order-subcategories', require('./components/OrderSubcategories.vue'));
-Vue.component('carousel-editor', require('./components/carousel/CarouselEditor.vue'));
-Vue.component('carousel-creator', require('./components/carousel/CarouselCreator.vue'));
-Vue.component('coupon-creator', require('./components/coupon/CouponCreator.vue'));
-Vue.component('associate-products', require('./components/categories/AssociateProduct.vue'));
+Vue.component('flash', require('./components/Flash.vue').default);
+Vue.component('search', require('./components/Search.vue').default);
+Vue.component('search-mobile', require('./components/SearchMobile.vue').default);
+Vue.component('cart', require('./components/cart/Cart.vue').default);
+Vue.component('cart-mobile', require('./components/cart/CartMobile.vue').default);
+Vue.component('cart-modal', require('./components/cart/CartModal.vue').default);
+Vue.component('add-button', require('./components/cart/AddButton.vue').default);
+Vue.component('add-favorite', require('./components/favorite/AddFavorite.vue').default);
+Vue.component('save-bookmark', require('./components/bookmark/SaveBookmark.vue').default);
+Vue.component('save-bookmark-button', require('./components/bookmark/SaveBookmarkButton.vue').default);
+Vue.component('editor', require('./components/Editor.vue').default);
+Vue.component('toggle-switch', require('./components/ToggleSwitch.vue').default);
+Vue.component('input-field', require('./components/InputField.vue').default);
+Vue.component('product-image-upload', require('./components/products/ProductImageUpload.vue').default);
+Vue.component('select-brand-line', require('./components/products/SelectBrandLine.vue').default);
+Vue.component('order-checkout-form', require('./components/checkout/OrderCheckoutForm.vue').default);
+Vue.component('order-subcategories', require('./components/OrderSubcategories.vue').default);
+Vue.component('carousel-editor', require('./components/carousel/CarouselEditor.vue').default);
+Vue.component('carousel-creator', require('./components/carousel/CarouselCreator.vue').default);
+Vue.component('coupon-creator', require('./components/coupon/CouponCreator.vue').default);
+Vue.component('associate-products', require('./components/categories/AssociateProduct.vue').default);
 
-Vue.component('register', require('./components/Register'));
-Vue.component('callback', require('./components/Callback.vue'));
+Vue.component('register', require('./components/Register').default);
+Vue.component('callback', require('./components/Callback.vue').default);
 
-Vue.component('order-edit-form', require('./components/admin-panel/order/OrderEditForm.vue'));
-Vue.component('order-create-form', require('./components/admin-panel/order/OrderCreateForm.vue'));
+Vue.component('order-edit-form', require('./components/admin-panel/order/OrderEditForm.vue').default);
+Vue.component('order-create-form', require('./components/admin-panel/order/OrderCreateForm.vue').default);
 
 const app = new Vue({
     el: '#app',
