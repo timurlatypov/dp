@@ -114,6 +114,11 @@ class OrdersController extends Controller
 		return view('admin.orders.edit', compact(['order','details']));
 	}
 
+    public function edit_details(Order $order)
+    {
+        return view('admin.orders.edit_details', compact(['order']));
+    }
+
 	public function update(Request $request)
 	{
 		$order = Order::find($request->id);
@@ -127,6 +132,28 @@ class OrdersController extends Controller
 
 		return response(['data' => 'Успешно'], 200);
 	}
+
+    public function update_details(Request $request, Order $order)
+    {
+        $order->update([
+            'billing_name' => $request->billing_name,
+            'billing_surname' => $request->billing_surname,
+            'billing_phone' => $request->billing_phone,
+            'billing_email' => $request->billing_email,
+            'billing_index' => $request->billing_index,
+            'billing_city' => $request->billing_city,
+            'billing_street' => $request->billing_street,
+            'billing_house' => $request->billing_house,
+            'billing_apartment' => $request->billing_apartment,
+            'billing_entrance' => $request->billing_entrance,
+            'billing_floor' => $request->billing_floor,
+            'billing_comment' => $request->billing_comment,
+        ]);
+
+        return redirect()->route('admin.orders.show', $order);
+    }
+
+
 
 	public function destroy(Request $request)
 	{

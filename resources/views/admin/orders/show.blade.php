@@ -12,7 +12,10 @@
                     <div class="container-fluid px-0">
                         <div class="row pt-3 mx-0">
                             <div class="col-12 col-sm-6 px-0">
-                                <h4 class="title mt-2 mb-2">Детали заказ</h4>
+                                <h4 class="title mt-2 mb-2">Детали заказа <span class="badge badge-secondary">
+                                        <a href="{{ route('admin.orders.edit_details', $order) }}" class="text-white">Редактировать</a>
+                                    </span>
+                                </h4>
                                 Клиент: <b>{{ $order->billing_name }} {{ $order->billing_surname }}</b><br>
                                 Телефон: <b>{{ $order->billing_phone }}</b><br>
                                 Email: <b>{{ $order->billing_email }}</b>
