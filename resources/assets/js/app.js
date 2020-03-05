@@ -73,6 +73,9 @@ Vue.component('callback', require('./components/Callback.vue').default);
 Vue.component('order-edit-form', require('./components/admin-panel/order/OrderEditForm.vue').default);
 Vue.component('order-create-form', require('./components/admin-panel/order/OrderCreateForm.vue').default);
 
+Vue.component('TypeAhead', require('./components/delivery/TypeAhead').default);
+Vue.component('delivery-calculator', require('./components/delivery/Calculator.vue').default);
+
 const app = new Vue({
     el: '#app',
 });

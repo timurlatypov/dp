@@ -1,7 +1,34 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        <div class="carousel-item active" style="background-color: #dfd6cf">
+        <div class="carousel-item active" style="background-color: #0e0e13">
+            <a href="/brand/b-selfie" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/2020-jan-b-selfie-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/b-selfie" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/2020-jan-b-selfie-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/brand/b-selfie" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/2020-jan-b-selfie-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #dfd6cf">
             <a href="/brand/gkhair" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
@@ -273,35 +300,6 @@
                 </div>
             </a>
         </div>
-
-        <div class="carousel-item" style="background-color: #e8e6eb">
-            <a href="https://doctorproffi.ru/brand/skin-renu" class="banner-mobile h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-mobile.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/brand/skin-renu" class="banner-tablet h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-tablet.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/brand/skin-renu" class="banner-desktop h-100">
-                <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-skin-renu-desktop.jpg')">
-                        <div class="col-12 align-self-center px-5">
-
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
 
         <div class="carousel-item" style="background-color: #e5e5e5">
             <a href="https://doctorproffi.ru/brand/officina-pelle" class="banner-mobile h-100">
