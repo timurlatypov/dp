@@ -1,7 +1,115 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        <div class="carousel-item active" style="background-color: #0e0e13">
+        <!-- <div class="carousel-item active" style="background-color: #c1df97">
+            <a href="#" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/mobile-2020-23-feb.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/tablet-2020-23-feb.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/desktop-2020-23-feb.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div> -->
+
+        <!--  <div class="carousel-item" style="background-color: #bdbcc3">
+             <a href="https://doctorproffi.ru/category/for-men" class="banner-mobile h-100">
+                 <div class="row h-100">
+                     <div class="col-12 h-100 align-self-center ">
+                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-23-feb-2020-mens-routine-mobile.jpg')">
+                         </div>
+                     </div>
+                 </div>
+             </a>
+             <a href="https://doctorproffi.ru/category/for-men" class="banner-tablet h-100">
+                 <div class="row h-100">
+                     <div class="col-12 h-100 align-self-center ">
+                         <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-23-feb-2020-mens-routine-tablet.jpg')">
+                         </div>
+                     </div>
+                 </div>
+             </a>
+             <a href="https://doctorproffi.ru/category/for-men" class="banner-desktop h-100">
+                 <div class="container-carousel h-100 px-0">
+                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-23-feb-2020-mens-routine-desktop.jpg')">
+                         <div class="col-12 align-self-center px-5">
+                         </div>
+                     </div>
+                 </div>
+             </a>
+         </div> -->
+
+        <div class="carousel-item active" style="background-color: #98c1df">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-8-march-2020-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-8-march-2020-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-8-march-2020-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-item" style="background-color: #8a84c4">
+            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-8-march-2020-bselfie-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-8-march-2020-bselfie-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/promo-8-march-2020-bselfie-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- <div class="carousel-item" style="background-color: #0e0e13">
             <a href="/brand/b-selfie" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
@@ -26,7 +134,7 @@
                     </div>
                 </div>
             </a>
-        </div>
+        </div> -->
 
         <div class="carousel-item" style="background-color: #dfd6cf">
             <a href="/brand/gkhair" class="banner-mobile h-100">
@@ -349,33 +457,6 @@
             <a href="https://doctorproffi.ru/brand/evolash" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-evolash-desktop.jpg')">
-                        <div class="col-12 align-self-center px-5">
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="carousel-item" style="background-color: #bdbcc3">
-            <a href="https://doctorproffi.ru/category/for-men" class="banner-mobile h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mens-routine-mobile.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/category/for-men" class="banner-tablet h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mens-routine-tablet.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/category/for-men" class="banner-desktop h-100">
-                <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/banner-mens-routine-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">
                         </div>
                     </div>
