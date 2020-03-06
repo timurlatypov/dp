@@ -23,7 +23,7 @@ class SearchController extends Controller
         $data = [];
 
         try {
-            $result = DadataSuggest::suggest("address", [
+            $result = $this->suggest->suggest("address", [
                 "query" => $request->get('keyword'),
                 "count" => 5,
             ]);
