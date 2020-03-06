@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Services\Dadata\Response\ClientSuggest;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Fomvasss\Dadata\Facades\DadataSuggest;
 
 class SearchController extends Controller
 {
     protected $client;
+    protected $suggest;
 
     public function __construct()
     {
         $this->client = new Client();
+        $this->suggest = new ClientSuggest();
     }
 
     public function getDadata(Request $request)
@@ -45,10 +47,11 @@ class SearchController extends Controller
     public function getCDEKPrices(Request $request)
     {
         try {
-            $receiverCityId = DadataSuggest::cityById($request->id);
+            $receiverCityId = $this->suggest->cityById($request->id);
         } catch (\Exception $e) {
-            return;
+            return $e->getMessage();
         }
+
         $receiverCityId = $receiverCityId["data"]["cdek_id"];
 
         $authLogin    = config('cdek.authLogin');
