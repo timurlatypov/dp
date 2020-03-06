@@ -23,6 +23,7 @@ class OrdersController extends Controller
 	public function index(Request $request)
 	{
 		$orders = Order::orderBy('created_at', 'desc')
+            ->with(['payments', 'manager'])
             ->filter($request, $this->getFilters())
 			->paginate(20);
 		return view('admin.orders.index', compact('orders'));

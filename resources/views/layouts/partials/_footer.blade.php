@@ -7,59 +7,58 @@
                     <div class="row pt-4 text-white text-center text-md-left">
                         <div class="col-12 col-md-3">
                             <div class="footer-logo">@include('layouts.partials._logo')</div>
-                            <h6>Интернет-магазин<br>профессиональной косметики</h6>
-                            <h6 class="text-white">Только 100% оригинальная продукция!</h6>
-                            <div class="py-2">
+                            <p class="tw-leading-none tw-pt-5">Интернет-магазин<br>профессиональной косметики</p>
+                            <div class="tw-pt-6 tw-pb-4">
                                 <a class="text-white" href="https://www.facebook.com/DoctorProffi.ru/"
                                    target="_blank"><i class="fab fa-facebook fa-lg pr-3"></i></a>
                                 <a class="text-white" href="https://www.instagram.com/doctorproffi/" target="_blank"><i
                                             class="fab fa-instagram fa-lg"></i></a>
                             </div>
-                            <h6>© doctorproffi.ru 2016 - {{ date('Y') }}</h6>
+                            <p>© doctorproffi.ru 2016 - {{ date('Y') }}</p>
                         </div>
                         <div class="col-12 col-md-3 hidden-md">
                             <h4 class="title text-white mt-2">Покупки</h4>
-                            <h6><a href="/delivery" class="text-white">Доставка и оплата</a></h6>
-                            <h6><a href="/sdek" class="text-white">Карта пунктов выдачи</a></h6>
-                            <h6><a href="/confidentiality" class="text-white">Конфиденциальность</a></h6>
+                            <p><a href="/delivery" class="text-white">Доставка и оплата</a></p>
+                            <p><a href="/sdek" class="text-white">Карта пунктов выдачи</a></p>
+                            <p><a href="/confidentiality" class="text-white">Конфиденциальность</a></p>
                             <br>
-                            <p>Принимаем к оплате</p>
-                            <div class="payment-logo">
+                            <p class="text-white">Принимаем к оплате</p>
+                            <div class="payment-logo tw-pr-2 tw-py-2">
                                 <img src="/svg/mir.svg" alt="">
                             </div>
-                            <div class="payment-logo">
+                            <div class="payment-logo tw-pr-2 tw-py-2">
                                 <img src="/svg/visa.svg" alt="">
                             </div>
-                            <div class="payment-logo">
+                            <div class="payment-logo tw-pr-2 tw-py-2">
                                 <img src="/svg/mastercard.svg" alt="">
                             </div>
-                            <div class="payment-logo">
+                            <div class="payment-logo tw-pr-2 tw-py-2">
                                 <img src="/svg/jcb.svg" alt="">
                             </div>
                         </div>
                         <div class="col-12 col-md-3 hidden-md">
                             <h4 class="title text-white mt-2">Информация</h4>
                             {{--<h6><a href="/loyalty" class="text-white">Программа лояльности</a></h6>--}}
-                            <h6><a href="/contacts" class="text-white">Обратная связь</a></h6>
-                            <h6>БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ<br>ПО ТЕЛЕФОНУ ГОРЯЧЕЙ ЛИНИИ: <a class="text-white"
-                                                                                         href="tel:88005006620">
+                            <p><a href="/contacts" class="text-white">Обратная связь</a></p>
+                            <p>Бесплатная консультация<br>
+                                по телефону горячей линии: <a class="tw-font-bold tw-text-white" href="tel:88005006620">
                                     <nobr>8 (800) 500-66-20</nobr>
-                                </a></h6>
-
+                                </a>
+                            </p>
                         </div>
                         <div class="col-12 col-md-3">
                             <h4 class="title text-white mt-2">Контакты</h4>
-                            <h6><a class="text-white" href="tel:84953801141"
+                            <p><a class="text-white" href="tel:84953801141"
                                    onclick="yaCounter35424225.reachGoal('phone'); return true;"><i
-                                            class="fa fa-phone-volume"></i>&nbsp;&nbsp;<b>8 (495) 380-11-41</b></a></h6>
-                            <h6><a class="text-white" href="https://api.whatsapp.com/send?phone=79253170148"
+                                            class="fa fa-phone-volume"></i>&nbsp;&nbsp;8 (495) 380-11-41</a></p>
+                            <p><a class="text-white" href="https://api.whatsapp.com/send?phone=79253170148"
                                    onclick="yaCounter35424225.reachGoal('whatsapp'); return true;"><i
-                                            class="fab fa-whatsapp"></i>&nbsp;&nbsp;<b>8 (925) 317-01-48</b></a></h6>
-                            <h6><a class="text-white" href="mailto:info@doctorproffi.ru"
+                                            class="fab fa-whatsapp"></i>&nbsp;&nbsp;8 (925) 317-01-48</a></p>
+                            <p><i class="far fa-clock"></i>&nbsp;&nbsp;Операторы: 9:00 - 18:00</p>
+                            <p><a class="text-white" href="mailto:info@doctorproffi.ru"
                                    onclick="yaCounter35424225.reachGoal('email'); return true;"><i
-                                            class="fa fa-paper-plane"></i>&nbsp;&nbsp;<b>info@doctorproffi.ru</b></a>
-                            </h6>
-                            <h6><i class="far fa-clock"></i>&nbsp;&nbsp;<b>ОПЕРАТОРЫ: 9:00 - 19:00</b></h6>
+                                            class="fa fa-paper-plane"></i>&nbsp;&nbsp;info@doctorproffi.ru</a>
+                            </p>
                         </div>
                     </div>
                 </div>

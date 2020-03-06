@@ -8,7 +8,6 @@
 // Variables
 @import "variables";
 @import "logo";
-@import "header";
 @import "footer";
 @import "card";
 @import "megamenu";
@@ -30,8 +29,11 @@
 @import "admin/tables";
 @import "vendor/autocomplete";
 
-// Font Awesome
-@import "fontawesome/fontawesome.scss";
-@import "fontawesome/regular.scss";
-@import "fontawesome/solid.scss";
-@import "fontawesome/brands";
+//// Font Awesome
+//@import "fontawesome/fontawesome.scss";
+//@import "fontawesome/regular.scss";
+//@import "fontawesome/solid.scss";
+//@import "fontawesome/brands";
+
+//Tailwind CSS
+@import 'tailwind';

@@ -8,6 +8,8 @@
     @include('layouts.partials._gtm')
     <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async
             defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
     <script src="//code.jivosite.com/widget.js" jv-id="NBcIYDWKSE" async></script>
     @stack('js')
 </head>

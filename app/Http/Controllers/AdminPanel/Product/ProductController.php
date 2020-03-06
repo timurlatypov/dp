@@ -10,9 +10,9 @@ use App\Product;
 use App\Traits\LiveAware;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 use App\Filters\Product\{ BrandFilter, StockFilter, LiveFilter };
-use Illuminate\Http\Response;
 
 
 class ProductController extends Controller
