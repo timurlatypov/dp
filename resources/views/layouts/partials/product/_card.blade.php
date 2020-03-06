@@ -13,10 +13,10 @@
     </div>
     <div class="card-body d-flex flex-column justify-content-between w-100">
 
-        <div><h4 class="title my-0"><a href="{{ $link }}" onclick="yaCounter35424225.reachGoal('open-card'); return true;" class="hover-underlined">{{ $title_eng }}</a></h4></div>
+        <div><h4 class="title my-0 pb-2"><a href="{{ $link }}" onclick="yaCounter35424225.reachGoal('open-card'); return true;" class="hover-underlined">{{ $title_eng }}</a></h4></div>
 
         <div>
-            <p class="mt-0 mb-3 text-muted">{{ $title_rus }}</p>
+            <p class="mt-0 mb-3 text-muted tw-leading-normal tw-text-xs">{{ $title_rus }}</p>
         </div>
 
         <div class="d-flex justify-content-between align-items-end">

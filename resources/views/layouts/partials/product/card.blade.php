@@ -50,11 +50,11 @@
     @slot('price')
         @if($product->discount)
             <div>
-                <h4 class="title my-0 opacity-50"><strike>{{ $product->price }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></strike></h4>
-                <h4 class="title my-0 text-danger">{{ $product->definePriceToShow() }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></h4>
+                <h4 class="tw-my-0 tw-font-bold tw-text-lg"><strike>{{ $product->price }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></strike></h4>
+                <h4 class="tw-my-0 tw-font-bold tw-text-lg text-danger">{{ $product->definePriceToShow() }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></h4>
             </div>
         @else
-            <h4 class="title my-0 text-success">{{ $product->definePriceToShow() }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></h4>
+            <h4 class="title my-0 text-success tw-text-2xl">{{ $product->definePriceToShow() }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></h4>
         @endif
     @endslot
 

@@ -10,7 +10,7 @@
             </div>
 
             <div v-else>
-                <h6 class="my-2"><nobr>Всего наименований: {{ count }}</nobr></h6>
+                <p class="my-2"><nobr>Всего наименований: {{ count }}</nobr></p>
                 <div>
                     <table class="table table-shopping table-cart">
                         <tbody>

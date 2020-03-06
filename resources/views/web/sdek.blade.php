@@ -1,7 +1,7 @@
 @component('web.general.template')
 
     @slot('title')
-        Карта пунктов выдачи заказов СДЭК
+        Калькулятор доставки СДЕК
     @endslot
 
     @slot('translate')
@@ -23,7 +23,6 @@
                         <h4 class="title">Калькулятор доставки СДЕК</h4>
 
                         <delivery-calculator></delivery-calculator>
-
                     </div>
                 </div>
             </div>

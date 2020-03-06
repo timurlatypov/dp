@@ -20,7 +20,8 @@ Route::group(['prefix' => '/auth', 'namespace' => 'Auth\Api'], function() {
 
 Route::group(['namespace' => 'API'], function() {
     Route::group(['prefix' => '/v1', 'namespace' => 'V1'], function() {
-        Route::get('search', 'SearchController@getDadata')->name('api.search.dadata');
+        Route::get('search', 'SearchController@getDadata');
+        Route::get('get-price', 'SearchController@getCDEKPrices');
     });
 });
 
