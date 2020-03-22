@@ -9,7 +9,10 @@ export const productautocomplete = (selector, { hitsPerPage }) => {
     return autocomplete(selector, {
         hint: true
     }, {
-        source: autocomplete.sources.hits(index, { hitsPerPage: hitsPerPage }),
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: hitsPerPage,
+            facetFilters: 'live:1'
+        }),
         displayKey: 'title',
         templates: {
             suggestion (suggestion) {
