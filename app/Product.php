@@ -15,6 +15,10 @@ class Product extends Model
 
 	protected $guarded = [];
 
+	protected $with = [
+	    'brand'
+    ];
+
 	protected $appends = ['new_product'];
 
 	public function getRouteKeyName()

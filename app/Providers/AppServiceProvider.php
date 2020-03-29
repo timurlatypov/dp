@@ -53,12 +53,12 @@ class AppServiceProvider extends ServiceProvider
 
 
 	    view()->composer('layouts.partials._bestsellers', function($bestsellers) {
-		    $bestsellers->with('bestsellers', Product::with('brand')->where('bestseller', true)->take(4)->get());
+		    $bestsellers->with('bestsellers', Product::where('bestseller', true)->take(4)->get());
 	    });
 
 
 	    view()->composer('layouts.partials._infoblock', function($recommend) {
-		    $recommend->with('recommend', Product::with('brand')->where('recommend', true)->inRandomOrder()->limit(4)->get());
+		    $recommend->with('recommend', Product::where('recommend', true)->inRandomOrder()->limit(4)->get());
 	    });
 
 	    view()->composer('layouts.partials._carousel', function($banners) {

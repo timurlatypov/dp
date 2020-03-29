@@ -11,6 +11,7 @@ Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/confidentiality', 'HomeController@confidentiality')->name('confidentiality');
 Route::get('/delivery', 'HomeController@delivery')->name('delivery');
 Route::get('/sdek', 'HomeController@sdek')->name('sdek');
+Route::get('/sdek-points', 'HomeController@sdekPoints')->name('sdek.points');
 //Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
 Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 
