@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CheckoutController extends Controller
 {
@@ -17,38 +18,42 @@ class CheckoutController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-    	$cart = $this->cart->content();
-    	$subtotal = $this->cart->subtotal();
-	    return view('checkout', compact(['cart', 'subtotal']));
+        $cart     = $this->cart->content();
+        $subtotal = $this->cart->subtotal();
+
+        return view('checkout', compact(['cart', 'subtotal']));
     }
 
     /**
      * Delete the specified item from cart.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param $rowId
+     *
+     * @return Response
      */
     public function destroy($rowId)
     {
         $this->cart->remove($rowId);
-	    return response(['cart' => $this->cart->content()], 200);
+
+        return response(['cart' => $this->cart->content()], 200);
     }
 
-	public function add_qty_to_item(Request $request)
-	{
-		$rowId = $request->rowId;
-        $this->cart->update($rowId, $request->qty+1);
-		return response(['cart' => $this->cart->content()], 200);
-	}
+    public function add_qty_to_item(Request $request)
+    {
+        $rowId = $request->rowId;
+        $this->cart->update($rowId, $request->qty + 1);
 
-	public function remove_qty_to_item(Request $request)
-	{
-		$rowId = $request->rowId;
-        $this->cart->update($rowId, $request->qty-1);
-		return response(['cart' => $this->cart->content()], 200);
-	}
+        return response(['cart' => $this->cart->content()], 200);
+    }
+
+    public function remove_qty_to_item(Request $request)
+    {
+        $rowId = $request->rowId;
+        $this->cart->update($rowId, $request->qty - 1);
+
+        return response(['cart' => $this->cart->content()], 200);
+    }
 }

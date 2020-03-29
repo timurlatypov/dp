@@ -74,6 +74,11 @@ class HomeController extends Controller
         return view('web.sdek');
     }
 
+    public function sdekPoints()
+    {
+        return view('web.sdek-points');
+    }
+
     public function loyalty()
     {
         return view('web.loyalty');

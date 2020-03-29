@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Coupon;
 use Gloudemans\Shoppingcart\Cart;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CouponController extends Controller
 {
@@ -30,7 +32,7 @@ class CouponController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return ResponseFactory|Response
      */
     public function validateCoupon(Request $request)
     {
@@ -49,7 +51,7 @@ class CouponController extends Controller
 
                     return response([
                         'coupon' => $coupon,
-                        'cart' => $this->cart->content(),
+                        'cart'   => $this->cart->content(),
                     ], 200);
                 }
 
