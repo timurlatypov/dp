@@ -21,7 +21,9 @@
                 <div class="col-6 align-self-center algolia-search">
                     <search></search>
                     <div class="text-center">
-                        <p class="tw-pb-2 m-0 tw-font-bold tw-font-base">ТЕЛЕФОН ГОРЯЧЕЙ ЛИНИИ: <a href="tel:88005006620"><nobr>8 (800) 500-66-20</nobr></a></p>
+                        <p class="tw-pb-1 m-0 tw-font-bold tw-font-base tw-text-red-700">БЕСКОНТАКТНАЯ ДОСТАВКА КУРЬЕРОМ</p>
+                        <p class="tw-pb-1 m-0 tw-font-bold tw-font-base tw-text-red-700">ОНЛАЙН-ОПЛАТА ЗАКАЗОВ</p>
+{{--                        <p class="tw-pb-1 m-0 tw-font-bold tw-font-base">ТЕЛЕФОН ГОРЯЧЕЙ ЛИНИИ: <a href="tel:88005006620"><nobr>8 (800) 500-66-20</nobr></a></p>--}}
                     </div>
                 </div>
                 <div class="col-3 text-right align-self-center px-0">

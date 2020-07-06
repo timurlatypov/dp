@@ -44,6 +44,10 @@
                                             <a href="{{ route('admin.orders.reverseOrder', $payment->payment_id ) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Если клиент передумал сразу после оплаты!">Отмена оплаты</a>
                                             <a href="{{ route('admin.orders.deleteLink', $payment->payment_id ) }}" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Если ссылка устарела и надо создать новую!">Удалить ссылку</a>
 
+
+                                            <h4 class="title mt-2 mb-2">Ссылка</h4>
+                                            <p style="padding: 0.5em; background-color: #f3f3f3; border-radius: 5px; font-weight: bold">{{ $payment->payment_link }}</p>
+
                                             <div class="pt-3">
                                                 <h4 class="title mt-2 mb-2">Выслать ссылку клиенту</h4>
                                                 <a href="{{ route('admin.orders.sendLink', $order) }}" class="btn btn-sm btn-info">
@@ -55,14 +59,14 @@
                                         @endif
                                     @endforeach
                                 @else
-                                <h4 class="title mt-2 mb-2">Сбербанк-онлайн</h4>
-                                <p class="text-danger font-weight-bold">Убедитесь, что в заказе сумма и стоимость доставки правильные!</p>
-                                <a href="{{ route('admin.orders.registerOrder', $order) }}" class="btn btn-success btn-sm">Создать ссылку</a>
+                                    <h4 class="title mt-2 mb-2">Сбербанк-онлайн</h4>
+                                    <p class="text-danger font-weight-bold">Убедитесь, что в заказе сумма и стоимость доставки правильные!</p>
+                                    <a href="{{ route('admin.orders.registerOrder', $order) }}" class="btn btn-success btn-sm">Создать ссылку</a>
                                 @endif
-                                <br><br>
                                 <h4 class="title mt-2 mb-2">Подтверждение заказа по Email</h4>
                                 <a href="{{ route('admin.orders.resendConfirmation', $order) }}" class="btn btn-info btn-sm">Выслать письмо</a>
-
+                                <br>
+                                <br>
                             </div>
                         </div>
                     </div>

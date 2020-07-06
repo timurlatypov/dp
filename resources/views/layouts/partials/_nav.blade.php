@@ -26,7 +26,7 @@
                 @endguest
 
                 <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>
-                {{--<li class="nav-item"><a class="nav-link" href="{{ route('bestsellers') }}">Хиты продаж</a></li>--}}
+                <li class="nav-item"><a class="nav-link" href="{{ route('premium') }}">Премиум</a></li>
                 <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
                 <li class="dropdown nav-item">
                     <a class="nav-link" href="#" data-toggle="dropdown">Для женщин</a>
@@ -54,7 +54,7 @@
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-men') }}">Для мужчин</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-kids') }}">Для детей</a></li>
+{{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-kids') }}">Для детей</a></li>--}}
                 <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-hair') }}">Для волос</a></li>
                 <li class="nav-item"><a class="nav-link text-danger" href="{{ route('discounts') }}">Скидки</a></li>
 

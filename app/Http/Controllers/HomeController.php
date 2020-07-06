@@ -32,6 +32,14 @@ class HomeController extends Controller
         return view('web.template', compact(['products', 'categories']));
     }
 
+    public function premium()
+    {
+        $categories = Categories::where('slug', 'premium')->first();
+        $products   = $categories->products()->live()->paginate(20);
+
+        return view('web.template', compact(['products', 'categories']));
+    }
+
     public function set()
     {
         $brand    = Brand::where('slug', 'sets')->first();

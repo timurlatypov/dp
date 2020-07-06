@@ -56,6 +56,10 @@ class AppServiceProvider extends ServiceProvider
 		    $bestsellers->with('bestsellers', Product::where('bestseller', true)->take(4)->get());
 	    });
 
+        view()->composer('layouts.partials._premium', function($bestsellers) {
+            $bestsellers->with('premium', Product::where('premium', true)->take(4)->get());
+        });
+
 
 	    view()->composer('layouts.partials._infoblock', function($recommend) {
 		    $recommend->with('recommend', Product::where('recommend', true)->inRandomOrder()->limit(4)->get());
