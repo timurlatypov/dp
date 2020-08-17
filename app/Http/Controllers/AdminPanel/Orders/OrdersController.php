@@ -14,7 +14,11 @@ use App\Http\Controllers\Controller;
 use Voronkovich\SberbankAcquiring\Client;
 use Voronkovich\SberbankAcquiring\OrderStatus;
 
-use App\Filters\Order\{DateFromFilter, DateToFilter, SurnameFilter};
+use App\Filters\Order\{
+    DateFromFilter,
+    DateToFilter,
+    SurnameFilter
+};
 
 class OrdersController extends Controller
 {
