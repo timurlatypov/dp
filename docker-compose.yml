@@ -1,0 +1,151 @@
+version: "3.3"
+
+services:
+  # Composer install
+  dp-composer:
+    build:
+      context: .
+      dockerfile: ./docker/composer/Dockerfile
+    container_name: dp-composer
+    working_dir: /www
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: 1
+    entrypoint: ["composer", "install", "--ignore-platform-reqs", "-o"]
+    depends_on:
+      - dp-db
+    volumes:
+      - dp-data:/www:nocopy
+      - ~/.ssh:/root/.ssh:delegated
+    networks:
+      - dp-network
+
+  # NPM watch
+  dp-npm:
+    build:
+      context: .
+      dockerfile: ./docker/npm/Dockerfile
+    container_name: dp-npm
+    working_dir: /www
+    command: sh -c "npm ci && npm run watch-poll"
+    volumes:
+      - dp-data:/www:nocopy
+    networks:
+      - dp-network
+
+  # PHP Service
+  dp-app:
+    image: dp-app
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    command: ["php-fpm"]
+    container_name: dp-app
+    restart: unless-stopped
+    tty: true
+    depends_on:
+      - dp-npm
+      - dp-composer
+      - dp-db
+      - dp-redis
+    volumes:
+      - dp-data:/www:nocopy
+      - ~/.ssh:/root/.ssh:delegated
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini:delegated
+      - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:delegated
+      - ./docker/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:delegated
+    environment:
+      TIMEZONE: "UTC"
+      COMPOSER_MEMORY_LIMIT: "-1"
+    expose:
+      - 9000
+    networks:
+      - dp-network
+
+  # Nginx Service
+  dp-webserver:
+    image: nginx:alpine
+    container_name: dp-webserver
+    restart: unless-stopped
+    tty: true
+    depends_on:
+      - dp-composer
+      - dp-app
+      - dp-npm
+    expose:
+      - 80
+      - 443
+      - 9123
+    volumes:
+      - dp-data:/www:nocopy
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:delegated
+      - ./docker/nginx/app.conf:/etc/nginx/conf.d/default.conf:delegated
+    networks:
+      - dp-network
+
+  # MySQL Service
+  dp-db:
+    image: percona:5.7.19
+    container_name: dp-db
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_DATABASE: doctorproffi
+      MYSQL_ROOT_PASSWORD: laravel
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+      - dbdata-logs:/var/log/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf:delegated
+      - ./docker/mysql/inten.sql:/docker-entrypoint-initdb.d/dump.sql:delegated
+    networks:
+      - dp-network
+
+  # Redis Service
+  dp-redis:
+    image: redis:5.0.7-alpine
+    container_name: dp-redis
+    restart: unless-stopped
+    volumes:
+      - cachedata:/data
+    networks:
+      - dp-network
+
+  # Queue Service
+  dp-supervisord:
+    image: dp-app
+    container_name: dp-supervisord
+    restart: unless-stopped
+    tty: true
+    command: ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
+    depends_on:
+      - dp-composer
+      - dp-db
+      - dp-redis
+    expose:
+      - 9123
+    volumes:
+      - dp-data:/www:nocopy
+      - ./docker/supervisord/conf.d:/etc/supervisor/conf.d:delegated
+      - ./docker/supervisord/supervisord.conf:/etc/supervisord.conf:delegated
+      - ./docker/php/php.ini:/etc/php.ini:delegated
+    networks:
+      - dp-network
+
+# Docker Networks
+networks:
+  dp-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  dp-data:
+    external: true
+  dbdata:
+    driver: local
+  dbdata-logs:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+  cachedata:
+    driver: local

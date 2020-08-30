@@ -1,6 +1,33 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
+        <!-- <div class="carousel-item active" style="background-color: #dce0e3">
+            <a href="https://doctorproffi.ru/brand/mycli" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promocode-mycli-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/mycli" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/promocode-mycli-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/mycli" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/promocode-mycli-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div> -->
+
         <div class="carousel-item active" style="background-color: #eb2c5f">
             <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
                 <div class="row h-100">
@@ -82,32 +109,32 @@
             </a>
         </div>
 
-{{--        <div class="carousel-item" style="background-color: #fcd9a6">--}}
-{{--            <a href="/category/for-face/zashchita-ot-solntsa-spf" class="banner-mobile h-100">--}}
-{{--                <div class="row h-100">--}}
-{{--                    <div class="col-12 h-100 align-self-center ">--}}
-{{--                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/spf-20-percent-mobile.jpg')">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </a>--}}
-{{--            <a href="/category/for-face/zashchita-ot-solntsa-spf" class="banner-tablet h-100">--}}
-{{--                <div class="row h-100">--}}
-{{--                    <div class="col-12 h-100 align-self-center ">--}}
-{{--                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/spf-20-percent-tablet.jpg')">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </a>--}}
-{{--            <a href="/category/for-face/zashchita-ot-solntsa-spf" class="banner-desktop h-100">--}}
-{{--                <div class="container-carousel h-100 px-0">--}}
-{{--                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/spf-20-percent-desktop.jpg')">--}}
-{{--                        <div class="col-12 align-self-center px-5">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </a>--}}
-{{--        </div>--}}
+        <!-- <div class="carousel-item" style="background-color: #fcd9a6">
+            <a href="/category/for-face/zashchita-ot-solntsa-spf" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/spf-20-percent-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/category/for-face/zashchita-ot-solntsa-spf" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/spf-20-percent-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/category/for-face/zashchita-ot-solntsa-spf" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/spf-20-percent-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div> -->
 
         <!--  <div class="carousel-item" style="background-color: #bdbcc3">
              <a href="https://doctorproffi.ru/category/for-men" class="banner-mobile h-100">
@@ -325,32 +352,32 @@
             </a>
         </div>
 
-{{--        <div class="carousel-item" style="background-color: #ff0580">--}}
-{{--            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-mobile h-100">--}}
-{{--                <div class="row h-100">--}}
-{{--                    <div class="col-12 h-100 align-self-center ">--}}
-{{--                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-mobile.jpg')">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </a>--}}
-{{--            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-tablet h-100">--}}
-{{--                <div class="row h-100">--}}
-{{--                    <div class="col-12 h-100 align-self-center ">--}}
-{{--                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-tablet.jpg')">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </a>--}}
-{{--            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-desktop h-100">--}}
-{{--                <div class="container-carousel h-100 px-0">--}}
-{{--                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-desktop.jpg')">--}}
-{{--                        <div class="col-12 align-self-center px-5">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </a>--}}
-{{--        </div>--}}
+        <!-- <div class="carousel-item" style="background-color: #ff0580">
+            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-mobile h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-mobile.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-tablet h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 align-self-center ">
+                        <div class="h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-tablet.jpg')">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://doctorproffi.ru/brand/corpolibero/antiageing-suncream-50" class="banner-desktop h-100">
+                <div class="container-carousel h-100 px-0">
+                    <div class="row h-100 carousel-bg-image" style="background-image: url('/storage/banners/antiaging-desktop.jpg')">
+                        <div class="col-12 align-self-center px-5">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div> -->
 
 
         <div class="carousel-item" style="background-color: #fec7d6">
@@ -544,6 +571,8 @@
                 </div>
             </a>
         </div>
+
+
 
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

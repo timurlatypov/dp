@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS doctorproffi;
+CREATE DATABASE IF NOT EXISTS doctorproffi_tests;
