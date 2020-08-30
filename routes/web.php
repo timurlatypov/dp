@@ -48,7 +48,7 @@ Route::group(['prefix' => '/favorite', 'middleware' => 'auth', 'namespace' => 'U
 Route::group(['prefix' => '/checkout'], function () {
     Route::get('/', 'CheckoutController@index')->name('checkout');
     Route::post('/add', 'CheckoutController@add_qty_to_item')->name('add.qty.to.item');
-    Route::post('/remove', 'CheckoutController@remove_qty_to_item')->name('add.qty.to.item');
+    Route::post('/remove', 'CheckoutController@remove_qty_to_item')->name('remove.qty.to.item');
     Route::delete('/delete/{rowId}', 'CheckoutController@destroy')->name('delete.item.from.cart');
 });
 
