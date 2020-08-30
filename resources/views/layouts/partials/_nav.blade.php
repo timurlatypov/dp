@@ -26,7 +26,11 @@
                 @endguest
 
                 <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('premium') }}">Премиум</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="{{ route('premium') }}">
+                        <i class="fas fa-crown"></i>&nbsp;&nbsp;Премиум
+                    </a>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
                 <li class="dropdown nav-item">
                     <a class="nav-link" href="#" data-toggle="dropdown">Для женщин</a>

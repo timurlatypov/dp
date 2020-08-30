@@ -44,11 +44,11 @@
                         <span><b>Доставка по России:</b></span>
                         <ul class="list-group">
                             <li class="list-group-item">Доставка осуществляется компанией&nbsp;<a
-                                        href="https://www.cdek.ru/calculator.html">СДЭК</a></li>
+                                        href="https://www.cdek.ru/">СДЭК</a></li>
                             <li class="list-group-item">Стоимость доставки определяется с помощью&nbsp;<a
-                                        class="font-weight-bold" href="https://www.cdek.ru/calculator.html">Калькулятора
+                                        class="font-weight-bold" href="/sdek">Калькулятора
                                     Доставка</a></li>
-                            <li class="list-group-item"><a class="font-weight-bold" href="/sdek">Карта пунктов выдачи
+                            <li class="list-group-item"><a class="font-weight-bold" href="/sdek-points">Карта пунктов выдачи
                                     заказов СДЭК</a></li>
                         </ul>
 

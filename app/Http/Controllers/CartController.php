@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CartController extends Controller
 {
@@ -18,7 +19,7 @@ class CartController extends Controller
      */
     private function isCouponDiscount($id)
     {
-        $value = 0;
+        $value  = 0;
         $coupon = session()->get('coupon');
         if ($coupon && $coupon->brand_id == $id) {
             $value = $coupon->discount;
@@ -40,9 +41,9 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -54,6 +55,7 @@ class CartController extends Controller
             'options' => [
                 'title_rus'    => $request->title_rus,
                 'discount'     => $request->discount,
+                'product_id'   => $request->id,
                 'product_slug' => $request->slug,
                 'brand'        => $request->brand['name'],
                 'brand_id'     => $request->brand['id'],

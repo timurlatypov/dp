@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  # Nginx Service
+  dp-webserver:
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3000:3000"
+
+  # MySQL Service
+  dp-db:
+    ports:
+      - "3306:3306"

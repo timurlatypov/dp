@@ -216,13 +216,8 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 });
 
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/callback/store', 'CallbackController@store')->name('callback.store');
 
-
 Route::post('/bookmark/store', 'BookmarkController@store')->name('save.product.to.bookmark');
 
-//Route::get('/ask', function () {
-////    return redirect('https://api.whatsapp.com/send?phone=79253170148');
-////});
