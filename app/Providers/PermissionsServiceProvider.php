@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Gate;
 use App\Permission;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 

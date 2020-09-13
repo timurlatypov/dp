@@ -2,27 +2,35 @@
 
 namespace App\Nova;
 
+use App\Nova\Brand as BrandModel;
+use App\Nova\Filters\Brand;
+use App\Nova\Filters\Live;
+use App\Nova\Filters\OnStock;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
-class User extends Resource
+class Product extends Resource
 {
+    public static $perPageViaRelationship = 15;
+
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\User::class;
+    public static $model = \App\Product::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'full_name';
+    public static $title = 'title_eng';
 
     /**
      * The columns that should be searched.
@@ -31,18 +39,18 @@ class User extends Resource
      */
     public static $search = [
         'id',
-        'name',
-        'surname',
+        'title_eng',
+        'title_rus',
     ];
 
     public static function label(): string
     {
-        return __('nova/resources.user.label');
+        return __('nova/resources.product.label');
     }
 
     public static function singularLabel(): string
     {
-        return __('nova/resources.user.singularLabel');
+        return __('nova/resources.product.singularLabel');
     }
 
     /**
@@ -57,26 +65,25 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
+            Text::make(__('nova/resources.product.fields.title_eng'), 'title_eng')
+                ->rules('max:255'),
 
-            Text::make('Name')
+            BelongsTo::make(__('nova/resources.brand.fields.name'), 'brand', BrandModel::class),
+
+
+            Number::make(__('nova/resources.product.fields.price'), 'price')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->min(1)->step(0.01),
 
-            Text::make('Surname')
+            Number::make(__('nova/resources.product.fields.discount'), 'discount')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->min(1)->max(99)->step(1),
 
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+            Boolean::make(__('nova/resources.product.fields.live'), 'live'),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
+            Boolean::make(__('nova/resources.product.fields.stock'), 'stock'),
+
+            HasMany::make(__('nova/resources.review.label'), 'reviews', Review::class),
         ];
     }
 
@@ -101,7 +108,11 @@ class User extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Brand(),
+            new OnStock(),
+            new Live(),
+        ];
     }
 
     /**

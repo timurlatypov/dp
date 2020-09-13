@@ -2,13 +2,14 @@
 
 namespace App\Permissions;
 
+use Illuminate\Support\Arr;
 use App\{Role, Permission};
 
 trait HasPermissionsTrait
 {
 	public function givePermissionTo(...$permisisons)
 	{
-		$permissions = $this->getAllPermissions(array_flatten($permisisons));
+		$permissions = $this->getAllPermissions(Arr::flatten($permisisons));
 
 		if ($permissions === null) {
 			return $this;
@@ -20,7 +21,7 @@ trait HasPermissionsTrait
 	}
 	public function withdrawPermissionTo(...$permisisons)
 	{
-		$permissions = $this->getAllPermissions(array_flatten($permisisons));
+		$permissions = $this->getAllPermissions(Arr::flatten($permisisons));
 
 		$this->permissions()->detach($permissions);
 
