@@ -7,10 +7,12 @@ use App\Nova\Filters\Brand;
 use App\Nova\Filters\Live;
 use App\Nova\Filters\OnStock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
@@ -70,6 +72,27 @@ class Product extends Resource
 
             BelongsTo::make(__('nova/resources.brand.fields.name'), 'brand', BrandModel::class),
 
+            Image::make(__('nova/resources.product.fields.image_path'), 'image_path')
+                ->disk('public')
+                ->path('products/image')
+                ->preview(function () {
+                    return $this->image_path ? Storage::disk('public')->url("products/image/{$this->image_path}") : null;
+                })
+                ->storeOriginalName('image_filename_original')
+                ->prunable()
+                ->hideFromIndex(),
+
+            Image::make(__('nova/resources.product.fields.thumb_path'), 'thumb_path')
+                ->disk('public')
+                ->path('products/thumb')
+                ->preview(function () {
+                    return $this->thumb_path ? Storage::disk('public')->url("products/thumb/{$this->thumb_path}") : null;
+                })
+                ->thumbnail(function () {
+                    return $this->image_path ? Storage::disk('public')->url("products/image/{$this->image_path}") : null;
+                })
+                ->storeOriginalName('image_filename_original')
+                ->prunable(),
 
             Number::make(__('nova/resources.product.fields.price'), 'price')
                 ->sortable()

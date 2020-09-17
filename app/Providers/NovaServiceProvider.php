@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Eminiarts\NovaPermissions\NovaPermissions;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Events\ServingNova;
@@ -32,9 +33,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -47,9 +48,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                'admin@doctorproffi.ru',
-            ]);
+            return $user->hasAnyRole(['super-admin','manager']);
         });
     }
 
@@ -82,7 +81,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            (new NovaPermissions())->canSee(function ($request) {
+                return $request->user()->isSuperAdmin();
+            }),
+        ];
     }
 
     /**

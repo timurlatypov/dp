@@ -2,16 +2,16 @@
 
 namespace App;
 
-use App\Permissions\HasPermissionsTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Scout\Searchable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    use HasRoles;
     use Notifiable;
-    use HasPermissionsTrait;
     use SoftDeletes;
 
     protected $loyalty_discount = 0;
@@ -32,6 +32,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function isSuperAdmin()
+    {
+        return $this->hasRole('super-admin');
+    }
 
     public function getScoutKey()
     {
