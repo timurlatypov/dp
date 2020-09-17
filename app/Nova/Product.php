@@ -2,19 +2,27 @@
 
 namespace App\Nova;
 
-use App\Nova\Brand as BrandModel;
+use App\Nova\Categories;
 use App\Nova\Filters\Brand;
+use App\Nova\Filters\Line;
 use App\Nova\Filters\Live;
 use App\Nova\Filters\OnStock;
+use Benjaminhirsch\NovaSlugField\Slug;
+use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Orlyapps\NovaBelongsToDepend\NovaBelongsToDepend;
+use Saumini\Count\RelationshipCount;
 
 class Product extends Resource
 {
@@ -55,6 +63,12 @@ class Product extends Resource
         return __('nova/resources.product.singularLabel');
     }
 
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        // Give relationship name as alias else Laravel will name it as comments_count
+        return $query->withCount('reviews as reviews');
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -67,10 +81,46 @@ class Product extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make(__('nova/resources.product.fields.title_eng'), 'title_eng')
-                ->rules('max:255'),
+            TextWithSlug::make(__('nova/resources.product.fields.title_eng'), 'title_eng')
+                ->rules(['required', 'max:191'])
+                ->slug('slug'),
 
-            BelongsTo::make(__('nova/resources.brand.fields.name'), 'brand', BrandModel::class),
+            Slug::make(__('nova/resources.product.fields.slug'), 'slug')
+                ->disableAutoUpdateWhenUpdating()
+                ->hideFromIndex()
+                ->help(__('nova/resources.product.hint.slug'))
+                ->rules(['required', 'max:191'])
+                ->creationRules(
+                    "unique:products,slug,NULL"
+                )
+                ->updateRules(
+                    "unique:products,slug,{$this->id}"
+                ),
+
+            Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
+                ->hideFromIndex()
+                ->rules(['required', 'max:191']),
+
+            NovaBelongsToDepend::make('Brand')
+                ->placeholder('Select Brand')
+                ->options(\App\Brand::all()),
+            NovaBelongsToDepend::make('Line')
+                ->placeholder('Select Line')
+                ->optionsResolve(function ($brand) {
+                    return $brand->lines()->get(['id', 'name']);
+                })
+                ->dependsOn('Brand'),
+
+            Text::make(__('nova/resources.product.fields.ph'), 'ph')
+                ->hideFromIndex()
+                ->rules(['max:191']),
+
+            Text::make(__('nova/resources.product.fields.description_short'), 'description_short')
+                ->hideFromIndex()
+                ->rules(['max:191']),
+
+            Trix::make(__('nova/resources.product.fields.description_full'), 'description_full')
+                ->hideFromIndex(),
 
             Image::make(__('nova/resources.product.fields.image_path'), 'image_path')
                 ->disk('public')
@@ -80,6 +130,7 @@ class Product extends Resource
                 })
                 ->storeOriginalName('image_filename_original')
                 ->prunable()
+                ->help(__('nova/resources.product.hint.image_path'))
                 ->hideFromIndex(),
 
             Image::make(__('nova/resources.product.fields.thumb_path'), 'thumb_path')
@@ -92,6 +143,7 @@ class Product extends Resource
                     return $this->image_path ? Storage::disk('public')->url("products/image/{$this->image_path}") : null;
                 })
                 ->storeOriginalName('image_filename_original')
+                ->help(__('nova/resources.product.hint.thumb_path'))
                 ->prunable(),
 
             Number::make(__('nova/resources.product.fields.price'), 'price')
@@ -106,7 +158,15 @@ class Product extends Resource
 
             Boolean::make(__('nova/resources.product.fields.stock'), 'stock'),
 
+            RelationshipCount::make(__('nova/resources.product.fields.reviews'), 'reviews')
+                ->sortable()
+                ->onlyOnIndex(),
+
             HasMany::make(__('nova/resources.review.label'), 'reviews', Review::class),
+
+            BelongsToMany::make(__('nova/resources.categories.label'), 'categories', Categories::class),
+
+            BelongsToMany::make(__('nova/resources.subcategory.label'), 'subcategories', Subcategory::class),
         ];
     }
 
@@ -133,6 +193,7 @@ class Product extends Resource
     {
         return [
             new Brand(),
+            new Line(),
             new OnStock(),
             new Live(),
         ];

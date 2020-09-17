@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1eed4a0bf0c328217b41db45924ff5a",
+    "content-hash": "a12854c3c0b4139beac3d3831b0b9d29",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2844,6 +2844,47 @@
             "time": "2020-08-11T08:46:50+00:00"
         },
         {
+            "name": "orlyapps/nova-belongsto-depend",
+            "version": "2.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orlyapps/nova-belongsto-depend.git",
+                "reference": "2406aaefa40acf43cb057ebe09101abeee8cd044"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orlyapps/nova-belongsto-depend/zipball/2406aaefa40acf43cb057ebe09101abeee8cd044",
+                "reference": "2406aaefa40acf43cb057ebe09101abeee8cd044",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Orlyapps\\NovaBelongsToDepend\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orlyapps\\NovaBelongsToDepend\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2020-09-09T04:19:34+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v9.99.99",
             "source": {
@@ -4034,6 +4075,47 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "saumini/count",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nsaumini/nova-field-count.git",
+                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nsaumini/nova-field-count/zipball/55db5d804cf5489ccb077b0cef3e2d4202b1acda",
+                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Saumini\\Count\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Saumini\\Count\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-11-16T16:28:19+00:00"
         },
         {
             "name": "spatie/laravel-permission",

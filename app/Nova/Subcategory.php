@@ -2,31 +2,26 @@
 
 namespace App\Nova;
 
-use App\Nova\Brand as BrandModel;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Nikaia\Rating\Rating;
 
-class Review extends Resource
+class Subcategory extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Review::class;
+    public static $model = \App\Subcategory::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -35,22 +30,23 @@ class Review extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     public static function label(): string
     {
-        return __('nova/resources.review.label');
+        return __('nova/resources.subcategory.label');
     }
 
     public static function singularLabel(): string
     {
-        return __('nova/resources.review.singularLabel');
+        return __('nova/resources.subcategory.singularLabel');
     }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return array
      */
@@ -59,34 +55,15 @@ class Review extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make(__('nova/resources.product.label'), 'product', Product::class)
-                ->searchable(),
-
-            BelongsTo::make(__('nova/resources.user.label'), 'user', User::class)
-                ->searchable(),
-
-            Textarea::make(__('nova/resources.review.fields.review'), 'review')
-                ->rows(5)
-                ->hideFromIndex(),
-
-            Rating::make(__('nova/resources.review.fields.stars'), 'stars')
-                ->min(0)
-                ->max(5)
-                ->increment(1)
-                ->withStyles([
-                    'star-size' => 15,
-                    'rounded-corners' => true,
-                ])
-                ->sortable(),
-
-            Boolean::make(__('nova/resources.review.fields.published'), 'published'),
+            Text::make(__('nova/resources.subcategory.fields.name'), 'name')
+                ->rules(['required', 'max:191']),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return array
      */
@@ -98,7 +75,7 @@ class Review extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return array
      */
@@ -110,7 +87,7 @@ class Review extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return array
      */
@@ -122,7 +99,7 @@ class Review extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return array
      */

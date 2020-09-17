@@ -28,6 +28,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'coupons',
             'orders',
             'categories',
+            'subcategories',
             'addresses',
         ]);
 

@@ -26,7 +26,9 @@
     "laravel/socialite": "^4.4",
     "laravel/tinker": "^2.4",
     "nikaia/nova-rating-field": "^1.0",
+    "orlyapps/nova-belongsto-depend": "^2.0",
     "php-http/guzzle6-adapter": "^2.0",
+    "saumini/count": "^1.0",
     "voronkovich/sberbank-acquiring-client": "^2.5"
   },
   "require-dev": {

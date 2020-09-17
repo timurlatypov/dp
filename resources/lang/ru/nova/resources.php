@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'user'    => [
+    'user'        => [
         'label'         => 'Пользователи',
         'singularLabel' => 'Пользователь',
         'fields'        => [
@@ -10,7 +10,7 @@ return [
             'password' => 'Пароль',
         ],
     ],
-    'brand'   => [
+    'brand'       => [
         'label'         => 'Бренды',
         'singularLabel' => 'Бренд',
         'fields'        => [
@@ -20,7 +20,7 @@ return [
             'description' => 'Описание',
         ],
     ],
-    'line'    => [
+    'line'        => [
         'label'         => 'Линии',
         'singularLabel' => 'Линия',
         'fields'        => [
@@ -28,31 +28,58 @@ return [
             'slug' => 'Якорь (Slug)',
         ],
     ],
-    'product' => [
+    'product'     => [
         'label'         => 'Продукты',
         'singularLabel' => 'Продукт',
         'fields'        => [
-            'title_rus'  => 'Название (RU)',
-            'title_eng'  => 'Название (EN)',
-            'image_path' => 'Картинка',
-            'thumb_path' => 'Превью',
-            'price'      => 'Цена',
-            'discount'   => 'Скидка',
-            'live'       => 'На сайте',
-            'stock'      => 'В наличии',
+            'title_rus'         => 'Название (RU)',
+            'title_eng'         => 'Название (EN)',
+            'slug'              => 'Якорь (Slug)',
+            'description_short' => 'Краткое описание',
+            'description_full'  => 'Полное описание',
+            'ph'                => 'pH',
+            'image_path'        => 'Картинка',
+            'thumb_path'        => 'Превью',
+            'price'             => 'Цена',
+            'discount'          => 'Скидка',
+            'live'              => 'На сайте',
+            'stock'             => 'В наличии',
+            'reviews'           => 'Отзывов',
+        ],
+        'hint'          => [
+            'slug'       => 'Уникальная составляющая URL-пути',
+            'image_path' => 'Размер картинки должен быть 1080х1080',
+            'thumb_path' => 'Размер картинки должен быть 650х650',
         ],
     ],
-    'review'  => [
+    'review'      => [
         'label'         => 'Отзывы',
         'singularLabel' => 'Отзыв',
         'fields'        => [
-            'review'  => 'Отзыв',
-            'author'  => 'Автор',
-            'product' => 'Продукт',
-            'stars'   => 'Оценка',
+            'review'    => 'Отзыв',
+            'author'    => 'Автор',
+            'product'   => 'Продукт',
+            'stars'     => 'Оценка',
+            'published' => 'Опубликован',
         ],
     ],
-    'filters' => [
+    'categories'  => [
+        'label'         => 'Категории',
+        'singularLabel' => 'Категория',
+        'fields'        => [
+            'name' => 'Название',
+            'slug' => 'Якорь (Slug)',
+        ],
+    ],
+    'subcategory' => [
+        'label'         => 'Подкатегории',
+        'singularLabel' => 'Подкатегория',
+        'fields'        => [
+            'name' => 'Название',
+            'slug' => 'Якорь (Slug)',
+        ],
+    ],
+    'filters'     => [
         'live'  => [
             'title'   => 'На сайте',
             'options' => [
@@ -69,6 +96,9 @@ return [
         ],
         'brand' => [
             'title' => 'По бренду',
+        ],
+        'line'  => [
+            'title' => 'По Линии',
         ],
     ],
 ];
