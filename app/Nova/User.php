@@ -36,6 +36,7 @@ class User extends Resource
         'id',
         'name',
         'surname',
+        'email'
     ];
 
     public static function label(): string

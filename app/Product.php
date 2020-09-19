@@ -4,6 +4,7 @@ namespace App;
 
 use App\Filters\Product\ProductFilters;
 use App\Traits\LiveAware;
+use App\Traits\PublishedAware;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -128,5 +129,27 @@ class Product extends Model
         return (new ProductFilters($request))->add($filters)->filter($builder);
     }
 
+    public function getReviews()
+    {
+        return $this->reviews()->published()->orderBy('stars', 'asc')->get();
+    }
 
+    public function getAverageRating()
+    {
+        return round($this->reviews()->published()->average('stars'), 2, PHP_ROUND_HALF_UP);
+    }
+
+    public function getProperDisplay()
+    {
+        $number = $this->reviews()->published()->count();
+
+        return 'Всего ' . $number . ' отзыв' . self::properEnding($number, ['.', 'а.', 'ов.']);
+    }
+
+    private static function properEnding($number, $titles)
+    {
+        $cases = [2, 0, 1, 1, 1, 2];
+
+        return $titles[($number % 100 > 4 && $number % 100 < 20) ? 2 : $cases[min($number % 10, 5)]];
+    }
 }

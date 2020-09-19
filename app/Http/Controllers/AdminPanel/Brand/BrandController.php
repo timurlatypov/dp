@@ -16,7 +16,13 @@ class BrandController extends Controller
             abort(404);
         }
 
-        return view('web.product', compact(['brand', 'product']));
+        return view('web.product', [
+            'brand'   => $brand,
+            'product' => $product,
+            'reviews' => $product->getReviews(),
+            'rating'  => $product->getAverageRating(),
+            'display' => $product->getProperDisplay(),
+        ]);
     }
 
     public function show_brand_products(Brand $brand)

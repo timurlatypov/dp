@@ -14,7 +14,7 @@ class AddColumnVendorCodeToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->string('vendor_code')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnVendorCodeToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->dropColumn('vendor_code');
         });
     }
 }

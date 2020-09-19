@@ -13,7 +13,6 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
-        // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $collection = collect([
@@ -33,21 +32,18 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
 
         $collection->each(function ($item, $key) {
-            // create permissions for each collection item
-            Permission::create(['group' => $item, 'name' => 'view ' . $item]);
-            Permission::create(['group' => $item, 'name' => 'view own ' . $item]);
-            Permission::create(['group' => $item, 'name' => 'manage ' . $item]);
-            Permission::create(['group' => $item, 'name' => 'manage own ' . $item]);
-            Permission::create(['group' => $item, 'name' => 'restore ' . $item]);
-            Permission::create(['group' => $item, 'name' => 'forceDelete ' . $item]);
+            Permission::firstOrCreate(['group' => $item, 'name' => 'view ' . $item]);
+            Permission::firstOrCreate(['group' => $item, 'name' => 'view own ' . $item]);
+            Permission::firstOrCreate(['group' => $item, 'name' => 'manage ' . $item]);
+            Permission::firstOrCreate(['group' => $item, 'name' => 'manage own ' . $item]);
+            Permission::firstOrCreate(['group' => $item, 'name' => 'restore ' . $item]);
+            Permission::firstOrCreate(['group' => $item, 'name' => 'forceDelete ' . $item]);
         });
 
-        // Create a Super-Admin Role and assign all Permissions
-        $role = Role::create(['name' => 'super-admin']);
+        $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
 
-        // Give User Super-Admin Role
         $user = App\User::whereEmail('admin@doctorproffi.ru')->first();
-        $user->assignRole('super-admin');
+        $user->assignRole('admin');
     }
 }

@@ -11,6 +11,7 @@ use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -133,7 +134,8 @@ class Product extends Resource
                 ->help(__('nova/resources.product.hint.image_path'))
                 ->hideFromIndex(),
 
-            Image::make(__('nova/resources.product.fields.thumb_path'), 'thumb_path')
+            Avatar::make(__('nova/resources.product.fields.thumb_path'), 'thumb_path')
+                ->squared()
                 ->disk('public')
                 ->path('products/thumb')
                 ->preview(function () {
