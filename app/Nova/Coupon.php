@@ -7,12 +7,12 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use NovaAjaxSelect\AjaxSelect;
-use Orlyapps\NovaBelongsToDepend\NovaBelongsToDepend;
 
 class Coupon extends Resource
 {
@@ -70,12 +70,15 @@ class Coupon extends Resource
                     'product' => 'product',
                 ]),
 
+            Text::make(__('nova/resources.coupon.fields.entity_id'), 'entity_id')
+                ->exceptOnForms(),
+
             AjaxSelect::make(__('nova/resources.coupon.fields.entity_id'), 'entity_id')
                 ->get('/api/v1/{level}/options')
                 ->parent('level'),
 
-            TextWithSlug::make(__('nova/resources.coupon.fields.coupon'), 'coupon')
-                ->rules(['required']),
+            Text::make(__('nova/resources.coupon.fields.coupon'), 'coupon')
+                ->rules(['required', 'max:191']),
 
             Number::make(__('nova/resources.coupon.fields.discount'), 'discount')
                 ->sortable()
