@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Observers\ProductObserver;
+use App\Product;
 use Eminiarts\NovaPermissions\NovaPermissions;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
@@ -20,6 +22,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         Nova::serving(function (ServingNova $event) {
             app()->setLocale('ru');
+            Product::observe(ProductObserver::class);
         });
 
         parent::boot();
@@ -48,7 +51,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return $user->hasAnyRole(['super-admin','manager']);
+            return $user->hasAnyRole(['super-admin', 'manager']);
         });
     }
 

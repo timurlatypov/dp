@@ -44,15 +44,17 @@
                                                      alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
 
                                             </div>
-                                            <div class="col-12 col-sm-6 col-md-5 p-3 px-sm-0 py-sm-2 align-self-center">
-                                                <div class="brand-logo"><img
+                                            <div class="mt-3 col-12 col-sm-6 col-md-5 p-3 px-sm-0 py-sm-2 align-self-center">
+                                                <a href="/brand/{{$brand->slug}}" class="brand-logo"><img
                                                             src="/storage/brands/{{ $brand->image_path }}"
-                                                            alt="Логотип {{ $brand->name }}"></div>
+                                                            alt="Логотип {{ $brand->name }}"></a>
                                                 <h1 class="title mb-1 mt-4">{{ $product->title_eng }}</h1>
+                                                <span>{{ $product->title_rus }}</span><br>
+                                                <div class="pt-1 text-sm-left" style="color: grey;">
+                                                    Артикул: {{ $product->vendor_code }}</div>
                                                 @if($product->ph)<small
                                                         class="font-weight-bold">pH: {{ $product->ph }}</small>
                                                 <br>@endif
-                                                <span>{{ $product->title_rus }}</span><br>
                                                 @if($product->discount)
                                                     <span class="badge badge-pill badge-danger font-weight-bold mt-3">-{{ $product->discount }}%</span>
                                                 @endif

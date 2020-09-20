@@ -12,7 +12,6 @@ use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Avatar;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
@@ -50,6 +49,7 @@ class Product extends Resource
      */
     public static $search = [
         'id',
+        'vendor_code',
         'title_eng',
         'title_rus',
     ];
@@ -98,6 +98,9 @@ class Product extends Resource
                     "unique:products,slug,{$this->id}"
                 ),
 
+            Text::make(__('nova/resources.product.fields.vendor_code'), 'vendor_code')
+                ->readonly(true),
+
             Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
                 ->hideFromIndex()
                 ->rules(['required', 'max:191']),
@@ -110,7 +113,8 @@ class Product extends Resource
                 ->optionsResolve(function ($brand) {
                     return $brand->lines()->get(['id', 'name']);
                 })
-                ->dependsOn('Brand'),
+                ->dependsOn('Brand')
+                ->nullable(),
 
             Text::make(__('nova/resources.product.fields.ph'), 'ph')
                 ->hideFromIndex()
