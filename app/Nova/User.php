@@ -36,7 +36,7 @@ class User extends Resource
         'id',
         'name',
         'surname',
-        'email'
+        'email',
     ];
 
     public static function label(): string
@@ -82,8 +82,12 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
 
-            MorphToMany::make('Roles', 'roles', Role::class),
-            MorphToMany::make('Permissions', 'permissions', Permission::class),
+            MorphToMany::make('Roles', 'roles', Role::class)
+                ->hideFromIndex()
+                ->hideFromDetail(),
+            MorphToMany::make('Permissions', 'permissions', Permission::class)
+                ->hideFromIndex()
+                ->hideFromDetail(),
         ];
     }
 
