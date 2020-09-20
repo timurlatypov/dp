@@ -86,7 +86,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             (new NovaPermissions())->canSee(function ($request) {
-                return $request->user()->hasAnyRole(['super-admin', 'admin', 'manager']);
+                return $request->user()->hasAnyRole(['super-admin', 'admin']);
             }),
         ];
     }
