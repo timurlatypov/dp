@@ -72,8 +72,6 @@ class Brand extends Resource
 
             Boolean::make(__('nova/resources.product.fields.live'), 'live'),
 
-            Boolean::make(__('nova/resources.product.fields.live'), 'live'),
-
             HasMany::make(__('nova/resources.line.label'), 'lines', Line::class),
 
             HasMany::make(__('nova/resources.product.label'), 'products', Product::class),
