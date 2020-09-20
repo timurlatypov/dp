@@ -83,11 +83,13 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8'),
 
             MorphToMany::make('Roles', 'roles', Role::class)
-                ->hideFromIndex()
-                ->hideFromDetail(),
+                ->canSee(function ($request) {
+                    return $request->user()->hasAnyRole(['super-admin', 'admin']);
+                }),
             MorphToMany::make('Permissions', 'permissions', Permission::class)
-                ->hideFromIndex()
-                ->hideFromDetail(),
+                ->canSee(function ($request) {
+                    return $request->user()->hasAnyRole(['super-admin', 'admin']);
+                }),
         ];
     }
 
