@@ -64,6 +64,19 @@ return [
             'published' => 'Опубликован',
         ],
     ],
+    'coupon'      => [
+        'label'         => 'Промокоды',
+        'singularLabel' => 'Промокод',
+        'fields'        => [
+            'coupon'     => 'Промокод',
+            'entity_id'  => 'ID Сущности',
+            'discount'   => 'Скидка',
+            'reusable'   => 'Многоразовый',
+            'used'       => 'Использован',
+            'level'      => 'Уровень',
+            'expired_at' => 'Действует до',
+        ],
+    ],
     'categories'  => [
         'label'         => 'Категории',
         'singularLabel' => 'Категория',

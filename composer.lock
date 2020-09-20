@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a12854c3c0b4139beac3d3831b0b9d29",
+    "content-hash": "11d4d12c5aa1fb2eda49ecaa8514a974",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -507,6 +507,47 @@
                 "stream_filter_register"
             ],
             "time": "2019-04-09T12:31:48+00:00"
+        },
+        {
+            "name": "dillingham/nova-ajax-select",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dillingham/nova-ajax-select.git",
+                "reference": "c8d48e7eb2c04513041c9d2c23af1e3ef7a08c8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dillingham/nova-ajax-select/zipball/c8d48e7eb2c04513041c9d2c23af1e3ef7a08c8a",
+                "reference": "c8d48e7eb2c04513041c9d2c23af1e3ef7a08c8a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NovaAjaxSelect\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NovaAjaxSelect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Nova Ajax Select",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2020-08-27T16:52:00+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
