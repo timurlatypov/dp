@@ -5,12 +5,12 @@ namespace App\Http\Controllers\AdminPanel\Orders;
 use App\Events\NewOrderCreated;
 use App\Jobs\SendSberbankPaymentLink;
 use App\Order;
-use App\Role;
 use App\Sberbank;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
 use Voronkovich\SberbankAcquiring\Client;
 use Voronkovich\SberbankAcquiring\OrderStatus;
 

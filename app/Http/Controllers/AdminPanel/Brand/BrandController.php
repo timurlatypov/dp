@@ -16,19 +16,25 @@ class BrandController extends Controller
             abort(404);
         }
 
-        return view('web.product', compact(['brand', 'product']));
+        return view('web.product', [
+            'brand'   => $brand,
+            'product' => $product,
+            'reviews' => $product->getReviews(),
+            'rating'  => $product->getAverageRating(),
+            'display' => $product->getProperDisplay(),
+        ]);
     }
 
     public function show_brand_products(Brand $brand)
     {
-        $products = $brand->products()->orderBy('title_eng', 'asc')->live()->paginate(21);
+        $products = $brand->products()->orderBy('title_eng', 'asc')->live()->paginate(20);
 
         return view('web.brand', compact(['brand', 'products']));
     }
 
     public function show_brand_line_products(Brand $brand, Line $line)
     {
-        $products = $line->products()->orderBy('order_id', 'asc')->live()->paginate(21);
+        $products = $line->products()->orderBy('order_id', 'asc')->live()->paginate(20);
 
         return view('web.brand', compact(['brand', 'line', 'products']));
     }

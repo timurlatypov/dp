@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -32,7 +34,7 @@ class CheckoutController extends Controller
      *
      * @param $rowId
      *
-     * @return Response
+     * @return Application|ResponseFactory|Response
      */
     public function destroy($rowId)
     {

@@ -82,6 +82,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Timezone for output
+    |--------------------------------------------------------------------------
+    */
+
+    'timezone_for_output' => 'Europe/Moscow',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |
@@ -151,7 +159,6 @@ return [
          * Package Service Providers...
          */
 	    Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-	    Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -212,7 +219,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 	    'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-	    'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait LiveAware
 {
-	public function scopeLive(Builder $builder)
-	{
-		return $builder->where('live', true);
-	}
+    public function scopeLive(Builder $query)
+    {
+        return $query->where('live', true);
+    }
 
-	public function isLive()
-	{
-		return $this->live === 1;
-	}
+    public function isLive()
+    {
+        return $this->live === 1;
+    }
 
-	public function isNotLive()
-	{
-		return !$this->isLive();
-	}
+    public function isNotLive()
+    {
+        return !$this->isLive();
+    }
 }

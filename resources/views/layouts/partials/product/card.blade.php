@@ -8,6 +8,10 @@
         {{ $product->brand->name }}
     @endslot
 
+    @slot('vendor_code')
+        {{ $product->vendor_code }}
+    @endslot
+
     @slot('ph')
         @if($product->ph)<div><small class="font-weight-bold">pH: {{ $product->ph }}</small></div>@endif
     @endslot

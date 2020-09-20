@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel\Design\Carousel;
 use App\Models\Carousel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
 
 class CarouselController extends Controller
 {
@@ -55,7 +56,7 @@ class CarouselController extends Controller
 		$c = $request->toArray();
 
 		$carousel->each(function ($banner, $index) use ($c) {
-			$banner->update(array_only($c[$index], ['name', 'hex', 'image_path', 'order_id', 'link', 'title','body','brand','button','live','expired_at','deleted_at','created_at','updated_at']));
+			$banner->update(Arr::only($c[$index], ['name', 'hex', 'image_path', 'order_id', 'link', 'title','body','brand','button','live','expired_at','deleted_at','created_at','updated_at']));
 		});
 	}
 

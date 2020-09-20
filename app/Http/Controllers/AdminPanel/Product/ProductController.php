@@ -8,6 +8,8 @@ use App\Http\Requests\StoreNewProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Product;
 use App\Traits\LiveAware;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -16,6 +18,7 @@ use App\Filters\Product\{
     StockFilter,
     LiveFilter
 };
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
@@ -24,7 +27,7 @@ class ProductController extends Controller
      *
      * @param Request $request
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
