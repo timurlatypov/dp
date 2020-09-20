@@ -16,7 +16,7 @@ export const productautocompletemobile = (selector, { hitsPerPage }) => {
         displayKey: 'title',
         templates: {
             suggestion (suggestion) {
-                return '<span>' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title_eng.value + " - " + suggestion._highlightResult.title_rus.value + '</span>';
+                return '<span>' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title_eng.value + " - " + suggestion._highlightResult.title_rus.value + '</span><br><small>Арт. '+ suggestion._highlightResult.vendor_code.value +'</small>';
             },
             empty: '<div class="p-3">Ничего не найдено</div>'
         }

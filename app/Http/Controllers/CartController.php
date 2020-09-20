@@ -54,6 +54,7 @@ class CartController extends Controller
             'price'   => $request->price,
             'options' => [
                 'title_rus'    => $request->title_rus,
+                'vendor_code'  => $request->vendor_code,
                 'discount'     => $request->discount,
                 'product_id'   => $request->id,
                 'product_slug' => $request->slug,

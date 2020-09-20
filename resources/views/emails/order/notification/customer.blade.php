@@ -370,6 +370,7 @@
                                                     <b>{{ $product->name }}</b><br>
                                                     <small>{{ $product->options->title_rus }}</small><br>
                                                     <small>{{ $product->options->brand }}</small>
+                                                    <small>Артикул {{ $product->options->vendor_code }}</small>
                                                 </td>
                                                 <td class="text-center">{{ $product->price }} &#x20BD;</td>
                                                 <td class="text-center">-{{ $product->options->discount }}%</td>
@@ -395,22 +396,22 @@
                     </td>
                 </tr>
 
-                    <tr>
-                        <td>
-                            <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td class="content-cell" align="center">
-                                        <div>
-                                            <p>Интернет-магазин профессиональной косметики ДокторПроффи.ру</p>
-                                            <a href="tel:84953801141">8 (495) 380-11-41</a>&nbsp;|&nbsp;<a href="https://api.whatsapp.com/send?phone=89253170148">8 (925) 317-01-48</a>
-                                            <br><br>
-                                            <p>&copy; {{ date('Y') }} DoctorProffi.ru</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="content-cell" align="center">
+                                    <div>
+                                        <p>Интернет-магазин профессиональной косметики ДокторПроффи.ру</p>
+                                        <a href="tel:84953801141">8 (495) 380-11-41</a>&nbsp;|&nbsp;<a href="https://api.whatsapp.com/send?phone=89253170148">8 (925) 317-01-48</a>
+                                        <br><br>
+                                        <p>&copy; {{ date('Y') }} DoctorProffi.ru</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </td>
     </tr>
