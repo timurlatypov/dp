@@ -15,7 +15,7 @@
     </span>
 @endforeach
 <br>
-<div class="mb-2 text-sm-left" style="color: grey;">{{ $item->created_at->isoFormat('Do MMMM Y') }}</div>
+<div class="mb-2 text-sm-left" style="color: grey;">{{ $item->published_at->isoFormat('Do MMMM Y') }}</div>
 <blockquote class="blockquote">
     <p class="mb-0" style="font-size: 0.75em;">{{ $item->review }}</p>
 </blockquote>

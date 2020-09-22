@@ -17,10 +17,12 @@ class Review extends Model
         'stars',
         'review',
         'published',
+        'published_at',
     ];
 
     protected $casts = [
-        'published' => 'bool',
+        'published'    => 'bool',
+        'published_at' => 'datetime',
     ];
 
     public function user()

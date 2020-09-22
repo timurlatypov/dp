@@ -88,7 +88,8 @@ class Coupon extends Resource
                 ->sortable([true])
                 ->firstDayOfWeek(Carbon::MONDAY),
 
-            Boolean::make(__('nova/resources.coupon.fields.reusable'), 'reusable'),
+            Boolean::make(__('nova/resources.coupon.fields.reusable'), 'reusable')
+                ->withMeta(['value' => $this->reusable ?? true]),
 
             Boolean::make(__('nova/resources.coupon.fields.used'), 'used')
                 ->hideWhenCreating(),

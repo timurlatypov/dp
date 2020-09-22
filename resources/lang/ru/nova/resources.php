@@ -57,11 +57,12 @@ return [
         'label'         => 'Отзывы',
         'singularLabel' => 'Отзыв',
         'fields'        => [
-            'review'    => 'Отзыв',
-            'author'    => 'Автор',
-            'product'   => 'Продукт',
-            'stars'     => 'Оценка',
-            'published' => 'Опубликован',
+            'review'       => 'Отзыв',
+            'author'       => 'Автор',
+            'product'      => 'Продукт',
+            'stars'        => 'Оценка',
+            'published_at' => 'Дата',
+            'published'    => 'Опубликован',
         ],
     ],
     'coupon'      => [
