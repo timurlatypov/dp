@@ -40,11 +40,11 @@
                             <h4 class="title text-white mt-2">Информация</h4>
                             {{--<h6><a href="/loyalty" class="text-white">Программа лояльности</a></h6>--}}
                             <p><a href="/contacts" class="text-white">Обратная связь</a></p>
-                            <p>Бесплатная консультация<br>
-                                по телефону горячей линии: <a class="tw-font-bold tw-text-white" href="tel:88005006620">
-                                    <nobr>8 (800) 500-66-20</nobr>
-                                </a>
-                            </p>
+{{--                            <p>Бесплатная консультация<br>--}}
+{{--                                по телефону горячей линии: <a class="tw-font-bold tw-text-white" href="tel:88005006620">--}}
+{{--                                    <nobr>8 (800) 500-66-20</nobr>--}}
+{{--                                </a>--}}
+{{--                            </p>--}}
                         </div>
                         <div class="col-12 col-md-3">
                             <h4 class="title text-white mt-2">Контакты</h4>
