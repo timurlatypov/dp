@@ -38,7 +38,6 @@ class AppServiceProvider extends ServiceProvider
 	    });
 
 
-
 	    view()->composer('layouts.partials._in_product_nav', function($nav) {
 		    $nav->with('for_face', Categories::where('slug', 'for-face')->first() );
 		    $nav->with('for_body', Categories::where('slug', 'for-body')->first() );

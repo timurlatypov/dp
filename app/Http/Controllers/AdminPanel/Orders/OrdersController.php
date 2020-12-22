@@ -5,14 +5,14 @@ namespace App\Http\Controllers\AdminPanel\Orders;
 use App\Events\NewOrderCreated;
 use App\Jobs\SendSberbankPaymentLink;
 use App\Order;
+use App\Repositories\Payments\SberbankClient;
 use App\Sberbank;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
-use Voronkovich\SberbankAcquiring\Client;
-use Voronkovich\SberbankAcquiring\OrderStatus;
+use Throwable;
 
 use App\Filters\Order\{
     DateFromFilter,
@@ -22,7 +22,16 @@ use App\Filters\Order\{
 
 class OrdersController extends Controller
 {
-    private $coupon;
+    private $client;
+
+    public function __construct()
+    {
+        $this->client = new SberbankClient([
+            'userName' => env('SBERBANK_USERNAME'),
+            'password' => env('SBERBANK_PASSWORD'),
+            'apiUri'   => env('SBERBANK_API_URI'),
+        ]);
+    }
 
     public function index(Request $request)
     {
@@ -203,25 +212,19 @@ class OrdersController extends Controller
 
     public function registerOrder(Request $request, Order $order)
     {
-        $client = new Client([
-            'userName' => env('SBERBANK_USERNAME'),
-            'password' => env('SBERBANK_PASSWORD'),
-            'apiUri'   => env('SBERBANK_API_URI'),
-        ]);
-
         // Required arguments
         $orderId     = $order->order_id . ' / ' . now();
         $orderAmount = $order->billing_total * 100;
-        $returnUrl   = env('APP_URL') . '/payment-success';
+        $returnUrl   = config('app.url') . '/success';
 
         // You can pass additional parameters like a currency code and etc.
         $params['failUrl'] = env('APP_URL') . '/failure';
         //$params['expirationDate'] = now()->addDays(1)->toDateTimeString();
         $params['expirationDate'] = now()->addDays(1)->toIso8601String();
 
-        $result = $client->registerOrder($orderId, $orderAmount, $returnUrl, $params);
+        $result = $this->client->registerOrder($orderId, $orderAmount, $returnUrl, $params);
 
-        $register_payment = Sberbank::create([
+        Sberbank::create([
             'payment_id'   => $result['orderId'],
             'payment_link' => $result['formUrl'],
             'status'       => 'В ожидании',
@@ -237,19 +240,35 @@ class OrdersController extends Controller
 
     public function reverseOrder($id, Request $request)
     {
-        $client = new Client([
-            'userName' => env('SBERBANK_USERNAME'),
-            'password' => env('SBERBANK_PASSWORD'),
-            'apiUri'   => env('SBERBANK_API_URI'),
-        ]);
+        $this->client->reverseOrder($id);
 
-        $reverse = $client->reverseOrder($id);
+        return back();
+    }
 
+    /**
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function declineOrder($id)
+    {
+        try {
+            $this->client->doDeclineOrder($id);
+            Sberbank::where('payment_id', $id)->delete();
+        } catch (Throwable $t) {
+            Log::error("OrdersController - DeclineOrder Failed", [
+                'message'   => $t->getMessage(),
+                'exception' => $t,
+            ]);
+        }
+
+        return back();
     }
 
     public function deleteLink($id, Request $request)
     {
-        $delete_payment = Sberbank::where('payment_id', $id)->delete();
+        Sberbank::where('payment_id', $id)->delete();
 
         return back();
 
@@ -271,14 +290,6 @@ class OrdersController extends Controller
 
     public function orderStatus($id)
     {
-        $client = new Client([
-            'userName' => env('SBERBANK_USERNAME'),
-            'password' => env('SBERBANK_PASSWORD'),
-            'apiUri'   => env('SBERBANK_API_URI'),
-        ]);
-
-        $result = $client->getOrderStatus($id);
-
-        dd($result);
+        return $this->client->getOrderStatus($id);
     }
 }
