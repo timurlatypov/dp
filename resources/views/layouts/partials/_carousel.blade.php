@@ -1,29 +1,29 @@
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-inner">
 
-        <div class="carousel-item active" style="background-color: #0b0604">
-            <a href="#" class="banner-mobile h-100">
+        <div class="carousel-item active" style="background-color: #f5f0ef">
+            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image"
-                             style="background-image: url('/storage/banners/black-friday-2020-promocode-mobile.jpg')">
+                             style="background-image: url('/storage/banners/ny-2020-corpolibero-30-coupon-mobile.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="#" class="banner-tablet h-100">
+            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image"
-                             style="background-image: url('/storage/banners/black-friday-2020-promocode-tablet.jpg')">
+                             style="background-image: url('/storage/banners/ny-2020-corpolibero-30-coupon-tablet.jpg')">
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="#" class="banner-desktop h-100">
+            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image"
-                         style="background-image: url('/storage/banners/black-friday-2020-promocode-desktop.jpg')">
+                         style="background-image: url('/storage/banners/ny-2020-corpolibero-30-coupon-desktop.jpg')">
                         <div class="col-12 align-self-center px-5">
                         </div>
                     </div>
@@ -61,35 +61,35 @@
             </a>
         </div>
 
-        <div class="carousel-item" style="background-color: #eb2c5f">
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image"
-                             style="background-image: url('/storage/banners/promo-june-2020-mobile.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100 align-self-center ">
-                        <div class="h-100 carousel-bg-image"
-                             style="background-image: url('/storage/banners/promo-june-2020-tablet.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
-                <div class="container-carousel h-100 px-0">
-                    <div class="row h-100 carousel-bg-image"
-                         style="background-image: url('/storage/banners/promo-june-2020-desktop.jpg')">
-                        <div class="col-12 align-self-center px-5">
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        {{--        <div class="carousel-item" style="background-color: #eb2c5f">--}}
+        {{--            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">--}}
+        {{--                <div class="row h-100">--}}
+        {{--                    <div class="col-12 h-100 align-self-center ">--}}
+        {{--                        <div class="h-100 carousel-bg-image"--}}
+        {{--                             style="background-image: url('/storage/banners/promo-june-2020-mobile.jpg')">--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </a>--}}
+        {{--            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">--}}
+        {{--                <div class="row h-100">--}}
+        {{--                    <div class="col-12 h-100 align-self-center ">--}}
+        {{--                        <div class="h-100 carousel-bg-image"--}}
+        {{--                             style="background-image: url('/storage/banners/promo-june-2020-tablet.jpg')">--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </a>--}}
+        {{--            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">--}}
+        {{--                <div class="container-carousel h-100 px-0">--}}
+        {{--                    <div class="row h-100 carousel-bg-image"--}}
+        {{--                         style="background-image: url('/storage/banners/promo-june-2020-desktop.jpg')">--}}
+        {{--                        <div class="col-12 align-self-center px-5">--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </a>--}}
+        {{--        </div>--}}
 
         <div class="carousel-item" style="background-color: #cdcdcb">
             <a href="https://doctorproffi.ru/brand/evolash" class="banner-mobile h-100">

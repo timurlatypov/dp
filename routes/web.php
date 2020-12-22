@@ -164,6 +164,7 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 
         Route::get('/{id}/reverse', 'OrdersController@reverseOrder')->name('admin.orders.reverseOrder');
+        Route::get('/{id}/decline', 'OrdersController@declineOrder')->name('admin.orders.declineOrder');
         Route::get('/{id}/delete', 'OrdersController@deleteLink')->name('admin.orders.deleteLink');
         Route::get('/{id}/status', 'OrdersController@orderStatus')->name('admin.orders.orderStatus');
         Route::get('/{order}/send-link', 'OrdersController@sendLink')->name('admin.orders.sendLink');

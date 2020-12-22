@@ -136,7 +136,6 @@ class OrderController extends Controller
         $cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
     }
 
-
     public function success(Request $request)
     {
         if ($request->query('orderId')) {

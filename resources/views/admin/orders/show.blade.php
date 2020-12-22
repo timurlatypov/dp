@@ -42,7 +42,7 @@
                                             <p class="text-success">Ссылка на оплату заказа в Сбербанк-онлайн создана!</p>
                                             <a href="{{ $payment->payment_link }}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Ссылка на страницу оплаты Сбербанк">Оплатить</a>
                                             <a href="{{ route('admin.orders.reverseOrder', $payment->payment_id ) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Если клиент передумал сразу после оплаты!">Отмена оплаты</a>
-                                            <a href="{{ route('admin.orders.deleteLink', $payment->payment_id ) }}" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Если ссылка устарела и надо создать новую!">Удалить ссылку</a>
+                                            <a href="{{ route('admin.orders.declineOrder', $payment->payment_id ) }}" class="btn btn-sm btn-danger">Удалить ссылку</a>
 
 
                                             <h4 class="title mt-2 mb-2">Ссылка</h4>
