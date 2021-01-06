@@ -255,12 +255,16 @@ class OrdersController extends Controller
     {
         try {
             $this->client->doDeclineOrder($id);
-            Sberbank::where('payment_id', $id)->delete();
         } catch (Throwable $t) {
             Log::error("OrdersController - DeclineOrder Failed", [
-                'message'   => $t->getMessage(),
-                'exception' => $t,
+                'message' => $t->getMessage(),
+                'order'   => $id,
             ]);
+        }
+        finally {
+            if ($sberbankModel = Sberbank::where('payment_id', $id)->first()) {
+                $sberbankModel->delete();
+            }
         }
 
         return back();
