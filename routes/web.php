@@ -17,6 +17,7 @@ Route::get('/sdek-points', 'HomeController@sdekPoints')->name('sdek.points');
 Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 
 // Online payment routes for SUCCESS and FAILURE statuses
+Route::get('/payment-check', 'OrderController@check')->name('payment.check');
 Route::get('/payment-success', 'OrderController@success')->name('payment.success');
 Route::get('/success', 'HomeController@success')->name('page.success');
 

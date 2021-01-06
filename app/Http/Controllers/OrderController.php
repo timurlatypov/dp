@@ -10,11 +10,8 @@ use App\Events\NewOrderCreated;
 use App\Sberbank;
 use App\YandexMetrika;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
-use Voronkovich\SberbankAcquiring\Client;
-use Voronkovich\SberbankAcquiring\HttpClient\GuzzleAdapter;
-use GuzzleHttp\Client as Guzzle;
 
 class OrderController extends Controller
 {
@@ -134,6 +131,15 @@ class OrderController extends Controller
         request()->session()->forget('coupon');
 
         $cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
+    }
+
+    public function check(Request $request)
+    {
+        Log::info('Payment Check Callback', [
+            'request' => $request->all(),
+        ]);
+
+        return response()->json('OK', 200);
     }
 
     public function success(Request $request)
