@@ -2,7 +2,7 @@
     <div class="carousel-inner">
 
         <div class="carousel-item active" style="background-color: #f5f0ef">
-            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-mobile h-100">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-mobile h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image"
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-tablet h-100">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-tablet h-100">
                 <div class="row h-100">
                     <div class="col-12 h-100 align-self-center ">
                         <div class="h-100 carousel-bg-image"
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://doctorproffi.ru/brand/b-selfie" class="banner-desktop h-100">
+            <a href="https://doctorproffi.ru/brand/corpolibero" class="banner-desktop h-100">
                 <div class="container-carousel h-100 px-0">
                     <div class="row h-100 carousel-bg-image"
                          style="background-image: url('/storage/banners/ny-2020-corpolibero-30-coupon-desktop.jpg')">
