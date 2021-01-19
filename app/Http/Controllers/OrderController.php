@@ -144,6 +144,10 @@ class OrderController extends Controller
 
     public function success(Request $request)
     {
+        Log::info('Payment  Pre-Success', [
+            'request' => $request->all(),
+        ]);
+
         if ($request->query('orderId')) {
             $id                  = $request->query('orderId');
             $check_order_payment = Sberbank::where('payment_id', $id)->first();

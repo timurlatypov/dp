@@ -212,14 +212,11 @@ class OrdersController extends Controller
 
     public function registerOrder(Request $request, Order $order)
     {
-        // Required arguments
         $orderId     = $order->order_id . ' / ' . now();
         $orderAmount = $order->billing_total * 100;
-        $returnUrl   = config('app.url') . '/success';
+        $returnUrl   = config('app.url') . '/payment-success';
 
-        // You can pass additional parameters like a currency code and etc.
         $params['failUrl'] = env('APP_URL') . '/failure';
-        //$params['expirationDate'] = now()->addDays(1)->toDateTimeString();
         $params['expirationDate'] = now()->addDays(1)->toIso8601String();
 
         $result = $this->client->registerOrder($orderId, $orderAmount, $returnUrl, $params);

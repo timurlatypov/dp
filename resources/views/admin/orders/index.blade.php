@@ -290,6 +290,15 @@
                                             </label>
                                         </div>
                                         <div class="form-check form-check-radio">
+                                            <label class="form-check-label text-default">
+                                                <input class="form-check-input" type="radio" name="order_payment" value="Карта">
+                                                Карта
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-radio">
                                             <label class="form-check-label">
                                                 <input class="form-check-input" type="radio" name="order_payment" value="Счет">
                                                 Счет
