@@ -6,6 +6,7 @@ Route::get('/', 'HomeController@index')->name('landing-page');
 Route::get('/novelties', 'HomeController@novelties')->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
 Route::get('/premium', 'HomeController@premium')->name('premium');
+Route::get('/8march', 'HomeController@eightMarch')->name('eightMarch');
 Route::get('/set', 'HomeController@set')->name('set');
 Route::get('/discounts', 'HomeController@discounts')->name('discounts');
 Route::get('/contacts', 'HomeController@contacts')->name('contacts');
