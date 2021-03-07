@@ -8,7 +8,7 @@ options:
 #    - './docker-compose.override.yml'
 
   compose-dev-file-path:
-    - './docker-compose.local.yml'
+    - './docker-compose.override.yml'
 
   # optional, activate this if you need to debug something, default is false
   # IMPORTANT: do not run stable with this, it creates a memory leak, turn off verbose when you are done testing

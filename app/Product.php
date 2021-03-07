@@ -4,7 +4,6 @@ namespace App;
 
 use App\Filters\Product\ProductFilters;
 use App\Traits\LiveAware;
-use App\Traits\PublishedAware;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,7 +21,9 @@ class Product extends Model
         'brand',
     ];
 
-    protected $appends = ['new_product'];
+    protected $appends = [
+        'new_product',
+    ];
 
     public function getRouteKeyName()
     {

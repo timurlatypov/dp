@@ -7,8 +7,11 @@ services:
       - "80:80"
       - "443:443"
       - "3000:3000"
-
-  # MySQL Service
+  # MySQL
+  dp-supervisord:
+    ports:
+      - "9123:9123"
+  # MySQL
   dp-db:
     ports:
       - "3306:3306"

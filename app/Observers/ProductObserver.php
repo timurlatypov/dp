@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Jobs\Product\MakeVendorCodeJob;
 use App\Product;
+use App\Jobs\Product\MakeVendorCodeJob;
 
 class ProductObserver
 {
@@ -14,56 +14,8 @@ class ProductObserver
      *
      * @return void
      */
-    public function created(Product $product)
+    public function created(Product $product): void
     {
         MakeVendorCodeJob::dispatch($product['id']);
-    }
-
-    /**
-     * Handle the Product "updated" event.
-     *
-     * @param Product $product
-     *
-     * @return void
-     */
-    public function updated(Product $product)
-    {
-
-    }
-
-    /**
-     * Handle the Product "deleted" event.
-     *
-     * @param Product $product
-     *
-     * @return void
-     */
-    public function deleted(Product $product)
-    {
-
-    }
-
-    /**
-     * Handle the Product "restored" event.
-     *
-     * @param Product $product
-     *
-     * @return void
-     */
-    public function restored(Product $product)
-    {
-
-    }
-
-    /**
-     * Handle the Product "force deleted" event.
-     *
-     * @param Product $product
-     *
-     * @return void
-     */
-    public function forceDeleted(Product $product)
-    {
-
     }
 }

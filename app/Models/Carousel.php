@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Carousel extends Model
 {
-    use LiveAware, SoftDeletes;
+    use LiveAware;
+    use SoftDeletes;
 
     protected $guarded = [];
 

@@ -7,30 +7,28 @@ use App\Http\Controllers\Controller;
 
 class ImageController extends Controller
 {
-	public function store_product_thumb()
-	{
-		$this->validate(request(), [
-			'thumb' => ['required', 'image']
-		]);
+    public function store_product_thumb()
+    {
+        $this->validate(request(), [
+            'thumb' => ['required', 'image'],
+        ]);
 
-		$thumb = request()->file('thumb')->storeAs('thumbs', request()->file('thumb')->getClientOriginalName(), 'public');
+        request()->file('thumb')->storeAs('thumbs', request()->file('thumb')->getClientOriginalName(), 'public');
 
-		return response(['data' => request()->file('thumb')->getClientOriginalName()], 200);
-
-	}
-
-
-	public function store_product_image(Request $request)
-	{
-		$this->validate(request(), [
-			'image' => ['required', 'image']
-		]);
-
-		$image_unique_name = uniqid().'-'.request()->file('image')->getClientOriginalName();
-
-		$image = request()->file('image')->storeAs($request->path, $image_unique_name, 'public');
+        return response(['data' => request()->file('thumb')->getClientOriginalName()], 200);
+    }
 
 
-		return response(['data' => $image_unique_name], 200);
-	}
+    public function store_product_image(Request $request)
+    {
+        $this->validate(request(), [
+            'image' => ['required', 'image'],
+        ]);
+
+        $image_unique_name = uniqid('', true) . '-' . request()->file('image')->getClientOriginalName();
+
+        request()->file('image')->storeAs($request->path, $image_unique_name, 'public');
+
+        return response(['data' => $image_unique_name], 200);
+    }
 }

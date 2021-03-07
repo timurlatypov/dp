@@ -65,6 +65,21 @@ return [
             'published'    => 'Опубликован',
         ],
     ],
+    'banner'      => [
+        'label'         => 'Баннеры',
+        'singularLabel' => 'Баннер',
+        'fields'        => [
+            'name'           => 'Название',
+            'banner_desktop' => 'Desktop',
+            'banner_mobile'  => 'Mobile',
+            'bg_color'       => 'Цвет фона',
+            'link'           => 'Ссылка',
+            'sort_order'       => 'Сортировка',
+            'live'           => 'Видимость',
+            'published_at'   => 'Опубликован',
+            'expired_at'     => 'Истекает срок',
+        ],
+    ],
     'coupon'      => [
         'label'         => 'Промокоды',
         'singularLabel' => 'Промокод',

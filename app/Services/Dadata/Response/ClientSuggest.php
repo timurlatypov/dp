@@ -17,78 +17,78 @@ use RuntimeException;
 class ClientSuggest
 {
 
-    const METHOD_GET = 'GET';
-    const METHOD_POST = 'POST';
+    public const METHOD_GET  = 'GET';
+    public const METHOD_POST = 'POST';
 
     /**
      * Организации
      */
-    const TYPE_PARTY = 'party';
+    public const TYPE_PARTY = 'party';
 
     /**
      * Организации (алиас)
      */
-    const TYPE_ORG = 'party';
+    public const TYPE_ORG = 'party';
 
     /**
      * Адреса
      */
-    const TYPE_ADDRESS = 'address';
+    public const TYPE_ADDRESS = 'address';
 
     /**
      * Банки
      */
-    const TYPE_BANK = 'bank';
+    public const TYPE_BANK = 'bank';
 
     /**
      * ФИО
      */
-    const TYPE_FIO = 'fio';
+    public const TYPE_FIO = 'fio';
 
     /**
      * email
      */
-    const TYPE_EMAIL = 'email';
+    public const TYPE_EMAIL = 'email';
 
     /**
      * кем выдан паспорт
      */
-    const TYPE_FMS_UNIT = 'fms_unit';
+    public const TYPE_FMS_UNIT = 'fms_unit';
 
     /**
      * налоговые инспекции
      */
-    const TYPE_FNS_UNIT = 'fns_unit';
+    public const TYPE_FNS_UNIT = 'fns_unit';
 
     /**
      * отделения Почты России
      */
-    const TYPE_POSTAL_OFFICE = 'postal_office';
+    public const TYPE_POSTAL_OFFICE = 'postal_office';
 
     /**
      * мировые суды
      */
-    const TYPE_REGION_COURT = 'region_court';
+    public const TYPE_REGION_COURT = 'region_court';
 
     /**
      * страны
      */
-    const TYPE_COUNTRY = 'country';
+    public const TYPE_COUNTRY = 'country';
 
     /**
      * валюты
      */
-    const TYPE_CURRENCY = 'currency';
+    public const TYPE_CURRENCY = 'currency';
 
     /**
      * виды деятельности (ОКВЭД 2)
      */
-    const TYPE_OKVED_2 = 'okved2';
+    public const TYPE_OKVED_2 = 'okved2';
 
     /**
      * виды продукции (ОКПД 2)
      */
-    const TYPE_OKPD_2 = 'okpd2';
+    public const TYPE_OKPD_2 = 'okpd2';
 
     /**
      * API-ключ
@@ -109,21 +109,21 @@ class ClientSuggest
      *
      * @var string
      */
-    protected $version = '4_1';
+    protected string $version = '4_1';
 
     /**
      * Базовый адрес
      *
      * @var string
      */
-    protected $base_url = 'https://suggestions.dadata.ru/suggestions/api';
+    protected string $base_url = 'https://suggestions.dadata.ru/suggestions/api';
 
     /**
      * URI подсказок
      *
      * @var string
      */
-    protected $url_suggestions = 'rs/suggest';
+    protected string $url_suggestions = 'rs/suggest';
 
     /**
      * URI поиска организации по ИНН, ОГРН, HID

@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use App\Nova\Categories;
 use App\Nova\Filters\Brand;
 use App\Nova\Filters\Line;
 use App\Nova\Filters\Live;
@@ -11,7 +10,6 @@ use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
@@ -23,10 +21,13 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Orlyapps\NovaBelongsToDepend\NovaBelongsToDepend;
 use Saumini\Count\RelationshipCount;
+use Davidpiesse\NovaToggle\Toggle;
 
 class Product extends Resource
 {
-    public static $perPageViaRelationship = 15;
+    public static $defaultSortField = 'id';
+
+    public static $perPageViaRelationship = 50;
 
     /**
      * The model the resource corresponds to.
@@ -82,9 +83,20 @@ class Product extends Resource
         return [
             ID::make()->sortable(),
 
+            Toggle::make(__('nova/resources.product.fields.stock'), 'stock')
+                ->sortable()
+                ->editableIndex()
+                ->trueValue(1)
+                ->falseValue(0),
+
             TextWithSlug::make(__('nova/resources.product.fields.title_eng'), 'title_eng')
+                ->sortable()
                 ->rules(['required', 'max:191'])
                 ->slug('slug'),
+
+            Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
+                ->hideFromIndex()
+                ->rules(['required', 'max:191']),
 
             Slug::make(__('nova/resources.product.fields.slug'), 'slug')
                 ->disableAutoUpdateWhenUpdating()
@@ -101,14 +113,13 @@ class Product extends Resource
             Text::make(__('nova/resources.product.fields.vendor_code'), 'vendor_code')
                 ->readonly(true),
 
-            Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
-                ->hideFromIndex()
-                ->rules(['required', 'max:191']),
-
             NovaBelongsToDepend::make('Brand')
+                ->sortable()
                 ->placeholder('Select Brand')
                 ->options(\App\Brand::all()),
+
             NovaBelongsToDepend::make('Line')
+                ->sortable()
                 ->placeholder('Select Line')
                 ->optionsResolve(function ($brand) {
                     return $brand->lines()->get(['id', 'name']);
@@ -130,25 +141,24 @@ class Product extends Resource
             Image::make(__('nova/resources.product.fields.image_path'), 'image_path')
                 ->disk('public')
                 ->path('products/image')
+                ->maxWidth(150)
                 ->preview(function () {
-                    return $this->image_path ? Storage::disk('public')->url("products/image/{$this->image_path}") : null;
+                    return $this->image_path ? Storage::disk('public')->url($this->image_path) : null;
                 })
-                ->storeOriginalName('image_filename_original')
-                ->prunable()
                 ->help(__('nova/resources.product.hint.image_path'))
+                ->prunable()
                 ->hideFromIndex(),
 
-            Avatar::make(__('nova/resources.product.fields.thumb_path'), 'thumb_path')
-                ->squared()
+            Image::make(__('nova/resources.product.fields.thumb_path'), 'thumb_path')
                 ->disk('public')
                 ->path('products/thumb')
+                ->maxWidth(150)
                 ->preview(function () {
-                    return $this->thumb_path ? Storage::disk('public')->url("products/thumb/{$this->thumb_path}") : null;
+                    return $this->thumb_path ? Storage::disk('public')->url("{$this->thumb_path}") : null;
                 })
                 ->thumbnail(function () {
-                    return $this->image_path ? Storage::disk('public')->url("products/image/{$this->image_path}") : null;
+                    return $this->thumb_path ? Storage::disk('public')->url("{$this->image_path}") : null;
                 })
-                ->storeOriginalName('image_filename_original')
                 ->help(__('nova/resources.product.hint.thumb_path'))
                 ->prunable(),
 
@@ -158,11 +168,13 @@ class Product extends Resource
 
             Number::make(__('nova/resources.product.fields.discount'), 'discount')
                 ->sortable()
-                ->min(1)->max(99)->step(1),
+                ->min(0)->max(99)->step(1),
 
-            Boolean::make(__('nova/resources.product.fields.live'), 'live'),
-
-            Boolean::make(__('nova/resources.product.fields.stock'), 'stock'),
+            Toggle::make(__('nova/resources.product.fields.live'), 'live')
+                ->sortable()
+                ->editableIndex()
+                ->trueValue(1)
+                ->falseValue(0),
 
             RelationshipCount::make(__('nova/resources.product.fields.reviews'), 'reviews')
                 ->sortable()
