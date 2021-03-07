@@ -9,7 +9,6 @@ use App\Order;
 use App\Product;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrap();
-
         Carbon::setLocale(config('app.locale'));
 
         view()->composer('layouts.partials._nav', function ($nav) {

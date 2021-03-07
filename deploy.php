@@ -25,9 +25,9 @@ set('default_stage', 'prod');
 set('branch', 'master');
 
 host('188.225.73.98')
-	->user('www-data')
+	->user('deploy')
 	->identityFile('~/.ssh/id_rsa_doctorproffi_timeweb')
-	->set('deploy_path', '/var/www/doctorproffi/production/')
+	->set('deploy_path', '/var/www/doctorproffi/production')
 	->set('master', 'master')
 	->stage('prod');
 
