@@ -61,9 +61,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.partials._carousel', function ($banners) {
             $banners->with('banners', Banner::live()->orderBy('sort_order')->get()->filter(function ($item) {
-                if (now()->between($item->published_at, $item->expired_at)) {
-                    return $item;
-                }
+                return now()->between($item->published_at, $item->expired_at);
             }));
         });
 
