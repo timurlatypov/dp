@@ -67,7 +67,7 @@ services:
       - dbdata:/var/lib/mysql
       - dbdata-logs:/var/log/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/my.cnf:delegated
-      - ./docker/mysql/inten.sql:/docker-entrypoint-initdb.d/dump.sql:delegated
+      - ./docker/mysql/dp.sql:/docker-entrypoint-initdb.d/dump.sql:delegated
     networks:
       - dp-network
 

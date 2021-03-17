@@ -57,9 +57,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('layouts.partials._carousel', function ($banners) {
-            $banners->with('banners', Banner::live()->orderBy('sort_order')->get()->filter(function ($item) {
-                return now()->between($item->published_at, $item->expired_at);
-            }));
+            $banners->with('banners', Banner::query()->where([
+                ['published_at','<', now()],
+                ['expired_at', '>', now()]
+            ])->live()->orderBy('sort_order')->get());
         });
 
         view()->composer('admin.partials._nav', function ($orders) {
