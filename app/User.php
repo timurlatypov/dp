@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Scout\Searchable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -36,23 +35,6 @@ class User extends Authenticatable
     public function isSuperAdmin()
     {
         return $this->hasRole('super-admin');
-    }
-
-    public function getScoutKey()
-    {
-        return $this->email;
-    }
-
-    public function searchableAs()
-    {
-        return config('scout.prefix') . 'users';
-    }
-
-    public function toSearchableArray()
-    {
-        $properties = $this->toArray();
-
-        return $properties;
     }
 
     public function ym()

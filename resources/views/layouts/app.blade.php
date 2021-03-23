@@ -33,8 +33,6 @@
                 @yield('seasonal')
                 @yield('bestsellers')
                 @yield('content')
-                @yield('about')
-                {{--@yield('blog')--}}
             </div>
             <div class="col-12 align-self-end p-0">
                 @include('layouts.partials._footer')

@@ -24,7 +24,7 @@
     "hardevine/shoppingcart": "^2.8",
     "laravel/framework": "^7",
     "laravel/nova": "^3",
-    "laravel/scout": "^8",
+    "laravel/scout": "^8.6",
     "laravel/socialite": "*",
     "laravel/tinker": "*",
     "laravel/ui": "*",
