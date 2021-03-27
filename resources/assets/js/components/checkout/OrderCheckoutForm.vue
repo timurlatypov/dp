@@ -38,7 +38,7 @@
                 <tr v-for="(item, index) in order.cart">
                     <td>
                         <div class="img-container">
-                            <img :src="'storage/products/thumb/' + item.options.image">
+                            <img :src="'storage/' + item.options.image">
                         </div>
                     </td>
                     <td class="td-name">

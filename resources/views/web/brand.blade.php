@@ -51,7 +51,6 @@
                                         </div>
                                     @endif
                                     <div class=" d-flex flex-wrap card-col-9 align-self-start">
-                                        {{--@each('layouts.partials.product.card', $products, 'product')--}}
                                         @foreach($products as $index => $product)
                                             @if($index == 2)
                                                 @include('layouts.partials.product.card_delivery')
@@ -62,7 +61,6 @@
                                 </div>
                             </div>
 
-
                             @include('layouts.partials._pagination')
 
                             @if(isset($brand->description))
@@ -70,7 +68,7 @@
                                     <div class="col-12 col-sm-3"></div>
                                     <div class="col-12 col-sm-9">
                                         <h1 class="title text-primary">{{ $brand->name }}</h1>
-                                        <p class="text-justify">{{ $brand->description }}</p>
+                                        <p class="text-justify">{!! $brand->description !!}</p>
                                     </div>
                                 </div>
                             @endif

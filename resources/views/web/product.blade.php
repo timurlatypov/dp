@@ -9,7 +9,7 @@
     <meta property="og:url" content="{{ url()->current() }}"/>
     <meta property="og:title" content="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }}"/>
     <meta property="og:description" content="{{ $product->meta_description }}"/>
-    <meta property="og:image" content="{{ url('/storage/products/image/'.$product->image_path) }}"/>
+    <meta property="og:image" content="{{ url('/storage/'.$product->image_path) }}"/>
 @endpush
 
 @push('share')
@@ -40,7 +40,7 @@
                                         <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
 
-                                                <img src="/storage/products/image/{{$product->image_path}}" width="100%"
+                                                <img src="{{ get_image_path($product->image_path) }}" width="100%"
                                                      alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
 
                                             </div>

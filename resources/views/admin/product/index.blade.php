@@ -32,7 +32,7 @@
                         <tbody>
                         @foreach($products as $key => $product)
                         <tr class="tr-hover">
-                            <td style="width: 60px;"><img src="/storage/products/thumb/{{ $product->thumb_path }}" width="45px" height="45px" alt=""></td>
+                            <td style="width: 60px;"><img src="{{ get_image_path($product->thumb_path) }}" width="45px" height="45px" alt=""></td>
                             <td>
                                 <toggle-switch toggle="{{ $product->stock }}" endpoint="{{ route('api.product.stock.toggle') }}" product_id="{{ $product->id }}"></toggle-switch>
                             </td>

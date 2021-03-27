@@ -3,10 +3,8 @@
 namespace App\Nova;
 
 use App\Nova\Filters\Live;
-use App\Nova\Filters\OnStock;
+use Davidpiesse\NovaToggle\Toggle;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -70,7 +68,11 @@ class Brand extends Resource
             Trix::make(__('nova/resources.brand.fields.description'), 'description')
                 ->hideFromIndex(),
 
-            Boolean::make(__('nova/resources.product.fields.live'), 'live'),
+            Toggle::make(__('nova/resources.brand.fields.live'), 'live')
+                ->sortable()
+                ->editableIndex()
+                ->trueValue(1)
+                ->falseValue(0),
 
             HasMany::make(__('nova/resources.line.label'), 'lines', Line::class),
 

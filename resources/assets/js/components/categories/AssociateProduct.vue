@@ -7,7 +7,7 @@
         </form>
 
         <div class="d-flex align-items-center" v-for="product, index in products">
-            <img :src="'/storage/products/thumb/'+product.thumb_path" width="35px" height="35px">
+            <img :src="'/storage/'+product.thumb_path" width="35px" height="35px">
             <span>{{ product.brand.name }} - {{ product.title_eng }}</span>
 
             <button type="button" rel="tooltip" class="btn btn-white btn-fab btn-sm mx-2" @click.prevent="remove(index)">

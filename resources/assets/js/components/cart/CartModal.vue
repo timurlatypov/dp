@@ -15,7 +15,7 @@
                         <tr>
                             <td>
                                 <div class="img-container">
-                                    <img :src="'/storage/products/thumb/'+product.thumb_path" alt="">
+                                    <img :src="'/storage/'+product.thumb_path" alt="">
                                 </div>
                             </td>
                             <td class="td-name">

@@ -169,7 +169,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="product, index in order.cart">
-                        <td><div class="img-container"><img :src="'/storage/products/thumb/'+product.options.image"></div></td>
+                        <td><div class="img-container"><img :src="'/storage/'+product.options.image"></div></td>
                         <td class="td-name">
                             <span class="font-weight-bold" href="#">{{ product.name }}</span>
                             <br><small>{{ product.options.title_rus }}</small>

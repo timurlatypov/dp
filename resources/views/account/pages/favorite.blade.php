@@ -19,7 +19,7 @@
                 @foreach($favorites as $product)
                     <tr>
                         <td>
-                            <div class="img-container"><img src="/storage/products/thumb/{{ $product->thumb_path }}" alt=""></div>
+                            <div class="img-container"><img src="/storage/{{ $product->thumb_path }}" alt=""></div>
                         </td>
                         <td class="td-name w-25">
                             <a href="/brand/{{$product->brand->slug}}/{{$product->slug}}">{{ $product->title_eng }}</a>

@@ -33,7 +33,7 @@
                             <tr>
                                 <td>
                                     <div class="img-container">
-                                        <img src="storage/products/thumb/{{ $product->options->image }}" alt="...">
+                                        <img src="storage/{{ $product->options->image }}" alt="...">
                                     </div>
                                 </td>
 

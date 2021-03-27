@@ -15,7 +15,7 @@
                     <table class="table table-shopping table-cart">
                         <tbody>
                             <tr v-for="item in items">
-                                <td><img :src="'/storage/products/thumb/'+item.options['image']" width="35px"></td>
+                                <td><img :src="'/storage/'+item.options['image']" width="35px"></td>
                                 <td><nobr><b>{{ item.name }}</b></nobr></td>
                                 <td><nobr>{{ item.qty }} ед.</nobr></td>
                                 <td><nobr>{{ item.price }} &#x20BD;</nobr></td>

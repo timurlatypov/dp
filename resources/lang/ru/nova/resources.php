@@ -18,6 +18,7 @@ return [
             'slug'        => 'Якорь (Slug)',
             'title'       => 'Заголовок',
             'description' => 'Описание',
+            'live'        => 'Видимость',
         ],
     ],
     'line'        => [
@@ -74,7 +75,7 @@ return [
             'banner_mobile'  => 'Mobile',
             'bg_color'       => 'Цвет фона',
             'link'           => 'Ссылка',
-            'sort_order'       => 'Сортировка',
+            'sort_order'     => 'Сортировка',
             'live'           => 'Видимость',
             'published_at'   => 'Опубликован',
             'expired_at'     => 'Истекает срок',

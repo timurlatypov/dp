@@ -88,7 +88,7 @@
                         <tbody>
                         @foreach($details as $product)
                             <tr class="font-weight-bold">
-                                <td><div class="img-container"><img src="/storage/products/thumb/{{ $product->options->image }}"></div></td>
+                                <td><div class="img-container"><img src="/storage/{{ $product->options->image }}"></div></td>
                                 <td>
                                     <b class="text-primary">{{ $product->name }}</b><br>
                                     @if(isset($product->options->product->title_rus)){{ $product->options->product->title_rus }}@else{{ $product->options->title_rus }}@endif<br>
