@@ -45,6 +45,7 @@
                         <ul class="list-group">
                             <li class="list-group-item">Доставка осуществляется компанией&nbsp;<a
                                         href="https://www.cdek.ru/">СДЭК</a></li>
+                            <li class="list-group-item">При заказе от 5000 руб доставка осуществляется бесплатно до пункта выдачи СДЭК</li>
                             <li class="list-group-item">Стоимость доставки определяется с помощью&nbsp;<a
                                         class="font-weight-bold" href="/sdek">Калькулятора
                                     Доставка</a></li>
