@@ -70,4 +70,8 @@
         @endif
     @endslot
 
+    @slot('reviews')
+        @include('layouts.partials._reviews_stars_on_card', ['rating' => $product->getAverageRating(), 'display' => $product->getProperDisplay()])
+    @endslot
+
 @endcomponent

@@ -17,6 +17,7 @@
 
         <div>
             <p class="mt-0 text-muted tw-leading-normal tw-text-xs">{{ $title_rus }}</p>
+            <p><small>{{ $reviews }}</small></p>
             <small class="mb-2">Артикул: {{ $vendor_code }}</small>
         </div>
 
