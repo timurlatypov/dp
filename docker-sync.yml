@@ -38,4 +38,4 @@ syncs:
 
     # optional, a list of excludes. These patterns will not be synced
     # see http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#ignore for the possible syntax and see sync_excludes_type below
-    sync_excludes: ['.git', '.idea', 'node_modules']
+    sync_excludes: ['.git', '.idea', 'node_modules', 'storage/logs']

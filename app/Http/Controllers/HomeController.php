@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function novelties()
     {
         $categories = Categories::where('slug', 'new-products')->first();
-        $products   = $categories->products()->live()->paginate(21);
+        $products   = Product::where('novelty', 1)->live()->paginate(21);
 
         return view('web.template', compact(['products', 'categories']));
     }

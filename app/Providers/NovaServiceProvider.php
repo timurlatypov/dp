@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Nova\Dashboards\OrderInsights;
 use App\Observers\ProductObserver;
 use App\Product;
 use Eminiarts\NovaPermissions\NovaPermissions;
@@ -74,7 +75,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function dashboards()
     {
-        return [];
+        return [
+            new OrderInsights()
+        ];
     }
 
     /**

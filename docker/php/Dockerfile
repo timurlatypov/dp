@@ -77,6 +77,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --version=$COMPOSER_VERSION
 
+RUN chown www-data:www-data -R /var/www
+
 USER www-data
 
 VOLUME ["/www"]
