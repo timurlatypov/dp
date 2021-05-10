@@ -39,27 +39,27 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->composer('layouts.partials._seasonal', function ($seasonal) {
-            $seasonal->with('seasonal', Product::where('seasonal', true)->live()->take(4)->get());
+            $seasonal->with('seasonal', Product::where('seasonal', true)->live()->stock()->take(4)->get());
         });
 
 
         view()->composer('layouts.partials._bestsellers', function ($bestsellers) {
-            $bestsellers->with('bestsellers', Product::where('bestseller', true)->live()->take(4)->get());
+            $bestsellers->with('bestsellers', Product::where('bestseller', true)->live()->stock()->take(4)->get());
         });
 
         view()->composer('layouts.partials._premium', function ($bestsellers) {
-            $bestsellers->with('premium', Product::where('premium', true)->live()->take(4)->get());
+            $bestsellers->with('premium', Product::where('premium', true)->live()->stock()->take(4)->get());
         });
 
 
         view()->composer('layouts.partials._infoblock', function ($recommend) {
-            $recommend->with('recommend', Product::where('recommend', true)->inRandomOrder()->live()->limit(4)->get());
+            $recommend->with('recommend', Product::where('recommend', true)->inRandomOrder()->live()->stock()->limit(4)->get());
         });
 
         view()->composer('layouts.partials._carousel', function ($banners) {
             $banners->with('banners', Banner::query()->where([
-                ['published_at','<', now()],
-                ['expired_at', '>', now()]
+                ['published_at', '<', now()],
+                ['expired_at', '>', now()],
             ])->live()->orderBy('sort_order')->get());
         });
 

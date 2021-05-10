@@ -28,7 +28,7 @@
 
                 <div class="card">
                     <div class="card-body p-0">
-                        <div class="container-fluid">
+                        <div class="container-fluid pb-4">
                             <div class="row">
                                 <div class="col-12 col-sm-3 px-3 pt-5 hidden-sm">
                                     @include('layouts.partials._in_product_nav')
@@ -118,18 +118,18 @@
                             </div>
                         </div>
 
-                        <div class="container-fluid pb-3">
-                            <div class="row">
-                                <div class="col-12 col-sm-9 offset-sm-3">
-                                    <h4 class="title text-uppercase">Также рекомендуем:</h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-9 offset-sm-3 d-flex flex-wrap flex-row card-col-9">
-                                    @each('layouts.partials.product.card', $product->related()->inRandomOrder()->limit(3)->get(), 'product')
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="container-fluid pb-3">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-12 col-sm-9 offset-sm-3">--}}
+{{--                                    <h4 class="title text-uppercase">Также рекомендуем:</h4>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-12 col-sm-9 offset-sm-3 d-flex flex-wrap flex-row card-col-9">--}}
+{{--                                    @each('layouts.partials.product.card', $product->related()->inRandomOrder()->limit(3)->get(), 'product')--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                     </div>
                 </div>

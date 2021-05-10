@@ -4,6 +4,7 @@ namespace App;
 
 use App\Filters\Product\ProductFilters;
 use App\Traits\LiveAware;
+use App\Traits\StockAware;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,6 +14,7 @@ class Product extends Model
 {
     use SoftDeletes;
     use LiveAware;
+    use StockAware;
     use Searchable;
 
     protected $guarded = [];
