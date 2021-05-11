@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->composer('layouts.partials._bestsellers', function ($bestsellers) {
-            $bestsellers->with('bestsellers', Product::where('bestseller', true)->live()->take(4)->get());
+            $bestsellers->with('bestsellers', Product::where('bestseller', true)->live()->stock()->take(4)->get());
         });
 
         view()->composer('layouts.partials._premium', function ($bestsellers) {
@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->composer('layouts.partials._infoblock', function ($recommend) {
-            $recommend->with('recommend', Product::where('recommend', true)->inRandomOrder()->live()->limit(4)->get());
+            $recommend->with('recommend', Product::where('recommend', true)->inRandomOrder()->live()->stock()->limit(4)->get());
         });
 
         view()->composer('layouts.partials._carousel', function ($banners) {
