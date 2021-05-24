@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    <meta name="facebook-domain-verification" content="lteht5c11k3xsym3kk0qm00izgq7zv" />
     @include('layouts.partials._head')
     @stack('meta')
     @stack('share')
