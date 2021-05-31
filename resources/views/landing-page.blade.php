@@ -11,6 +11,10 @@
     @include('layouts.partials._carousel')
 @endsection
 
+@section('promotions')
+    <noindex>@include('layouts.partials._promotions')</noindex>
+@endsection
+
 @section('content')
     <noindex>@include('layouts.partials._bestsellers')</noindex>
 @endsection
@@ -25,8 +29,4 @@
 
 @section('about')
     @include('layouts.partials._about')
-@endsection
-
-@section('blog')
-    @include('layouts.partials._blog')
 @endsection

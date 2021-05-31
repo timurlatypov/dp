@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use App\Traits\LiveAware;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
+use Illuminate\Database\Eloquent\Model;
 
-class Banner extends Model implements Sortable
+class Promotion extends Model implements Sortable
 {
     use SortableTrait;
     use LiveAware;
@@ -16,10 +16,7 @@ class Banner extends Model implements Sortable
 
     protected $fillable = [
         'name',
-        'banner_desktop',
-        'banner_mobile',
-        'bg_color',
-        'link',
+        'image_path',
         'sort_order',
         'live',
         'published_at',

@@ -81,6 +81,19 @@ return [
             'expired_at'     => 'Истекает срок',
         ],
     ],
+    'promotion' => [
+        'label'         => 'Промоакции',
+        'singularLabel' => 'Промоакция',
+        'fields'        => [
+            'name'         => 'Название',
+            'link'         => 'Ссылка',
+            'image_path'   => 'Баннер',
+            'sort_order'   => 'Сортировка',
+            'live'         => 'Видимость',
+            'published_at' => 'Опубликован',
+            'expired_at'   => 'Истекает срок',
+        ],
+    ],
     'coupon'      => [
         'label'         => 'Промокоды',
         'singularLabel' => 'Промокод',

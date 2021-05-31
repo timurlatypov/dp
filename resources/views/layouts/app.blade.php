@@ -29,6 +29,7 @@
                 @yield('carousel')
                 @stack('carousel')
                 @yield('banner')
+                @yield('promotions')
                 @yield('infoblock')
                 @yield('brands')
                 @yield('seasonal')
