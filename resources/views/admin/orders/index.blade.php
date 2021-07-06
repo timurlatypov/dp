@@ -24,6 +24,16 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="surname">Email</label>
+                                    <input id="surname" name="email" type="text" class="form-control" value="{{  request()->query('email') ?? null }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="surname">Телефон</label>
+                                    <input id="surname" name="phone" type="text" class="form-control" value="{{  request()->query('phone') ?? null }}">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="from">From</label>
                                     <input id="from" name="from" type="date" class="form-control" value="{{  request()->query('from') ?? null }}">
                                 </div>
@@ -32,7 +42,6 @@
                                     <label for="to">To</label>
                                     <input id="to" name="to" type="date" class="form-control" value="{{  request()->query('to') ?? null }}">
                                 </div>
-
                             </div>
                             <button type="submit" class="btn btn-sm btn-success font-weight-bold">
                                 Применить

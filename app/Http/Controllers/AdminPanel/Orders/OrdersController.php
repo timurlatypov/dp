@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
 use Throwable;
 
-use App\Filters\Order\{
-    DateFromFilter,
-    DateToFilter,
-    SurnameFilter
-};
+use App\Filters\Order\{DateFromFilter, DateToFilter, EmailFilter, PhoneFilter, SurnameFilter};
 
 class OrdersController extends Controller
 {
@@ -47,6 +43,8 @@ class OrdersController extends Controller
     {
         return [
             'surname' => SurnameFilter::class,
+            'email'   => EmailFilter::class,
+            'phone'   => PhoneFilter::class,
             'from'    => DateFromFilter::class,
             'to'      => DateToFilter::class,
         ];
@@ -216,7 +214,7 @@ class OrdersController extends Controller
         $orderAmount = $order->billing_total * 100;
         $returnUrl   = config('app.url') . '/payment-success';
 
-        $params['failUrl'] = env('APP_URL') . '/failure';
+        $params['failUrl']        = env('APP_URL') . '/failure';
         $params['expirationDate'] = now()->addDays(1)->toIso8601String();
 
         $result = $this->client->registerOrder($orderId, $orderAmount, $returnUrl, $params);
