@@ -10,6 +10,7 @@ use App\Product;
 use App\Promotion;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -113,6 +114,10 @@ class AppServiceProvider extends ServiceProvider
             $orders->with('current_month_orders_count', Order::whereRaw('MONTH(created_at) = ?', [$currentMonth])
                 ->whereRaw('YEAR(created_at) = ?', [$currentYear])
                 ->get());
+        });
+
+        Builder::macro('whereLike', function(string $attribute, string $searchTerm) {
+            return $this->orWhere($attribute, 'LIKE', "%{$searchTerm}%");
         });
 
     }
