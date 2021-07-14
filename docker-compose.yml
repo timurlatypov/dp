@@ -12,13 +12,16 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      - dp-data:/www:nocopy
+      - ./:/www:delegated
       - ~/.ssh:/root/.ssh:delegated
+      - ~/.composer:/var/www/.composer:delegated
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini:delegated
       - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:delegated
       - ./docker/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:delegated
     environment:
       TIMEZONE: "UTC"
+      XDEBUG_CONFIG: "remote_enable=1 remote_port=9001 remote_host=host.docker.internal"
+      PHP_IDE_CONFIG: "serverName=Docker"
       COMPOSER_MEMORY_LIMIT: "-1"
     expose:
       - 9000
@@ -35,7 +38,7 @@ services:
       - 80
       - 443
     volumes:
-      - dp-data:/www:nocopy
+      - ./:/www:delegated
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:delegated
       - ./docker/nginx/conf.d:/etc/nginx/conf.d/:delegated
     networks:
@@ -48,7 +51,7 @@ services:
     working_dir: /www
     command: sh -c "npm ci && npm run watch-poll"
     volumes:
-      - dp-data:/www:nocopy
+      - ./:/www:delegated
     networks:
       - dp-network
 
@@ -95,7 +98,7 @@ services:
     expose:
       - 9123
     volumes:
-      - dp-data:/www:nocopy
+      - ./:/www:delegated
       - ./docker/supervisord/supervisord.conf:/etc/supervisor/supervisord.conf:delegated
       - ./docker/supervisord/conf.d:/etc/supervisor/conf.d:delegated
       - ./docker/php/php.ini:/etc/php.ini:delegated

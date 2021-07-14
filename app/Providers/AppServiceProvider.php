@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
                 ->first());
         });
 
-
         view()->composer('layouts.partials._in_product_nav', function ($nav) {
             $nav->with('for_face', Categories::where('slug', 'for-face')
                 ->first());
@@ -47,14 +46,12 @@ class AppServiceProvider extends ServiceProvider
                 ->first());
         });
 
-
         view()->composer('layouts.partials._seasonal', function ($seasonal) {
             $seasonal->with('seasonal', Product::where('seasonal', true)
                 ->live()
                 ->take(4)
                 ->get());
         });
-
 
         view()->composer('layouts.partials._bestsellers', function ($bestsellers) {
             $bestsellers->with('bestsellers', Product::where('bestseller', true)

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('landing-page');
-Route::get('/novelties', 'HomeController@novelties')->name('novelties');
+Route::get('/', [HomeController::class, 'index'])->name('landing-page');
+Route::get('/novelties', [HomeController::class, 'novelties'])->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
 Route::get('/premium', 'HomeController@premium')->name('premium');
 //Route::get('/8march', 'HomeController@eightMarch')->name('eightMarch');
