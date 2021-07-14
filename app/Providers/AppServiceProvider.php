@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+
         Carbon::setLocale(config('app.locale'));
 
         view()->composer('layouts.partials._nav', function ($nav) {
@@ -45,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
             $nav->with('direct_care', Categories::where('slug', 'direct-care')
                 ->first());
         });
+
 
         view()->composer('layouts.partials._seasonal', function ($seasonal) {
             $seasonal->with('seasonal', Product::where('seasonal', true)
