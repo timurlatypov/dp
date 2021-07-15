@@ -20,7 +20,6 @@
             saveToCart() {
                 axios.post(this.endpoint, this.payload)
                     .then( response => {
-                        window.yaCounter35424225.reachGoal('add');
                         window.cartUpdate();
                         window.cartModal(this.payload);
                         this.disabled = true;

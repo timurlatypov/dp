@@ -1,6 +1,6 @@
 <div class="card card-product p-2">
     <div>
-        <a href="{{ $link }}" onclick="yaCounter35424225.reachGoal('open-card'); return true;"><img class="card-img-top" src="{{ get_image_path($thumb_path) }}" alt=""></a>
+        <a href="{{ $link }}"><img class="card-img-top" src="{{ get_image_path($thumb_path) }}" alt=""></a>
         <div class="position-absolute top-0 p-2">
             <h6 class="text-muted my-1">{{ $brand_name }}</h6>
             {{ $discount }}
@@ -13,7 +13,7 @@
     </div>
     <div class="card-body d-flex flex-column justify-content-between w-100">
 
-        <div><h4 class="title my-0 pb-2"><a href="{{ $link }}" onclick="yaCounter35424225.reachGoal('open-card'); return true;" class="hover-underlined">{{ $title_eng }}</a></h4></div>
+        <div><h4 class="title my-0 pb-2"><a href="{{ $link }}" class="hover-underlined">{{ $title_eng }}</a></h4></div>
 
         <div>
             <p class="mt-0 text-muted tw-leading-normal tw-text-xs">{{ $title_rus }}</p>

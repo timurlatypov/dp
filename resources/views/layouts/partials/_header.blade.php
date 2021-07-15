@@ -4,8 +4,8 @@
             <div class="row d-flex justify-content-between align-items-center font-bold py-2">
                 <p class="tw-px-2 tw-font-bold tw-text-sm tw-text-white"><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;100% ОРИГИНАЛЬНАЯ ПРОДУКЦИЯ</p>
                 <p class="tw-px-2 tw-font-bold tw-text-sm tw-text-white"><i class="fa fa-shipping-fast"></i>&nbsp;&nbsp;<a href="/delivery" class="tw-text-white">БЕСПЛАТНАЯ ДОСТАВКА ОТ 5000р.</a></p>
-                <p class="tw-px-2 tw-font-bold tw-text-sm tw-text-white"><a class="hover:tw-text-white" href="https://api.whatsapp.com/send?phone=79253170148" onclick="yaCounter35424225.reachGoal('whatsapp'); return true;"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;8 (925) 317-01-48</a></p>
-                <p class="tw-px-2 tw-font-bold tw-text-sm tw-text-white"><a class="hover:tw-text-white" href="tel:84953801141" onclick="yaCounter35424225.reachGoal('phone'); return true;"><i class="fa fa-phone-volume"></i>&nbsp;&nbsp;8 (495) 380-11-41</a></p>
+                <p class="tw-px-2 tw-font-bold tw-text-sm tw-text-white"><a class="hover:tw-text-white" href="https://api.whatsapp.com/send?phone=79253170148"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;8 (925) 317-01-48</a></p>
+                <p class="tw-px-2 tw-font-bold tw-text-sm tw-text-white"><a class="hover:tw-text-white" href="tel:84953801141"><i class="fa fa-phone-volume"></i>&nbsp;&nbsp;8 (495) 380-11-41</a></p>
             </div>
         </div>
     </div>
