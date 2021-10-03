@@ -7,7 +7,7 @@ require 'recipe/laravel.php';
 set('application', 'doctorproffi');
 
 // Project repository
-set('repository', 'https://github.com/timurlatypov/dp.git');
+set('repository', 'git@github.com:timurlatypov/dp.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
