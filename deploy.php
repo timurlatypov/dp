@@ -50,7 +50,7 @@ task('composer:dump:autoload', function () {
 });
 
 task('reload:php-fpm', function () {
-	run('sudo service php7.2-fpm restart');
+	run('sudo service php8.0-fpm restart');
 });
 
 // [Optional] if deploy fails automatically unlock.
