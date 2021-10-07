@@ -27,7 +27,7 @@ set('branch', 'master');
 host('188.225.73.98')
 	->user('root')
     ->forwardAgent()
-	->identityFile('~/.ssh/id_rsa_doctorproffi_timeweb')
+	->identityFile('~/.ssh/id_rsa')
 	->set('deploy_path', '/var/www/doctorproffi/production')
 	->set('master', 'master')
 	->stage('prod');
