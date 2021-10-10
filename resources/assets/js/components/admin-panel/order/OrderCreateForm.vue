@@ -439,10 +439,6 @@ export default {
       this.calcTotal();
     },
 
-    setCart() {
-      this.calcTotal();
-    },
-
     add(selection) {
       let discounted_price = this.discountedPrice(selection.price, selection.discount)
       let total = this.calcOriginalTotal(selection.price, 1)
@@ -502,7 +498,7 @@ export default {
           this.add(selection);
         })
 
-    this.setCart();
+    this.calcTotal();
   }
 }
 </script>

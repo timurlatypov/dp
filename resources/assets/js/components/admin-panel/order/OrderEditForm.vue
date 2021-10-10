@@ -272,10 +272,6 @@ export default {
       this.calcTotal();
     },
 
-    setCart() {
-      this.calcTotal();
-    },
-
     add(selection) {
       let discounted_price = this.discountedPrice(selection.price, selection.discount)
       let total = this.calcOriginalTotal(selection.price, 1)
@@ -338,7 +334,13 @@ export default {
           this.add(selection);
         })
 
-    this.setCart();
+    this.order.cart.map((product, index) => {
+      product.discounted_price = Number(this.discountedPrice(product.price, product.options.discount, product.options.coupon));
+      product.total = Number(this.calcOriginalTotal(product.price, product.qty));
+      product.subtotal = Number(this.calcSubtotal(product.discounted_price, product.qty));
+    });
+
+    this.calcTotal();
   }
 }
 </script>
