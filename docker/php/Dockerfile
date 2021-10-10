@@ -28,18 +28,10 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     apt-transport-https \
     procps \
     supervisor \
-    librabbitmq-dev \
-    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update -qq \
     # Get PHP dependencies
-    && ACCEPT_EULA=Y apt-get install msodbcsql17 \
     && pecl install \
-        sqlsrv-5.8.0 \
-        pdo_sqlsrv-5.8.0 \
-        xdebug-2.9.2 \
         xhprof-2.2.0 \
-        amqp-1.10.2 \
     && mkdir -p /usr/src/php/ext/redis \
     && curl -L https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz | tar xvz -C /usr/src/php/ext/redis --strip 1 \
     && echo 'redis' >> /usr/src/php-available-exts \
@@ -60,13 +52,9 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
         sockets \
         opcache \
     && docker-php-ext-enable \
-        sqlsrv \
-        pdo_sqlsrv \
-        xdebug \
         xhprof \
-        amqp \
         opcache \
-    # Cleanupg
+    # Cleanup
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Composer

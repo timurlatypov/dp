@@ -16,7 +16,6 @@ services:
       - ~/.ssh:/root/.ssh:delegated
       - ~/.composer:/var/www/.composer:delegated
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini:delegated
-      - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:delegated
       - ./docker/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:delegated
     environment:
       TIMEZONE: "UTC"
@@ -30,7 +29,7 @@ services:
 
   # Nginx Webserver
   dp-webserver:
-    image: nginx:1.17-alpine
+    image: nginx:1.19.3-alpine
     container_name: dp-webserver
     restart: unless-stopped
     tty: true
@@ -46,7 +45,7 @@ services:
 
   # NPM watch
   dp-npm:
-    image: amd64/node:12.14.1-alpine
+    image: node:lts-buster
     container_name: dp-npm
     working_dir: /www
     command: sh -c "npm ci && npm run watch-poll"
@@ -57,7 +56,8 @@ services:
 
   # MySQL
   dp-db:
-    image: percona:5.7.19
+    platform: linux/x86_64
+    image: mysql:5.7
     container_name: dp-db
     restart: unless-stopped
     tty: true

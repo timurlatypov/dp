@@ -23,10 +23,11 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $cart     = $this->cart->content();
+        $cart = $this->cart->content();
+        $total = $this->cart->total();
         $subtotal = $this->cart->subtotal();
 
-        return view('checkout', compact(['cart', 'subtotal']));
+        return view('checkout', compact(['cart', 'total', 'subtotal']));
     }
 
     /**
