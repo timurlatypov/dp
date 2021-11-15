@@ -11,7 +11,7 @@
                             <div class="tw-pt-6 tw-pb-4">
                                 <a class="text-white" href="https://www.facebook.com/DoctorProffi.ru/"
                                    target="_blank"><i class="fab fa-facebook fa-lg pr-3"></i></a>
-                                <a class="text-white" href="https://www.instagram.com/doctorproffi/" target="_blank"><i
+                                <a class="text-white" href="https://www.instagram.com/doctorproffi_cosmetics/" target="_blank"><i
                                             class="fab fa-instagram fa-lg"></i></a>
                             </div>
                             <p>© doctorproffi.ru 2016 - {{ date('Y') }}</p>

@@ -51,7 +51,7 @@
                     <h5 class="text-dark pt-2"><b>Мы в социальных сетях</b></h5>
                     <div>
                         <a class="text-dark" href="https://www.facebook.com/DoctorProffi.ru/" target="_blank"><i class="fab fa-facebook fa-lg pr-3"></i></a>
-                        <a class="text-dark" href="https://www.instagram.com/doctorproffi/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a class="text-dark" href="https://www.instagram.com/doctorproffi_cosmetics/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
                     </div>
                 </div>
             </div>
