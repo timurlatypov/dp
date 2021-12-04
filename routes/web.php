@@ -6,6 +6,7 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 Route::get('/novelties', [HomeController::class, 'novelties'])->name('novelties');
+Route::get('/new-year-2022', [HomeController::class, 'ny2022'])->name('ny2022');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
 Route::get('/premium', 'HomeController@premium')->name('premium');
 //Route::get('/8march', 'HomeController@eightMarch')->name('eightMarch');

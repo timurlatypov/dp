@@ -24,6 +24,14 @@ class HomeController extends Controller
         return view('web.template', compact(['products', 'categories']));
     }
 
+    public function ny2022()
+    {
+        $categories = Categories::where('slug', 'new-year-2022')->first();
+        $products   = $categories->products()->live()->paginate(21);
+
+        return view('web.template', compact(['products', 'categories']));
+    }
+
     public function bestsellers()
     {
         $categories = Categories::where('slug', 'bestsellers')->first();
