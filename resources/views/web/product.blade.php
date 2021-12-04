@@ -3,12 +3,14 @@
 @push('meta')
     <title>Купить {{ $product->title_eng }} за {{ $product->definePriceToShow() }}&#x20BD;
         - {{ $brand->name }} {{ $product->title_rus }} в ДокторПроффи.ру</title>
-    <meta name="description" content="{{ $product->meta_description }}">
+    <meta name="description" content="Купить {{ $product->title_eng }} за {{ $product->definePriceToShow() }}&#x20BD;
+        - {{ $brand->name }} {{ $product->title_rus }} в ДокторПроффи.ру">
     <meta name="keywords" content="{{ $product->meta_keywords }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
     <meta property="og:url" content="{{ url()->current() }}"/>
     <meta property="og:title" content="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }}"/>
-    <meta property="og:description" content="{{ $product->meta_description }}"/>
+    <meta property="og:description" content="Купить {{ $product->title_eng }} за {{ $product->definePriceToShow() }}&#x20BD;
+        - {{ $brand->name }} {{ $product->title_rus }} в ДокторПроффи.ру"/>
     <meta property="og:image" content="{{ url('/storage/'.$product->image_path) }}"/>
 @endpush
 
@@ -40,7 +42,9 @@
                                         <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
 
-                                                <img src="{{ get_image_path($product->image_path) }}" width="100%"
+                                                <img src="{{ get_image_path($product->image_path) }}"
+                                                     style="border: 16px solid white;"
+                                                     width="100%"
                                                      alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
 
                                             </div>
