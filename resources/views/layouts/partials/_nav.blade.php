@@ -26,7 +26,7 @@
                 @endguest
 
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="{{ route('ny2022') }}">
+                    <a class="nav-link text-info" href="{{ route('ny2022') }}">
                         <i class="fas fa-snowflake"></i>&nbsp;&nbsp;Новый Год 2022
                     </a>
                 </li>
