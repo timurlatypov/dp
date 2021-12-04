@@ -25,7 +25,11 @@
                     <a class="btn btn-primary btn-sm show-lg m-3" href="{{ route('account.profile') }}"><i class="material-icons">account_box</i> Кабинет<div class="ripple-container"></div></a>
                 @endguest
 
-                <li class="nav-item"><a class="nav-link" href="{{ route('ny2022') }}">Новый Год 2022</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="{{ route('ny2022') }}">
+                        <i class="fa fa-snowflake-o" aria-hidden="true"></i>&nbsp;&nbsp;Новый Год 2022
+                    </a>
+                </li>
 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>--}}
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link text-danger" href="{{ route('eightMarch') }}">--}}
