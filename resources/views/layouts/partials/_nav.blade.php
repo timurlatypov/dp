@@ -26,8 +26,8 @@
                 @endguest
 
                 <li class="nav-item">
-                    <a class="nav-link text-warning" href="{{ route('ny2022') }}">
-                        <i class="fa fa-snowflake-o" aria-hidden="true"></i>&nbsp;&nbsp;Новый Год 2022
+                    <a class="nav-link text-danger" href="{{ route('ny2022') }}">
+                        <i class="fas fa-snowflake"></i>&nbsp;&nbsp;Новый Год 2022
                     </a>
                 </li>
 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>--}}
