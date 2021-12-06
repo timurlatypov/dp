@@ -43,6 +43,10 @@
         /brand/{{$product->brand->slug}}/{{$product->slug}}
     @endslot
 
+    @slot('tooltip')
+        {{ $product->tooltip }}
+    @endslot
+
     @slot('title_eng')
         {{ $product->title_eng }}
     @endslot

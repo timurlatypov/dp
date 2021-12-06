@@ -1,6 +1,14 @@
 <div class="card card-product p-2">
     <div>
-        <a href="{{ $link }}"><img class="card-img-top" src="{{ get_image_path($thumb_path) }}" alt=""></a>
+        <a
+          href="{{ $link }}"
+          @if(isset($tooltip))
+          data-toggle="tooltip"
+          data-placement="top"
+          title="{{ $tooltip }}"
+          @endif
+        >
+            <img class="card-img-top" src="{{ get_image_path($thumb_path) }}" alt=""></a>
         <div class="position-absolute top-0 p-2">
             <h6 class="text-muted my-1">{{ $brand_name }}</h6>
             {{ $discount }}
