@@ -3,7 +3,7 @@
         @if(isset($tooltip))
         data-toggle="tooltip"
         data-placement="top"
-        title="{{ $tooltip }}"
+        title="{!! $tooltip !!}"
         @endif
     >
         <a ref="{{ $link }}"><img class="card-img-top" src="{{ get_image_path($thumb_path) }}" alt=""></a>
