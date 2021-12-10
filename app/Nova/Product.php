@@ -96,7 +96,7 @@ class Product extends Resource
 
             Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
                 ->hideFromIndex()
-                ->rules(['required', 'max:191']),
+                ->rules(['max:191']),
 
             Slug::make(__('nova/resources.product.fields.slug'), 'slug')
                 ->disableAutoUpdateWhenUpdating()

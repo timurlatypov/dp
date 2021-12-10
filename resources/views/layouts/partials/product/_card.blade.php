@@ -3,7 +3,7 @@
         @if(isset($tooltip))
         data-toggle="tooltip"
         data-placement="top"
-        title="{!! $tooltip !!}"
+        title="{{ $tooltip }}"
         @endif
     >
         <a ref="{{ $link }}"><img class="card-img-top" src="{{ get_image_path($thumb_path) }}" alt=""></a>
@@ -22,7 +22,7 @@
         <div><h4 class="title my-0 pb-2"><a href="{{ $link }}" class="hover-underlined">{{ $title_eng }}</a></h4></div>
 
         <div>
-            <p class="mt-0 text-muted tw-leading-normal tw-text-xs">{{ $title_rus }}</p>
+            @if(isset($title_rus))<p class="mt-0 text-muted tw-leading-normal tw-text-xs">{{ $title_rus }}</p>@endif
             <p><small>{{ $reviews }}</small></p>
             <small class="mb-2">Артикул: {{ $vendor_code }}</small>
         </div>
