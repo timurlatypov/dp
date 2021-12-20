@@ -61,7 +61,8 @@ class GiftCard extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make(__('nova/resources.gift_card.fields.serial'), 'serial'),
+            Text::make(__('nova/resources.gift_card.fields.serial'), 'serial')
+                ->rules(['required']),
 
             Number::make(__('nova/resources.gift_card.fields.code'), 'code')
                 ->rules(['required'])
