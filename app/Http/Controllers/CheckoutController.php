@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class CheckoutController extends Controller
 {
     private $cart;
 
-    public function __construct(\Gloudemans\Shoppingcart\Cart $cart)
+    public function __construct(Cart $cart)
     {
         $this->cart = $cart;
     }

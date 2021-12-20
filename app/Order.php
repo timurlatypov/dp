@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Filters\Order\OrderFilters;
+use App\Models\GiftCard;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -50,10 +51,15 @@ class Order extends Model
 		return $builder->where('order_status', 'Новый');
 	}
 
-	public function manager()
+	public function giftCard()
 	{
-		return $this->belongsTo(User::class, 'manager_id');
+		return $this->belongsTo(GiftCard::class, 'gift_card_id');
 	}
+
+    public function manager()
+    {
+        return $this->belongsTo(User::class, 'manager_id');
+    }
 
 	public function ym()
 	{
@@ -69,6 +75,14 @@ class Order extends Model
 	{
 		return $this->belongsToMany(Sberbank::class, 'orders_payments', 'order_id', 'payment_id');
 	}
+
+    /**
+     * @return mixed|null
+     */
+    public function getGiftCardId()
+    {
+        return $this->gift_card_id ?? null;
+    }
 
     /**
      *

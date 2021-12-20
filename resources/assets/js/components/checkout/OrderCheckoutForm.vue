@@ -55,15 +55,22 @@
             <nobr>{{ item.price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i>
             </nobr>
           </td>
-          <td class="text-center font-weight-bold text-danger">-{{ item.options.discount }}%</td>
+          <td class="text-center font-weight-bold text-danger">
+            <span v-if="item.options.discount != null && item.options.discount > 0">
+              -{{ item.options.discount }}%
+            </span>
+
+          </td>
 
           <td class="text-center font-weight-bold text-success">
             <template v-if="item.options.coupon > 0">-{{ item.options.coupon }}%</template>
           </td>
 
           <td class="font-weight-bold">
-            <nobr>{{ item.discounted_price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign"
-                                                                        style="font-size: 90%"></i></nobr>
+             <span v-if="item.options.discount != null && item.options.discount > 0">
+               <nobr>{{ item.discounted_price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign"
+                                                                           style="font-size: 90%"></i></nobr>
+            </span>
           </td>
           <td class="td-actions text-center">
             <ul role="navigation" class="pagination my-auto mx-auto">
@@ -92,34 +99,72 @@
         </tr>
 
         <tr>
-          <td></td>
-          <td class="td-actions" style="vertical-align: top">
-            <h3 class="title mb-0 mt-4">Промокод</h3>
-            <div class="form-group ">
-              <label for="exampleInput1" class="bmd-label-floating">Промокод</label>
-              <input type="text" class="form-control" style="width: 210px;" id="exampleInput1"
-                     v-model="order.coupon.coupon" :disabled="coupon_input_disabled" autocomplete="false">
+          <td colspan="3" class="td-actions" style="vertical-align: top">
+            <div>
+              <h3 class="title mb-0 mt-4">Промокод</h3>
+              <div class="form-group ">
+                <label for="exampleInput1" class="bmd-label-floating">Промокод</label>
+                <input type="text" class="form-control" style="width: 210px;" id="exampleInput1"
+                       v-model="order.coupon.coupon" :disabled="coupon_input_disabled" autocomplete="false">
 
-              <small class="form-text text-danger" v-if="!order.coupon.valid">{{ order.coupon.error }}&nbsp;</small>
-              <small class="form-text text-success" v-if="order.coupon.valid">{{ order.coupon.success }}&nbsp;</small>
+                <small class="form-text text-danger" v-if="order.coupon.error || !order.coupon.valid">{{ order.coupon.error }}&nbsp;</small>
+                <small class="form-text text-success" v-if="order.coupon.success || order.coupon.valid">{{ order.coupon.success }}&nbsp;</small>
 
-              <button type="button"
-                      class="btn btn-simple btn-primary mr-2 mb-2"
-                      @click.prevent="validateCoupon()"
-                      :disabled="coupon_apply_button_disabled"><i class="material-icons">check</i> <b>Применить</b>
-              </button>
-              <button type="button"
-                      class="btn btn-simple mb-2"
-                      @click.prevent="destroyCoupon()"
-                      :disabled="coupon_destroy_button_disabled"><i class="material-icons">close</i> <b>Отменить</b>
-              </button>
-
+                <button type="button"
+                        class="btn btn-simple btn-primary mr-2 mb-2"
+                        @click.prevent="validateCoupon()"
+                        :disabled="coupon_apply_button_disabled"><i class="material-icons">check</i> <b>Применить</b>
+                </button>
+                <button type="button"
+                        class="btn btn-simple mb-2"
+                        @click.prevent="destroyCoupon()"
+                        :disabled="coupon_destroy_button_disabled"><i class="material-icons">close</i> <b>Отменить</b>
+                </button>
+              </div>
             </div>
+
+            <div>
+              <h3 class="title mb-0 mt-2">Подарочная карта</h3>
+              <div
+                class="mt-2"
+                style="border: 2px green solid; border-radius: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 10px;"
+                v-if="!auth_user">
+                Необходимо <a href="http://localhost/register" style="text-decoration: underline">зарегистрироваться</a> или <a href="http://localhost/login" style="text-decoration: underline">авторизоваться</a> на сайте для применения Подарочных карт
+              </div>
+              <div
+                v-else
+                class="form-group ">
+                <label for="exampleInput2" class="bmd-label-floating">Введите штрих-код</label>
+                <input type="text" class="form-control" id="exampleInput2"
+                       v-model="order.gift_card.code" :disabled="gift_card_input_disabled" autocomplete="false">
+
+                <small class="form-text text-danger" v-if="order.gift_card.error || !order.gift_card.valid">{{ order.gift_card.error }}&nbsp;</small>
+                <small class="form-text text-success" v-if="order.gift_card.success ||order.gift_card.valid">{{ order.gift_card.success }}&nbsp;</small>
+
+                <button type="button"
+                        class="btn btn-simple btn-primary mr-2 mb-2"
+                        @click.prevent="applyGiftCard()"
+                        :disabled="gift_card_apply_button_disabled"><i class="material-icons">check</i> <b>Активировать</b>
+                </button>
+                <button type="button"
+                        class="btn btn-simple mb-2"
+                        @click.prevent="cancelGiftCard()"
+                        :disabled="gift_card_destroy_button_disabled"><i class="material-icons">close</i> <b>Отменить</b>
+                </button>
+              </div>
+            </div>
+
           </td>
           <td colspan="6" style="vertical-align: top">
             <div>Общая сумма:&nbsp;<nobr><b>{{ order.billing_original_total.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></b></nobr></div>
             <div>Размер скидки:&nbsp;<nobr><b>{{ order.billing_diff.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></b></nobr></div>
-            <div class="mt-2 mb-4"><b>Итого со скидкой:&nbsp;<nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr></b></div>
+
+            <div
+                class="mt-2"
+                style="border: 2px green solid; border-radius: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 10px; font-weight: bold"
+                v-if="order.gift_card.valid"><span style="color: green"><i class="fas fa-check" style="font-size: 90%"></i>&nbsp;&nbsp;Подарочная карта:</span> -{{ order.gift_card.amount }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></div>
+
+            <div class="mt-2 mb-4"><b>Итого:&nbsp;<nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr></b></div>
 
             <h5 class="title mb-1 mt-3 text-muted">Доставка</h5>
             <p class="text-muted">Бесплатная доставка по Москве(в пределах МКАД) при сумме заказа от 5000
@@ -229,9 +274,7 @@
             <label for="billing_house">Дом <span class="text-danger">*</span></label>
             <input type="text" name="billing_house" class="form-control" id="billing_house"
                    v-model="order.address.billing_house" v-validate="'required'">
-            <small v-show="errors.has('billing_house')" class="text-danger">{{
-              errors.first('billing_house')
-              }}
+            <small v-show="errors.has('billing_house')" class="text-danger">{{ errors.first('billing_house') }}
             </small>
           </div>
         </div>
@@ -279,11 +322,10 @@
             <label for="billing_floor">Этаж</label>
             <input type="text" class="form-control" id="billing_floor" aria-describedby="billing_floorHelp"
                    v-model="order.address.billing_floor">
-            <small id="billing_floorHelp" class="form-text text-muted"></small>
+              <small id="billing_floorHelp" class="form-text text-muted"></small>
           </div>
         </div>
       </div>
-
 
       <div class="row">
         <div class="col-12 col-md-10 offset-md-1">
@@ -313,6 +355,7 @@ export default {
     'session_cart_total',
     'session_cart_subtotal',
     'session_coupon',
+    'session_gift_card',
     'auth_user',
     'auth_user_addresses'
   ],
@@ -330,6 +373,10 @@ export default {
       coupon_apply_button_disabled: false,
       coupon_destroy_button_disabled: true,
 
+      gift_card_input_disabled: false,
+      gift_card_apply_button_disabled: false,
+      gift_card_destroy_button_disabled: true,
+
       order: {
         _ga: null,
         _ym: null,
@@ -338,6 +385,14 @@ export default {
         cart: [],
         user: {
           loyalty: 0, // Default value 0 if !Auth()->User()
+        },
+
+        gift_card: {
+          amount: 0,
+          code: '',
+          error: '',
+          used: false,
+          valid: false
         },
 
         coupon: {
@@ -434,15 +489,30 @@ export default {
       });
 
       this.order.billing_diff = Number(this.order.billing_original_total) - Number(this.order.billing_total);
+
+      if (this.order.gift_card.amount > 0
+          && this.order.gift_card.used === false
+      ) {
+        let total = that.order.billing_total - this.order.gift_card.amount;
+
+        if (total < 0) {
+          that.order.billing_total = 0;
+        } else {
+          that.order.billing_total = total;
+        }
+      }
+
     },
 
     destroyCoupon() {
-      axios.get('/coupon/destroy', this.order.coupon)
+      axios.get('/coupon/destroy')
           .then(response => {
             this.coupon_input_disabled = false;
             this.order.coupon.valid = false;
             this.order.coupon.discount = 0;
             this.order.coupon.coupon = '';
+            this.order.coupon.success = '';
+            this.order.coupon.error = '';
             this.coupon_apply_button_disabled = false;
             this.coupon_destroy_button_disabled = true;
 
@@ -451,6 +521,8 @@ export default {
           })
     },
     validateCoupon() {
+      this.order.coupon.error = null;
+
       axios.post('/coupon/validate', this.order.coupon)
           .then(response => {
             if (response.status === 202) {
@@ -469,6 +541,46 @@ export default {
             window.flash('Промокод успешно применён!');
           }).catch((e) => {
         //
+      })
+    },
+
+    cancelGiftCard() {
+      axios.get('/gift-card/cancel')
+        .then(response => {
+          this.gift_card_input_disabled = false;
+          this.order.gift_card.valid = false;
+          this.order.gift_card.amount = 0;
+          this.order.gift_card.code = '';
+          this.order.gift_card.success = '';
+          this.order.gift_card.error = '';
+          this.gift_card_apply_button_disabled = false;
+          this.gift_card_destroy_button_disabled = true;
+
+          this.refreshCart(Object.values(response.data.cart));
+          window.cartUpdate();
+        })
+    },
+    applyGiftCard() {
+      this.order.gift_card.error = null;
+
+      axios.post('/gift-card/apply', {'code': this.order.gift_card.code})
+        .then(response => {
+          if (response.status === 202) {
+            this.order.gift_card.error = response.data.message;
+            return;
+          }
+          this.order.gift_card = response.data.gift_card;
+          this.gift_card_input_disabled = true;
+          this.order.gift_card.valid = true;
+          this.order.gift_card.success = 'Подарочная карта активирована!';
+          this.gift_card_apply_button_disabled = true;
+          this.gift_card_destroy_button_disabled = false;
+
+          this.refreshCart(Object.values(response.data.cart));
+          window.cartUpdate();
+          window.flash('Подарочная карта успешно активирована!');
+        }).catch((e) => {
+          //
       })
     },
 
@@ -527,6 +639,15 @@ export default {
         this.order.coupon.success = 'Промокод применён';
         this.coupon_apply_button_disabled = true;
         this.coupon_destroy_button_disabled = false;
+      }
+
+      if (this.session_gift_card) {
+        this.order.gift_card = this.session_gift_card;
+        this.gift_card_input_disabled = true;
+        this.order.gift_card.valid = true;
+        this.order.gift_card.success = 'Подарочная карта активирована!';
+        this.gift_card_apply_button_disabled = true;
+        this.gift_card_destroy_button_disabled = false;
       }
 
       this.order.cart.map((product, index) => {

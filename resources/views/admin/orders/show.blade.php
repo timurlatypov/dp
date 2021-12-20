@@ -67,6 +67,22 @@
                                 <a href="{{ route('admin.orders.resendConfirmation', $order) }}" class="btn btn-info btn-sm">Выслать письмо</a>
                                 <br>
                                 <br>
+                                @if($coupon && !is_null($coupon->coupon))
+                                    <div
+                                        class="mb-2"
+                                        style="border: 2px green solid; border-radius: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 10px;">
+                                        <span>Промокод: </span>
+                                        <span style="font-weight: bold">{{ $coupon->coupon }}</span>
+                                    </div>
+                                @endif
+                                @if($giftCard)
+                                    <div
+                                        class="mb-4"
+                                        style="border: 2px red solid; border-radius: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 10px;">
+                                        <span>Подарочная карта: </span>
+                                        <span style="font-weight: bold">{{ $giftCard->code }}</span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

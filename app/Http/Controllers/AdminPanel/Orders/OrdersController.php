@@ -110,15 +110,19 @@ class OrdersController extends Controller
 
     public function show(Order $order)
     {
-        $coupon = null;
-
         $details = json_decode($order->order_details);
 
+        $coupon = null;
         if ($order->coupon_details) {
             $coupon = json_decode($order->coupon_details);
         }
 
-        return view('admin.orders.show', compact(['order', 'details', 'coupon']));
+        $giftCard = null;
+        if ($order->getGiftCardId() !== null) {
+            $giftCard = $order->giftCard;
+        }
+
+        return view('admin.orders.show', compact(['order', 'details', 'coupon', 'giftCard']));
     }
 
     public function edit(Order $order)

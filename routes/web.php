@@ -84,6 +84,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
 
 });
 
+
 /////////////////////////////////////////////////////////////////
 //
 //          USER COUPON CONTROLLER
@@ -92,6 +93,17 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
 Route::group(['prefix' => '/coupon'], function () {
     Route::get('/destroy', 'CouponController@destroy')->name('coupon.destroy');
     Route::post('/validate', 'CouponController@validateCoupon')->name('validate.coupon');
+});
+
+
+/////////////////////////////////////////////////////////////////
+//
+//          GIFT CARDS CONTROLLER
+//
+/////////////////////////////////////////////////////////////////
+Route::group(['prefix' => '/gift-card'], function () {
+    Route::get('/cancel', 'GiftCardController@cancel')->name('gift-card.cancel');
+    Route::post('/apply', 'GiftCardController@apply')->name('gift-card.apply');
 });
 
 

@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.partials._nav', function ($nav) {
             $nav->with('brands', Brand::orderBy('order_id')
+                ->whereNotIn('id', Brand::EXCLUDE)
                 ->live()
                 ->get());
             $nav->with('cart', Cart::content());

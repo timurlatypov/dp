@@ -42,13 +42,13 @@ class CouponController extends Controller
     public function validateCoupon(Request $request)
     {
         $coupon = Coupon::where([
-            ['coupon', '=', $request->coupon],
+            ['coupon', '=', $request->get('coupon')],
             ['expired_at', '>=', now()],
             ['used', '=', 0],
         ])->first();
 
         if (empty($coupon)) {
-            return response(['message' => 'промокод недействителен'], 202);
+            return response(['message' => 'Промокод недействителен'], 202);
         }
 
         $request->session()->put('coupon', $coupon);

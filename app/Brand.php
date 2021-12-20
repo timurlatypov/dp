@@ -9,6 +9,11 @@ class Brand extends Model
 {
 	use LiveAware;
 
+    public const EXCLUDE = [
+        11,
+        17
+    ];
+
 	protected $guarded = [];
 
 	public function getRouteKeyName()

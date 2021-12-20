@@ -1,147 +1,160 @@
 <?php
 
 return [
-    'user'        => [
-        'label'         => 'Пользователи',
+    'user' => [
+        'label' => 'Пользователи',
         'singularLabel' => 'Пользователь',
-        'fields'        => [
-            'name'     => 'Имя',
-            'email'    => 'Почта',
+        'fields' => [
+            'name' => 'Имя',
+            'email' => 'Почта',
             'password' => 'Пароль',
         ],
     ],
-    'brand'       => [
-        'label'         => 'Бренды',
+    'brand' => [
+        'label' => 'Бренды',
         'singularLabel' => 'Бренд',
-        'fields'        => [
-            'name'        => 'Бренд',
-            'slug'        => 'Якорь (Slug)',
-            'title'       => 'Заголовок',
+        'fields' => [
+            'name' => 'Бренд',
+            'slug' => 'Якорь (Slug)',
+            'title' => 'Заголовок',
             'description' => 'Описание',
-            'live'        => 'Видимость',
+            'live' => 'Видимость',
         ],
     ],
-    'line'        => [
-        'label'         => 'Линии',
+    'line' => [
+        'label' => 'Линии',
         'singularLabel' => 'Линия',
-        'fields'        => [
+        'fields' => [
             'name' => 'Линия',
             'slug' => 'Якорь (Slug)',
         ],
     ],
-    'product'     => [
-        'label'         => 'Продукты',
+    'product' => [
+        'label' => 'Продукты',
         'singularLabel' => 'Продукт',
-        'fields'        => [
-            'title_rus'         => 'Название (RU)',
-            'title_eng'         => 'Название (EN)',
-            'slug'              => 'Якорь (Slug)',
+        'fields' => [
+            'title_rus' => 'Название (RU)',
+            'title_eng' => 'Название (EN)',
+            'slug' => 'Якорь (Slug)',
             'description_short' => 'Краткое описание',
-            'description_full'  => 'Полное описание',
-            'ph'                => 'pH',
-            'image_path'        => 'Картинка',
-            'thumb_path'        => 'Превью',
-            'price'             => 'Цена',
-            'discount'          => 'Скидка',
-            'live'              => 'На сайте',
-            'stock'             => 'В наличии',
-            'reviews'           => 'Отзывов',
-            'vendor_code'       => 'Артикул',
+            'description_full' => 'Полное описание',
+            'ph' => 'pH',
+            'image_path' => 'Картинка',
+            'thumb_path' => 'Превью',
+            'price' => 'Цена',
+            'discount' => 'Скидка',
+            'live' => 'На сайте',
+            'stock' => 'В наличии',
+            'reviews' => 'Отзывов',
+            'vendor_code' => 'Артикул',
         ],
-        'hint'          => [
-            'slug'       => 'Уникальная составляющая URL-пути',
+        'hint' => [
+            'slug' => 'Уникальная составляющая URL-пути',
             'image_path' => 'Размер картинки должен быть 1080х1080',
-            'thumb_path' => 'Размер картинки должен быть 650х650',
+            'thumb_path' => 'Размер картинки должен быть 400х400',
         ],
     ],
-    'review'      => [
-        'label'         => 'Отзывы',
+    'gift_card' => [
+        'label' => 'Подарочные Карты',
+        'singularLabel' => 'Подарочная Карта',
+        'fields' => [
+            'serial' => 'Серийный номер',
+            'code' => 'Штрих-код',
+            'amount' => 'Сумма',
+            'used' => 'Использован',
+            'expired_at' => 'Истекает срок',
+            'user_id' => 'User ID',
+            'order_id' => 'Order ID',
+        ],
+    ],
+    'review' => [
+        'label' => 'Отзывы',
         'singularLabel' => 'Отзыв',
-        'fields'        => [
-            'review'       => 'Отзыв',
-            'author'       => 'Автор',
-            'product'      => 'Продукт',
-            'stars'        => 'Оценка',
+        'fields' => [
+            'review' => 'Отзыв',
+            'author' => 'Автор',
+            'product' => 'Продукт',
+            'stars' => 'Оценка',
             'published_at' => 'Дата',
-            'published'    => 'Опубликован',
+            'published' => 'Опубликован',
         ],
     ],
-    'banner'      => [
-        'label'         => 'Баннеры',
+    'banner' => [
+        'label' => 'Баннеры',
         'singularLabel' => 'Баннер',
-        'fields'        => [
-            'name'           => 'Название',
+        'fields' => [
+            'name' => 'Название',
             'banner_desktop' => 'Desktop',
-            'banner_mobile'  => 'Mobile',
-            'bg_color'       => 'Цвет фона',
-            'link'           => 'Ссылка',
-            'sort_order'     => 'Сортировка',
-            'live'           => 'Видимость',
-            'published_at'   => 'Опубликован',
-            'expired_at'     => 'Истекает срок',
+            'banner_mobile' => 'Mobile',
+            'bg_color' => 'Цвет фона',
+            'link' => 'Ссылка',
+            'sort_order' => 'Сортировка',
+            'live' => 'Видимость',
+            'published_at' => 'Опубликован',
+            'expired_at' => 'Истекает срок',
         ],
     ],
     'promotion' => [
-        'label'         => 'Промоакции',
+        'label' => 'Промоакции',
         'singularLabel' => 'Промоакция',
-        'fields'        => [
-            'name'         => 'Название',
-            'link'         => 'Ссылка',
-            'image_path'   => 'Баннер',
-            'sort_order'   => 'Сортировка',
-            'live'         => 'Видимость',
+        'fields' => [
+            'name' => 'Название',
+            'link' => 'Ссылка',
+            'image_path' => 'Баннер',
+            'sort_order' => 'Сортировка',
+            'live' => 'Видимость',
             'published_at' => 'Опубликован',
-            'expired_at'   => 'Истекает срок',
+            'expired_at' => 'Истекает срок',
         ],
     ],
-    'coupon'      => [
-        'label'         => 'Промокоды',
+    'coupon' => [
+        'label' => 'Промокоды',
         'singularLabel' => 'Промокод',
-        'fields'        => [
-            'coupon'     => 'Промокод',
-            'entity_id'  => 'ID Сущности',
-            'discount'   => 'Скидка',
-            'reusable'   => 'Многоразовый',
-            'used'       => 'Использован',
-            'level'      => 'Уровень',
+        'fields' => [
+            'coupon' => 'Промокод',
+            'entity_id' => 'ID Сущности',
+            'discount' => 'Скидка',
+            'reusable' => 'Многоразовый',
+            'used' => 'Использован',
+            'level' => 'Уровень',
             'expired_at' => 'Действует до',
         ],
     ],
-    'categories'  => [
-        'label'         => 'Категории',
+    'categories' => [
+        'label' => 'Категории',
         'singularLabel' => 'Категория',
-        'fields'        => [
+        'fields' => [
             'name' => 'Название',
             'slug' => 'Якорь (Slug)',
         ],
     ],
     'subcategory' => [
-        'label'         => 'Подкатегории',
+        'label' => 'Подкатегории',
         'singularLabel' => 'Подкатегория',
-        'fields'        => [
+        'fields' => [
             'name' => 'Название',
             'slug' => 'Якорь (Slug)',
         ],
     ],
-    'filters'     => [
-        'live'  => [
-            'title'   => 'На сайте',
+    'filters' => [
+        'live' => [
+            'title' => 'На сайте',
             'options' => [
                 'yes' => 'Да',
-                'no'  => 'Нет',
+                'no' => 'Нет',
             ],
         ],
         'stock' => [
-            'title'   => 'В наличии',
+            'title' => 'В наличии',
             'options' => [
                 'yes' => 'Да',
-                'no'  => 'Нет',
+                'no' => 'Нет',
             ],
         ],
         'brand' => [
             'title' => 'По бренду',
         ],
-        'line'  => [
+        'line' => [
             'title' => 'По Линии',
         ],
     ],

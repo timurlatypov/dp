@@ -2,6 +2,7 @@
 
 namespace App\Services\Coupon;
 
+use App\Brand;
 use App\Coupon;
 use Gloudemans\Shoppingcart\Cart;
 
@@ -44,7 +45,7 @@ final class DiscountLevel
     public static function all(Cart $cart, Coupon $coupon): void
     {
         foreach ($cart->content() as $rowId => $item) {
-            if ($item->options['brand_id'] != self::SETS_ID) {
+            if (!in_array($item->options['brand_id'], Brand::EXCLUDE)) {
                 $item->options['coupon'] = $coupon->discount;
                 $cart->update($rowId, ['options' => $item->options]);
             }

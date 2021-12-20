@@ -66,7 +66,9 @@ class CartController extends Controller
             ],
         ]);
 
-        return response(['data' => $this->cart->content()], 200);
+        return response([
+            'data' => $this->cart->content()
+        ], 200);
     }
 
     public function refresh()
