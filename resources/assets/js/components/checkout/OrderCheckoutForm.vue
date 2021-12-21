@@ -129,7 +129,7 @@
                 class="mt-2"
                 style="border: 2px green solid; border-radius: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 10px;"
                 v-if="!auth_user">
-                Необходимо <a href="http://localhost/register" style="text-decoration: underline">зарегистрироваться</a> или <a href="http://localhost/login" style="text-decoration: underline">авторизоваться</a> на сайте для применения Подарочных карт
+                Необходимо <a href="https://doctorproffi.ru/register" style="text-decoration: underline">зарегистрироваться</a> или <a href="https://doctorproffi.ru/login" style="text-decoration: underline">авторизоваться</a> на сайте для применения Подарочных карт
               </div>
               <div
                 v-else
