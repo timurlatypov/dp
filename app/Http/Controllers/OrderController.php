@@ -71,7 +71,7 @@ class OrderController extends Controller
                 'coupon' => $hasCoupon,
                 'coupon_details' => json_encode($request->coupon),
 
-                'gift_card_id' => $giftCardModel->id,
+                'gift_card_id' => $giftCardModel->id ?? null,
 
                 'billing_name' => $request->user['name'],
                 'billing_surname' => $request->user['surname'],
@@ -124,7 +124,6 @@ class OrderController extends Controller
 
             return response([
                 'error' => $e->getMessage(),
-                'gift_card_model' => $giftCardModel,
             ], 400);
         }
 
