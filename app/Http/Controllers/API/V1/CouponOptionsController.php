@@ -23,13 +23,13 @@ class CouponOptionsController extends Controller
                 $lines = Line::all();
 
                 return $lines->map(function ($line) {
-                    return ['value' => $line->id, 'display' => $line->brand()->first()->name . ' - ' . $line->name];
+                    return ['value' => $line->id, 'display' => $line->brand->name . ' - ' . $line->name];
                 });
             case 'product':
-                $products = Product::all();
+                $products = Product::orderBy('brand_id')->live()->get();
 
                 return $products->map(function ($product) {
-                    return ['value' => $product->id, 'display' => $product->brand()->first()->name . ' - ' . $product->title_eng];
+                    return ['value' => $product->id, 'display' => $product->brand->name . ' - ' . $product->title_eng];
                 });
 
             default:

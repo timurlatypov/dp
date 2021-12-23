@@ -9,6 +9,10 @@ class Line extends Model
 {
 	use LiveAware;
 
+    protected $with = [
+        'brand',
+    ];
+
 	protected $guarded = [];
 
 	public function getRouteKeyName()

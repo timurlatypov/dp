@@ -7,6 +7,7 @@ use App\Traits\LiveAware;
 use App\Traits\StockAware;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
 
@@ -56,12 +57,12 @@ class Product extends Model
         return round($this->price * (($this->discount - 100) / -100));
     }
 
-    public function brand()
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }
 
-    public function line()
+    public function line(): BelongsTo
     {
         return $this->belongsTo(Line::class);
     }
