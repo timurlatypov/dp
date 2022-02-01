@@ -33,7 +33,7 @@
 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('novelties') }}">Новинки</a></li>--}}
 
                     <li class="nav-item">
-                        <a class="nav-link text-danger" href="{{ route('14feb') }}">
+                        <a class="nav-link text-danger" href="{{ route('fourteenthFeb') }}">
                             <i class="fas fa-heart"></i>&nbsp;&nbsp;14 Февраля
                         </a>
                     </li>
