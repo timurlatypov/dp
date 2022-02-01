@@ -48,6 +48,14 @@ class HomeController extends Controller
         return view('web.template', compact(['products', 'categories']));
     }
 
+    public function fourteenthFeb()
+    {
+        $categories = Categories::where('slug', '14feb')->first();
+        $products   = $categories->products()->live()->paginate(20);
+
+        return view('web.template', compact(['products', 'categories']));
+    }
+
     public function eightMarch()
     {
         $categories = Categories::where('slug', '8march')->first();
