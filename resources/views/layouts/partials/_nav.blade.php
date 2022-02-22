@@ -59,13 +59,11 @@
 
                 <li class="dropdown nav-item">
                     <a class="nav-link" href="#" data-toggle="dropdown">Для лица</a>
-                    <div class="dropdown-menu">
-                        <div class="megamenu mx-md-3 my-md-2">
-                            @foreach($for_face->subcategories as $subcategory)
-                                <a class="dropdown-item{{ request()->is('category/for-face/'.$subcategory->slug) ? ' active' : '' }}"
-                                   href="{{ route('show.category.subcategory', [$for_face, $subcategory]) }}">{{ $subcategory->name }}</a>
-                            @endforeach
-                        </div>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @foreach($for_face->subcategories as $subcategory)
+                            <a class="dropdown-item small{{ request()->is('category/for-face/'.$subcategory->slug) ? ' active' : '' }}"
+                               href="{{ route('show.category.subcategory', [$for_face, $subcategory]) }}">{{ $subcategory->name }}</a>
+                        @endforeach
                     </div>
                 </li>
 
