@@ -134,7 +134,7 @@
               <div
                 v-else
                 class="form-group ">
-                <label for="exampleInput2" class="bmd-label-floating">Введите штрих-код</label>
+                <label for="exampleInput2" class="bmd-label-floating">Введите номер карты</label>
                 <input type="text" class="form-control" id="exampleInput2"
                        v-model="order.gift_card.code" :disabled="gift_card_input_disabled" autocomplete="false">
 
