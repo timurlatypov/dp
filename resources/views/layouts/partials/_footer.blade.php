@@ -8,6 +8,7 @@
                         <div class="col-12 col-md-3">
                             <div class="footer-logo">@include('layouts.partials._logo')</div>
                             <p class="tw-leading-none tw-pt-5">Интернет-магазин<br>профессиональной косметики</p>
+                            <br><br>
                             <p>© doctorproffi.ru 2016 - {{ date('Y') }}</p>
                         </div>
                         <div class="col-12 col-md-3 hidden-md">
