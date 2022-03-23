@@ -8,12 +8,6 @@
                         <div class="col-12 col-md-3">
                             <div class="footer-logo">@include('layouts.partials._logo')</div>
                             <p class="tw-leading-none tw-pt-5">Интернет-магазин<br>профессиональной косметики</p>
-                            <div class="tw-pt-6 tw-pb-4">
-                                <a class="text-white" href="https://www.facebook.com/DoctorProffi.ru/"
-                                   target="_blank"><i class="fab fa-facebook fa-lg pr-3"></i></a>
-                                <a class="text-white" href="https://www.instagram.com/doctorproffi_cosmetics/" target="_blank"><i
-                                            class="fab fa-instagram fa-lg"></i></a>
-                            </div>
                             <p>© doctorproffi.ru 2016 - {{ date('Y') }}</p>
                         </div>
                         <div class="col-12 col-md-3 hidden-md">
