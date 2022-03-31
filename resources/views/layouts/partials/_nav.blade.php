@@ -46,8 +46,8 @@
                 {{--                    </li>--}}
 
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="{{ route('eightMarch') }}">
-                        <i class="fas fa-gift"></i>&nbsp;&nbsp;8 Марта
+                    <a class="nav-link text-danger" href="{{ route('bestsellers') }}">
+                        <i class="fas fa-star"></i>&nbsp;&nbsp;Бестселлеры
                     </a>
                 </li>
                 <li class="nav-item">
