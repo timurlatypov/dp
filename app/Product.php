@@ -24,22 +24,12 @@ class Product extends Model implements Feedable
 
     protected $guarded = [];
 
-    protected $visible = [
-        'new_product',
-        'category',
-        'parent_category'
-    ];
-
     protected $with = [
         'brand',
-        'categories',
-        'subcategories',
     ];
 
     protected $appends = [
         'new_product',
-        'category',
-        'parent_category',
     ];
 
     public function getRouteKeyName()
@@ -131,17 +121,6 @@ class Product extends Model implements Feedable
     {
         return $this->categories()->where('slug', 'new-products')->first();
     }
-
-    public function getCategoryAttribute()
-    {
-        return $this->subcategories()->first() ?? null;
-    }
-
-    public function getParentCategoryAttribute()
-    {
-        return $this->subcategories()->first() ?? $this->categories()->first() ?? null;
-    }
-
     /**
      *
      * FILTERS
