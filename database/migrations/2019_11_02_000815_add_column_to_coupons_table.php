@@ -14,7 +14,7 @@ class AddColumnToCouponsTable extends Migration
     public function up()
     {
         Schema::table('coupons', function (Blueprint $table) {
-            $table->integer('brand_id')->unsigned()->nullable()->after('coupon');;
+            $table->integer('brand_id')->unsigned()->nullable()->after('coupon');
         });
     }
 
