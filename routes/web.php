@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
 
+//Route::feeds('rss');
 Auth::routes();
+
+Route::get('/rss/feed', [FeedController::class, 'index']);
+
 
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 Route::get('/novelties', [HomeController::class, 'novelties'])->name('novelties');

@@ -2,30 +2,44 @@
 
 namespace App;
 
+use App\Contracts\Feedable;
 use App\Filters\Product\ProductFilters;
+use App\Traits\FeedAware;
 use App\Traits\LiveAware;
 use App\Traits\StockAware;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
 
-class Product extends Model
+class Product extends Model implements Feedable
 {
     use SoftDeletes;
     use LiveAware;
     use StockAware;
     use Searchable;
+    use FeedAware;
 
     protected $guarded = [];
 
+    protected $visible = [
+        'new_product',
+        'category',
+        'parent_category'
+    ];
+
     protected $with = [
         'brand',
+        'categories',
+        'subcategories',
     ];
 
     protected $appends = [
         'new_product',
+        'category',
+        'parent_category',
     ];
 
     public function getRouteKeyName()
@@ -79,7 +93,7 @@ class Product extends Model
 
     public function subcategories()
     {
-        return $this->belongsToMany(Subcategory::class, 'product_subcategory');
+        return $this->belongsToMany(Subcategory::class, 'product_subcategory', 'product_id', 'subcategory_id');
     }
 
     public function related()
@@ -113,14 +127,19 @@ class Product extends Model
      * ATRIBUTES
      *
      */
-    //	public function getBrandAttribute()
-    //	{
-    //		return $this->brand()->first();
-    //	}
-    //FIXME
     public function getNewProductAttribute()
     {
         return $this->categories()->where('slug', 'new-products')->first();
+    }
+
+    public function getCategoryAttribute()
+    {
+        return $this->subcategories()->first() ?? null;
+    }
+
+    public function getParentCategoryAttribute()
+    {
+        return $this->subcategories()->first() ?? $this->categories()->first() ?? null;
     }
 
     /**
@@ -155,5 +174,97 @@ class Product extends Model
         $cases = [2, 0, 1, 1, 1, 2];
 
         return $titles[($number % 100 > 4 && $number % 100 < 20) ? 2 : $cases[min($number % 10, 5)]];
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitleRus(): string
+    {
+        return $this->title_rus ?? '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return env('APP_URL') . "/brand/" . $this->brand->slug . "/" . $this->slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBrandName(): string
+    {
+        return $this->brand->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVendorCode(): int
+    {
+        return $this->vendor_code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImagePath(): string
+    {
+        return get_image_path($this->image_path);
+    }
+
+    /**
+     * @return int
+     */
+    public function getBasePrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCategoryId(): ?int
+    {
+        return $this->category->id ?? null;
+    }
+
+    /**
+     * @return ProductFeedItem
+     */
+    public function toFeedItem(): ProductFeedItem
+    {
+        return ProductFeedItem::create()
+            ->setId($this->getId())
+            ->setTitle($this->getTitleRus())
+            ->setDiscountedPrice($this->definePriceToShow())
+            ->setBasePrice($this->getBasePrice())
+            ->setPicture($this->getImagePath())
+            ->setLink($this->getLink())
+            ->setVendor($this->getBrandName())
+            ->setVendorCode($this->getVendorCode())
+            ->setCategoryId($this->getCategoryId());
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getFeedProducts(): Collection
+    {
+        return Product::toFeed()
+            ->live()
+            ->stock()
+            ->get();
     }
 }

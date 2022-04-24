@@ -5,13 +5,13 @@ namespace App\Nova;
 use App\Nova\Filters\Brand;
 use App\Nova\Filters\Line;
 use App\Nova\Filters\Live;
+use App\Nova\Filters\Feed;
 use App\Nova\Filters\OnStock;
 use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -176,6 +176,12 @@ class Product extends Resource
                 ->trueValue(1)
                 ->falseValue(0),
 
+            Toggle::make(__('nova/resources.product.fields.feed'), 'feed')
+                ->sortable()
+                ->editableIndex()
+                ->trueValue(1)
+                ->falseValue(0),
+
             RelationshipCount::make(__('nova/resources.product.fields.reviews'), 'reviews')
                 ->sortable()
                 ->onlyOnIndex(),
@@ -214,6 +220,7 @@ class Product extends Resource
             new Line(),
             new OnStock(),
             new Live(),
+            new Feed(),
         ];
     }
 
