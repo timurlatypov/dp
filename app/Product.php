@@ -160,7 +160,7 @@ class Product extends Model implements Feedable
      */
     public function getTitle(): string
     {
-        return $this->title_eng . '' . $this->title_rus ?? '';
+        return $this->title_eng . ' ' . $this->title_rus ?? '';
     }
 
     /**
