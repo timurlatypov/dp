@@ -158,9 +158,9 @@ class Product extends Model implements Feedable
     /**
      * @return string
      */
-    public function getTitleRus(): string
+    public function getTitle(): string
     {
-        return $this->title_rus ?? '';
+        return $this->title_eng . '' . $this->title_rus ?? '';
     }
 
     /**
@@ -226,7 +226,7 @@ class Product extends Model implements Feedable
     {
         return ProductFeedItem::create()
             ->setId($this->getId())
-            ->setTitle($this->getTitleRus())
+            ->setTitle($this->getTitle())
             ->setDiscountedPrice($this->definePriceToShow())
             ->setBasePrice($this->getBasePrice())
             ->setPicture($this->getImagePath())

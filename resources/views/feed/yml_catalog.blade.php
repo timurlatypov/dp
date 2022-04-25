@@ -27,7 +27,7 @@
                     @if(isset($item->categoryId))
                     <categoryId>{{ $item->categoryId }}</categoryId>
                     @endif
-                    <picture>https://doctorproffi.ru{{ $item->picture }}</picture>
+                    <picture>{{ $item->picture }}</picture>
                     <delivery>true</delivery>
                     <name>{{ $item->title }}</name>
                     <vendor>{{ $item->vendor }}</vendor>
