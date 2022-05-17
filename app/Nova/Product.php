@@ -11,7 +11,8 @@ use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Laravel\Nova\Fields\BelongsToMany;
+use Benjacho\BelongsToManyField\BelongsToManyField;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -186,11 +187,16 @@ class Product extends Resource
                 ->sortable()
                 ->onlyOnIndex(),
 
+            BelongsTo::make(__('nova/resources.menus.label'), 'menu', Menu::class)
+                ->hideFromIndex(),
+
+            BelongsToManyField::make(__('nova/resources.categories.label'), 'categories', Categories::class)
+                ->hideFromIndex(),
+
+            BelongsToManyField::make(__('nova/resources.subcategory.label'), 'subcategories', Subcategory::class)
+                ->hideFromIndex(),
+
             HasMany::make(__('nova/resources.review.label'), 'reviews', Review::class),
-
-            BelongsToMany::make(__('nova/resources.categories.label'), 'categories', Categories::class),
-
-            BelongsToMany::make(__('nova/resources.subcategory.label'), 'subcategories', Subcategory::class),
         ];
     }
 

@@ -4,6 +4,7 @@ namespace App;
 
 use App\Contracts\Feedable;
 use App\Filters\Product\ProductFilters;
+use App\Models\Menu;
 use App\Traits\FeedAware;
 use App\Traits\LiveAware;
 use App\Traits\StockAware;
@@ -92,6 +93,14 @@ class Product extends Model implements Feedable
     }
 
     /**
+     * @return BelongsTo
+     */
+    public function menu(): BelongsTo
+    {
+        return $this->belongsTo(Menu::class, 'menu_id');
+    }
+
+    /**
      *
      * SCOPES
      *
@@ -166,6 +175,14 @@ class Product extends Model implements Feedable
     /**
      * @return string
      */
+    public function getDescription(): string
+    {
+        return $this->description_short ?? '';
+    }
+
+    /**
+     * @return string
+     */
     public function getLink(): string
     {
         return env('APP_URL') . "/brand/" . $this->brand->slug . "/" . $this->slug;
@@ -216,7 +233,7 @@ class Product extends Model implements Feedable
      */
     public function getCategoryId(): ?int
     {
-        return $this->categories()->first()->id ?? $this->subcategories()->first()->id ?? null;
+        return $this->menu_id;
     }
 
     /**
@@ -227,6 +244,7 @@ class Product extends Model implements Feedable
         return ProductFeedItem::create()
             ->setId($this->getId())
             ->setTitle($this->getTitle())
+            ->setDescription($this->getDescription())
             ->setDiscountedPrice($this->definePriceToShow())
             ->setBasePrice($this->getBasePrice())
             ->setPicture($this->getImagePath())

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Categories;
 use App\Models\Feed;
+use App\Models\Menu;
 use App\Product;
-use App\Subcategory;
 
 class FeedController extends Controller
 {
     public function index()
     {
+        $categories = Menu::all();
         $feedProducts = Product::getFeedProducts();
-        $categories = Categories::whereIn('id', ['2','3','6'])->get();
 
         return new Feed(
             $categories,

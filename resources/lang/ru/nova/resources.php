@@ -121,6 +121,14 @@ return [
             'expired_at' => 'Действует до',
         ],
     ],
+    'menus' => [
+        'label' => 'Категории фида',
+        'singularLabel' => 'Категория фида',
+        'fields' => [
+            'name' => 'Название',
+            'slug' => 'Якорь (Slug)',
+        ],
+    ],
     'categories' => [
         'label' => 'Категории',
         'singularLabel' => 'Категория',

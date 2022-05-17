@@ -9,12 +9,7 @@
         </currencies>
         <categories>
             @foreach($categories as $category)
-            <category id="{{ $category->id }}">{{ $category->name }}</category>
-            @if (count($category->subcategories))
-            @foreach($category->subcategories as $subcategory)
-            <category id="{{ $subcategory->id }}" parentId="{{ $category->id }}">{{ $subcategory->name }}</category>
-            @endforeach
-            @endif
+            <category id="{{ $category->id }}" @if($category->parent_id) parent_id="{{ $category->parent_id }}" @endif>{{ $category->name }}</category>
             @endforeach
         </categories>
         <offers>
@@ -30,6 +25,7 @@
                     <picture>{{ $item->picture }}</picture>
                     <delivery>true</delivery>
                     <name>{{ $item->title }}</name>
+                    <description>{{ $item->description ? $item->description : "" }}</description>
                     <vendor>{{ $item->vendor }}</vendor>
                     <vendorCode>{{ $item->vendorCode }}</vendorCode>
                     <sales_notes>Оплата: Наличные, пластиковые карты</sales_notes>

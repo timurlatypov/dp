@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Exceptions\Feed\InvalidFeedItem;
-use Carbon\Carbon;
 use Exception;
 
 class ProductFeedItem
@@ -13,6 +12,9 @@ class ProductFeedItem
 
     /** @var string */
     protected string $title;
+
+    /** @var string */
+    protected string $description;
 
     /** @var int */
     protected int $basePrice;
@@ -55,34 +57,34 @@ class ProductFeedItem
     }
 
     /**
-     * @param string $id
+     * @param string $value
      * @return $this
      */
-    public function setId(string $id): self
+    public function setId(string $value): self
     {
-        $this->id = $id;
+        $this->id = $value;
 
         return $this;
     }
 
     /**
-     * @param string $title
+     * @param string $value
      * @return $this
      */
-    public function setTitle(string $title): self
+    public function setTitle(string $value): self
     {
-        $this->title = $title;
+        $this->title = $value;
 
         return $this;
     }
 
     /**
-     * @param Carbon $updated
+     * @param string $value
      * @return $this
      */
-    public function setUpdated(Carbon $updated): self
+    public function setDescription(string $value): self
     {
-        $this->updated = $updated;
+        $this->description = $value;
 
         return $this;
     }

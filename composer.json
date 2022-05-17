@@ -13,6 +13,7 @@
     "ext-json": "*",
     "algolia/algoliasearch-client-php": "^2.7",
     "anhskohbo/no-captcha": "^3.2",
+    "benjacho/belongs-to-many-field": "^2.0",
     "benjaminhirsch/nova-slug-field": "^1.2",
     "buzz/laravel-google-captcha": "*",
     "davidpiesse/nova-toggle": "^0.0.8",
