@@ -44,9 +44,9 @@ class Product extends Model implements Feedable
 
     public function toSearchableArray()
     {
-        $properties          = $this->toArray();
+        $properties = $this->only(['id', 'title_eng', 'title_rus', 'vendor_code', 'deleted_at', 'live', 'thumb_path','slug']);
         $properties['brand'] = $this->brand->only('name', 'slug');
-        $properties['line']  = $this->line;
+        $properties['line'] = $this->line;
 
         return $properties;
     }
@@ -216,7 +216,7 @@ class Product extends Model implements Feedable
      */
     public function getCategoryId(): ?int
     {
-        return $this->category->id ?? null;
+        return $this->categories()->first()->id ?? $this->subcategories()->first()->id ?? null;
     }
 
     /**
