@@ -43,12 +43,15 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <h4 class="title text-white mt-2">Контакты</h4>
-                            <p><a class="text-white" href="tel:84953801141"><i
+                            <p><a class="text-white" href="tel:84953801141"
+                                   onclick="yaCounter35424225.reachGoal('phone'); return true;"><i
                                             class="fa fa-phone-volume"></i>&nbsp;&nbsp;8 (495) 380-11-41</a></p>
-                            <p><a class="text-white" href="https://api.whatsapp.com/send?phone=79253170148"><i
+                            <p><a class="text-white" href="https://api.whatsapp.com/send?phone=79253170148"
+                                   onclick="yaCounter35424225.reachGoal('whatsapp'); return true;"><i
                                             class="fab fa-whatsapp"></i>&nbsp;&nbsp;8 (925) 317-01-48</a></p>
                             <p><i class="far fa-clock"></i>&nbsp;&nbsp;Операторы: 9:00 - 18:00</p>
-                            <p><a class="text-white" href="mailto:info@doctorproffi.ru"><i
+                            <p><a class="text-white" href="mailto:info@doctorproffi.ru"
+                                   onclick="yaCounter35424225.reachGoal('email'); return true;"><i
                                             class="fa fa-paper-plane"></i>&nbsp;&nbsp;info@doctorproffi.ru</a>
                             </p>
                         </div>

@@ -598,6 +598,7 @@ export default {
 
         axios.post('/order/store', this.order)
             .then(response => {
+              window.yaCounter35424225.reachGoal('new-order');
               window.flash('Заказ получен!');
               this.new_order_created = true;
               window.cartUpdate();
