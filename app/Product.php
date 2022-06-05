@@ -45,7 +45,7 @@ class Product extends Model implements Feedable
 
     public function toSearchableArray()
     {
-        $properties = $this->only(['id', 'title_eng', 'title_rus', 'vendor_code', 'deleted_at', 'live', 'thumb_path','slug']);
+        $properties = $this->only(['id', 'price', 'discount', 'title_eng', 'title_rus', 'vendor_code', 'deleted_at', 'live', 'thumb_path','slug']);
         $properties['brand'] = $this->brand->only('name', 'slug');
         $properties['line'] = $this->line;
 
