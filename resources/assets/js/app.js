@@ -1,5 +1,7 @@
 window.Vue = require('vue');
 
+import VueYandexMetrika from 'vue-yandex-metrika';
+
 let VueCookie = require('vue-cookie');
 Vue.use(VueCookie);
 
@@ -75,6 +77,10 @@ Vue.component('order-create-form', require('./components/admin-panel/order/Order
 
 Vue.component('TypeAhead', require('./components/delivery/TypeAhead').default);
 Vue.component('delivery-calculator', require('./components/delivery/Calculator.vue').default);
+
+Vue.use(VueYandexMetrika, {
+    id: 35424225,
+})
 
 const app = new Vue({
     el: '#app',
