@@ -2,7 +2,6 @@
 <yml_catalog date="{{ \Illuminate\Support\Carbon::now()->toRfc3339String() }}">
     <shop>
         <name>DoctorProffi.ru</name>
-        <company>ИП Данищук Ольга Игоревна</company>
         <url>https://doctorproffi.ru</url>
         <currencies>
             <currency id="RUR" rate="1"/>
