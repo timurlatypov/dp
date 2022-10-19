@@ -50,15 +50,14 @@
                         <i class="fas fa-star"></i>&nbsp;&nbsp;Бестселлеры
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning" href="{{ route('premium') }}">
-                        <i class="fas fa-crown"></i>&nbsp;&nbsp;Премиум
-                    </a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link text-warning" href="{{ route('premium') }}">--}}
+{{--                        <i class="fas fa-crown"></i>&nbsp;&nbsp;Премиум--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 
                 <li class="dropdown nav-item">
-                    <a class="nav-link" href="#" data-toggle="dropdown">Для лица</a>
+                    <a class="nav-link" href="#" data-toggle="dropdown">Лицо</a>
                     <div class="dropdown-menu dropdown-with-icons">
                         @foreach($for_face->subcategories as $subcategory)
                             <a class="dropdown-item small{{ request()->is('category/for-face/'.$subcategory->slug) ? ' active' : '' }}"
@@ -103,7 +102,10 @@
 {{--                </li>--}}
                 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-men') }}">Для мужчин</a></li>--}}
                 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-kids') }}">Для детей</a></li>--}}
-                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-hair') }}">Для волос</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-body') }}">Тело</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-hair') }}">Волосы</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Автозагары</a></li>
+                <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
 
                 <li class="dropdown nav-item">
                     <a class="nav-link" href="#" data-toggle="dropdown">Бренды</a>
@@ -116,7 +118,7 @@
                 </li>
 
                 <li class="nav-item"><a class="nav-link" href="/delivery">Доставка и оплата</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contacts">Контакты</a></li>
+{{--                <li class="nav-item"><a class="nav-link" href="/contacts">Контакты</a></li>--}}
                 <li class="nav-item"><a class="nav-link text-info" href="/bookmarks">Избранное</a></li>
                 <cart :cart_items="{{ $cart }}" cart_count="{{ $cart->count() }}"></cart>
                 @guest
