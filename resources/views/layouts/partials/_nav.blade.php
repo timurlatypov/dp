@@ -104,7 +104,7 @@
                 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-kids') }}">Для детей</a></li>--}}
                 <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-body') }}">Тело</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-hair') }}">Волосы</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Автозагары</a></li>
+{{--                <li class="nav-item"><a class="nav-link" href="">Автозагары</a></li>--}}
                 <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
 
                 <li class="dropdown nav-item">
