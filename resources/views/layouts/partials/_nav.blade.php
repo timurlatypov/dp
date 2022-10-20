@@ -102,7 +102,29 @@
 {{--                </li>--}}
                 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-men') }}">Для мужчин</a></li>--}}
                 {{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-kids') }}">Для детей</a></li>--}}
-                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-body') }}">Тело</a></li>
+
+{{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-body') }}">Тело</a></li>--}}
+                <li class="dropdown nav-item">
+                    <a class="nav-link" href="#" data-toggle="dropdown">Тело</a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @foreach($for_body->subcategories as $subcategory)
+                            <a class="dropdown-item small{{ request()->is('category/for-body/'.$subcategory->slug) ? ' active' : '' }}"
+                               href="{{ route('show.category.subcategory', [$for_body, $subcategory]) }}">{{ $subcategory->name }}</a>
+                        @endforeach
+                    </div>
+                </li>
+
+                <li class="dropdown nav-item">
+                    <a class="nav-link" href="#" data-toggle="dropdown">Направленный уход</a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @foreach($direct_care->subcategories as $subcategory)
+                            <a class="dropdown-item small{{ request()->is('category/direct-care/'.$subcategory->slug) ? ' active' : '' }}"
+                               href="{{ route('show.category.subcategory', [$direct_care, $subcategory]) }}">{{ $subcategory->name }}</a>
+                        @endforeach
+                    </div>
+                </li>
+
+
                 <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-hair') }}">Волосы</a></li>
 {{--                <li class="nav-item"><a class="nav-link" href="">Автозагары</a></li>--}}
                 <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
