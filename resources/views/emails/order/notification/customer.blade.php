@@ -370,7 +370,7 @@
                                                     <b>{{ $product->name }}</b><br>
                                                     <small>{{ $product->options->title_rus }}</small><br>
                                                     <small>{{ $product->options->brand }}</small>
-                                                    <small>Артикул {{ $product->options->vendor_code }}</small>
+{{--                                                    <small>Артикул {{ $product->options->vendor_code }}</small>--}}
                                                 </td>
                                                 <td class="text-center">{{ $product->price }} &#x20BD;</td>
                                                 <td class="text-center">-{{ $product->options->discount }}%</td>
