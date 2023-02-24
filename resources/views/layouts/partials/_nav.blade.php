@@ -125,7 +125,7 @@
                 </li>
 
 
-                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-hair') }}">Волосы</a></li>
+{{--                <li class="nav-item"><a class="nav-link" href="{{ route('show.category', 'for-hair') }}">Волосы</a></li>--}}
 {{--                <li class="nav-item"><a class="nav-link" href="">Автозагары</a></li>--}}
                 <li class="nav-item"><a class="nav-link" href="/brand/sets">Наборы</a></li>
 
