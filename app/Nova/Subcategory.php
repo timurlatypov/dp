@@ -14,7 +14,7 @@ class Subcategory extends Resource
      *
      * @var string
      */
-    public static $model = \App\Subcategory::class;
+    public static $model = \App\Models\Subcategory::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -33,12 +33,18 @@ class Subcategory extends Resource
         'name',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.subcategory.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.subcategory.singularLabel');
     }
@@ -48,7 +54,9 @@ class Subcategory extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (ID|Text)[]
+     *
+     * @psalm-return list{ID, Text}
      */
     public function fields(Request $request)
     {
@@ -66,6 +74,8 @@ class Subcategory extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -78,6 +88,8 @@ class Subcategory extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -90,6 +102,8 @@ class Subcategory extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -102,6 +116,8 @@ class Subcategory extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

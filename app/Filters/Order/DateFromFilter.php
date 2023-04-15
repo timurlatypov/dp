@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DateFromFilter
 {
-	public function filter(Builder $builder, $value)
+	public function filter(Builder $builder, $value): Builder
 	{
 		return $builder->where('updated_at', '>=', $value);
 	}

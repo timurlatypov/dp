@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PhoneFilter
 {
-    public function filter(Builder $builder, $value)
+    public function filter(Builder $builder, $value): Builder
     {
-        return $builder->whereLike('billing_phone', $value);
+        return $builder->orWhere('billing_phone', 'LIKE', "%{$value}%");
     }
 }

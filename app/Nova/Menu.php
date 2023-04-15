@@ -39,8 +39,11 @@ class Menu extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @param \Illuminate\Http\Request  $request
+     *
+     * @return (BelongsTo|HasMany|ID|Slug|TextWithSlug)[]
+     *
+     * @psalm-return list{ID, TextWithSlug, Slug, BelongsTo, HasMany}
      */
     public function fields(Request $request)
     {
@@ -73,8 +76,11 @@ class Menu extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
+     *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -84,8 +90,11 @@ class Menu extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
+     *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -95,8 +104,11 @@ class Menu extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
+     *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -106,8 +118,11 @@ class Menu extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
+     *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

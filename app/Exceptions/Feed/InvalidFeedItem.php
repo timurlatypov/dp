@@ -2,30 +2,35 @@
 
 namespace App\Exceptions\Feed;
 
-use App\ProductFeedItem;
+use App\Models\ProductFeedItem;
 use Exception;
 
 class InvalidFeedItem extends Exception
 {
-    /** @var ProductFeedItem|null */
-    public ?ProductFeedItem $subject;
 
-    public static function notFeedable($subject)
+
+    public static function notFeedable($subject): self
     {
         return (new static('Object doesn\'t implement `Spatie\Feed\Feedable`'))->withSubject($subject);
     }
 
-    public static function notAFeedItem($subject)
+    public static function notAFeedItem($subject): self
     {
         return (new static('`toFeedItem` should return an instance of `Spatie\Feed\Feedable`'))->withSubject($subject);
     }
 
-    public static function missingField(ProductFeedItem $subject, $field): InvalidFeedItem
+    /**
+     * @psalm-param 'id'|'title' $field
+     */
+    public static function missingField(ProductFeedItem $subject, string $field): InvalidFeedItem
     {
         return (new static("Field `{$field}` is required"))->withSubject($subject);
     }
 
-    protected function withSubject($subject): InvalidFeedItem
+    /**
+     * @return static
+     */
+    protected function withSubject(ProductFeedItem $subject): self
     {
         $this->subject = $subject;
 

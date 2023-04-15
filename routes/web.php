@@ -8,10 +8,8 @@ Auth::routes();
 
 Route::get('/rss/feed', [FeedController::class, 'index']);
 
-
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 Route::get('/novelties', [HomeController::class, 'novelties'])->name('novelties');
-//Route::get('/new-year-2022', [HomeController::class, 'ny2022'])->name('ny2022');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
 Route::get('/premium', 'HomeController@premium')->name('premium');
 Route::get('/8march', [HomeController::class, 'eightMarch'])->name('eightMarch');
@@ -160,12 +158,12 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
     // CATEGORIES / SUBCATEGORIES GROUP
     //
     Route::group(['prefix' => '/categories', 'namespace' => 'Categories'], function () {
-        Route::get('/', 'CategoriesController@index')->name('admin.categories.index');
-        Route::get('/{categories}/products', 'CategoriesController@categoriesProducts')->name('admin.categories.products');
-        Route::get('/{categories}/{subcategory}/products', 'CategoriesController@subcategoriesProducts')->name('admin.categories.subcategory.products');
-        Route::patch('/{categories}/products/associate', 'CategoriesController@categoryAssociateProducts')->name('admin.categories.associate.products');
-        Route::patch('/{categories}/{subcategory}/products/associate', 'CategoriesController@subcategoryAssociateProducts')->name('admin.categories.subcategory.associate.products');
-        Route::post('/{categories}/store', 'SubcategoriesController@store')->name('store.new.subcategory');
+        Route::get('/', 'CategoryController@index')->name('admin.categories.index');
+        Route::get('/{categories}/products', 'CategoryController@categoriesProducts')->name('admin.categories.products');
+        Route::get('/{categories}/{subcategory}/products', 'CategoryController@subcategoriesProducts')->name('admin.categories.subcategory.products');
+        Route::patch('/{categories}/products/associate', 'CategoryController@categoryAssociateProducts')->name('admin.categories.associate.products');
+        Route::patch('/{categories}/{subcategory}/products/associate', 'CategoryController@subcategoryAssociateProducts')->name('admin.categories.subcategory.associate.products');
+        Route::post('/{categories}/store', 'CategoryController@store')->name('store.new.subcategory');
 
     });
 
@@ -173,30 +171,30 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
     // ORDERS GROUP
     //
     Route::group(['prefix' => '/orders', 'namespace' => 'Orders'], function () {
-        Route::get('/', 'OrdersController@index')->name('admin.orders.index');
-        Route::get('/create', 'OrdersController@create')->name('admin.orders.create');
-        Route::post('/store', 'OrdersController@store')->name('admin.orders.store');
-        Route::get('/{order}/show', 'OrdersController@show')->name('admin.orders.show');
-        Route::get('/{order}/edit_details', 'OrdersController@edit_details')->name('admin.orders.edit_details');
-        Route::get('/{order}/edit', 'OrdersController@edit')->name('admin.orders.edit');
-        Route::patch('/update', 'OrdersController@update')->name('admin.orders.update');
-        Route::patch('/{order}/update_details', 'OrdersController@update_details')->name('admin.orders.update_details');
+        Route::get('/', 'OrderController@index')->name('admin.orders.index');
+        Route::get('/create', 'OrderController@create')->name('admin.orders.create');
+        Route::post('/store', 'OrderController@store')->name('admin.orders.store');
+        Route::get('/{order}/show', 'OrderController@show')->name('admin.orders.show');
+        Route::get('/{order}/edit_details', 'OrderController@edit_details')->name('admin.orders.edit_details');
+        Route::get('/{order}/edit', 'OrderController@edit')->name('admin.orders.edit');
+        Route::patch('/update', 'OrderController@update')->name('admin.orders.update');
+        Route::patch('/{order}/update_details', 'OrderController@update_details')->name('admin.orders.update_details');
 
-        Route::get('/{order}/register', 'OrdersController@registerOrder')->name('admin.orders.registerOrder');
-        Route::get('/{order}/resend', 'OrdersController@resendConfirmationEmail')->name('admin.orders.resendConfirmation');
-
-
-        Route::get('/{id}/reverse', 'OrdersController@reverseOrder')->name('admin.orders.reverseOrder');
-        Route::get('/{id}/decline', 'OrdersController@declineOrder')->name('admin.orders.declineOrder');
-        Route::get('/{id}/delete', 'OrdersController@deleteLink')->name('admin.orders.deleteLink');
-        Route::get('/{id}/status', 'OrdersController@orderStatus')->name('admin.orders.orderStatus');
-        Route::get('/{order}/send-link', 'OrdersController@sendLink')->name('admin.orders.sendLink');
+        Route::get('/{order}/register', 'OrderController@registerOrder')->name('admin.orders.registerOrder');
+        Route::get('/{order}/resend', 'OrderController@resendConfirmationEmail')->name('admin.orders.resendConfirmation');
 
 
-        Route::post('/assign', 'OrdersController@assign')->name('admin.orders.assign');
-        Route::delete('/delete', 'OrdersController@destroy')->name('admin.orders.destroy');
-        Route::post('/change', 'OrdersController@change')->name('admin.orders.change.status');
-        Route::post('/payment', 'OrdersController@changePayment')->name('admin.orders.change.payment');
+        Route::get('/{id}/reverse', 'OrderController@reverseOrder')->name('admin.orders.reverseOrder');
+        Route::get('/{id}/decline', 'OrderController@declineOrder')->name('admin.orders.declineOrder');
+        Route::get('/{id}/delete', 'OrderController@deleteLink')->name('admin.orders.deleteLink');
+        Route::get('/{id}/status', 'OrderController@orderStatus')->name('admin.orders.orderStatus');
+        Route::get('/{order}/send-link', 'OrderController@sendLink')->name('admin.orders.sendLink');
+
+
+        Route::post('/assign', 'OrderController@assign')->name('admin.orders.assign');
+        Route::delete('/delete', 'OrderController@destroy')->name('admin.orders.destroy');
+        Route::post('/change', 'OrderController@change')->name('admin.orders.change.status');
+        Route::post('/payment', 'OrderController@changePayment')->name('admin.orders.change.payment');
     });
 
     //
@@ -244,4 +242,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/callback/store', 'CallbackController@store')->name('callback.store');
 
 Route::post('/bookmark/store', 'BookmarkController@store')->name('save.product.to.bookmark');
+
+
+//TESTS
+Route::get('/provision', 'ProvisionServer@index');
 

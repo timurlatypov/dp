@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Promotion as PromotionModel;
+use App\Models\Promotion as PromotionModel;
 use Carbon\Carbon;
 use Davidpiesse\NovaToggle\Toggle;
 use Illuminate\Http\Request;
@@ -40,12 +40,18 @@ class Promotion extends Resource
         'name',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.promotion.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.promotion.singularLabel');
     }
@@ -55,7 +61,9 @@ class Promotion extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (Date|ID|Image|Number|Text|mixed)[]
+     *
+     * @psalm-return list{ID, Text, Text, Image, Number, mixed, Date, Date}
      */
     public function fields(Request $request)
     {
@@ -70,9 +78,6 @@ class Promotion extends Resource
                 ->disk('public')
                 ->path('promotions')
                 ->maxWidth(150)
-                ->preview(function () {
-                    return $this->image_path ? Storage::disk('public')->url($this->image_path) : null;
-                })
                 ->prunable(),
 
             Number::make(__('nova/resources.promotion.fields.sort_order'), 'sort_order')
@@ -100,6 +105,8 @@ class Promotion extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -112,6 +119,8 @@ class Promotion extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -124,6 +133,8 @@ class Promotion extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -136,6 +147,8 @@ class Promotion extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\GoogleAnalytics;
+use App\Models\GoogleAnalytics;
 use App\Jobs\SendSberbankPaymentSuccessMessage;
 use App\Models\GiftCard;
-use App\Order;
-use App\Coupon;
+use App\Models\Order;
+use App\Models\Coupon;
 use App\Events\NewOrderCreated;
-use App\Sberbank;
-use App\YandexMetrika;
+use App\Models\Sberbank;
+use App\Models\YandexMetrika;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -21,7 +21,8 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|void
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|null
      */
     public function store(Request $request)
     {
@@ -49,6 +50,7 @@ class OrderController extends Controller
 
             $giftCard = $request->get('gift_card');
             $hasGiftCard = (bool)$giftCard['code'];
+            $giftCardModel = null;
             if ($hasGiftCard) {
                 try {
                     $giftCardModel = GiftCard::lockForUpdate()
@@ -140,7 +142,7 @@ class OrderController extends Controller
                 $ga_exists = GoogleAnalytics::where('ga', $ga)->first();
 
                 if (!$ga_exists) {
-                    $ga_save = GoogleAnalytics::create([
+                    GoogleAnalytics::create([
                         'ga' => $ga,
                     ])->save();
 
@@ -165,7 +167,7 @@ class OrderController extends Controller
                 $ym_exists = YandexMetrika::where('ym', $ym)->first();
 
                 if (!$ym_exists) {
-                    $ym_save = YandexMetrika::create([
+                    YandexMetrika::create([
                         'ym' => $ym,
                     ])->save();
 
@@ -184,7 +186,7 @@ class OrderController extends Controller
             }
         }
 
-        $cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
+        \Gloudemans\Shoppingcart\Facades\Cart::destroy();
     }
 
     public function check(Request $request)

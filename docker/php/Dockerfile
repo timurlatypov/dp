@@ -1,6 +1,6 @@
-FROM php:7.4.9-fpm
+FROM php:8.2.2-fpm
 
-ENV PHPREDIS_VERSION 5.1.1
+ENV PHPREDIS_VERSION 5.3.7
 
 # Set working directory
 WORKDIR /www

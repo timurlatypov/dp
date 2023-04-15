@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\AdminPanel\Product;
 
-use App\Brand;
-use App\Categories;
+use App\Models\Brand;
+use App\Models\Category;
 use App\Http\Requests\StoreNewProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Product;
-use App\Traits\LiveAware;
+use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -38,7 +38,12 @@ class ProductController extends Controller
         return view('admin.product.index', compact('products'));
     }
 
-    protected function getFilters()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{brand: BrandFilter::class, stock: StockFilter::class, live: LiveFilter::class}
+     */
+    protected function getFilters(): array
     {
         return [
             'brand' => BrandFilter::class,
@@ -50,7 +55,7 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -63,8 +68,7 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreNewProductRequest $request
-     *
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(StoreNewProductRequest $request)
     {
@@ -90,29 +94,17 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
      *
-     * @return Response
+     * @return Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         return view('admin.product.edit', [
             'product'    => Product::where('id', $id)->first(),
-            'categories' => Categories::all(),
+            'categories' => Category::all(),
             'brands'     => Brand::all(),
         ]);
     }
@@ -120,13 +112,12 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Product              $product
+     * @param Product $product
      *
      * @param UpdateProductRequest $request
-     *
-     * @return Response
+     * @return RedirectResponse
      */
-    public function update(Product $product, UpdateProductRequest $request)
+    public function update(Product $product, UpdateProductRequest $request): RedirectResponse
     {
 
         if ($request->thumb_path !== null) {
@@ -169,11 +160,9 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     *
-     * @return Response
+     * @return RedirectResponse
      */
-
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         $product = Product::find($id);
         $product->delete();
@@ -182,7 +171,7 @@ class ProductController extends Controller
     }
 
 
-    public function forceDelete($id)
+    public function forceDelete($id): void
     {
         $product = Product::withTrashed()->where('id', $id)->first();
         $product->forceDelete();
@@ -193,7 +182,7 @@ class ProductController extends Controller
      *
      * @param Request $request
      *
-     * @return Response
+     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function toggle(Request $request)
     {
@@ -209,6 +198,9 @@ class ProductController extends Controller
         return response(['data' => 'Успешно'], 200);
     }
 
+    /**
+     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
     public function stockToggle(Request $request)
     {
         if ($request->checked) {
@@ -223,6 +215,9 @@ class ProductController extends Controller
         return response(['data' => 'Успешно'], 200);
     }
 
+    /**
+     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
     public function price(Request $request)
     {
 
@@ -232,6 +227,9 @@ class ProductController extends Controller
         return response(['data' => 'Успешно'], 200);
     }
 
+    /**
+     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
     public function discount(Request $request)
     {
 
@@ -241,7 +239,7 @@ class ProductController extends Controller
         return response(['data' => 'Успешно'], 200);
     }
 
-    public function productAssociateRelated(Product $product, Request $request)
+    public function productAssociateRelated(Product $product, Request $request): void
     {
         $products = $request->toArray();
 

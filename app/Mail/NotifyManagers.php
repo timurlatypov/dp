@@ -12,7 +12,7 @@ class NotifyManagers extends Mailable
     use Queueable, SerializesModels;
 
 	public $order;
-    public $coupon;
+
 
     /**
      * Create a new message instance.
@@ -23,15 +23,5 @@ class NotifyManagers extends Mailable
     {
 	    $this->order = $order;
         $this->coupon = json_decode($order->coupon_details);
-    }
-
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
-    {
-	    return $this->view('emails.order.notification.manager')->subject('Новый заказ '.$this->order->order_id);
     }
 }

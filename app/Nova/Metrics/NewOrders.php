@@ -2,27 +2,16 @@
 
 namespace App\Nova\Metrics;
 
-use App\Order;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Value;
 
 class NewOrders extends Value
 {
     /**
-     * Calculate the value of the metric.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @return mixed
-     */
-    public function calculate(NovaRequest $request)
-    {
-        return $this->sum($request, Order::class, 'billing_total');
-    }
-
-    /**
      * Get the ranges available for the metric.
      *
-     * @return array
+     * @return (array|null|string)[]
+     *
+     * @psalm-return array{30: array|null|string, 60: array|null|string, 365: array|null|string, TODAY: array|null|string, MTD: array|null|string, QTD: array|null|string, YTD: array|null|string}
      */
     public function ranges()
     {
@@ -42,7 +31,7 @@ class NewOrders extends Value
      *
      * @return  \DateTimeInterface|\DateInterval|float|int
      */
-    public function cacheFor()
+    public function cacheFor(): \DateInterval|\DateTimeInterface|float|int
     {
         // return now()->addMinutes(5);
     }
@@ -51,6 +40,8 @@ class NewOrders extends Value
      * Get the URI key for the metric.
      *
      * @return string
+     *
+     * @psalm-return 'new-orders'
      */
     public function uriKey()
     {
@@ -61,6 +52,8 @@ class NewOrders extends Value
      * Get the displayable name of the metric
      *
      * @return string
+     *
+     * @psalm-return 'Orders Created'
      */
     public function name()
     {

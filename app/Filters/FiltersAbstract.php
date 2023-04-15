@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 abstract class FiltersAbstract
 {
-	protected $request;
+	protected Request $request;
 
-	protected $filters = [];
+	protected array $filters = [];
 
     /**
      * FiltersAbstract constructor.
@@ -56,10 +56,12 @@ abstract class FiltersAbstract
 	}
 
     /**
-     * @param $filter
-     *
-     * @return mixed
-     */
+	 * @param (int|string) $filter
+	 *
+	 * @return mixed
+	 *
+	 * @psalm-param array-key $filter
+	 */
 	protected function resolveFilter($filter)
 	{
 		return new $this->filters[$filter];
@@ -71,7 +73,7 @@ abstract class FiltersAbstract
      * @return array
      *
      */
-	protected function filterFilters($filters)
+	protected function filterFilters($filters): array
 	{
 		return array_filter($this->request->only(array_keys($this->filters)));
 	}

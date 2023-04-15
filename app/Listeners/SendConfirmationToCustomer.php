@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\NewOrderCreated;
+use App\Mail\NewOrder;
 use Illuminate\Support\Facades\Mail;
 
 class SendConfirmationToCustomer
@@ -27,6 +28,6 @@ class SendConfirmationToCustomer
     public function handle(NewOrderCreated $event)
     {
 	    Mail::to($event->customer)
-		    ->queue(new \App\Mail\NewOrder($event->order));
+		    ->queue(new NewOrder($event->order));
     }
 }

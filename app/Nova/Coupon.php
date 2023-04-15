@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
@@ -21,7 +20,7 @@ class Coupon extends Resource
      *
      * @var string
      */
-    public static $model = \App\Coupon::class;
+    public static $model = \App\Models\Coupon::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -40,12 +39,18 @@ class Coupon extends Resource
         'coupon',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.coupon.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.coupon.singularLabel');
     }
@@ -55,7 +60,9 @@ class Coupon extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (Boolean|Date|ID|Number|Select|Text|mixed)[]
+     *
+     * @psalm-return list{ID, Select, Text, mixed, Text, Number, Date, Boolean, Boolean}
      */
     public function fields(Request $request)
     {
@@ -102,6 +109,8 @@ class Coupon extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -114,6 +123,8 @@ class Coupon extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -126,6 +137,8 @@ class Coupon extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -138,6 +151,8 @@ class Coupon extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

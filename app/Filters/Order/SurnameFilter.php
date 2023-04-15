@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class SurnameFilter
 {
-    public function filter(Builder $builder, $value)
+    public function filter(Builder $builder, $value): Builder
     {
         return $builder->where('billing_surname', $value);
     }

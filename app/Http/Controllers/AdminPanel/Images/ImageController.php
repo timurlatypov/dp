@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 class ImageController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function store_product_thumb()
     {
         $this->validate(request(), [
@@ -19,6 +22,9 @@ class ImageController extends Controller
     }
 
 
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function store_product_image(Request $request)
     {
         $this->validate(request(), [

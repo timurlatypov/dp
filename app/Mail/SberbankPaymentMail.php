@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Order;
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -12,7 +12,7 @@ class SberbankPaymentMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $order;
+    public Order $order;
     public $payment_link;
 
     /**
@@ -24,15 +24,5 @@ class SberbankPaymentMail extends Mailable
     {
         $this->order = $order;
         $this->payment_link = $payment_link;
-    }
-
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
-    {
-        return $this->subject('Ссылка для онлайн-оплаты заказа '.$this->order->order_id)->view('emails.order.notification.payment');
     }
 }

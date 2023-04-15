@@ -8,7 +8,7 @@
                 <div class="card my-3 p-4">
                     <h4 class="title mt-2 mb-2">Фильтры</h4>
                     <div class="d-flex flex-wrap">
-                        @foreach(\App\Brand::all() as $brand)
+                        @foreach(\App\Models\Brand::all() as $brand)
                             <a href="{{ route('admin.product.index', array_merge(request()->query(), ['brand' => $brand->id ])) }}" class="btn btn-sm {{ request('brand') ===  $brand->id ? 'btn-primary' : 'btn-secondary' }}">{{ $brand->name }}</a>
                         @endforeach
                     </div>

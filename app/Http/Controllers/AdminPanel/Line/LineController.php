@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\AdminPanel\Line;
 
-use App\Line;
+use App\Models\Line;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class LineController extends Controller
 {
-	/**
+    /**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @param Request $request
+	 *
+	 * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
 	 */
 	public function show_all_lines_for_brand(Request $request)
 	{
@@ -20,39 +22,4 @@ class LineController extends Controller
 		return response(['data' => $lines], 200);
 
 	}
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

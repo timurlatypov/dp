@@ -18,7 +18,7 @@ class Brand extends Resource
      *
      * @var string
      */
-    public static $model = \App\Brand::class;
+    public static $model = \App\Models\Brand::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -36,12 +36,18 @@ class Brand extends Resource
         'id',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.brand.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.brand.singularLabel');
     }
@@ -51,7 +57,9 @@ class Brand extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (HasMany|ID|Text|Trix|mixed)[]
+     *
+     * @psalm-return list{ID, Text, Text, Text, Trix, mixed, HasMany, HasMany}
      */
     public function fields(Request $request)
     {
@@ -87,6 +95,8 @@ class Brand extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -98,7 +108,9 @@ class Brand extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return Live[]
+     *
+     * @psalm-return list{Live}
      */
     public function filters(Request $request)
     {
@@ -113,6 +125,8 @@ class Brand extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -125,6 +139,8 @@ class Brand extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

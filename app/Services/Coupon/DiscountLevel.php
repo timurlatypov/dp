@@ -2,18 +2,14 @@
 
 namespace App\Services\Coupon;
 
-use App\Brand;
-use App\Coupon;
+use App\Models\Brand;
+use App\Models\Coupon;
 use Gloudemans\Shoppingcart\Cart;
 
 final class DiscountLevel
 {
     public const SETS_ID = 11;
 
-    /**
-     * @param Cart   $cart
-     * @param Coupon $coupon
-     */
     public static function product(Cart $cart, Coupon $coupon): void
     {
         foreach ($cart->content() as $rowId => $item) {
@@ -24,10 +20,6 @@ final class DiscountLevel
         }
     }
 
-    /**
-     * @param Cart   $cart
-     * @param Coupon $coupon
-     */
     public static function brand(Cart $cart, Coupon $coupon): void
     {
         foreach ($cart->content() as $rowId => $item) {
@@ -38,10 +30,6 @@ final class DiscountLevel
         }
     }
 
-    /**
-     * @param Cart   $cart
-     * @param Coupon $coupon
-     */
     public static function all(Cart $cart, Coupon $coupon): void
     {
         foreach ($cart->content() as $rowId => $item) {

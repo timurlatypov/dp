@@ -14,6 +14,11 @@ class Banner extends Model implements Sortable
     use LiveAware;
     use SoftDeletes;
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var list{'name', 'banner_desktop', 'banner_mobile', 'bg_color', 'link', 'sort_order', 'live', 'published_at', 'expired_at'}
+     */
     protected $fillable = [
         'name',
         'banner_desktop',
@@ -26,13 +31,23 @@ class Banner extends Model implements Sortable
         'expired_at',
     ];
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{published_at: 'datetime', expired_at: 'datetime', live: 'boolean'}
+     */
     protected $casts = [
         'published_at' => 'datetime',
         'expired_at'   => 'datetime',
         'live'         => 'boolean',
     ];
 
-    public $sortable = [
+    /**
+     * @var (string|true)[]
+     *
+     * @psalm-var array{order_column_name: 'sort_order', sort_when_creating: true}
+     */
+    public array $sortable = [
         'order_column_name' => 'sort_order',
         'sort_when_creating' => true,
     ];

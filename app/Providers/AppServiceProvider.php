@@ -2,20 +2,31 @@
 
 namespace App\Providers;
 
-use App\Brand;
-use App\Categories;
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Banner;
-use App\Order;
-use App\Product;
-use App\Promotion;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Promotion;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->singleton(\App\Cart\Cart::class, function () {
+            return new \App\Cart\Cart();
+        });
+    }
+
     /**
      * Bootstrap any application services.
      *
@@ -33,20 +44,20 @@ class AppServiceProvider extends ServiceProvider
                 ->live()
                 ->get());
             $nav->with('cart', Cart::content());
-            $nav->with('for_face', Categories::where('slug', 'for-face')
+            $nav->with('for_face', Category::where('slug', 'for-face')
                 ->first());
-            $nav->with('for_body', Categories::where('slug', 'for-body')
+            $nav->with('for_body', Category::where('slug', 'for-body')
                 ->first());
-            $nav->with('direct_care', Categories::where('slug', 'direct-care')
+            $nav->with('direct_care', Category::where('slug', 'direct-care')
                 ->first());
         });
 
         view()->composer('layouts.partials._in_product_nav', function ($nav) {
-            $nav->with('for_face', Categories::where('slug', 'for-face')
+            $nav->with('for_face', Category::where('slug', 'for-face')
                 ->first());
-            $nav->with('for_body', Categories::where('slug', 'for-body')
+            $nav->with('for_body', Category::where('slug', 'for-body')
                 ->first());
-            $nav->with('direct_care', Categories::where('slug', 'direct-care')
+            $nav->with('direct_care', Category::where('slug', 'direct-care')
                 ->first());
         });
 
@@ -117,20 +128,5 @@ class AppServiceProvider extends ServiceProvider
                 ->whereRaw('YEAR(created_at) = ?', [$currentYear])
                 ->get());
         });
-
-        Builder::macro('whereLike', function(string $attribute, string $searchTerm) {
-            return $this->orWhere($attribute, 'LIKE', "%{$searchTerm}%");
-        });
-
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }

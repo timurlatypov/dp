@@ -2,7 +2,7 @@
 
 namespace App\Nova\Filters;
 
-use App\Brand as BrandModel;
+use App\Models\Brand as BrandModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
@@ -16,7 +16,10 @@ class Brand extends Filter
      */
     public $component = 'select-filter';
 
-    public function name(): string
+    /**
+     * @return array|null|string
+     */
+    public function name()
     {
         return __('nova/resources.filters.brand.title');
     }

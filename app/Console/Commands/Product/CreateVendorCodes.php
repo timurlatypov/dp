@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Product;
 
-use App\Product;
+use App\Models\Product;
 use App\Services\VendorService;
 use Illuminate\Console\Command;
 
@@ -21,26 +21,4 @@ class CreateVendorCodes extends Command
      * @var string
      */
     protected $description = 'Команда создаёт для всех продуктов номер артикула.';
-
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    public function handle()
-    {
-        $products = Product::withTrashed()->get();
-
-        foreach ($products as $product) {
-            $brand = $product->brand()->first();
-
-            $product->update([
-                'vendor_code' => VendorService::makeCode($brand->id, $product->id),
-            ]);
-
-            $product->save();
-        }
-
-        return 0;
-    }
 }

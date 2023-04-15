@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class LiveFilter
 {
-	public function filter(Builder $builder, $value)
+	public function filter(Builder $builder, $value): Builder
 	{
 		$value = ( $value === 'false' ? 0 : 1 );
 

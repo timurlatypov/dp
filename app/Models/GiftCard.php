@@ -11,6 +11,11 @@ class GiftCard extends Model
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var list{'serial', 'code', 'amount', 'used', 'user_id', 'order_id', 'expired_at'}
+     */
     protected $fillable = [
         'serial',
         'code',
@@ -21,6 +26,11 @@ class GiftCard extends Model
         'expired_at',
     ];
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{used: 'boolean', expired_at: 'datetime'}
+     */
     protected $casts = [
         'used'         => 'boolean',
         'expired_at'   => 'datetime',

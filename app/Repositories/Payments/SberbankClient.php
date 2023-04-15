@@ -18,7 +18,7 @@ class SberbankClient extends Client
         parent::__construct($options);
     }
 
-    public function doDeclineOrder($orderId)
+    public function doDeclineOrder($orderId): array
     {
         $data['orderId']       = $orderId;
         $data['merchantLogin'] = config('gateway.sberbank.userName');

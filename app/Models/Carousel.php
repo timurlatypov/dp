@@ -12,13 +12,26 @@ class Carousel extends Model
     use LiveAware;
     use SoftDeletes;
 
+    /**
+     * @var array
+     */
     protected $guarded = [];
 
+	/**
+	 * @var string[]
+	 *
+	 * @psalm-var list{'expired_at_diff'}
+	 */
 	protected $appends = ['expired_at_diff'];
 
+	/**
+	 * @var string[]
+	 *
+	 * @psalm-var list{'expired_at'}
+	 */
 	protected $dates = ['expired_at'];
 
-	public function scopeExpired(Builder $builder)
+	public function scopeExpired(Builder $builder): Builder
 	{
 		return $builder->where('expired_at', '>', now() );
 	}

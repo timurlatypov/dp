@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Feed;
 use App\Models\Menu;
-use App\Product;
+use App\Models\Product;
 
 class FeedController extends Controller
 {
-    public function index()
+    public function index(): Feed
     {
         $categories = Menu::all();
         $feedProducts = Product::getFeedProducts();

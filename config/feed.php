@@ -11,15 +11,15 @@ return [
              * You can also pass an argument to that method:
              * ['App\Model@getAllFeedItems', 'argument']
              */
-            'items' => 'App\Product@getFeedItems',
+            'items' => 'App\Models\Product@getFeedItems',
 
             /*
              * The feed will be available on this url.
              */
             'url' => '/feed',
 
-            'title' => 'App\Product@getFeedTitle',
-            'description' => 'App\Product@getFeedTitle',
+            'title' => 'App\Models\Product@getFeedTitle',
+            'description' => 'App\Models\Product@getFeedTitle',
             'language' => 'en-US',
 
             /*

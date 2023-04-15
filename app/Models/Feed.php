@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Exceptions\Feed\InvalidFeedItem;
-use App\ProductFeedItem;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;

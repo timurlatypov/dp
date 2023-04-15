@@ -2,7 +2,7 @@
 
 namespace App\Nova\Filters;
 
-use App\Line as LineModel;
+use App\Models\Line as LineModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
@@ -16,7 +16,10 @@ class Line extends Filter
      */
     public $component = 'select-filter';
 
-    public function name(): string
+    /**
+     * @return array|null|string
+     */
+    public function name()
     {
         return __('nova/resources.filters.line.title');
     }

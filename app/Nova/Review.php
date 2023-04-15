@@ -18,7 +18,7 @@ class Review extends Resource
      *
      * @var string
      */
-    public static $model = \App\Review::class;
+    public static $model = \App\Models\Review::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -36,12 +36,18 @@ class Review extends Resource
         'id',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.review.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.review.singularLabel');
     }
@@ -51,7 +57,9 @@ class Review extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (BelongsTo|Boolean|Date|ID|Rating|Textarea)[]
+     *
+     * @psalm-return list{ID, BelongsTo, BelongsTo, Textarea, Rating, Date, Boolean}
      */
     public function fields(Request $request)
     {
@@ -79,7 +87,7 @@ class Review extends Resource
                 ->sortable(),
 
             Date::make(__('nova/resources.review.fields.published_at'), 'published_at')
-                ->sortable([true])
+                ->sortable(true)
                 ->firstDayOfWeek(Carbon::MONDAY),
 
             Boolean::make(__('nova/resources.review.fields.published'), 'published'),
@@ -92,6 +100,8 @@ class Review extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -104,6 +114,8 @@ class Review extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -116,6 +128,8 @@ class Review extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -128,6 +142,8 @@ class Review extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

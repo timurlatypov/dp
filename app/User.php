@@ -2,6 +2,13 @@
 
 namespace App;
 
+use App\Models\Address;
+use App\Models\GoogleAnalytics;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\YandexMetrika;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,12 +20,20 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
-    protected $loyalty_discount = 0;
-
+    /**
+     * @var string[]
+     *
+     * @psalm-var list{'loyalty'}
+     */
     protected $appends = [
         'loyalty',
     ];
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var list{'name', 'surname', 'phone', 'email', 'password'}
+     */
     protected $fillable = [
         'name',
         'surname',
@@ -27,77 +42,56 @@ class User extends Authenticatable
         'password',
     ];
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var list{'password', 'remember_token'}
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    public function isSuperAdmin()
+    public function isSuperAdmin(): bool
     {
         return $this->hasRole('super-admin');
     }
 
-    public function ym()
+    public function ym(): BelongsToMany
     {
         return $this->belongsToMany(YandexMetrika::class, 'users_ym', 'user_id', 'ym');
     }
 
-    public function ga()
+    public function ga(): BelongsToMany
     {
         return $this->belongsToMany(GoogleAnalytics::class, 'users_ym', 'user_id', 'ga');
     }
 
-    public function addresses()
+    public function addresses(): HasMany
     {
         return $this->hasMany(Address::class);
     }
 
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function favorites()
+    public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'users_products');
     }
 
+    /**
+     * @return float|int
+     */
     public function totalSum()
     {
         return array_sum($this->orders->where('order_status', 'Доставлен')->pluck('billing_subtotal')->toArray());
     }
 
-
-    public function getLoyaltyAttribute()
-    {
-
-        if (count($this->orders) === 0) {
-            return $loyalty_discount = 0;
-        }
-
-        return $this->discountAmount();
-    }
-
-    public function discountAmount()
-    {
-        $totalSum = $this->totalSum();
-
-        if ($totalSum >= 0 && $totalSum <= 15000) {
-            $this->loyalty_discount = 0;
-        } elseif ($totalSum > 15000 && $totalSum <= 30000) {
-            $this->loyalty_discount = 0;
-        } elseif ($totalSum > 30000 && $totalSum <= 60000) {
-            $this->loyalty_discount = 0;
-        } elseif ($totalSum > 60000) {
-            $this->loyalty_discount = 0;
-        }
-
-        return $this->loyalty_discount;
-    }
-
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return $this->name . ' ' . $this->surname;
     }
-
 }
