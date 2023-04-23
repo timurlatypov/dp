@@ -21,7 +21,6 @@ Route::get('/confidentiality', 'HomeController@confidentiality')->name('confiden
 Route::get('/delivery', 'HomeController@delivery')->name('delivery');
 Route::get('/sdek', 'HomeController@sdek')->name('sdek');
 Route::get('/sdek-points', 'HomeController@sdekPoints')->name('sdek.points');
-//Route::get('/loyalty', 'HomeController@loyalty')->name('loyalty');
 Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 
 // Online payment routes for SUCCESS and FAILURE statuses
@@ -84,8 +83,6 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
     Route::get('/addresses', 'AccountController@addresses')->name('account.addresses');
     Route::get('/orders', 'AccountController@orders')->name('account.orders');
     Route::get('/favorite', 'AccountController@favorites')->name('account.favorite');
-    //	Route::get('/loyalty', 'AccountController@loyalty')->name('account.loyalty');
-
 });
 
 
@@ -150,8 +147,8 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
     // DISCOUNT
     //
     Route::group(['prefix' => '/discount', 'namespace' => 'Discount'], function () {
-        Route::get('/', 'DiscountsController@index')->name('admin.discount.index');
-        Route::post('/update', 'DiscountsController@update')->name('admin.discount.update');
+        Route::get('/', 'DiscountController@index')->name('admin.discount.index');
+        Route::post('/update', 'DiscountController@update')->name('admin.discount.update');
     });
 
     //

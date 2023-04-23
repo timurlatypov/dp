@@ -23,15 +23,6 @@ class User extends Authenticatable
     /**
      * @var string[]
      *
-     * @psalm-var list{'loyalty'}
-     */
-    protected $appends = [
-        'loyalty',
-    ];
-
-    /**
-     * @var string[]
-     *
      * @psalm-var list{'name', 'surname', 'phone', 'email', 'password'}
      */
     protected $fillable = [

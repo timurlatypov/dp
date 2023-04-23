@@ -10,7 +10,9 @@ use App\Models\Coupon;
 use App\Events\NewOrderCreated;
 use App\Models\Sberbank;
 use App\Models\YandexMetrika;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
@@ -22,7 +24,7 @@ class OrderController extends Controller
      *
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|null
+     * @return ResponseFactory|Response|null
      */
     public function store(Request $request)
     {
@@ -49,7 +51,7 @@ class OrderController extends Controller
             }
 
             $giftCard = $request->get('gift_card');
-            $hasGiftCard = (bool)$giftCard['code'];
+            $hasGiftCard = (bool) $giftCard['code'];
             $giftCardModel = null;
             if ($hasGiftCard) {
                 try {
@@ -69,7 +71,6 @@ class OrderController extends Controller
             $order = Order::create([
                 'user_id' => $user_id,
                 'order_details' => json_encode($request->cart),
-                'order_status' => 'Новый',
                 'coupon' => $hasCoupon,
                 'coupon_details' => json_encode($request->coupon),
 
@@ -79,7 +80,7 @@ class OrderController extends Controller
                 'billing_surname' => $request->user['surname'],
                 'billing_phone' => $request->user['phone'],
                 'billing_email' => $request->user['email'],
-                'billing_loyalty' => $request->user['loyalty'],
+                'billing_loyalty' => 0,
 
                 'billing_index' => $request->address['billing_index'],
                 'billing_city' => $request->address['billing_city'],
@@ -214,7 +215,7 @@ class OrderController extends Controller
                 $order = Order::where('id', $find_order[0]->id)->first();
 
                 $check_order_payment->update([
-                    'status' => 'Оплачен',
+                    'billinstatus' => 'Оплачен',
                 ]);
 
                 SendSberbankPaymentSuccessMessage::dispatch($order);

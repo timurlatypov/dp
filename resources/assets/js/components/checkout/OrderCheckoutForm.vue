@@ -567,6 +567,7 @@ export default {
         .then(response => {
           if (response.status === 202) {
             this.order.gift_card.error = response.data.message;
+
             return;
           }
           this.order.gift_card = response.data.gift_card;

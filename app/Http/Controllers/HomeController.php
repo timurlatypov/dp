@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function novelties()
     {
-        Category::where('slug', 'new-products')->first();
-        Product::where('novelty', 1)->live()->paginate(21);
+        $categories = Category::where('slug', 'new-products')->first();
+        $products = Product::where('novelty', 1)->live()->paginate(21);
 
         return view('web.template', compact(['products', 'categories']));
     }
@@ -36,7 +36,7 @@ class HomeController extends Controller
     public function bestsellers()
     {
         $categories = Category::where('slug', 'bestsellers')->first();
-        $categories->products()->live()->paginate(21);
+        $products = $categories->products()->live()->paginate(21);
 
         return view('web.template', compact(['products', 'categories']));
     }
@@ -47,7 +47,7 @@ class HomeController extends Controller
     public function premium()
     {
         $categories = Category::where('slug', 'premium')->first();
-        $categories->products()->live()->paginate(20);
+        $products = $categories->products()->live()->paginate(20);
 
         return view('web.template', compact(['products', 'categories']));
     }
@@ -58,7 +58,7 @@ class HomeController extends Controller
     public function fourteenthFeb()
     {
         $categories = Category::where('slug', '14feb')->first();
-        $categories->products()->live()->paginate(20);
+        $products = $categories->products()->live()->paginate(20);
 
         return view('web.template', compact(['products', 'categories']));
     }
@@ -69,7 +69,7 @@ class HomeController extends Controller
     public function eightMarch()
     {
         $categories = Category::where('slug', '8march')->first();
-        $categories->products()->live()->paginate(20);
+        $products = $categories->products()->live()->paginate(20);
 
         return view('web.template', compact(['products', 'categories']));
     }
@@ -79,8 +79,8 @@ class HomeController extends Controller
      */
     public function set()
     {
-        $brand    = Brand::where('slug', 'sets')->first();
-        $brand->products()->live()->paginate(21);
+        $brand = Brand::where('slug', 'sets')->first();
+        $products = $brand->products()->live()->paginate(21);
 
         return view('web.sets', compact(['products', 'brand']));
     }
@@ -90,7 +90,7 @@ class HomeController extends Controller
      */
     public function discounts()
     {
-        Product::discount()->live()->paginate(21);
+        $products = Product::discount()->live()->paginate(21);
 
         return view('web.discounts', compact(['products']));
     }
@@ -148,17 +148,9 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function loyalty()
-    {
-        return view('web.loyalty');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function category(Category $categories)
     {
-        $categories->products()->live()->orderBy('title_eng', 'asc')->paginate(21);
+        $products = $categories->products()->live()->orderBy('title_eng', 'asc')->paginate(21);
 
         return view('web.category', compact(['products', 'categories']));
     }
@@ -168,7 +160,7 @@ class HomeController extends Controller
      */
     public function subcategory(Category $categories, Subcategory $subcategory)
     {
-        $subcategory->products()->live()->orderBy('title_eng', 'asc')->paginate(21);
+        $products = $subcategory->products()->live()->orderBy('title_eng', 'asc')->paginate(21);
 
         return view('web.category', compact(['products', 'categories', 'subcategory']));
     }

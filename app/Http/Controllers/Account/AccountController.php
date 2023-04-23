@@ -62,14 +62,4 @@ class AccountController extends Controller
 
         return view('account.pages.favorite', compact('favorites'));
     }
-
-    /**
-     * @return Factory|View
-     */
-    public function loyalty()
-    {
-        $user = auth()->user();
-
-        return view('account.pages.loyalty', compact(['user']));
-    }
 }

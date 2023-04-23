@@ -72,23 +72,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the extra dashboards that should be displayed on the Nova dashboard.
      *
-     * @return OrderInsights[]
-     *
-     * @psalm-return list{OrderInsights}
+     * @return []
      */
-    protected function dashboards()
+    protected function dashboards(): array
     {
-        return [
-            new OrderInsights()
-        ];
+        return [];
     }
 
     /**
      * Get the tools that should be listed in the Nova sidebar.
      *
      * @return NovaPermissions[]
-     *
-     * @psalm-return list{NovaPermissions}
      */
     public function tools()
     {

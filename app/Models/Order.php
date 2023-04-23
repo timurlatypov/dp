@@ -15,7 +15,7 @@ class Order extends Model
 {
 	use SoftDeletes;
 
-    public const PENDING = 'Создан';
+    public const PENDING = 'Новый';
     public const PROCESSING = 'В работе';
     public const DELIVERED = 'Доставлен';
     public const CANCELLED = 'Отменён';
@@ -27,17 +27,15 @@ class Order extends Model
 
 	/**
 	 * @var string[]
-	 *
-	 * @psalm-var list{'order_id'}
 	 */
 	protected $appends = ['order_id'];
 
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($order) {
-            $order->status = self::PENDING;
+            $order->order_status = self::PENDING;
         });
     }
 
