@@ -33,6 +33,24 @@ Route::get('/payment-failure', 'OrderController@failure')->name('payment.failure
 Route::get('/failure', 'HomeController@failure')->name('page.failure');
 
 
+/////////////////////////////////////////////////////////////////
+//
+//  BILLING
+//
+/////////////////////////////////////////////////////////////////
+Route::group(['prefix' => '/billing', 'namespace' => 'Billing'], function () {
+    Route::group(['prefix' => '/gateway', 'namespace' => 'Gateway'], function () {
+        Route::get('/register', 'GatewayController@register')->name('billing.gateway.register');
+        Route::get('/decline', 'GatewayController@decline')->name('billing.gateway.decline');
+    });
+
+    Route::group(['prefix' => '/postback', 'namespace' => 'Postback'], function () {
+        Route::get('/{gateway}', 'PostbackController@process')->name('billing.postback.process');
+    });
+});
+
+
+
 Route::group(['prefix' => '/category'], function () {
     Route::get('/{categories}', 'HomeController@category')->name('show.category');;
     Route::get('/{categories}/{subcategory}', 'HomeController@subcategory')->name('show.category.subcategory');;

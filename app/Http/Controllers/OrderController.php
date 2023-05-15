@@ -208,6 +208,7 @@ class OrderController extends Controller
         if ($request->query('orderId')) {
             $id = $request->query('orderId');
             $check_order_payment = Sberbank::where('payment_id', $id)->first();
+//            $check_order_payment = Payment::where('payment_id', $id)->first();
 
             if ($check_order_payment->status === 'В ожидании') {
 
@@ -219,6 +220,7 @@ class OrderController extends Controller
                 ]);
 
                 SendSberbankPaymentSuccessMessage::dispatch($order);
+                // SendPaymentSuccessMessage::dispatch($order);
 
                 return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
             }
