@@ -32,7 +32,6 @@ class Product extends Model implements Feedable
     /**
      * @var string[]
      *
-     * @psalm-var list{'brand'}
      */
     protected $with = [
         'brand',
@@ -41,7 +40,6 @@ class Product extends Model implements Feedable
     /**
      * @var string[]
      *
-     * @psalm-var list{'new_product'}
      */
     protected $appends = [
         'new_product',

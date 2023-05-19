@@ -99,16 +99,14 @@
                                 <td class="text-muted">{{ $order->created_at->format('d.m.Y H:i:s') }}</td>
                                 <td>{{ $order->billing_total }} &#x20BD;</td>
                                 <td>
-                                    @if(count($order->payments))
-                                        @foreach($order->payments as $payment)
-                                            @if($payment->status === 'В ожидании')
-                                                <span class="text-warning">Ожидает оплату</span>
-                                            @elseif($payment->status === 'Оплачен')
-                                                <span class="font-weight-bold text-success">Оплачен онлайн</span>
-                                            @else
-                                                <span class="font-weight-bold text-muted">Нет информации</span>
-                                            @endif
-                                        @endforeach
+                                    @if($order->payment)
+                                        @if($order->payment->status === \App\Billing\PaymentStatusEnum::PENDING)
+                                            <span class="text-warning">Ожидает оплату</span>
+                                        @elseif($order->payment->status === \App\Billing\PaymentStatusEnum::PAID)
+                                            <span class="font-weight-bold text-success">Оплачен онлайн</span>
+                                        @else
+                                            <span class="font-weight-bold text-muted">Нет информации</span>
+                                        @endif
                                     @else
                                         <b>{{ $order->order_payment }}</b>&nbsp;
                                         <button style="opacity: 0.25;" type="button" class="btn btn-success btn-sm btn-fab" data-id="{{ $order->id }}" data-order="{{ $order->order_id }}" data-toggle="modal" data-target="#changeOrderPaymentModal">

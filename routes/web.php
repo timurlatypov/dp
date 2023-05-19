@@ -23,6 +23,8 @@ Route::get('/sdek', 'HomeController@sdek')->name('sdek');
 Route::get('/sdek-points', 'HomeController@sdekPoints')->name('sdek.points');
 Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 
+
+
 // Online payment routes for SUCCESS and FAILURE statuses
 Route::get('/payment-check', 'OrderController@check')->name('payment.check');
 Route::get('/payment-success', 'OrderController@success')->name('payment.success');
@@ -40,12 +42,17 @@ Route::get('/failure', 'HomeController@failure')->name('page.failure');
 /////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/billing', 'namespace' => 'Billing'], function () {
     Route::group(['prefix' => '/gateway', 'namespace' => 'Gateway'], function () {
-        Route::get('/register', 'GatewayController@register')->name('billing.gateway.register');
-        Route::get('/decline', 'GatewayController@decline')->name('billing.gateway.decline');
+        Route::get('/{order}/register', 'PaymentController@register')->name('billing.gateway.registerOrder');
+        Route::get('/{hash}/invalidate', 'PaymentController@invalidate')->name('billing.gateway.invalidatePaymentLink');
+        Route::get('/{order}/sendLink', 'PaymentController@sendLink')->name('billing.gateway.sendLink');
+
+        Route::get('/success', 'PaymentController@success')->name('billing.gateway.payment.success');
+        Route::get('/failed', 'PaymentController@failed')->name('billing.gateway.payment.failed');
+
     });
 
     Route::group(['prefix' => '/postback', 'namespace' => 'Postback'], function () {
-        Route::get('/{gateway}', 'PostbackController@process')->name('billing.postback.process');
+        Route::get('/{gateway}', 'PostbackController@check')->name('billing.postback.check');
     });
 });
 

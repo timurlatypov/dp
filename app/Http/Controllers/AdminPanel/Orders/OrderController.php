@@ -38,7 +38,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = Order::orderBy('created_at', 'desc')
-            ->with(['payments', 'manager'])
+            ->with(['payment', 'manager'])
             ->filter($request, $this->getFilters())
             ->paginate(20);
 
@@ -257,7 +257,7 @@ class OrderController extends Controller
 
         $payment = Sberbank::where('payment_id', $result['orderId'])->first();
 
-        $order->payments()->attach($payment);
+        $order->sberbankPayments()->attach($payment);
 
         return back();
 
@@ -305,7 +305,7 @@ class OrderController extends Controller
 
     public function sendLink(Order $order, Request $request): RedirectResponse
     {
-        $link = $order->payments()->latest()->first();
+        $link = $order->payment;
 
         if ($link) {
             SendSberbankPaymentLink::dispatch($order, $link->payment_link);
@@ -314,7 +314,6 @@ class OrderController extends Controller
         }
 
         return back()->with('flash-error', 'Ccылка не отправлена');
-
     }
 
     public function orderStatus($id)

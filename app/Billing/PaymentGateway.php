@@ -2,7 +2,9 @@
 
 namespace App\Billing;
 
+use App\Models\Order;
+
 interface PaymentGateway
 {
-    public function pay();
+    public function registerOrder(Order $order);
 }

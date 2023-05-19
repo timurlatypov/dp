@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
@@ -28,7 +29,10 @@ class Order extends Model
 	/**
 	 * @var string[]
 	 */
-	protected $appends = ['order_id'];
+	protected $appends = [
+        'order_id',
+        'order_id_raw'
+    ];
 
     protected static function boot()
     {
@@ -59,6 +63,11 @@ class Order extends Model
 	{
 		return 'DP-'.str_pad($this->id,6,'0',STR_PAD_LEFT);
 	}
+
+    public function getOrderIdRawAttribute(): string
+    {
+        return $this->id;
+    }
 
 	/**
 	 * @return int|null
@@ -100,10 +109,15 @@ class Order extends Model
 		return $this->belongsToMany(GoogleAnalytics::class, 'orders_ga', 'order_id', 'ga');
 	}
 
-	public function payments(): BelongsToMany
+	public function sberbankPayments(): BelongsToMany
 	{
 		return $this->belongsToMany(Sberbank::class, 'orders_payments', 'order_id', 'payment_id');
 	}
+
+    public function payment(): HasOne
+    {
+        return $this->hasOne(Payment::class);
+    }
 
     /**
      * @return mixed|null

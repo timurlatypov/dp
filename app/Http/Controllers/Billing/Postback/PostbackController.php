@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Billing\Postback;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentGateway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PostbackController extends Controller
 {
@@ -28,5 +29,14 @@ class PostbackController extends Controller
         $hmac = hash_hmac ( 'sha256' , $string , '');
 
         dd(strtoupper($hmac), $checksum);
+    }
+
+    public function check(Request $request)
+    {
+        Log::info('Alfabank postback', [
+            'request' => $request->all(),
+        ]);
+
+        return response()->json('OK', 200);
     }
 }
