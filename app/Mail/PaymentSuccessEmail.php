@@ -23,4 +23,14 @@ class PaymentSuccessEmail extends Mailable
     {
         $this->order = $order;
     }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->subject('Оплачен заказ '.$this->order->order_id)->view('emails.order.notification.payment-success');
+    }
 }

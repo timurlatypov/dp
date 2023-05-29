@@ -29,10 +29,11 @@ export const commonCalculation = {
 
         discountedPrice(price, discount, coupon) {
             let couponDiscount = 0
-            if (coupon && coupon > 0) {
+            if (coupon) {
                 couponDiscount = coupon
             }
-            return Number(price * ((100 - (discount + couponDiscount)) / 100))
+
+            return Number(price) - (Number(price) * ((Number(discount) + Number(couponDiscount)) / 100 ))
         },
 
         calcOriginalTotal(price, qty) {

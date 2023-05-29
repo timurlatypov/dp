@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Billing\Gateway;
 use App\Billing\Alfabank\AlfabankPaymentGateway;
 use App\Billing\PaymentStatusEnum;
 use App\Http\Controllers\Controller;
-use App\Jobs\SendPaymentLinkEmail;
-use App\Jobs\SendPaymentSuccessMessageEmail;
-use App\Mail\PaymentLinkEmail;
+use App\Jobs\SendPaymentLinkJob;
+use App\Jobs\SendPaymentSuccessMessageJob;
 use App\Models\Order;
 use App\Models\Payment;
 use Exception;
@@ -45,7 +44,7 @@ class PaymentController extends Controller
         $link = $order->payment()->get();
 
         if ($link) {
-            SendPaymentLinkEmail::dispatch($order, $link->form_url);
+            SendPaymentLinkJob::dispatch($order, $link->form_url);
 
             return back()->with('flash', 'Ccылка отправлена на почту ' . $order->billing_email);
         }
@@ -67,7 +66,7 @@ class PaymentController extends Controller
                     'status' => PaymentStatusEnum::PAID,
                 ]);
 
-                SendPaymentSuccessMessageEmail::dispatch($order);
+                SendPaymentSuccessMessageJob::dispatch($order);
 
                 return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
             }

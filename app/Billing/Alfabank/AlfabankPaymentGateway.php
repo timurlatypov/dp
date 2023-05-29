@@ -4,7 +4,6 @@ namespace App\Billing\Alfabank;
 
 use App\Models\Order;
 use App\Models\Payment;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -12,6 +11,7 @@ class AlfabankPaymentGateway
 {
     private $username;
     private $password;
+    private $token;
     private $gateway;
     private $postback;
     private $returnUrl;
@@ -22,6 +22,7 @@ class AlfabankPaymentGateway
     {
         $this->username = config('billing.alfabank.username');
         $this->password = config('billing.alfabank.password');
+        $this->token = config('billing.alfabank.token');
         $this->gateway = config('billing.alfabank.gateway');
         $this->postback = config('billing.alfabank.postback');
         $this->returnUrl = config('billing.alfabank.returnUrl');
@@ -34,17 +35,23 @@ class AlfabankPaymentGateway
         try {
             DB::beginTransaction();
 
-            $data = array(
-                'userName' => $this->username,
-                'password' => $this->password,
-                'orderNumber' => $order->order_id . '/' . now(),
-                'amount' => (int) $order->billing_total * 100,
-                'dynamicCallbackUrl' => $this->postback,
-                'expirationDate' => now()->addDays(1)->toIso8601String(),
-                'returnUrl' => $this->returnUrl,
-                'failUrl' => $this->failUrl,
-                'sessionTimeoutSecs' => $this->sessionTimeoutSecs,
-            );
+            $data = [];
+
+            if (!empty($this->token)) {
+                $data['token'] = $this->token;
+            } else {
+                $data['userName'] = $this->username;
+                $data['password'] = $this->password;
+            }
+
+            $data['orderNumber'] = $order->order_id . '/' . now();
+            $data['amount'] = (int) $order->billing_total * 100;
+            $data['dynamicCallbackUrl'] = $this->postback;
+            $data['expirationDate'] = now()->addDays(1)->toIso8601String();
+            $data['returnUrl'] = $this->returnUrl;
+            $data['failUrl'] = $this->failUrl;
+            $data['sessionTimeoutSecs'] = $this->sessionTimeoutSecs;
+
 
             $response = Http::asForm()->post($this->gateway . "register.do", $data);
             $data = $response->body();
