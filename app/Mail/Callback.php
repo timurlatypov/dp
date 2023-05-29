@@ -11,13 +11,13 @@ class Callback extends Mailable
 {
     use Queueable, SerializesModels;
 
-	/**
-	 * Create a new message instance.
-	 *
-	 * @return void
-	 */
 	public function __construct($request)
 	{
 		$this->request = $request;
 	}
+
+    public function build(): self
+    {
+        return $this->view('emails.callback')->subject('Обратный звонок');
+    }
 }

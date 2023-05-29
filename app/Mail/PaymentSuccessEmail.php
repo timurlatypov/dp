@@ -6,7 +6,6 @@ use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class PaymentSuccessEmail extends Mailable
 {
@@ -24,12 +23,7 @@ class PaymentSuccessEmail extends Mailable
         $this->order = $order;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
+    public function build(): self
     {
         return $this->subject('Оплачен заказ '.$this->order->order_id)->view('emails.order.notification.payment-success');
     }
