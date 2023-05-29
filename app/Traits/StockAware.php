@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait StockAware
 {
-    public function scopeStock(Builder $query)
+    public function scopeStock(Builder $query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('stock', true);
     }
 
-    public function onStock()
+    public function onStock(): bool
     {
         return $this->stock === 1;
     }
 
-    public function notOnStock()
+    public function notOnStock(): bool
     {
         return !$this->onStock();
     }

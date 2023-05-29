@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 
 class GiftCardController extends Controller
 {
-    private $cart;
+    private Cart $cart;
 
     public function __construct(Cart $cart)
     {
@@ -19,7 +19,7 @@ class GiftCardController extends Controller
     }
 
     /**
-     * @return Application|ResponseFactory|Response
+     * @return Response|ResponseFactory
      */
     public function cancel()
     {

@@ -9,8 +9,8 @@ use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
-    protected $client;
-    protected $suggest;
+    protected Client $client;
+    protected ClientSuggest $suggest;
 
     public function __construct()
     {

@@ -14,7 +14,7 @@ class BookmarkController extends Controller
      * @param \Illuminate\Http\Request      $request
      * @param \Gloudemans\Shoppingcart\Cart $bookmark
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function store(Request $request, Cart $bookmark)
     {

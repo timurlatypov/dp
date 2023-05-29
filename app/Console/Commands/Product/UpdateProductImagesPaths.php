@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Product;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Console\Command;
 
 class UpdateProductImagesPaths extends Command
@@ -26,7 +26,7 @@ class UpdateProductImagesPaths extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $products = Product::query()
             ->withTrashed()

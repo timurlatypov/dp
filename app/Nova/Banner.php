@@ -42,12 +42,18 @@ class Banner extends Resource
         'id',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.banner.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.banner.singularLabel');
     }
@@ -57,7 +63,9 @@ class Banner extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (Color|Date|ID|Image|Number|Text|mixed)[]
+     *
+     * @psalm-return list{ID, Text, Text, Image, Image, Color, Number, mixed, Date, Date}
      */
     public function fields(Request $request)
     {
@@ -115,6 +123,8 @@ class Banner extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -127,6 +137,8 @@ class Banner extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -139,6 +151,8 @@ class Banner extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -151,6 +165,8 @@ class Banner extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

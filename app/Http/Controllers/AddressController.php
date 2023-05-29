@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Address;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): void
     {
         //
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): void
     {
         //
     }
@@ -30,10 +26,9 @@ class AddressController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(Request $request): void
     {
         //
     }
@@ -41,10 +36,9 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Address  $address
-     * @return \Illuminate\Http\Response
+     * @param Address $address
      */
-    public function show(Address $address)
+    public function show(Address $address): void
     {
         //
     }
@@ -52,10 +46,9 @@ class AddressController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Address  $address
-     * @return \Illuminate\Http\Response
+     * @param Address $address
      */
-    public function edit(Address $address)
+    public function edit(Address $address): void
     {
         //
     }
@@ -63,11 +56,10 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Address  $address
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request  $request
+     * @param Address $address
      */
-    public function update(Request $request, Address $address)
+    public function update(Request $request, Address $address): void
     {
         //
     }
@@ -75,10 +67,9 @@ class AddressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Address  $address
-     * @return \Illuminate\Http\Response
+     * @param Address $address
      */
-    public function destroy(Address $address)
+    public function destroy(Address $address): void
     {
         //
     }

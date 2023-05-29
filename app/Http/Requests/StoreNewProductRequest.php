@@ -9,34 +9,18 @@ class StoreNewProductRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @return true
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-	    return [
-		    'slug' => 'required|max:191|unique:products',
-		    'brand_id' => 'required|max:191',
-		    'title_eng' => 'required|max:191',
-		    'title_rus' => 'required|max:191',
-		    'description_short' => 'required',
-		    'description_full' => 'required',
-		    'meta_title' => 'required|max:255',
-//			'meta_description' => 'required|max:300',
-//			'meta_keywords' => 'required|max:255',
-
-	    ];
-    }
-
+	/**
+	 * @return string[]
+	 *
+	 * @psalm-return array{'slug.required': 'Поле "Slug" является обязательным и значение должно быть уникальным!', 'brand_id.required': 'Поле "Бренд" является обязательным!', 'title_eng.required': 'Поле является обязательным!', 'title_rus.required': 'Поле является обязательным!', 'description_short.required': 'Поле является обязательным!', 'description_full.required': 'Поле является обязательным!', 'meta_title.required': 'Поле является обязательным!'}
+	 */
 	public function messages()
 	{
 		return [
@@ -47,8 +31,6 @@ class StoreNewProductRequest extends FormRequest
 			'description_short.required' => 'Поле является обязательным!',
 			'description_full.required' => 'Поле является обязательным!',
 			'meta_title.required' => 'Поле является обязательным!',
-//			'meta_description.required' => 'Поле является обязательным!',
-//			'meta_keywords.required' => 'Поле является обязательным!',
 		];
 	}
 }

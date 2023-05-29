@@ -2,7 +2,7 @@
 
 namespace Laravel\Nova\Tests\Browser;
 
-use App\Models\User;
+use App\User;
 use Laravel\Dusk\Browser;
 use Laravel\Nova\Testing\Browser\Components\IndexComponent;
 use Laravel\Nova\Testing\Browser\Pages\Create;

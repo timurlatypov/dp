@@ -4,11 +4,10 @@ namespace App\Providers;
 
 use App\Nova\Dashboards\OrderInsights;
 use App\Observers\ProductObserver;
-use App\Product;
+use App\Models\Product;
 use Eminiarts\NovaPermissions\NovaPermissions;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
-use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -21,7 +20,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function boot()
     {
-        Nova::serving(function (ServingNova $event) {
+        Nova::serving(static function () {
             app()->setLocale('ru');
             Product::observe(ProductObserver::class);
         });
@@ -59,7 +58,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the cards that should be displayed on the default Nova dashboard.
      *
-     * @return array
+     * @return Help[]
+     *
+     * @psalm-return list{Help}
      */
     protected function cards()
     {
@@ -71,19 +72,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the extra dashboards that should be displayed on the Nova dashboard.
      *
-     * @return array
+     * @return []
      */
-    protected function dashboards()
+    protected function dashboards(): array
     {
-        return [
-            new OrderInsights()
-        ];
+        return [];
     }
 
     /**
      * Get the tools that should be listed in the Nova sidebar.
      *
-     * @return array
+     * @return NovaPermissions[]
      */
     public function tools()
     {
@@ -92,15 +91,5 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 return $request->user()->hasAnyRole(['super-admin', 'admin']);
             }),
         ];
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }

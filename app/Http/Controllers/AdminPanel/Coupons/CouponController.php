@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers\AdminPanel\Coupons;
 
-use App\Coupon;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CouponController extends Controller
 {
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function index()
 	{
 		$coupons = Coupon::all();
 		return view('admin.coupons.index', compact('coupons'));
 	}
 
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function create()
 	{
 		return view('admin.coupons.create');
 	}
 
-	public function store(Request $request, Coupon $coupon)
+	public function store(Request $request, Coupon $coupon): void
 	{
 		$number = strtoupper(bin2hex(random_bytes(5)));
 		$coupon->create([

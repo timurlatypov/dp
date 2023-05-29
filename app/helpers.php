@@ -9,7 +9,7 @@
  * @return string
  */
 if (!function_exists('get_image_path')) {
-    function get_image_path($path): string
+    function get_image_path(string $path): string
     {
         if (app()->environment('production')) {
             return asset('/storage/' . $path);

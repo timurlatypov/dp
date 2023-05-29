@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Coupon;
+use App\Models\Coupon;
 use App\Services\Coupon\DiscountLevel;
 use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Contracts\Foundation\Application;
@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 
 class CouponController extends Controller
 {
-    private $cart;
+    private Cart $cart;
 
     public function __construct(Cart $cart)
     {
@@ -20,7 +20,7 @@ class CouponController extends Controller
     }
 
     /**
-     * @return Application|ResponseFactory|Response
+     * @return Response|ResponseFactory
      */
     public function destroy()
     {

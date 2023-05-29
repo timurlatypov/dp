@@ -3,7 +3,7 @@
 namespace Laravel\Nova\Tests\Browser;
 
 use App\Models\Captain;
-use App\Models\User;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Dusk\Browser;
 use Laravel\Nova\Testing\Browser\Pages\Create;

@@ -11,9 +11,17 @@ class Menu extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array
+     */
     protected $guarded = [];
 
-    public function getRouteKeyName()
+    /**
+     * @return string
+     *
+     * @psalm-return 'slug'
+     */
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }

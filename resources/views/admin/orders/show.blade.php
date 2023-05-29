@@ -34,35 +34,37 @@
                                 {{ $order->billing_comment }}
                                 <br><br>
                             </div>
+
                             <div class="col-12 col-sm-6 px-0">
-                                @if(count($order->payments))
+                                @if($order->payment)
                                     <h4 class="title mt-2 mb-2">Управление онлайн-оплатой</h4>
-                                    @foreach($order->payments as $payment)
-                                        @if($payment->status === 'В ожидании')
-                                            <p class="text-success">Ссылка на оплату заказа в Сбербанк-онлайн создана!</p>
-                                            <a href="{{ $payment->payment_link }}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Ссылка на страницу оплаты Сбербанк">Оплатить</a>
-                                            <a href="{{ route('admin.orders.reverseOrder', $payment->payment_id ) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Если клиент передумал сразу после оплаты!">Отмена оплаты</a>
-                                            <a href="{{ route('admin.orders.declineOrder', $payment->payment_id ) }}" class="btn btn-sm btn-danger">Удалить ссылку</a>
+                                    @if($order->payment->status === \App\Billing\PaymentStatusEnum::PENDING)
+                                        <p class="text-success">Ссылка на оплату заказа в Альфа-банк создана!</p>
+                                        <a href="{{ $order->payment->form_url }}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Ссылка на страницу оплаты Альфа-банк">Оплатить</a>
+{{--                                        <a href="{{ route('admin.orders.reverseOrder', $payment->payment_id ) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Если клиент передумал сразу после оплаты!">Отмена оплаты</a>--}}
+                                        <a href="{{ route('billing.gateway.invalidatePaymentLink', $order->payment->hash ) }}" class="btn btn-sm btn-danger">Удалить ссылку</a>
 
+                                        <h4 class="title mt-2 mb-2">Ссылка</h4>
+                                        <p style="padding: 0.5em; background-color: #f3f3f3; border-radius: 5px; font-weight: bold">{{ $order->payment->form_url }}</p>
 
-                                            <h4 class="title mt-2 mb-2">Ссылка</h4>
-                                            <p style="padding: 0.5em; background-color: #f3f3f3; border-radius: 5px; font-weight: bold">{{ $payment->payment_link }}</p>
-
-                                            <div class="pt-3">
-                                                <h4 class="title mt-2 mb-2">Выслать ссылку клиенту</h4>
-                                                <a href="{{ route('admin.orders.sendLink', $order) }}" class="btn btn-sm btn-info">
-                                                    <i class="fas fa-sm fa-paper-plane"></i>&nbsp;<span class="font-weight-bold">Отправить письмо</span>
-                                                </a>
-                                            </div>
-                                        @elseif($payment->status === 'Оплачен')
-                                            <span class="font-weight-bold text-success">Заказ оплачен онлайн</span>
-                                        @endif
-                                    @endforeach
+                                        <div class="pt-3">
+                                            <h4 class="title mt-2 mb-2">Выслать ссылку клиенту</h4>
+                                            <a href="{{ route('billing.gateway.sendLink', $order) }}" class="btn btn-sm btn-info">
+                                                <i class="fas fa-sm fa-paper-plane"></i>&nbsp;<span class="font-weight-bold">Отправить письмо</span>
+                                            </a>
+                                        </div>
+                                    @elseif($order->payment->status === \App\Billing\PaymentStatusEnum::PAID)
+                                        <span class="font-weight-bold text-success">Заказ оплачен онлайн</span>
+                                    @endif
                                 @else
-                                    <h4 class="title mt-2 mb-2">Сбербанк-онлайн</h4>
-                                    <p class="text-danger font-weight-bold">Убедитесь, что в заказе сумма и стоимость доставки правильные!</p>
-                                    <a href="{{ route('admin.orders.registerOrder', $order) }}" class="btn btn-success btn-sm">Создать ссылку</a>
+                                    <h4 class="title mt-2 mb-1">Альба-банк</h4>
+                                    <small class="text-danger font-weight-bold">Убедитесь, что в заказе сумма и стоимость доставки правильные!</small>
+                                    <br>
+                                    <a href="{{ route('billing.gateway.registerOrder', $order) }}" class="btn btn-success btn-sm">Создать ссылку</a>
                                 @endif
+
+
+
                                 <h4 class="title mt-2 mb-2">Подтверждение заказа по Email</h4>
                                 <a href="{{ route('admin.orders.resendConfirmation', $order) }}" class="btn btn-info btn-sm">Выслать письмо</a>
                                 <br>

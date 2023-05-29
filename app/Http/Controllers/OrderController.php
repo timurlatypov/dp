@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\GoogleAnalytics;
+use App\Models\GoogleAnalytics;
 use App\Jobs\SendSberbankPaymentSuccessMessage;
 use App\Models\GiftCard;
-use App\Order;
-use App\Coupon;
+use App\Models\Order;
+use App\Models\Coupon;
 use App\Events\NewOrderCreated;
-use App\Sberbank;
-use App\YandexMetrika;
+use App\Models\Sberbank;
+use App\Models\YandexMetrika;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
@@ -21,7 +23,8 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|void
+     *
+     * @return ResponseFactory|Response|null
      */
     public function store(Request $request)
     {
@@ -48,7 +51,8 @@ class OrderController extends Controller
             }
 
             $giftCard = $request->get('gift_card');
-            $hasGiftCard = (bool)$giftCard['code'];
+            $hasGiftCard = (bool) $giftCard['code'];
+            $giftCardModel = null;
             if ($hasGiftCard) {
                 try {
                     $giftCardModel = GiftCard::lockForUpdate()
@@ -67,7 +71,6 @@ class OrderController extends Controller
             $order = Order::create([
                 'user_id' => $user_id,
                 'order_details' => json_encode($request->cart),
-                'order_status' => 'Новый',
                 'coupon' => $hasCoupon,
                 'coupon_details' => json_encode($request->coupon),
 
@@ -77,7 +80,7 @@ class OrderController extends Controller
                 'billing_surname' => $request->user['surname'],
                 'billing_phone' => $request->user['phone'],
                 'billing_email' => $request->user['email'],
-                'billing_loyalty' => $request->user['loyalty'],
+                'billing_loyalty' => 0,
 
                 'billing_index' => $request->address['billing_index'],
                 'billing_city' => $request->address['billing_city'],
@@ -140,7 +143,7 @@ class OrderController extends Controller
                 $ga_exists = GoogleAnalytics::where('ga', $ga)->first();
 
                 if (!$ga_exists) {
-                    $ga_save = GoogleAnalytics::create([
+                    GoogleAnalytics::create([
                         'ga' => $ga,
                     ])->save();
 
@@ -165,7 +168,7 @@ class OrderController extends Controller
                 $ym_exists = YandexMetrika::where('ym', $ym)->first();
 
                 if (!$ym_exists) {
-                    $ym_save = YandexMetrika::create([
+                    YandexMetrika::create([
                         'ym' => $ym,
                     ])->save();
 
@@ -184,7 +187,7 @@ class OrderController extends Controller
             }
         }
 
-        $cart = \Gloudemans\Shoppingcart\Facades\Cart::destroy();
+        \Gloudemans\Shoppingcart\Facades\Cart::destroy();
     }
 
     public function check(Request $request)
@@ -205,6 +208,7 @@ class OrderController extends Controller
         if ($request->query('orderId')) {
             $id = $request->query('orderId');
             $check_order_payment = Sberbank::where('payment_id', $id)->first();
+//            $check_order_payment = Payment::where('payment_id', $id)->first();
 
             if ($check_order_payment->status === 'В ожидании') {
 
@@ -212,10 +216,11 @@ class OrderController extends Controller
                 $order = Order::where('id', $find_order[0]->id)->first();
 
                 $check_order_payment->update([
-                    'status' => 'Оплачен',
+                    'billinstatus' => 'Оплачен',
                 ]);
 
                 SendSberbankPaymentSuccessMessage::dispatch($order);
+                // SendPaymentSuccessMessage::dispatch($order);
 
                 return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
             }

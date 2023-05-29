@@ -60,5 +60,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'cart.sync' => \App\Http\Middleware\V2\Cart\Sync::class,
+        'cart.isnotempty' => \App\Http\Middleware\V2\Cart\ResponseIfEmpty::class,
     ];
 }

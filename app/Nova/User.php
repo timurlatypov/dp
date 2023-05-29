@@ -38,13 +38,19 @@ class User extends Resource
         'surname',
         'email',
     ];
-
-    public static function label(): string
+    
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.user.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.user.singularLabel');
     }
@@ -54,7 +60,9 @@ class User extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (Gravatar|ID|MorphToMany|Password|Text)[]
+     *
+     * @psalm-return list{ID, Gravatar, Text, Text, Text, Password, MorphToMany, MorphToMany}
      */
     public function fields(Request $request)
     {
@@ -99,6 +107,8 @@ class User extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -111,6 +121,8 @@ class User extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -123,6 +135,8 @@ class User extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -135,6 +149,8 @@ class User extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

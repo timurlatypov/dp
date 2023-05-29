@@ -15,14 +15,12 @@ class OnStock extends Filter
      */
     public $component = 'select-filter';
 
-    public $currentValue = true;
-
     /**
      * The filter's name
      *
-     * @return string
+     * @return array|null|string
      */
-    public function name(): string
+    public function name()
     {
         return __('nova/resources.filters.stock.title');
     }
@@ -50,7 +48,9 @@ class OnStock extends Filter
      *
      * @param Request $request
      *
-     * @return array
+     * @return int[]
+     *
+     * @psalm-return array{'Да': 1, 'Нет': 0}
      */
     public function options(Request $request)
     {

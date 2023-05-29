@@ -2,7 +2,7 @@
 
 namespace Laravel\Nova\Tests\Browser;
 
-use App\Models\User;
+use App\User;
 use Database\Factories\CaptainFactory;
 use Database\Factories\ShipFactory;
 use Laravel\Dusk\Browser;

@@ -9,6 +9,9 @@ use Illuminate\Support\Arr;
 
 class CarouselController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Carousel $carousel)
     {
         $carousels = $carousel->all();
@@ -16,12 +19,15 @@ class CarouselController extends Controller
         return view('admin.design.carousel.index', compact('carousels'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view('admin.design.carousel.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): void
     {
         Carousel::create([
             'body'       => $request->body,
@@ -38,6 +44,9 @@ class CarouselController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function store_image(Request $request)
     {
         $this->validate($request, [
@@ -54,7 +63,7 @@ class CarouselController extends Controller
     }
 
 
-    public function update(Request $request, Carousel $carousel)
+    public function update(Request $request, Carousel $carousel): void
     {
         $c = $request->toArray();
 
@@ -63,7 +72,7 @@ class CarouselController extends Controller
         });
     }
 
-    public function toggle(Request $request)
+    public function toggle(Request $request): void
     {
         if ($request->get('checked')) {
             $checked = 1;

@@ -18,7 +18,7 @@ class Line extends Resource
      *
      * @var string
      */
-    public static $model = \App\Line::class;
+    public static $model = \App\Models\Line::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -36,12 +36,18 @@ class Line extends Resource
         'id',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.line.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.line.singularLabel');
     }
@@ -51,7 +57,9 @@ class Line extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (BelongsTo|ID|Text)[]
+     *
+     * @psalm-return list{ID, Text, BelongsTo, Text}
      */
     public function fields(Request $request)
     {
@@ -72,6 +80,8 @@ class Line extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -84,6 +94,8 @@ class Line extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
@@ -96,8 +108,10 @@ class Line extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
-    public function lenses(Request $request)
+    public function lenses(Request $request): array
     {
         return [];
     }
@@ -108,6 +122,8 @@ class Line extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

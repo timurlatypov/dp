@@ -11,8 +11,6 @@ class Callback extends Mailable
 {
     use Queueable, SerializesModels;
 
-	public $request;
-
 	/**
 	 * Create a new message instance.
 	 *
@@ -21,15 +19,5 @@ class Callback extends Mailable
 	public function __construct($request)
 	{
 		$this->request = $request;
-	}
-
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-	public function build()
-	{
-		return $this->view('emails.callback')->subject('Обратный звонок');
 	}
 }

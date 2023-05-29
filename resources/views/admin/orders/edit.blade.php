@@ -30,10 +30,12 @@
                     </div>
 
                     <order-edit-form
-                            :details="{{ json_encode($details) }}" :id="{{ $order->id }}"
-                            :billing_subtotal="{{ $order->billing_subtotal ?? 0 }}"
+                            :details="{{ json_encode($details) }}"
+                            :id="{{ $order->id }}"
                             :billing_delivery="{{ $order->billing_delivery ?? 0 }}"
-                            :billing_total="{{ $order->billing_total }}"></order-edit-form>
+                            :billing_total="{{ $order->billing_total }}"
+                            :billing_subtotal="{{ $order->billing_subtotal ?? 0 }}"
+                    ></order-edit-form>
 
                 </div>
             </div>

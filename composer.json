@@ -29,6 +29,7 @@
     "laravel/socialite": "*",
     "laravel/tinker": "*",
     "laravel/ui": "^3.0",
+    "moneyphp/money": "^4.1",
     "nikaia/nova-rating-field": "master",
     "optimistdigital/nova-sortable": "^2.1",
     "orlyapps/nova-belongsto-depend": "^2.0",
@@ -36,18 +37,19 @@
     "sentry/sentry": "^3.1",
     "sentry/sentry-laravel": "^2.3.1",
     "spatie/laravel-feed": "3.2.1",
+    "spatie/laravel-responsecache": "^7.4",
     "timothyasp/nova-color-field": "^1.0",
     "voronkovich/sberbank-acquiring-client": "*"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "*",
     "filp/whoops": "^2.7",
-    "fzaninotto/faker": "^1.9",
+    "fzaninotto/faker": "*",
     "mockery/mockery": "^1.4",
     "nunomaduro/collision": "^5.0",
-    "nunomaduro/phpinsights": "^1.14",
     "phpunit/phpunit": "^9",
-    "vimeo/psalm": "^3.15"
+    "roave/security-advisories": "dev-latest",
+    "vimeo/psalm": "^5.9"
   },
   "repositories": [
     {
@@ -94,7 +96,10 @@
     "preferred-install": "dist",
     "sort-packages": true,
     "optimize-autoloader": true,
-    "platform-check": false
+    "platform-check": false,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true

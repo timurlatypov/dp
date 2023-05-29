@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class FavoriteController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function attachProductToFavorite(Product $product) {
 
 		$user = auth()->user();

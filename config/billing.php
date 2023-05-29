@@ -15,7 +15,11 @@ return [
     'alfabank' => [
         'username' => env('ALFABANK_API_USERNAME', ''),
         'password' =>  env('ALFABANK_API_PASSWORD', ''),
+        'token' => env('ALFABANK_API_TOKEN', ''),
         'gateway' =>  env('ALFABANK_API_GATEWAY_URL', ''),
         'postback' =>  env('ALFABANK_POSTBACK_URL', ''),
+        'returnUrl' =>  config('app.url') . '/billing/gateway/success',
+        'failUrl' =>  config('app.url') . '/billing/gateway/failed',
+        'sessionTimeoutSecs' => 86400,
     ]
 ];

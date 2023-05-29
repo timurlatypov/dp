@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait FeedAware
 {
-    public function scopeToFeed(Builder $query)
+    public function scopeToFeed(Builder $query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('feed', true);
     }
 
-    public function onFeed()
+    public function onFeed(): bool
     {
         return $this->feed === 1;
     }
 
-    public function notOnFeed()
+    public function notOnFeed(): bool
     {
         return !$this->onFeed();
     }

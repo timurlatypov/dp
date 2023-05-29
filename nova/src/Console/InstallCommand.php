@@ -45,7 +45,7 @@ class InstallCommand extends Command
         if (file_exists(app_path('Models/User.php'))) {
             file_put_contents(
                 app_path('Nova/User.php'),
-                str_replace('App\User::class', 'App\Models\User::class', file_get_contents(app_path('Nova/User.php')))
+                str_replace('App\User::class', 'App\User::class', file_get_contents(app_path('Nova/User.php')))
             );
         }
 

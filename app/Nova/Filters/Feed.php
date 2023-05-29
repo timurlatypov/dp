@@ -18,9 +18,9 @@ class Feed extends Filter
     /**
      * The filter's name
      *
-     * @return string
+     * @return array|null|string
      */
-    public function name(): string
+    public function name()
     {
         return __('nova/resources.filters.feed.title');
     }
@@ -44,7 +44,9 @@ class Feed extends Filter
      *
      * @param Request $request
      *
-     * @return array
+     * @return int[]
+     *
+     * @psalm-return array<0|1>
      */
     public function options(Request $request): array
     {

@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 
 class CartController extends Controller
 {
-    private $cart;
+    private Cart $cart;
 
     /**
      * Helper function
@@ -43,7 +43,7 @@ class CartController extends Controller
      *
      * @param Request $request
      *
-     * @return Response
+     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function store(Request $request)
     {
@@ -71,6 +71,9 @@ class CartController extends Controller
         ], 200);
     }
 
+    /**
+     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
     public function refresh()
     {
         $cart_items = $this->cart->content();

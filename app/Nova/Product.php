@@ -26,8 +26,6 @@ use Davidpiesse\NovaToggle\Toggle;
 
 class Product extends Resource
 {
-    public static $defaultSortField = 'id';
-
     public static $perPageViaRelationship = 50;
 
     /**
@@ -35,7 +33,7 @@ class Product extends Resource
      *
      * @var string
      */
-    public static $model = \App\Product::class;
+    public static $model = \App\Models\Product::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -56,16 +54,25 @@ class Product extends Resource
         'title_rus',
     ];
 
-    public static function label(): string
+    /**
+     * @return array|null|string
+     */
+    public static function label()
     {
         return __('nova/resources.product.label');
     }
 
-    public static function singularLabel(): string
+    /**
+     * @return array|null|string
+     */
+    public static function singularLabel()
     {
         return __('nova/resources.product.singularLabel');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public static function indexQuery(NovaRequest $request, $query)
     {
         // Give relationship name as alias else Laravel will name it as comments_count
@@ -77,7 +84,9 @@ class Product extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (BelongsTo|BelongsToManyField|HasMany|ID|Image|Number|RelationshipCount|Slug|Text|TextWithSlug|Trix|mixed)[]
+     *
+     * @psalm-return list{ID, mixed, TextWithSlug, Text, Slug, Text, mixed, mixed, Text, Text, Trix, Image, Image, Number, Number, mixed, mixed, RelationshipCount, BelongsTo, BelongsToManyField, BelongsToManyField, HasMany}
      */
     public function fields(Request $request)
     {
@@ -117,7 +126,7 @@ class Product extends Resource
             NovaBelongsToDepend::make('Brand')
                 ->sortable()
                 ->placeholder('Select Brand')
-                ->options(\App\Brand::all()),
+                ->options(\App\Models\Brand::all()),
 
             NovaBelongsToDepend::make('Line')
                 ->sortable()
@@ -143,9 +152,6 @@ class Product extends Resource
                 ->disk('public')
                 ->path('products/image')
                 ->maxWidth(150)
-                ->preview(function () {
-                    return $this->image_path ? Storage::disk('public')->url($this->image_path) : null;
-                })
                 ->help(__('nova/resources.product.hint.image_path'))
                 ->prunable()
                 ->hideFromIndex(),
@@ -154,12 +160,6 @@ class Product extends Resource
                 ->disk('public')
                 ->path('products/thumb')
                 ->maxWidth(150)
-                ->preview(function () {
-                    return $this->thumb_path ? Storage::disk('public')->url("{$this->thumb_path}") : null;
-                })
-                ->thumbnail(function () {
-                    return $this->thumb_path ? Storage::disk('public')->url("{$this->image_path}") : null;
-                })
                 ->help(__('nova/resources.product.hint.thumb_path'))
                 ->prunable(),
 
@@ -190,7 +190,7 @@ class Product extends Resource
             BelongsTo::make(__('nova/resources.menus.label'), 'menu', Menu::class)
                 ->hideFromIndex(),
 
-            BelongsToManyField::make(__('nova/resources.categories.label'), 'categories', Categories::class)
+            BelongsToManyField::make(__('nova/resources.categories.label'), 'categories', Category::class)
                 ->hideFromIndex(),
 
             BelongsToManyField::make(__('nova/resources.subcategory.label'), 'subcategories', Subcategory::class)
@@ -206,6 +206,8 @@ class Product extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -217,7 +219,9 @@ class Product extends Resource
      *
      * @param Request $request
      *
-     * @return array
+     * @return (Brand|Feed|Line|Live|OnStock)[]
+     *
+     * @psalm-return list{Brand, Line, OnStock, Live, Feed}
      */
     public function filters(Request $request)
     {
@@ -236,6 +240,8 @@ class Product extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -248,6 +254,8 @@ class Product extends Resource
      * @param Request $request
      *
      * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

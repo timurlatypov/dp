@@ -130,14 +130,14 @@ class ClientSuggest
      *
      * @var string
      */
-    protected $url_findById = 'rs/findById/party';
+    protected $urlFindById = 'rs/findById/party';
 
     /**
      * URI поиска кодов доставки
      *
      * @var string
      */
-    protected $url_findByIdDelivery = 'rs/findById/delivery';
+    protected $urlFindByIdDelivery = 'rs/findById/delivery';
 
     /**
      * @var ClientInterface
@@ -159,27 +159,12 @@ class ClientSuggest
         $this->httpClient = new Client();
     }
 
-    /**
-     * Организация по ИНН или ОГРН
-     *
-     * @link https://dadata.ru/api/find-party/
-     * @param string $id     ИНН, ОГРН, Dadata HID
-     * @param array  $params Дополнительные параметры
-     * @return mixed
-     */
-    public function partyById($id, array $params = [])
-    {
-        $params['query'] = $id;
-
-        return $this->query("{$this->base_url}/{$this->version}/{$this->url_findById}", $params);
-    }
-
 
     public function cityById($id, array $params = [])
     {
         $params['query'] = $id;
 
-        return $this->query("{$this->base_url}/{$this->version}/{$this->url_findByIdDelivery}", $params);
+        return $this->query("{$this->base_url}/{$this->version}/{$this->urlFindByIdDelivery}", $params);
     }
 
     /**

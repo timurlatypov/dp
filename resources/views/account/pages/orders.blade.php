@@ -27,16 +27,14 @@
                     <td>{{ $order->billing_subtotal ?? $order->billing_total }} &#x20BD;</td>
                     <td>{{ $order->billing_delivery ?? number_format((float) 0, 2, '.', '') }} &#x20BD;</td>
                     <td>{{ $order->billing_total }} &#x20BD;</td>
-                    <td>@if(count($order->payments))
-                            @foreach($order->payments as $payment)
-                                @if($payment->status === 'В ожидании')
-                                    <a href="{{ $payment->payment_link }}" class="btn btn-success btn-sm my-0">Оплатить онлайн</a>
-                                @elseif($payment->status === 'Оплачен')
-                                    <span class="font-weight-bold text-success">Заказ оплачен онлайн</span>
-                                @else
-                                    <span class="font-weight-bold text-muted">Нет информации</span>
-                                @endif
-                            @endforeach
+                    <td>@if($order->payment)
+                            @if($order->payment->status === 0)
+                                <a href="{{ $order->payment->form_url }}" class="btn btn-success btn-sm my-0">Оплатить онлайн</a>
+                            @elseif($order->payment->status === 1)
+                                <span class="font-weight-bold text-success">Заказ оплачен онлайн</span>
+                            @else
+                                <span class="font-weight-bold text-muted">Нет информации</span>
+                            @endif
                         @else @endif</td>
                 </tr>
             @endforeach
