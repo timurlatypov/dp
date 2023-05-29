@@ -3,35 +3,18 @@
 namespace App\Http\Controllers\AdminPanel\Orders;
 
 use App\Events\NewOrderCreated;
-use App\Jobs\SendSberbankPaymentLink;
 use App\Models\Order;
-use App\Repositories\Payments\SberbankClient;
-use App\Models\Sberbank;
 use App\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
-use Throwable;
 
 use App\Filters\Order\{DateFromFilter, DateToFilter, EmailFilter, PhoneFilter, SurnameFilter};
 
 class OrderController extends Controller
 {
-    private SberbankClient $client;
-
-    public function __construct()
-    {
-        $this->client = new SberbankClient([
-            'userName' => env('SBERBANK_USERNAME'),
-            'password' => env('SBERBANK_PASSWORD'),
-            'apiUri'   => env('SBERBANK_API_URI'),
-        ]);
-    }
-
     /**
      * @return Factory|View
      */
@@ -47,8 +30,6 @@ class OrderController extends Controller
 
     /**
      * @return string[]
-     *
-     * @psalm-return array{surname: SurnameFilter::class, email: EmailFilter::class, phone: PhoneFilter::class, from: DateFromFilter::class, to: DateToFilter::class}
      */
     protected function getFilters(): array
     {
@@ -160,9 +141,6 @@ class OrderController extends Controller
         return view('admin.orders.edit_details', compact(['order']));
     }
 
-    /**
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $order = Order::find($request->id);
@@ -236,88 +214,5 @@ class OrderController extends Controller
         ]);
 
         return redirect()->back();
-    }
-
-    public function registerOrder(Request $request, Order $order): RedirectResponse
-    {
-        $orderId     = $order->order_id . ' / ' . now();
-        $orderAmount = $order->billing_total * 100;
-        $returnUrl   = config('app.url') . '/payment-success';
-
-        $params['failUrl']        = env('APP_URL') . '/failure';
-        $params['expirationDate'] = now()->addDays(1)->toIso8601String();
-
-        $result = $this->client->registerOrder($orderId, $orderAmount, $returnUrl, $params);
-
-        Sberbank::create([
-            'payment_id'   => $result['orderId'],
-            'payment_link' => $result['formUrl'],
-            'status'       => 'В ожидании',
-        ])->save();
-
-        $payment = Sberbank::where('payment_id', $result['orderId'])->first();
-
-        $order->sberbankPayments()->attach($payment);
-
-        return back();
-
-    }
-
-    public function reverseOrder($id): RedirectResponse
-    {
-        $this->client->reverseOrder($id);
-
-        return back();
-    }
-
-    /**
-     *
-     * @param $id
-     *
-     * @return mixed
-     */
-    public function declineOrder($id)
-    {
-        try {
-            $this->client->doDeclineOrder($id);
-        } catch (Throwable $t) {
-            Log::error("OrdersController - DeclineOrder Failed", [
-                'message' => $t->getMessage(),
-                'order'   => $id,
-            ]);
-        }
-        finally {
-            if ($sberbankModel = Sberbank::where('payment_id', $id)->first()) {
-                $sberbankModel->delete();
-            }
-        }
-
-        return back();
-    }
-
-    public function deleteLink($id, Request $request): RedirectResponse
-    {
-        Sberbank::where('payment_id', $id)->delete();
-
-        return back();
-
-    }
-
-    public function sendLink(Order $order, Request $request): RedirectResponse
-    {
-        $link = $order->payment;
-
-        if ($link) {
-            SendSberbankPaymentLink::dispatch($order, $link->payment_link);
-
-            return back()->with('flash', 'Ccылка отправлена на почту ' . $order->billing_email);
-        }
-
-        return back()->with('flash-error', 'Ccылка не отправлена');
-    }
-
-    public function orderStatus($id)
-    {
-        return $this->client->getOrderStatus($id);
     }
 }
