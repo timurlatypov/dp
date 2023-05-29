@@ -41,7 +41,7 @@ class PaymentController extends Controller
     public function sendLink(Order $order, Request $request): RedirectResponse
     {
         /** @var Payment $link */
-        $link = $order->payment()->get();
+        $link = $order->payment()->first();
 
         if ($link) {
             SendPaymentLinkJob::dispatch($order, $link->form_url);
