@@ -6,23 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return true
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-	/**
-	 * @return string[]
-	 *
-	 * @psalm-return array{'name.required': 'Поле Имя является обязательным!', 'surname.required': 'Поле Фамилия является обязательным!', 'phone.required': 'Поле Телефон является обязательным!'}
-	 */
-	public function messages()
-	{
+    public function rules(): array
+    {
+        return [
+            'name' => 'required|string|max:191',
+            'surname' => 'required|string|max:191',
+            'phone' => 'required'
+        ];
+    }
+
+	public function messages(): array
+    {
 		return [
 			'name.required' => 'Поле Имя является обязательным!',
 			'surname.required' => 'Поле Фамилия является обязательным!',
