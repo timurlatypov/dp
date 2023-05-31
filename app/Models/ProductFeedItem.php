@@ -7,34 +7,34 @@ use App\Exceptions\Feed\InvalidFeedItem;
 class ProductFeedItem
 {
     /**  @var string|null */
-    protected ?string $id = null;
+    public ?string $id = null;
 
     /** @var string */
-    protected string $title;
+    public string $title;
 
     /** @var string */
-    protected string $description;
+    public string $description;
 
     /** @var int */
-    protected int $basePrice;
+    public int $basePrice;
 
     /** @var int */
-    protected int $discountedPrice;
+    public int $discountedPrice;
 
     /** @var string */
-    protected string $picture;
+    public string $picture;
 
     /** @var string */
-    protected string $link;
+    public string $link;
 
     /** @var string */
-    protected string $vendor;
+    public string $vendor;
 
     /** @var int */
-    protected int $vendorCode;
+    public int $vendorCode;
 
     /** @var int|null */
-    protected ?int $categoryId = null;
+    public ?int $categoryId = null;
 
     /**
      * @param array $data
