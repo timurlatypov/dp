@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Billing\Postback;
 
+use App\Billing\PaymentStatusEnum;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendPaymentSuccessMessageJob;
+use App\Models\Payment;
 use App\Models\PaymentGateway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class PostbackController extends Controller
@@ -33,9 +37,36 @@ class PostbackController extends Controller
 
     public function check(Request $request)
     {
-        Log::info('Alfabank postback', [
+        Log::info('Alfabank PostbackController::check Log', [
             'request' => $request->all(),
         ]);
+
+        DB::beginTransaction();
+        try {
+            if ($request->query('orderId')) {
+                $hash = $request->query('orderId');
+                $checkOrderPayment = Payment::where('hash', $hash)->first();
+
+                if ($checkOrderPayment && $checkOrderPayment->status === PaymentStatusEnum::PENDING) {
+
+                    $order = $checkOrderPayment->order;
+
+                    $checkOrderPayment->update([
+                        'status' => PaymentStatusEnum::PAID,
+                    ]);
+
+                    SendPaymentSuccessMessageJob::dispatch($order);
+
+                    DB::commit();
+                }
+            }
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            Log::info('Alfabank PostbackController::check Error', [
+                'message' => $e->getMessage(),
+            ]);
+        }
 
         return response()->json('OK', 200);
     }

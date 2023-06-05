@@ -12,6 +12,8 @@ use App\Models\Payment;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -54,27 +56,40 @@ class PaymentController extends Controller
 
     public function success(Request $request)
     {
-        if ($request->query('orderId')) {
-            $hash = $request->query('orderId');
-            $checkOrderPayment = Payment::where('hash', $hash)->first();
+        Log::info('Alfabank PaymentController::success Log', [
+            'request' => $request->all(),
+        ]);
 
-            if ($checkOrderPayment && $checkOrderPayment->status === PaymentStatusEnum::PENDING) {
+        DB::beginTransaction();
+        try {
+            if ($request->query('orderId')) {
+                $hash = $request->query('orderId');
+                $checkOrderPayment = Payment::where('hash', $hash)->first();
 
-                $order = $checkOrderPayment->order;
+                if ($checkOrderPayment && $checkOrderPayment->status === PaymentStatusEnum::PENDING) {
 
-                $checkOrderPayment->update([
-                    'status' => PaymentStatusEnum::PAID,
-                ]);
+                    $order = $checkOrderPayment->order;
 
-                SendPaymentSuccessMessageJob::dispatch($order);
+                    $checkOrderPayment->update([
+                        'status' => PaymentStatusEnum::PAID,
+                    ]);
 
-                return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
+                    SendPaymentSuccessMessageJob::dispatch($order);
+
+                    DB::commit();
+                }
             }
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            Log::info('Alfabank PaymentController::success Error', [
+                'message' => $e->getMessage(),
+            ]);
 
             abort(404);
         }
 
-        abort(404);
+        return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
     }
 
     public function failed()
