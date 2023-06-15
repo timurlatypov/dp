@@ -37,14 +37,14 @@ class PostbackController extends Controller
 
     public function check(Request $request)
     {
-        Log::info('Alfabank PostbackController::check Log', [
+        Log::info('Alfabank PostbackController::check Request Log', [
             'request' => $request->all(),
         ]);
 
         DB::beginTransaction();
         try {
-            if ($request->query('orderId')) {
-                $hash = $request->query('orderId');
+            if ($request->query('mdOrder')) {
+                $hash = $request->query('mdOrder');
                 $checkOrderPayment = Payment::where('hash', $hash)->first();
 
                 if ($checkOrderPayment && $checkOrderPayment->status === PaymentStatusEnum::PENDING) {
@@ -56,14 +56,13 @@ class PostbackController extends Controller
                     ]);
 
                     SendPaymentSuccessMessageJob::dispatch($order);
-
-                    DB::commit();
                 }
             }
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
 
-            Log::info('Alfabank PostbackController::check Error', [
+            Log::info('Alfabank PostbackController::check Error Log', [
                 'message' => $e->getMessage(),
             ]);
         }

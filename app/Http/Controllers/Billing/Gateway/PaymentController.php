@@ -56,7 +56,7 @@ class PaymentController extends Controller
 
     public function success(Request $request)
     {
-        Log::info('Alfabank PaymentController::success Log', [
+        Log::info('Alfabank PaymentController::success Request Log', [
             'request' => $request->all(),
         ]);
 
@@ -75,14 +75,13 @@ class PaymentController extends Controller
                     ]);
 
                     SendPaymentSuccessMessageJob::dispatch($order);
-
-                    DB::commit();
                 }
             }
+            DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
 
-            Log::info('Alfabank PaymentController::success Error', [
+            Log::info('Alfabank PaymentController::success Error Log', [
                 'message' => $e->getMessage(),
             ]);
 
