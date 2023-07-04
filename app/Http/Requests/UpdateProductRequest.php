@@ -6,6 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProductRequest extends FormRequest
 {
+    public function rules(): array
+    {
+        return [];
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
