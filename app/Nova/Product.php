@@ -5,12 +5,10 @@ namespace App\Nova;
 use App\Nova\Filters\Brand;
 use App\Nova\Filters\Line;
 use App\Nova\Filters\Live;
-use App\Nova\Filters\Feed;
 use App\Nova\Filters\OnStock;
 use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Benjacho\BelongsToManyField\BelongsToManyField;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
@@ -83,10 +81,6 @@ class Product extends Resource
      * Get the fields displayed by the resource.
      *
      * @param Request $request
-     *
-     * @return (BelongsTo|BelongsToManyField|HasMany|ID|Image|Number|RelationshipCount|Slug|Text|TextWithSlug|Trix|mixed)[]
-     *
-     * @psalm-return list{ID, mixed, TextWithSlug, Text, Slug, Text, mixed, mixed, Text, Text, Trix, Image, Image, Number, Number, mixed, mixed, RelationshipCount, BelongsTo, BelongsToManyField, BelongsToManyField, HasMany}
      */
     public function fields(Request $request)
     {
@@ -148,6 +142,13 @@ class Product extends Resource
             Trix::make(__('nova/resources.product.fields.description_full'), 'description_full')
                 ->hideFromIndex(),
 
+            Number::make(__('nova/resources.volume.fields.name'), 'volume')
+                ->sortable()
+                ->min(1),
+
+            BelongsTo::make(__('nova/resources.volumeType.fields.name'), 'volume_type', VolumeType::class)
+                ->hideFromIndex(),
+
             Image::make(__('nova/resources.product.fields.image_path'), 'image_path')
                 ->disk('public')
                 ->path('products/image')
@@ -177,18 +178,9 @@ class Product extends Resource
                 ->trueValue(1)
                 ->falseValue(0),
 
-            Toggle::make(__('nova/resources.product.fields.feed'), 'feed')
-                ->sortable()
-                ->editableIndex()
-                ->trueValue(1)
-                ->falseValue(0),
-
             RelationshipCount::make(__('nova/resources.product.fields.reviews'), 'reviews')
                 ->sortable()
                 ->onlyOnIndex(),
-
-            BelongsTo::make(__('nova/resources.menus.label'), 'menu', Menu::class)
-                ->hideFromIndex(),
 
             BelongsToManyField::make(__('nova/resources.categories.label'), 'categories', Category::class)
                 ->hideFromIndex(),
@@ -220,8 +212,6 @@ class Product extends Resource
      * @param Request $request
      *
      * @return (Brand|Feed|Line|Live|OnStock)[]
-     *
-     * @psalm-return list{Brand, Line, OnStock, Live, Feed}
      */
     public function filters(Request $request)
     {
@@ -230,7 +220,6 @@ class Product extends Resource
             new Line(),
             new OnStock(),
             new Live(),
-            new Feed(),
         ];
     }
 
@@ -240,8 +229,6 @@ class Product extends Resource
      * @param Request $request
      *
      * @return array
-     *
-     * @psalm-return array<never, never>
      */
     public function lenses(Request $request)
     {
@@ -254,8 +241,6 @@ class Product extends Resource
      * @param Request $request
      *
      * @return array
-     *
-     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

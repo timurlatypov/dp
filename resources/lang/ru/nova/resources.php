@@ -55,6 +55,20 @@ return [
             'thumb_path' => 'Размер картинки должен быть 400х400',
         ],
     ],
+    'volume' => [
+        'label' => 'Объёмы',
+        'singularLabel' => 'Объём',
+        'fields' => [
+            'name' => 'Объём',
+        ],
+    ],
+    'volumeType' => [
+        'label' => 'Тип объёма',
+        'singularLabel' => 'Тип объёма',
+        'fields' => [
+            'name' => 'Тип объёма',
+        ],
+    ],
     'gift_card' => [
         'label' => 'Подарочные Карты',
         'singularLabel' => 'Подарочная Карта',

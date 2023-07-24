@@ -23,8 +23,8 @@
 
         <div>
             @if(isset($title_rus))<p class="mt-0 text-muted tw-leading-normal tw-text-xs">{{ $title_rus }}</p>@endif
+            {{ $volume_full }}
             <p><small>{{ $reviews }}</small></p>
-            <small class="mb-2">Артикул: {{ $vendor_code }}</small>
         </div>
 
         <div class="d-flex justify-content-between align-items-end">

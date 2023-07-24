@@ -54,8 +54,12 @@
                                                             alt="Логотип {{ $brand->name }}"></a>
                                                 <h1 class="title mb-1 mt-4">{{ $product->title_eng }}</h1>
                                                 <span>{{ $product->title_rus }}</span><br>
+
                                                 <div class="pt-1 text-sm-left" style="color: grey;">
                                                     Артикул: {{ $product->vendor_code }}</div>
+                                                @if($product->volume)
+                                                <h4 class="title mb-0 mt-1">Объем: {{ $product->volume }} {{ $product->volume_type->name }}</h4>
+                                                @endif
                                                 @if($product->ph)<small
                                                         class="font-weight-bold">pH: {{ $product->ph }}</small>
                                                 <br>@endif

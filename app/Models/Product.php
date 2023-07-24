@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Contracts\Feedable;
 use App\Filters\Product\ProductFilters;
-use App\Traits\FeedAware;
 use App\Traits\LiveAware;
 use App\Traits\StockAware;
 use Illuminate\Database\Eloquent\Builder;
@@ -16,13 +14,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
 
-class Product extends Model implements Feedable
+class Product extends Model
 {
     use SoftDeletes;
     use LiveAware;
     use StockAware;
     use Searchable;
-    use FeedAware;
 
     /**
      * @var array
@@ -35,6 +32,7 @@ class Product extends Model implements Feedable
      */
     protected $with = [
         'brand',
+        'volume_type'
     ];
 
     /**
@@ -95,6 +93,11 @@ class Product extends Model implements Feedable
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function volume_type(): BelongsTo
+    {
+        return $this->belongsTo(VolumeType::class);
     }
 
     public function categories(): BelongsToMany

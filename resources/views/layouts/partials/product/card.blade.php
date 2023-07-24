@@ -12,6 +12,10 @@
         {{ $product->vendor_code }}
     @endslot
 
+    @slot('volume_full')
+        @if($product->volume && $product->volume_type)<small class="mb-2"><b>Объем:</b> {{ $product->volume }} {{ $product->volume_type->name }}</small>@endif
+    @endslot
+
     @slot('ph')
         @if($product->ph)<div><small class="font-weight-bold">pH: {{ $product->ph }}</small></div>@endif
     @endslot
