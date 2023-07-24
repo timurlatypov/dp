@@ -13,7 +13,7 @@
     @endslot
 
     @slot('volume_full')
-        @if($product->volume && $product->volume_type)<small class="mb-2"><b>Объем:</b> {{ $product->volume }} {{ $product->volume_type->name }}</small>@endif
+        @if($product->volume && $product->volume_type)<small class="mb-2"><b>Объем: {{ $product->volume }} {{ $product->volume_type->name }}</b></small>@endif
     @endslot
 
     @slot('ph')
