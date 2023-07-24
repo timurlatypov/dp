@@ -147,6 +147,7 @@ class Product extends Resource
                 ->min(1),
 
             BelongsTo::make(__('nova/resources.volumeType.fields.name'), 'volume_type', VolumeType::class)
+                ->nullable(true)
                 ->hideFromIndex(),
 
             Image::make(__('nova/resources.product.fields.image_path'), 'image_path')
