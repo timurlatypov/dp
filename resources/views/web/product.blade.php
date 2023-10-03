@@ -98,11 +98,11 @@
                                                             :price_to_show="{{ $product->definePriceToShow() }}"></save-bookmark-button>
                                                 </div>
 
-                                                @if(isset($product->external_link))
+                                                @if(isset($product->external_link, $product->external_link_name))
                                                 <div class="pt-1">
                                                     <h4 class="title mb-0">Дополнительная информация:</h4>
                                                     <a href="{{$product->external_link}}" target="_blank">
-                                                    <button class="btn btn-sm btn-info font-weight-bold">Перейти на сайт</button>
+                                                    <button class="btn btn-sm btn-info font-weight-bold">{{$product->external_link_name}}</button>
                                                     </a>
                                                 </div>
                                                 @endif
