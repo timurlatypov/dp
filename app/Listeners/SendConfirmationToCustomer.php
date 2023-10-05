@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Mail;
 
 class SendConfirmationToCustomer
 {
-
     /**
      * Create the event listener.
      *
@@ -27,7 +26,7 @@ class SendConfirmationToCustomer
      */
     public function handle(NewOrderCreated $event)
     {
-	    Mail::to($event->customer)
-		    ->queue(new NewOrder($event->order));
+        Mail::to($event->customer)
+            ->queue(new NewOrder($event->order));
     }
 }

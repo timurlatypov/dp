@@ -8,5 +8,5 @@ use Illuminate\Http\Request;
 
 class ResponseIfEmpty
 {
-	protected Cart $cart;
+    protected Cart $cart;
 }

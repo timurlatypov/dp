@@ -6,5 +6,5 @@ use App\Cart\Cart;
 
 class Sync
 {
-	protected Cart $cart;
+    protected Cart $cart;
 }

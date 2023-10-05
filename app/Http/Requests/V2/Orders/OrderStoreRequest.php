@@ -28,15 +28,15 @@ class OrderStoreRequest extends FormRequest
     {
         return [
             'address_id' => [
-            	'required',
-	            Rule::exists('addresses', 'id')->where(function ($builder) {
-	            	$builder->where('user_id', $this->user()->id);
-	            })
+                'required',
+                Rule::exists('addresses', 'id')->where(function ($builder) {
+                    $builder->where('user_id', $this->user()->id);
+                })
             ],
-	        'shipping_method_id' => [
-	        	'required',
-		        'exists:shipping_methods,id'
-	        ]
+            'shipping_method_id' => [
+                'required',
+                'exists:shipping_methods,id'
+            ]
         ];
     }
 }

@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class ProductFilters extends FiltersAbstract
 {
-	/**
-	 * @var array
-	 */
-	protected array $filters = [];
+    /**
+     * @var array
+     */
+    protected array $filters = [];
 }

@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Sberbank extends Model
 {
-	/**
-	 * @var array
-	 */
-	protected $guarded = [];
+    /**
+     * @var array
+     */
+    protected $guarded = [];
 
-	public function order(): BelongsToMany
-	{
-		return $this->belongsToMany(Order::class, 'orders_payments', 'payment_id', 'order_id');
-	}
+    public function order(): BelongsToMany
+    {
+        return $this->belongsToMany(Order::class, 'orders_payments', 'payment_id', 'order_id');
+    }
 
 }

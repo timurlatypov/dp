@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Line extends Model
 {
-	use LiveAware;
+    use LiveAware;
 
     /**
      * @var string[]
@@ -20,28 +20,28 @@ class Line extends Model
         'brand',
     ];
 
-	/**
-	 * @var array
-	 */
-	protected $guarded = [];
+    /**
+     * @var array
+     */
+    protected $guarded = [];
 
-	/**
-	 * @return string
-	 *
-	 * @psalm-return 'slug'
-	 */
-	public function getRouteKeyName(): string
-	{
-		return 'slug';
-	}
+    /**
+     * @return string
+     *
+     * @psalm-return 'slug'
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
-	public function brand(): BelongsTo
-	{
-		return $this->belongsTo(Brand::class);
-	}
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
+    }
 
-	public function products(): HasMany
-	{
-		return $this->hasMany(Product::class);
-	}
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 }

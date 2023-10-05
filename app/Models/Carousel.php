@@ -17,27 +17,27 @@ class Carousel extends Model
      */
     protected $guarded = [];
 
-	/**
-	 * @var string[]
-	 *
-	 * @psalm-var list{'expired_at_diff'}
-	 */
-	protected $appends = ['expired_at_diff'];
+    /**
+     * @var string[]
+     *
+     * @psalm-var list{'expired_at_diff'}
+     */
+    protected $appends = ['expired_at_diff'];
 
-	/**
-	 * @var string[]
-	 *
-	 * @psalm-var list{'expired_at'}
-	 */
-	protected $dates = ['expired_at'];
+    /**
+     * @var string[]
+     *
+     * @psalm-var list{'expired_at'}
+     */
+    protected $dates = ['expired_at'];
 
-	public function scopeExpired(Builder $builder): Builder
-	{
-		return $builder->where('expired_at', '>', now() );
-	}
+    public function scopeExpired(Builder $builder): Builder
+    {
+        return $builder->where('expired_at', '>', now());
+    }
 
-	public function getExpiredAtDiffAttribute()
-	{
-		return $this->expired_at->format('d M Y');
-	}
+    public function getExpiredAtDiffAttribute()
+    {
+        return $this->expired_at->format('d M Y');
+    }
 }

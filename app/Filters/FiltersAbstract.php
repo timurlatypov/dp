@@ -7,65 +7,65 @@ use Illuminate\Http\Request;
 
 abstract class FiltersAbstract
 {
-	protected Request $request;
+    protected Request $request;
 
-	protected array $filters = [];
+    protected array $filters = [];
 
     /**
      * FiltersAbstract constructor.
      *
      * @param Request $request
      */
-	public function __construct (Request $request)
-	{
-		$this->request = $request;
-	}
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
 
     /**
      * @param Builder $builder
      *
      * @return Builder
      */
-	public function filter(Builder $builder)
-	{
-		foreach ($this->getFilters() as $filter => $class) {
-			$this->resolveFilter($filter)->filter($builder, $class);
-		}
+    public function filter(Builder $builder)
+    {
+        foreach ($this->getFilters() as $filter => $class) {
+            $this->resolveFilter($filter)->filter($builder, $class);
+        }
 
-		return $builder;
-	}
+        return $builder;
+    }
 
     /**
      * @param array $filters
      *
      * @return $this
      */
-	public function add(array $filters)
-	{
-		$this->filters = array_merge($this->filters, $filters);
+    public function add(array $filters)
+    {
+        $this->filters = array_merge($this->filters, $filters);
 
-		return $this;
-	}
+        return $this;
+    }
 
     /**
      * @return array
      */
-	protected function getFilters()
-	{
-		return $this->filterFilters($this->filters);
-	}
+    protected function getFilters()
+    {
+        return $this->filterFilters($this->filters);
+    }
 
     /**
-	 * @param (int|string) $filter
-	 *
-	 * @return mixed
-	 *
-	 * @psalm-param array-key $filter
-	 */
-	protected function resolveFilter($filter)
-	{
-		return new $this->filters[$filter];
-	}
+     * @param (int|string) $filter
+     *
+     * @return mixed
+     *
+     * @psalm-param array-key $filter
+     */
+    protected function resolveFilter($filter)
+    {
+        return new $this->filters[$filter]();
+    }
 
     /**
      * @param $filters
@@ -73,8 +73,8 @@ abstract class FiltersAbstract
      * @return array
      *
      */
-	protected function filterFilters($filters): array
-	{
-		return array_filter($this->request->only(array_keys($this->filters)));
-	}
+    protected function filterFilters($filters): array
+    {
+        return array_filter($this->request->only(array_keys($this->filters)));
+    }
 }

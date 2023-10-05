@@ -19,16 +19,16 @@ class ProductIndexResource extends JsonResource
     public function toArray($request): array
     {
         return [
-        	'id' => $this->id,
-        	'name' => $this->name,
-        	'description' => $this->description,
-        	'slug' => $this->slug,
-        	'live' => (bool) $this->live,
-        	'deliverable' => (bool) $this->deliverable,
-        	'spicy' => (bool) $this->spicy,
-        	'top' => (bool) $this->top,
-	        'price' => $this->formattedPrice,
-	        'in_stock' => $this->inStock(),
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'slug' => $this->slug,
+            'live' => (bool) $this->live,
+            'deliverable' => (bool) $this->deliverable,
+            'spicy' => (bool) $this->spicy,
+            'top' => (bool) $this->top,
+            'price' => $this->formattedPrice,
+            'in_stock' => $this->inStock(),
             'images' => $this->images,
         ];
     }

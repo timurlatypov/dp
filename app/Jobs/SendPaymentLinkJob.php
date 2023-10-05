@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Mail;
 
 class SendPaymentLinkJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public Order $order;
-	public $payment_link;
+    public $payment_link;
 
     /**
      * Create a new job instance.

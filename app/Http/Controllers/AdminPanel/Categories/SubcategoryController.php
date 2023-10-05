@@ -11,16 +11,16 @@ class SubcategoryController extends Controller
 {
     public function store(Category $categories, Request $request)
     {
-		$subcategory = Subcategory::create([
-			'slug' => $request->slug,
-			'name' => $request->name,
-			'title' => $request->title,
-			'image_path' => $request->image_path,
-			'body' => $request->body,
-		]);
+        $subcategory = Subcategory::create([
+            'slug' => $request->slug,
+            'name' => $request->name,
+            'title' => $request->title,
+            'image_path' => $request->image_path,
+            'body' => $request->body,
+        ]);
 
-	    $categories->subcategories()->save($subcategory);
+        $categories->subcategories()->save($subcategory);
 
-	    return redirect()->back();
+        return redirect()->back();
     }
 }

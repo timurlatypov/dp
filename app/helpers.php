@@ -15,7 +15,7 @@ if (!function_exists('get_image_path')) {
             return asset('/storage/' . $path);
         } else {
             return '/storage/' . $path;
-         }
+        }
 
     }
 }

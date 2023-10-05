@@ -26,10 +26,10 @@ class ProductPatchRequest extends FormRequest
     public function rules(): array
     {
         return [
-	        'slug' => [
-		        'required',
-		        'unique:products,slug,'.$this->id
-	        ],
+            'slug' => [
+                'required',
+                'unique:products,slug,'.$this->id
+            ],
         ];
     }
 
@@ -38,10 +38,10 @@ class ProductPatchRequest extends FormRequest
      *
      * @psalm-return array{'slug.unique': 'Этот slug уже у другого продукта'}
      */
-    public function messages ()
+    public function messages()
     {
-	    return [
-	    	'slug.unique' => 'Этот slug уже у другого продукта'
-	    ];
+        return [
+            'slug.unique' => 'Этот slug уже у другого продукта'
+        ];
     }
 }

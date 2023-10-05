@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Mail;
 
 class SendPaymentSuccessMessageJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
-	public Order $order;
+    public Order $order;
 
     /**
      * Create a new job instance.

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Mail;
 
 class SendNotificationToManager
 {
-
     /**
      * Create the event listener.
      *
@@ -27,8 +26,8 @@ class SendNotificationToManager
      */
     public function handle(NewOrderCreated $event)
     {
-	    Mail::to($event->managers)
-		    ->bcc($event->admins)
-		    ->queue(new NotifyManagers($event->order));
+        Mail::to($event->managers)
+            ->bcc($event->admins)
+            ->queue(new NotifyManagers($event->order));
     }
 }

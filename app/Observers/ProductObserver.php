@@ -7,5 +7,4 @@ use App\Jobs\Product\MakeVendorCodeJob;
 
 class ProductObserver
 {
-
 }

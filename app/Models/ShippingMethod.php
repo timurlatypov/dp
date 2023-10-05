@@ -9,8 +9,8 @@ class ShippingMethod extends Model
 {
     use HasPrice;
 
-	public function defaultId()
-	{
-		return $this->where('default', true)->first()->id;
-	}
+    public function defaultId()
+    {
+        return $this->where('default', true)->first()->id;
+    }
 }

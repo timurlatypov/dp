@@ -39,8 +39,8 @@ class Address extends Model
         $this->attributes['default'] = (bool)$value;
     }
 
-	public function user(): BelongsTo
+    public function user(): BelongsTo
     {
-		return $this->belongsTo(User::class);
-	}
+        return $this->belongsTo(User::class);
+    }
 }

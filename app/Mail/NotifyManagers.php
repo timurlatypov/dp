@@ -8,13 +8,14 @@ use Illuminate\Queue\SerializesModels;
 
 class NotifyManagers extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
-	public $order;
+    public $order;
 
     public function __construct($order)
     {
-	    $this->order = $order;
+        $this->order = $order;
         $this->coupon = json_decode($order->coupon_details);
     }
 

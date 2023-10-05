@@ -26,11 +26,11 @@ class ImageStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-	        'file' => [
-		        'required',
-		        'file',
-		        'image:jpeg,png'
-	        ]
+            'file' => [
+                'required',
+                'file',
+                'image:jpeg,png'
+            ]
         ];
     }
 }

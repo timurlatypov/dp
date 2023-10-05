@@ -115,7 +115,7 @@ class Brand extends Resource
     public function filters(Request $request)
     {
         return [
-            new Live,
+            new Live(),
         ];
     }
 

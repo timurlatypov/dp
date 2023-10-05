@@ -18,8 +18,8 @@ class CategorySketchResource extends JsonResource
      */
     public function toArray($request): array
     {
-	    return [
-		    'name' => $this->name
-	    ];
+        return [
+            'name' => $this->name
+        ];
     }
 }

@@ -27,6 +27,7 @@ class ProductResource extends ProductIndexResource
                     $this->images
                 ),
                 'categories' => $this->categoriesArray(),
-            ]);
+            ]
+        );
     }
 }

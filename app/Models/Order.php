@@ -14,22 +14,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
     public const PENDING = 'Новый';
     public const PROCESSING = 'В работе';
     public const DELIVERED = 'Доставлен';
     public const CANCELLED = 'Отменён';
 
-	/**
-	 * @var array
-	 */
-	protected $guarded = [];
+    /**
+     * @var array
+     */
+    protected $guarded = [];
 
-	/**
-	 * @var string[]
-	 */
-	protected $appends = [
+    /**
+     * @var string[]
+     */
+    protected $appends = [
         'order_id',
         'order_id_raw'
     ];
@@ -43,8 +43,8 @@ class Order extends Model
         });
     }
 
-	public function getOrderCurrentStatusAttribute()
-	{
+    public function getOrderCurrentStatusAttribute()
+    {
         switch ($this->order_status) {
             case self::PENDING:
                 return '<span class="text-success">'.$this->order_status.'</span>';
@@ -57,62 +57,61 @@ class Order extends Model
             default:
                 return $this->order_status;
         }
-	}
+    }
 
-	public function getOrderIdAttribute(): string
-	{
-		return 'DP-'.str_pad($this->id,6,'0',STR_PAD_LEFT);
-	}
+    public function getOrderIdAttribute(): string
+    {
+        return 'DP-'.str_pad($this->id, 6, '0', STR_PAD_LEFT);
+    }
 
     public function getOrderIdRawAttribute(): string
     {
         return $this->id;
     }
 
-	/**
-	 * @return int|null
-	 *
-	 * @psalm-return int<0, max>|null
-	 */
-	public static function countNewOrders(): ?int
-	{
-		$o = self::newOrders()->get();
-		if (count($o))
-		{
-			return count($o);
-		}
-		return null;
-	}
+    /**
+     * @return int|null
+     *
+     * @psalm-return int<0, max>|null
+     */
+    public static function countNewOrders(): ?int
+    {
+        $o = self::newOrders()->get();
+        if (count($o)) {
+            return count($o);
+        }
+        return null;
+    }
 
-	public function scopeNewOrders(Builder $builder): Builder
-	{
-		return $builder->where('order_status', 'Новый');
-	}
+    public function scopeNewOrders(Builder $builder): Builder
+    {
+        return $builder->where('order_status', 'Новый');
+    }
 
-	public function giftCard(): BelongsTo
-	{
-		return $this->belongsTo(GiftCard::class, 'gift_card_id');
-	}
+    public function giftCard(): BelongsTo
+    {
+        return $this->belongsTo(GiftCard::class, 'gift_card_id');
+    }
 
     public function manager(): BelongsTo
     {
         return $this->belongsTo(User::class, 'manager_id');
     }
 
-	public function ym(): BelongsToMany
-	{
-		return $this->belongsToMany(YandexMetrika::class, 'orders_ym', 'order_id', 'ym');
-	}
+    public function ym(): BelongsToMany
+    {
+        return $this->belongsToMany(YandexMetrika::class, 'orders_ym', 'order_id', 'ym');
+    }
 
-	public function ga(): BelongsToMany
-	{
-		return $this->belongsToMany(GoogleAnalytics::class, 'orders_ga', 'order_id', 'ga');
-	}
+    public function ga(): BelongsToMany
+    {
+        return $this->belongsToMany(GoogleAnalytics::class, 'orders_ga', 'order_id', 'ga');
+    }
 
-	public function sberbankPayments(): BelongsToMany
-	{
-		return $this->belongsToMany(Sberbank::class, 'orders_payments', 'order_id', 'payment_id');
-	}
+    public function sberbankPayments(): BelongsToMany
+    {
+        return $this->belongsToMany(Sberbank::class, 'orders_payments', 'order_id', 'payment_id');
+    }
 
     public function payment(): HasOne
     {

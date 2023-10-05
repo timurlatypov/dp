@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Mail;
 
 class CallbackController extends Controller
 {
-	/**
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-	 */
-	public function store(Request $request, Mail $mail)
-	{
-		Mail::to(['info@doctorproffi.ru'])
-			->bcc('timur.latypov@gmail.com')
-			->send(new Callback($request));
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function store(Request $request, Mail $mail)
+    {
+        Mail::to(['info@doctorproffi.ru'])
+            ->bcc('timur.latypov@gmail.com')
+            ->send(new Callback($request));
 
-		return response([ 'data' => 'Успешно'], 200);
-	}
+        return response([ 'data' => 'Успешно'], 200);
+    }
 }

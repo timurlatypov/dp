@@ -6,5 +6,4 @@ use Eminiarts\NovaPermissions\Policies\Policy;
 
 class SubcategoryPolicy extends Policy
 {
-
 }

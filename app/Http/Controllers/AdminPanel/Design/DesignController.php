@@ -13,6 +13,6 @@ class DesignController extends Controller
      */
     public function index()
     {
-    	return view('admin.design.index');
+        return view('admin.design.index');
     }
 }

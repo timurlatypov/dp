@@ -124,7 +124,7 @@ class Cart
     {
         return session()->has($this->instance)
             ? session()->get($this->instance)
-            : new Collection;
+            : new Collection();
     }
 
     /**

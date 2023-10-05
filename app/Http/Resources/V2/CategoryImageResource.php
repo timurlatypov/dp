@@ -17,7 +17,7 @@ class CategoryImageResource extends JsonResource
     public function toArray($request): array
     {
         return [
-        	'name' => $this->name
+            'name' => $this->name
         ];
     }
 }

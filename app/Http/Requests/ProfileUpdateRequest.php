@@ -20,12 +20,12 @@ class ProfileUpdateRequest extends FormRequest
         ];
     }
 
-	public function messages(): array
+    public function messages(): array
     {
-		return [
-			'name.required' => 'Поле Имя является обязательным!',
-			'surname.required' => 'Поле Фамилия является обязательным!',
-			'phone.required' => 'Поле Телефон является обязательным!'
-		];
-	}
+        return [
+            'name.required' => 'Поле Имя является обязательным!',
+            'surname.required' => 'Поле Фамилия является обязательным!',
+            'phone.required' => 'Поле Телефон является обязательным!'
+        ];
+    }
 }

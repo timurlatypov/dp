@@ -6,15 +6,15 @@ use App\Cart\Money;
 
 trait HasPrice
 {
-	public function getPriceAttribute(int $value): Money
+    public function getPriceAttribute(int $value): Money
     {
-		return new Money($value);
-	}
+        return new Money($value);
+    }
 
-	public function getFormattedPriceAttribute(): string
-	{
-		return $this->price->formatted();
-	}
+    public function getFormattedPriceAttribute(): string
+    {
+        return $this->price->formatted();
+    }
 
     public function getFormattedSubtotalAttribute(): string
     {

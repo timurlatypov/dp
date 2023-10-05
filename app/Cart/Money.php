@@ -25,7 +25,8 @@ class Money
     public function formatted(): string
     {
         $formatter = new IntlMoneyFormatter(
-            new NumberFormatter('ru_RU', NumberFormatter::CURRENCY), new ISOCurrencies()
+            new NumberFormatter('ru_RU', NumberFormatter::CURRENCY),
+            new ISOCurrencies()
         );
 
         return $formatter->format($this->money);

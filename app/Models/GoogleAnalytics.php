@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class GoogleAnalytics extends Model
 {
-	/**
-	 * @var array
-	 */
-	protected $guarded = [];
+    /**
+     * @var array
+     */
+    protected $guarded = [];
 
-	protected $table = 'google_analytics';
+    protected $table = 'google_analytics';
 }

@@ -9,12 +9,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Callback extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
-	public function __construct($request)
-	{
-		$this->request = $request;
-	}
+    public function __construct($request)
+    {
+        $this->request = $request;
+    }
 
     public function build(): self
     {

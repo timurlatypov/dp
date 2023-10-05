@@ -24,13 +24,13 @@ class PostbackController extends Controller
 
         ksort($queries);
         $flattened = $queries;
-        array_walk($flattened, function(&$value, $key) {
+        array_walk($flattened, function (&$value, $key) {
             $value = "{$key};{$value}";
         });
         $string = implode(';', $flattened);
 
 
-        $hmac = hash_hmac ( 'sha256' , $string , '');
+        $hmac = hash_hmac('sha256', $string, '');
 
         dd(strtoupper($hmac), $checksum);
     }

@@ -21,19 +21,19 @@ class OrderResource extends JsonResource
     {
         return [
             'id' => $this->id,
-	        'status' => $this->status,
-	        'created_at' => $this->created_at->toDateTimeString(),
-	        'subtotal' => $this->subtotal->formatted(),
-	        'total' => $this->total()->formatted(),
-	        'products' => ProductVariationResource::collection(
-	        	$this->whenLoaded('products')
-	        ),
-	        'address' => new AddressResource(
-	        	$this->whenLoaded('address')
-	        ),
-	        'shipping' => new ShippingMethodsResource(
-		        $this->whenLoaded('shippingMethod')
-	        )
+            'status' => $this->status,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'subtotal' => $this->subtotal->formatted(),
+            'total' => $this->total()->formatted(),
+            'products' => ProductVariationResource::collection(
+                $this->whenLoaded('products')
+            ),
+            'address' => new AddressResource(
+                $this->whenLoaded('address')
+            ),
+            'shipping' => new ShippingMethodsResource(
+                $this->whenLoaded('shippingMethod')
+            )
         ];
     }
 }

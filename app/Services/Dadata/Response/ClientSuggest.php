@@ -16,7 +16,6 @@ use RuntimeException;
  */
 class ClientSuggest
 {
-
     public const METHOD_GET  = 'GET';
     public const METHOD_POST = 'POST';
 

@@ -47,13 +47,13 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'g-recaptcha-response' => 'required|captcha',
         ], [
-        	'name.required' => 'Введите Имя',
-        	'surname.required' => 'Введите Фамилию',
-        	'phone.required' => 'Введите Телеофон',
-        	'email.unique' => 'Этот Email уже зарегистрирован',
-	        'password.required' => 'Укажите пароль',
-	        'password.confirmed' => 'Пароли не совпадают',
-	        'password.min' => 'Не менее 6 символов',
+            'name.required' => 'Введите Имя',
+            'surname.required' => 'Введите Фамилию',
+            'phone.required' => 'Введите Телеофон',
+            'email.unique' => 'Этот Email уже зарегистрирован',
+            'password.required' => 'Укажите пароль',
+            'password.confirmed' => 'Пароли не совпадают',
+            'password.min' => 'Не менее 6 символов',
         ]);
     }
 
@@ -66,7 +66,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-    	$user = User::create([
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'phone' => $data['phone'],
@@ -74,8 +74,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-	    $user->notify(new UserRegistered());
+        $user->notify(new UserRegistered());
 
-	    return $user;
+        return $user;
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Cart;
 
-
 class BookmarkController extends Controller
 {
     /**

@@ -19,9 +19,9 @@ class PrivateUserResource extends JsonResource
     public function toArray($request): array
     {
         return [
-        	'id' => $this->id,
-	        'email' => $this->email,
-	        'name' => $this->name
+            'id' => $this->id,
+            'email' => $this->email,
+            'name' => $this->name
         ];
     }
 }

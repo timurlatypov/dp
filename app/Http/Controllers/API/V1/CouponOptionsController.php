@@ -13,11 +13,11 @@ class CouponOptionsController extends Controller
     public function get($level)
     {
         switch ($level) {
-            case 'brand';
+            case 'brand':
                 return Brand::all()->map(function ($brand) {
                     return ['value' => $brand->id, 'display' => $brand->name];
                 });
-            case 'line';
+            case 'line':
                 return Line::all()->map(function ($line) {
                     return ['value' => $line->id, 'display' => $line->brand->name . ' - ' . $line->name];
                 });

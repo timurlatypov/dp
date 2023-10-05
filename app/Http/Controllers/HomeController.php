@@ -10,7 +10,6 @@ use Gloudemans\Shoppingcart\Cart;
 
 class HomeController extends Controller
 {
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */

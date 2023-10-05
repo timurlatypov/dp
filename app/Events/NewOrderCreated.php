@@ -9,12 +9,14 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 
 class NewOrderCreated
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
-	public Order $order;
-	public $customer;
-	public $managers;
-	public $admins;
+    public Order $order;
+    public $customer;
+    public $managers;
+    public $admins;
 
     /**
      * Create a new event instance.

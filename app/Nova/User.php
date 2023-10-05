@@ -38,7 +38,7 @@ class User extends Resource
         'surname',
         'email',
     ];
-    
+
     /**
      * @return array|null|string
      */

@@ -11,33 +11,33 @@ class FavoriteController extends Controller
     /**
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function attachProductToFavorite(Product $product) {
+    public function attachProductToFavorite(Product $product)
+    {
 
-		$user = auth()->user();
+        $user = auth()->user();
 
-	    if ($user->favorites->contains($product->id))
-	    {
-	    	return response(['message' => 'Уже сохранен'], 202);
-	    }
+        if ($user->favorites->contains($product->id)) {
+            return response(['message' => 'Уже сохранен'], 202);
+        }
 
-    	auth()->user()->favorites()->attach($product->id);
+        auth()->user()->favorites()->attach($product->id);
 
-	    return response(['message' => 'Продукт сохранён как любимый!'], 200);
+        return response(['message' => 'Продукт сохранён как любимый!'], 200);
 
     }
 
-    public function detachProductFromFavorite(Product $product) {
+    public function detachProductFromFavorite(Product $product)
+    {
 
-	    $user = auth()->user();
+        $user = auth()->user();
 
-	    if ($user->favorites->contains($product->id))
-	    {
-		    $user->favorites()->detach($product->id);
+        if ($user->favorites->contains($product->id)) {
+            $user->favorites()->detach($product->id);
 
-		    return redirect()->back()->with('flash', 'Продукт удалён из Любимых');
-	    }
+            return redirect()->back()->with('flash', 'Продукт удалён из Любимых');
+        }
 
-	    return back();
+        return back();
 
     }
 }

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait CanBeScoped
 {
-	public function scopeWithScopes(Builder $builder, $scopes = []): Builder
+    public function scopeWithScopes(Builder $builder, $scopes = []): Builder
     {
-		return (new Scoper(request()))->apply($builder, $scopes);
-	}
+        return (new Scoper(request()))->apply($builder, $scopes);
+    }
 }

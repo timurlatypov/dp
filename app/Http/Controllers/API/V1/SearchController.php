@@ -30,7 +30,8 @@ class SearchController extends Controller
         } catch (\Exception $e) {
             return response()->json(
                 'No results',
-                200);
+                200
+            );
         }
 
         if (!is_array(array_values($result)[0])) {
@@ -60,7 +61,8 @@ class SearchController extends Controller
 
         $secure = md5($dateExecute . "&" . $authPassword);
 
-        $response = $this->client->post('https://api.cdek.ru/calculator/calculate_tarifflist.php',
+        $response = $this->client->post(
+            'https://api.cdek.ru/calculator/calculate_tarifflist.php',
             [
                 'json' => [
                     'version'        => '1.0',
@@ -94,10 +96,12 @@ class SearchController extends Controller
                     "Content-Type" => "application/json",
                     "Accept"       => "application/json",
                 ],
-            ]);
+            ]
+        );
 
         return response()->json(
-            json_decode($response->getBody()->getContents()),200
+            json_decode($response->getBody()->getContents()),
+            200
         );
     }
 }
