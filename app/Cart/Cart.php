@@ -166,14 +166,10 @@ class Cart
         });
     }
 
-    /**
-     * @return bool
-     */
-    public function hasChanged()
+    public function hasChanged(): bool
     {
         return $this->changed;
     }
-
 
     private function createCartItem($id, $qty = 1): CartItem
     {
