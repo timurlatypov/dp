@@ -72,12 +72,12 @@
       "Tests\\": "tests/"
     }
   },
-    "extra": {
-      "laravel": {
-        "dont-discover": [
-        ]
-      }
-    },
+  "extra": {
+    "laravel": {
+      "dont-discover": [
+      ]
+    }
+  },
   "scripts": {
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -88,8 +88,7 @@
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover"
-    ],
-    "php-cs-fixer": "php-cs-fixer --rules=@PSR1"
+    ]
   },
   "config": {
     "preferred-install": "dist",
