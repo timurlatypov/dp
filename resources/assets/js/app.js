@@ -1,4 +1,4 @@
-window.Vue = require('vue');
+window.Vue = require('vue').default;
 
 import VueYandexMetrika from 'vue-yandex-metrika';
 
@@ -29,10 +29,6 @@ Validator.localize(dictionary);
 Vue.use(VeeValidate, {
     events: 'change'
 });
-
-Vue.use(VeeValidate);
-
-
 
 import VueRecaptcha from 'vue-recaptcha';
 Vue.use(VueRecaptcha);

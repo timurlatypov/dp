@@ -89,7 +89,7 @@
           </td>
 
           <td class="td-actions font-weight-bold">
-            <button type="button" class="btn btn-danger btn-simple mr-2" @click.prevent="refreshDiscountedPrice(index)">
+            <button type="button" class="btn btn-danger btn-secondary mr-2" @click.prevent="refreshDiscountedPrice(index)">
               <i class="material-icons">refresh</i>
             </button>
             {{ product.discounted_price | formatDecimals }}&nbsp;&#x20BD;
@@ -114,7 +114,7 @@
           <td class="td-number font-weight-bold">{{ product.subtotal | formatDecimals }}&nbsp;&#x20BD;</td>
 
           <td class="td-actions text-center">
-            <button type="button" class="btn btn-simple" @click.prevent="deleteItem(index)">
+            <button type="button" class="btn btn-secondary" @click.prevent="deleteItem(index)">
               <i class="material-icons">close</i>
             </button>
           </td>

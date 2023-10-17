@@ -42,8 +42,8 @@
  */
 
 /*!
- * Vue.js v2.6.12
- * (c) 2014-2020 Evan You
+ * Vue.js v2.7.14
+ * (c) 2014-2022 Evan You
  * Released under the MIT License.
  */
 
@@ -134,6 +134,8 @@
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /*! nouislider - 9.1.0 - 2016-12-10 16:00:32 */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /*! version : 4.17.47
  =========================================================

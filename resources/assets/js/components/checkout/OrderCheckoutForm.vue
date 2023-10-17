@@ -92,7 +92,7 @@
           </td>
 
           <td class="td-actions text-center">
-            <button type="button" class="btn btn-simple" @click.prevent="deleteItem(item.rowId)">
+            <button type="button" class="btn btn-secondary" @click.prevent="deleteItem(item.rowId)">
               <i class="material-icons">close</i>
             </button>
           </td>
@@ -111,12 +111,12 @@
                 <small class="form-text text-success" v-if="order.coupon.success || order.coupon.valid">{{ order.coupon.success }}&nbsp;</small>
 
                 <button type="button"
-                        class="btn btn-simple btn-primary mr-2 mb-2"
+                        class="btn btn-secondary btn-primary mr-2 mb-2"
                         @click.prevent="validateCoupon()"
                         :disabled="coupon_apply_button_disabled"><i class="material-icons">check</i> <b>Применить</b>
                 </button>
                 <button type="button"
-                        class="btn btn-simple mb-2"
+                        class="btn btn-secondary mb-2"
                         @click.prevent="destroyCoupon()"
                         :disabled="coupon_destroy_button_disabled"><i class="material-icons">close</i> <b>Отменить</b>
                 </button>
@@ -142,12 +142,12 @@
                 <small class="form-text text-success" v-if="order.gift_card.success ||order.gift_card.valid">{{ order.gift_card.success }}&nbsp;</small>
 
                 <button type="button"
-                        class="btn btn-simple btn-primary mr-2 mb-2"
+                        class="btn btn-secondary btn-primary mr-2 mb-2"
                         @click.prevent="applyGiftCard()"
                         :disabled="gift_card_apply_button_disabled"><i class="material-icons">check</i> <b>Активировать</b>
                 </button>
                 <button type="button"
-                        class="btn btn-simple mb-2"
+                        class="btn btn-secondary mb-2"
                         @click.prevent="cancelGiftCard()"
                         :disabled="gift_card_destroy_button_disabled"><i class="material-icons">close</i> <b>Отменить</b>
                 </button>

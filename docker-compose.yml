@@ -48,7 +48,7 @@ services:
     image: node:lts-buster
     container_name: dp-npm
     working_dir: /www
-    command: sh -c "npm ci && npm run watch-poll"
+    command: sh -c "npm ci && npm run watch"
     volumes:
       - ./:/www:delegated
     networks:

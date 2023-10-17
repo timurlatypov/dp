@@ -36,7 +36,7 @@
 
                         </td>
                         <td class="td-actions text-center">
-                            <a class="btn btn-simple" href="{{ route('detach.product.from.favorite', $product) }}">
+                            <a class="btn btn-secondary" href="{{ route('detach.product.from.favorite', $product) }}">
                                 <i class="material-icons">close</i>
                             </a>
                         </td>
