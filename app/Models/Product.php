@@ -161,7 +161,7 @@ class Product extends Model
 
     public function getReviews()
     {
-        return $this->reviews()->published()->orderBy('stars', 'asc')->get();
+        return $this->reviews()->published()->orderBy('created_at', 'desc')->limit(5)->get();
     }
 
     public function getAverageRating(): float

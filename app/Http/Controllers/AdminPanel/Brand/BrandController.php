@@ -5,13 +5,14 @@ namespace App\Http\Controllers\AdminPanel\Brand;
 use App\Models\Brand;
 use App\Models\Line;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function show_product(Brand $brand, Product $product)
     {
@@ -29,7 +30,7 @@ class BrandController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function show_brand_products(Brand $brand)
     {
@@ -39,7 +40,7 @@ class BrandController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function show_brand_line_products(Brand $brand, Line $line)
     {

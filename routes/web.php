@@ -108,6 +108,13 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
     Route::get('/addresses', 'AccountController@addresses')->name('account.addresses');
     Route::get('/orders', 'AccountController@orders')->name('account.orders');
     Route::get('/favorite', 'AccountController@favorites')->name('account.favorite');
+
+    Route::group(['prefix' => '/review', 'namespace' => 'Review'], function () {
+        Route::get('/', 'ReviewController@show')->name('account.review.show');
+        Route::post('/create', 'ReviewController@create')->name('account.review.create');
+        Route::post('/delete', 'ReviewController@delete')->name('account.review.delete');
+        Route::get('/parse', 'ReviewController@parse');
+    });
 });
 
 
@@ -262,10 +269,6 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/callback/store', 'CallbackController@store')->name('callback.store');
-
 Route::post('/bookmark/store', 'BookmarkController@store')->name('save.product.to.bookmark');
 
-
-//TESTS
-Route::get('/provision', 'ProvisionServer@index');
 

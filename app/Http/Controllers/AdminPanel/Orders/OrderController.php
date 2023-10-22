@@ -9,9 +9,15 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use JsonException;
 use Spatie\Permission\Models\Role;
-
-use App\Filters\Order\{DateFromFilter, DateToFilter, EmailFilter, PhoneFilter, SurnameFilter};
+use App\Filters\Order\DateFromFilter;
+use App\Filters\Order\DateToFilter;
+use App\Filters\Order\EmailFilter;
+use App\Filters\Order\PhoneFilter;
+use App\Filters\Order\SurnameFilter;
+use Throwable;
 
 class OrderController extends Controller
 {
@@ -196,12 +202,37 @@ class OrderController extends Controller
         return redirect()->back()->with('flash', 'Письмо отправлено клиенту!');
     }
 
+    /**
+     * @throws JsonException
+     */
     public function change(Request $request)
     {
         $order = Order::find($request->id);
-        $order->update([
-            'order_status' => $request->order_status,
-        ]);
+
+        try {
+            $order->update([
+                'order_status' => $request->order_status,
+            ]);
+
+            if ($request->order_status === $order::DELIVERED) {
+                $orderId = $order->id;
+                $userId = $order->user_id;
+                $orderDetails = json_decode($order->order_details, true, 512, JSON_THROW_ON_ERROR);
+                $orderProductIds = array_map(function ($line) {
+                    return $line['id'];
+                }, $orderDetails);
+
+                $data = array_map(function ($productId) use ($userId, $orderId) {
+                    return ['user_id' => $userId, 'order_id' => $orderId, 'product_id' => $productId];
+                }, $orderProductIds);
+
+                DB::table('user_order_products')->insertOrIgnore(
+                    $data
+                );
+            }
+        } catch (Throwable $e) {
+            // do something
+        }
 
         return redirect()->back();
     }

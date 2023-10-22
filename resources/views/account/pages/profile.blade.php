@@ -30,7 +30,6 @@
                 <small class="invalid-feedback">{{ $errors->first('phone') }}</small>
             @endif
         </div>
-
         <button type="submit" class="btn btn-primary">Обновить</button>
     </form>
 
