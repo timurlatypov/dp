@@ -159,7 +159,7 @@ class HomeController extends Controller
      */
     public function subcategory(Category $categories, Subcategory $subcategory)
     {
-        $products = $subcategory->products()->live()->orderBy('title_eng', 'asc')->paginate(21);
+        $products = $subcategory->products()->live()->orderBy('priority', 'desc')->paginate(21);
 
         return view('web.category', compact(['products', 'categories', 'subcategory']));
     }
