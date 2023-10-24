@@ -16,7 +16,6 @@ class NotifyManagers extends Mailable
     public function __construct($order)
     {
         $this->order = $order;
-        $this->coupon = json_decode($order->coupon_details);
     }
 
     public function build(): self

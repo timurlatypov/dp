@@ -22,8 +22,6 @@ class User extends Authenticatable
 
     /**
      * @var string[]
-     *
-     * @psalm-var list{'name', 'surname', 'phone', 'email', 'password'}
      */
     protected $fillable = [
         'name',
@@ -35,8 +33,6 @@ class User extends Authenticatable
 
     /**
      * @var string[]
-     *
-     * @psalm-var list{'password', 'remember_token'}
      */
     protected $hidden = [
         'password',

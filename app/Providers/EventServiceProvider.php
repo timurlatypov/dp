@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\SendConfirmationToCustomer',
             'App\Listeners\SendNotificationToManager'
         ],
+        'App\Events\NewReviewCreated' => [
+            'App\Listeners\Review\NewReviewCreatedListener',
+        ],
     ];
 
     /**

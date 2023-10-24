@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Account\Review;
 
+use App\Events\NewReviewCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\Review\CreateReviewRequest;
 use App\Http\Requests\Account\Review\DeleteReviewRequest;
-use App\Models\Order;
 use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class ReviewController extends Controller
 {
@@ -65,11 +65,11 @@ class ReviewController extends Controller
         return view('account.pages.reviews', compact('availableForReviewProducts', 'productsWithReview'));
     }
 
-    public function create(CreateReviewRequest $request)
+    public function create(CreateReviewRequest $request): RedirectResponse
     {
-        $user = auth()->user();
+        $user = $request->user();
 
-        Review::create([
+        $review = Review::create([
             'stars' => $request->get('stars'),
             'review' => $request->get('comment'),
             'published' => false,
@@ -77,6 +77,11 @@ class ReviewController extends Controller
             'user_id' => $user->id,
             'product_id' => $request->get('product_id')
         ]);
+
+        $managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
+        $admins   = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
+
+        event(new NewReviewCreated($review, $managers, $admins));
 
         return redirect()->back()->with('flash', 'Спасибо! Ваш отзыв будет опубликован после проверки.');
     }
@@ -93,24 +98,5 @@ class ReviewController extends Controller
         $review->delete();
 
         return redirect()->back()->with('flash-error', 'Ваш отзыв удалён!');
-    }
-
-    public function parse()
-    {
-        $orders = Order::where('order_status', 'Доставлен')
-            ->whereNotNull('user_id')
-            ->get();
-
-        foreach($orders as $order) {
-            $details = json_decode($order->order_details);
-
-            $data = array_map(function ($product) use ($order) {
-                return ['user_id' => $order->user_id, 'order_id' => $order->id, 'product_id' => $product->id];
-            }, $details);
-
-            DB::table('user_order_products')->insertOrIgnore(
-                $data
-            );
-        }
     }
 }
