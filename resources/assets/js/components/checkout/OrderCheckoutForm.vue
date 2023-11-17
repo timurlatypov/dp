@@ -167,7 +167,7 @@
             <div class="mt-2 mb-4"><b>Итого:&nbsp;<nobr>{{ order.billing_total.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i></nobr></b></div>
 
             <h5 class="title mb-1 mt-3 text-muted">Доставка</h5>
-            <p class="text-muted">Бесплатная доставка по Москве(в пределах МКАД) при сумме заказа от 6000
+            <p class="text-muted">Бесплатная доставка по Москве(в пределах МКАД) при сумме заказа от 5000
               руб. Доставка за МКАД по Московской области и по России рассчитывается индивидуально после
               оформления заказа.</p>
           </td>
