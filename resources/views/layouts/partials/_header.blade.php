@@ -3,7 +3,7 @@
         <div class="container px-5">
             <div class="row d-flex justify-content-between align-items-center font-weight-bold text-white py-2">
                 <p class="px-2 text-sm"><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;100% ОРИГИНАЛЬНАЯ ПРОДУКЦИЯ</p>
-                <p class="px-2 text-sm"><i class="fa fa-shipping-fast"></i>&nbsp;&nbsp;<a href="/delivery" class="text-white">БЕСПЛАТНАЯ ДОСТАВКА ОТ 5000р.</a></p>
+                <p class="px-2 text-sm"><i class="fa fa-shipping-fast"></i>&nbsp;&nbsp;<a href="/delivery" class="text-white">БЕСПЛАТНАЯ ДОСТАВКА ОТ 6000р.</a></p>
                 <p class="px-2 text-sm"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<a class="text-white" href="https://api.whatsapp.com/send?phone=79253170148" onclick="yaCounter35424225.reachGoal('whatsapp'); return true;">8 (925) 317-01-48</a></p>
                 <p class="px-2 text-sm"><i class="fa fa-phone-volume"></i>&nbsp;&nbsp;<a class="text-white" href="tel:84953801141" onclick="yaCounter35424225.reachGoal('phone'); return true;">8 (495) 380-11-41</a></p>
             </div>
