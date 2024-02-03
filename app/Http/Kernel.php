@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'role' => \App\Http\Middleware\RoleMiddleware::class,
         'cart.sync' => \App\Http\Middleware\V2\Cart\Sync::class,
         'cart.isnotempty' => \App\Http\Middleware\V2\Cart\ResponseIfEmpty::class,
+        'honeypot' => \Spatie\Honeypot\ProtectAgainstSpam::class,
     ];
 }

@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
+use Spatie\Honeypot\ProtectAgainstSpam;
 
-//Route::feeds('rss');
-Auth::routes();
+Route::middleware(ProtectAgainstSpam::class)->group(function() {
+    Auth::routes();
+});
 
 Route::get('/rss/feed', [FeedController::class, 'index']);
 
@@ -59,8 +61,8 @@ Route::group(['prefix' => '/billing', 'namespace' => 'Billing'], function () {
 
 
 Route::group(['prefix' => '/category'], function () {
-    Route::get('/{categories}', 'HomeController@category')->name('show.category');;
-    Route::get('/{categories}/{subcategory}', 'HomeController@subcategory')->name('show.category.subcategory');;
+    Route::get('/{categories}', 'HomeController@category')->name('show.category');
+    Route::get('/{categories}/{subcategory}', 'HomeController@subcategory')->name('show.category.subcategory');
 });
 
 Route::get('/brand/{brand}/{product}', 'AdminPanel\Brand\BrandController@show_product')->name('show.product');

@@ -13,6 +13,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
+                            @honeypot
 
                             <div class="form-group" onclick="$('#name').focus()">
                                 <label for="name" class="col-form-label">Имя</label>
