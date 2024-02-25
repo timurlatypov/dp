@@ -171,7 +171,7 @@
                             </div>
                         </div>
 
-                        <button class="btn" type="submit">Обновить</button>
+                        <button class="btn btn-primary" type="submit">Обновить</button>
 
                     </form>
                 </div>

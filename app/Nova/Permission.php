@@ -2,25 +2,25 @@
 
 namespace App\Nova;
 
-use App\Nova\Brand as BrandModel;
+use App\Nova\Filters\Group;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Line extends Resource
+class Permission extends Resource
 {
-    public static $perPageViaRelationship = 15;
-
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Line::class;
+    public static $model = \Spatie\Permission\Models\Permission::class;
 
-    public static $group = 'Настройки';
+    public static $group = 'Управление';
+
+    public static $perPageViaRelationship = 20;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -36,6 +36,7 @@ class Line extends Resource
      */
     public static $search = [
         'id',
+        'name',
     ];
 
     /**
@@ -43,7 +44,7 @@ class Line extends Resource
      */
     public static function label()
     {
-        return __('nova/resources.line.label');
+        return __('nova/resources.permission.label');
     }
 
     /**
@@ -51,39 +52,41 @@ class Line extends Resource
      */
     public static function singularLabel()
     {
-        return __('nova/resources.line.singularLabel');
+        return __('nova/resources.permission.singularLabel');
     }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param Request $request
-     *
-     * @return (BelongsTo|ID|Text)[]
-     *
-     * @psalm-return list{ID, Text, BelongsTo, Text}
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
      */
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make(__('nova/resources.line.fields.name'), 'name'),
+            Text::make(__('Name'), 'name')
+                ->sortable()
+                ->rules('required', 'max:255'),
 
-            BelongsTo::make(__('nova/resources.brand.fields.name'), 'brand', BrandModel::class),
+            Text::make(__('Group'), 'group')
+                ->sortable()
+                ->rules('required', 'max:255'),
 
-            Text::make(__('nova/resources.line.fields.slug'), 'slug'),
+            Text::make(__('Group Name'), 'guard_name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            BelongsToMany::make(__('Roles'), 'roles', Role::class),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
-     *
-     * @psalm-return array<never, never>
      */
     public function cards(Request $request)
     {
@@ -93,27 +96,23 @@ class Line extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
-     *
-     * @psalm-return array<never, never>
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Group(),
+        ];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
-     *
-     * @psalm-return array<never, never>
      */
-    public function lenses(Request $request): array
+    public function lenses(Request $request)
     {
         return [];
     }
@@ -121,11 +120,8 @@ class Line extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
-     *
-     * @psalm-return array<never, never>
      */
     public function actions(Request $request)
     {

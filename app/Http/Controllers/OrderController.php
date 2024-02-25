@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\GoogleAnalytics;
-use App\Jobs\SendSberbankPaymentSuccessMessage;
 use App\Models\GiftCard;
 use App\Models\Order;
 use App\Models\Coupon;
 use App\Events\NewOrderCreated;
 use App\Models\Sberbank;
 use App\Models\YandexMetrika;
+use App\Notifications\OrderCreated;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -137,6 +138,8 @@ class OrderController extends Controller
 
         event(new NewOrderCreated($order, $customer, $managers, $admins));
 
+        $order->notify(new OrderCreated());
+
         $ga = $request->_ga;
         if ($ga) {
             try {
@@ -187,7 +190,7 @@ class OrderController extends Controller
             }
         }
 
-        \Gloudemans\Shoppingcart\Facades\Cart::destroy();
+        Cart::destroy();
     }
 
     public function check(Request $request)
@@ -218,9 +221,6 @@ class OrderController extends Controller
                 $check_order_payment->update([
                     'billinstatus' => 'Оплачен',
                 ]);
-
-                SendSberbankPaymentSuccessMessage::dispatch($order);
-                // SendPaymentSuccessMessage::dispatch($order);
 
                 return redirect()->route('page.success')->with('status', 'Заказ успешно оплачен онлайн!');
             }

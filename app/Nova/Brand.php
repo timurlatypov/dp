@@ -20,6 +20,8 @@ class Brand extends Resource
      */
     public static $model = \App\Models\Brand::class;
 
+    public static $group = 'Настройки';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

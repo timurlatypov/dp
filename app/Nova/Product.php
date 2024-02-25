@@ -33,6 +33,8 @@ class Product extends Resource
      */
     public static $model = \App\Models\Product::class;
 
+    public static $group = 'Настройки';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -212,9 +214,9 @@ class Product extends Resource
      *
      * @param Request $request
      *
-     * @return (Brand|Feed|Line|Live|OnStock)[]
+     * @return (Brand|Line|Live|OnStock)[]
      */
-    public function filters(Request $request)
+    public function filters(Request $request): array
     {
         return [
             new Brand(),

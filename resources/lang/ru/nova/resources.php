@@ -159,6 +159,20 @@ return [
             'slug' => 'Якорь (Slug)',
         ],
     ],
+    'role' => [
+        'label' => 'Роли',
+        'singularLabel' => 'Роль',
+        'fields' => [
+            'name' => 'Название',
+        ],
+    ],
+    'permission' => [
+        'label' => 'Разрешения',
+        'singularLabel' => 'Разрешение',
+        'fields' => [
+            'name' => 'Название',
+        ],
+    ],
     'filters' => [
         'live' => [
             'title' => 'На сайте',
@@ -180,12 +194,8 @@ return [
         'line' => [
             'title' => 'По Линии',
         ],
-        'feed' => [
-            'title' => 'В фиде',
-            'options' => [
-                'yes' => 'Да',
-                'no' => 'Нет',
-            ],
+        'group' => [
+            'title' => 'По Группе',
         ],
     ],
 ];

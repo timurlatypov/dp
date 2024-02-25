@@ -1,4 +1,4 @@
-FROM php:8.2.2-fpm
+FROM php:8.0.28-fpm-buster
 
 ENV PHPREDIS_VERSION 5.3.7
 

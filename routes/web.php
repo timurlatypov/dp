@@ -147,7 +147,7 @@ Route::group(['prefix' => '/gift-card'], function () {
 //          ADMIN PANEL CONTROLLER
 //
 /////////////////////////////////////////////////////////////////
-Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin,manager', 'namespace' => 'AdminPanel'], function () {
+Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|super-admin', 'namespace' => 'AdminPanel'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
     //
     // PRODUCTS GROUP

@@ -7,35 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendPaymentSuccessMessageJob;
 use App\Models\Payment;
 use App\Models\PaymentGateway;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class PostbackController extends Controller
 {
-    public function process(PaymentGateway $gateway, Request $request)
-    {
-        $queries = [];
-        parse_str($request->getQueryString(), $queries);
-
-        $checksum = $queries['checksum'];
-        unset($queries['checksum']);
-
-
-        ksort($queries);
-        $flattened = $queries;
-        array_walk($flattened, function (&$value, $key) {
-            $value = "{$key};{$value}";
-        });
-        $string = implode(';', $flattened);
-
-
-        $hmac = hash_hmac('sha256', $string, '');
-
-        dd(strtoupper($hmac), $checksum);
-    }
-
-    public function check(Request $request)
+    public function check(Request $request): JsonResponse
     {
         Log::info('Alfabank PostbackController::check Request Log', [
             'request' => $request->all(),
@@ -59,7 +39,7 @@ class PostbackController extends Controller
                 }
             }
             DB::commit();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             Log::info('Alfabank PostbackController::check Error Log', [

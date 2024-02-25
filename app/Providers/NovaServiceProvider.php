@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
-use App\Nova\Dashboards\OrderInsights;
 use App\Observers\ProductObserver;
 use App\Models\Product;
-use Eminiarts\NovaPermissions\NovaPermissions;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
@@ -82,14 +80,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     /**
      * Get the tools that should be listed in the Nova sidebar.
      *
-     * @return NovaPermissions[]
      */
     public function tools()
     {
-        return [
-            (new NovaPermissions())->canSee(function ($request) {
-                return $request->user()->hasAnyRole(['super-admin', 'admin']);
-            }),
-        ];
+        return [];
     }
 }

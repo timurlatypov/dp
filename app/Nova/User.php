@@ -2,8 +2,6 @@
 
 namespace App\Nova;
 
-use Eminiarts\NovaPermissions\Nova\Permission;
-use Eminiarts\NovaPermissions\Nova\Role;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
@@ -92,11 +90,7 @@ class User extends Resource
 
             MorphToMany::make('Roles', 'roles', Role::class)
                 ->canSee(function ($request) {
-                    return $request->user()->hasAnyRole(['super-admin', 'admin']);
-                }),
-            MorphToMany::make('Permissions', 'permissions', Permission::class)
-                ->canSee(function ($request) {
-                    return $request->user()->hasAnyRole(['super-admin', 'admin']);
+                    return $request->user()->hasAnyRole(['super-admin']);
                 }),
         ];
     }
