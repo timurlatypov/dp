@@ -40,6 +40,14 @@ class HomeController extends Controller
         return view('web.template', compact(['products', 'categories']));
     }
 
+    public function carePrograms()
+    {
+        $categories = Category::where('slug', 'care-programs')->first();
+        $products = $categories->products()->live()->paginate(21);
+
+        return view('web.template', compact(['products', 'categories']));
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */

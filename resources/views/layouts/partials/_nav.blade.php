@@ -45,9 +45,14 @@
                 {{--                        </a>--}}
                 {{--                    </li>--}}
 
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link text-danger" href="{{ route('bestsellers') }}">--}}
+{{--                        <i class="fas fa-star"></i>&nbsp;&nbsp;Бестселлеры--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="{{ route('bestsellers') }}">
-                        <i class="fas fa-star"></i>&nbsp;&nbsp;Бестселлеры
+                    <a class="nav-link text-danger" href="{{ route('care-programs') }}">
+                        <i class="fas fa-heart"></i>&nbsp;&nbsp;Уходовые программы
                     </a>
                 </li>
 {{--                <li class="nav-item">--}}

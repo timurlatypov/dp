@@ -13,6 +13,7 @@ Route::get('/rss/feed', [FeedController::class, 'index']);
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 Route::get('/novelties', [HomeController::class, 'novelties'])->name('novelties');
 Route::get('/bestsellers', 'HomeController@bestsellers')->name('bestsellers');
+Route::get('/care-programs', 'HomeController@carePrograms')->name('care-programs');
 Route::get('/premium', 'HomeController@premium')->name('premium');
 Route::get('/8march', [HomeController::class, 'eightMarch'])->name('eightMarch');
 Route::get('/14feb', [HomeController::class, 'fourteenthFeb'])->name('fourteenthFeb');
