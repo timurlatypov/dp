@@ -6,7 +6,7 @@ use App\Billing\PaymentStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendPaymentSuccessMessageJob;
 use App\Models\Payment;
-use App\Models\PaymentGateway;
+use App\Notifications\OrderPaid;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -25,17 +25,27 @@ class PostbackController extends Controller
         try {
             if ($request->query('mdOrder')) {
                 $hash = $request->query('mdOrder');
-                $checkOrderPayment = Payment::where('hash', $hash)->first();
+                $operation = $request->query('operation');
+                $status = $request->query('status');
 
-                if ($checkOrderPayment && $checkOrderPayment->status === PaymentStatusEnum::PENDING) {
+                if ($operation == 'deposited' && $status == '1') {
+                    $payment = Payment::where('hash', $hash)->first();
+                    if ($payment && $payment->status === PaymentStatusEnum::PENDING) {
+                        $order = $payment->order;
+                        $payment->update([
+                            'status' => PaymentStatusEnum::PAID,
+                        ]);
 
-                    $order = $checkOrderPayment->order;
-
-                    $checkOrderPayment->update([
-                        'status' => PaymentStatusEnum::PAID,
+                        $order->notify(new OrderPaid());
+                        SendPaymentSuccessMessageJob::dispatch($order);
+                    }
+                } else {
+                    Log::error('Alfabank Payment Error', [
+                        'orderNumber' => $request->query('orderNumber'),
+                        'mdOrder' => $request->query('mdOrder'),
+                        'operation' => $request->query('operation'),
+                        'status' => $request->query('status'),
                     ]);
-
-                    SendPaymentSuccessMessageJob::dispatch($order);
                 }
             }
             DB::commit();

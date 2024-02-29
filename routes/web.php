@@ -149,6 +149,13 @@ Route::group(['prefix' => '/gift-card'], function () {
 //
 /////////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|super-admin', 'namespace' => 'AdminPanel'], function () {
+    //
+    // EXPERIMENTAL ROUTES
+    //
+    Route::get('/telegram/update', 'TelegramBotController@update');
+    //
+    // ADMIN PANEL INDEX
+    //
     Route::get('/', 'AdminController@index')->name('admin.index');
     //
     // PRODUCTS GROUP
@@ -273,5 +280,3 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|su
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/callback/store', 'CallbackController@store')->name('callback.store');
 Route::post('/bookmark/store', 'BookmarkController@store')->name('save.product.to.bookmark');
-
-
