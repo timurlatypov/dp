@@ -34,7 +34,7 @@ class BrandController extends Controller
      */
     public function show_brand_products(Brand $brand)
     {
-        $products = $brand->products()->orderBy('title_eng', 'asc')->live()->paginate(20);
+        $products = $brand->products()->orderBy('order_id', 'asc')->live()->paginate(20);
 
         return view('web.brand', compact(['brand', 'products']));
     }
