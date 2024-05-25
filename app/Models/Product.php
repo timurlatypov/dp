@@ -63,9 +63,10 @@ class Product extends Model
      */
     public function toSearchableArray(): array
     {
-        $properties = $this->only(['id', 'price', 'discount', 'title_eng', 'title_rus', 'vendor_code', 'deleted_at', 'live', 'thumb_path','slug']);
+        $properties = $this->only(['id', 'price', 'discount', 'title_eng', 'title_rus', 'vendor_code', 'deleted_at', 'live', 'thumb_path','slug','volume','volume_type_id']);
         $properties['brand'] = $this->brand->only('name', 'slug');
         $properties['line'] = $this->line;
+        $properties['volume_type'] = $this->volume_type;
 
         return $properties;
     }
