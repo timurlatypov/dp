@@ -16,7 +16,7 @@ export const productautocomplete = (selector, { hitsPerPage }) => {
         displayKey: 'title',
         templates: {
             suggestion (suggestion) {
-                return '<span>' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title_eng.value + " - " + suggestion._highlightResult.title_rus.value + '</span><br><small>Арт. '+ suggestion._highlightResult.vendor_code.value +'</small>';
+                return '<span>' + suggestion._highlightResult.brand.name.value + " - " + suggestion._highlightResult.title_eng.value + " - " + suggestion._highlightResult.title_rus.value + '</span><br><small>Арт. '+ suggestion._highlightResult.vendor_code.value +'</small>&nbsp;<small>Объём: '+ suggestion._highlightResult.volume.value +' ' + suggestion._highlightResult.volume_type.name.value +'</small>';
             },
             empty: '<div class="p-3">Ничего не найдено</div>'
         }

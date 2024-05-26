@@ -24,6 +24,7 @@
         <div>
             @if(isset($title_rus))<p class="mt-0 text-muted tw-leading-normal tw-text-xs">{{ $title_rus }}</p>@endif
             {{ $volume_full }}
+            <p><small>Артикул: {{ $vendor_code }}</small></p>
             <p><small>{{ $reviews }}</small></p>
         </div>
 
