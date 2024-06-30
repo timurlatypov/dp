@@ -23,6 +23,7 @@ Route::group(['namespace' => 'API'], function() {
         Route::get('/{level}/options', 'CouponOptionsController@get');
         Route::get('search', 'SearchController@getDadata');
         Route::get('get-price', 'SearchController@getCDEKPrices');
+        Route::post('search-product', 'SearchController@getProductByVendor')->name('search.product');
     });
 });
 

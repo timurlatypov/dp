@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-6 align-self-center algolia-search">
-                    <search></search>
+                    <search endpoint="{{ route('search.product') }}"></search>
                     <div class="text-center">
 {{--                        <p class="tw-pb-1 m-0 tw-font-bold tw-font-base tw-text-red-700">БЕСКОНТАКТНАЯ ДОСТАВКА КУРЬЕРОМ</p>--}}
 {{--                        <p class="tw-pb-1 m-0 tw-font-bold tw-font-base tw-text-red-700">ОНЛАЙН-ОПЛАТА ЗАКАЗОВ</p>--}}

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Models\Product;
 use App\Services\Dadata\Response\ClientSuggest;
 use GuzzleHttp\Client;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -103,5 +105,25 @@ class SearchController extends Controller
             json_decode($response->getBody()->getContents()),
             200
         );
+    }
+
+    public function getProductByVendor(Request $request): JsonResponse
+    {
+        $vendorCode = $request->search;
+
+        if (is_numeric($vendorCode) && strlen((string )$vendorCode) === 9) {
+            $product = Product::where('vendor_code', $vendorCode)->first();
+
+            if ($product !== null) {
+                return response()->json(
+                    [
+                        'redirect' => sprintf('/brand/%s/%s', $product->brand->slug, $product->slug),
+                    ],
+                    200
+                );
+            }
+        }
+
+        return response()->json([],400);
     }
 }
