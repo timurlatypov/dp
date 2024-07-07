@@ -6,10 +6,12 @@ use App\Nova\Filters\Brand;
 use App\Nova\Filters\Line;
 use App\Nova\Filters\Live;
 use App\Nova\Filters\OnStock;
+use Benjacho\BelongsToManyField\BelongsToManyField;
 use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
+use Davidpiesse\NovaToggle\Toggle;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Benjacho\BelongsToManyField\BelongsToManyField;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -20,7 +22,6 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Orlyapps\NovaBelongsToDepend\NovaBelongsToDepend;
 use Saumini\Count\RelationshipCount;
-use Davidpiesse\NovaToggle\Toggle;
 
 class Product extends Resource
 {
@@ -55,7 +56,7 @@ class Product extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -63,7 +64,7 @@ class Product extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -71,7 +72,7 @@ class Product extends Resource
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public static function indexQuery(NovaRequest $request, $query)
     {
@@ -81,8 +82,6 @@ class Product extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @param Request $request
      */
     public function fields(Request $request)
     {
@@ -110,7 +109,7 @@ class Product extends Resource
                 ->help(__('nova/resources.product.hint.slug'))
                 ->rules(['required', 'max:191'])
                 ->creationRules(
-                    "unique:products,slug,NULL"
+                    'unique:products,slug,NULL'
                 )
                 ->updateRules(
                     "unique:products,slug,{$this->id}"
@@ -198,8 +197,6 @@ class Product extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -211,8 +208,6 @@ class Product extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return (Brand|Line|Live|OnStock)[]
      */
@@ -229,8 +224,6 @@ class Product extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      */
     public function lenses(Request $request)
@@ -240,8 +233,6 @@ class Product extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      */

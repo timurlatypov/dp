@@ -19,8 +19,6 @@ class MakeVendorCodeJob implements ShouldQueue
 
     /**
      * Create a new job instance.
-     *
-     * @param $id
      */
     public function __construct($id)
     {

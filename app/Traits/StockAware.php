@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait StockAware
 {
-    public function scopeStock(Builder $query): \Illuminate\Database\Eloquent\Builder
+    public function scopeStock(Builder $query): Builder
     {
         return $query->where('stock', true);
     }

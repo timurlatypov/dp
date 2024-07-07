@@ -35,8 +35,6 @@ class CheckoutController extends Controller
     /**
      * Delete the specified item from cart.
      *
-     * @param $rowId
-     *
      * @return Response|ResponseFactory
      */
     public function destroy($rowId)

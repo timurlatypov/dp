@@ -18,7 +18,7 @@ class OnStock extends Filter
     /**
      * The filter's name
      *
-     * @return array|null|string
+     * @return array|string|null
      */
     public function name()
     {
@@ -28,11 +28,7 @@ class OnStock extends Filter
     /**
      * Apply the filter to the given query.
      *
-     * @param Request $request
      * @param Builder $query
-     * @param mixed   $value
-     *
-     * @return Builder
      */
     public function apply(Request $request, $query, $value): Builder
     {
@@ -46,8 +42,6 @@ class OnStock extends Filter
     /**
      * Get the filter's available options.
      *
-     * @param Request $request
-     *
      * @return int[]
      *
      * @psalm-return array{'Да': 1, 'Нет': 0}
@@ -55,7 +49,7 @@ class OnStock extends Filter
     public function options(Request $request)
     {
         return [
-            'Да'  => 1,
+            'Да' => 1,
             'Нет' => 0,
         ];
     }

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\AdminPanel\Design;
 
-use App\Models\Carousel;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class DesignController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function index()
     {

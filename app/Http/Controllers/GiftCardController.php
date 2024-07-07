@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\GiftCard;
 use Gloudemans\Shoppingcart\Cart;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -29,9 +28,7 @@ class GiftCardController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
-     * @return ResponseFactory|Response
+     * @return Response|ResponseFactory
      */
     public function apply(Request $request)
     {
@@ -43,7 +40,7 @@ class GiftCardController extends Controller
 
         if (empty($giftCard)) {
             return response([
-                'message' => 'Подарочная карта недействительна'
+                'message' => 'Подарочная карта недействительна',
             ], 202);
         }
 

@@ -2,23 +2,21 @@
 
 namespace App\Providers;
 
+use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Banner;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Promotion;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
@@ -29,8 +27,6 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -61,7 +57,6 @@ class AppServiceProvider extends ServiceProvider
                 ->first());
         });
 
-
         view()->composer('layouts.partials._seasonal', function ($seasonal) {
             $seasonal->with('seasonal', Product::where('seasonal', true)
                 ->live()
@@ -83,7 +78,6 @@ class AppServiceProvider extends ServiceProvider
                 ->take(4)
                 ->get());
         });
-
 
         view()->composer('layouts.partials._infoblock', function ($recommend) {
             $recommend->with('recommend', Product::where('recommend', true)
@@ -122,7 +116,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('admin.index', function ($orders) {
-            $currentYear  = date('Y');
+            $currentYear = date('Y');
             $currentMonth = date('m');
             $orders->with('current_month_orders_count', Order::whereRaw('MONTH(created_at) = ?', [$currentMonth])
                 ->whereRaw('YEAR(created_at) = ?', [$currentYear])

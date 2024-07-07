@@ -20,6 +20,7 @@ class PaymentController extends Controller
     public function register(Order $order)
     {
         $paymentGateway = new AlfabankPaymentGateway();
+
         try {
             $paymentGateway->registerOrder($order);
 
@@ -61,13 +62,13 @@ class PaymentController extends Controller
         ]);
 
         DB::beginTransaction();
+
         try {
             if ($request->query('orderId')) {
                 $hash = $request->query('orderId');
                 $checkOrderPayment = Payment::where('hash', $hash)->first();
 
                 if ($checkOrderPayment && $checkOrderPayment->status === PaymentStatusEnum::PENDING) {
-
                     $order = $checkOrderPayment->order;
 
                     $checkOrderPayment->update([

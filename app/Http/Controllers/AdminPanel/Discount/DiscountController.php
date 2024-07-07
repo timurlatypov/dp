@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\AdminPanel\Discount;
 
-use App\Models\Brand;
-use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Discount\UpdateDiscountRequest;
+use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -23,14 +23,12 @@ class DiscountController extends Controller
     }
 
     /**
-     * @param UpdateDiscountRequest $request
-     *
      * @return RedirectResponse
      */
     public function update(UpdateDiscountRequest $request)
     {
         $products = Product::where('brand_id', $request->brand)->get();
-        $brand    = Brand::where('id', $request->brand)->first();
+        $brand = Brand::where('id', $request->brand)->first();
 
         foreach ($products as $product) {
             $product->update([

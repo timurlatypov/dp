@@ -4,8 +4,10 @@ namespace App\Billing\Alfabank;
 
 use App\Models\Order;
 use App\Models\Payment;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Throwable;
 
 class AlfabankPaymentGateway
 {
@@ -52,8 +54,7 @@ class AlfabankPaymentGateway
             $data['failUrl'] = $this->failUrl;
             $data['sessionTimeoutSecs'] = $this->sessionTimeoutSecs;
 
-
-            $response = Http::asForm()->post($this->gateway . "register.do", $data);
+            $response = Http::asForm()->post($this->gateway . 'register.do', $data);
             $data = $response->body();
             $array = json_decode($data, true, 512, JSON_OBJECT_AS_ARRAY);
 
@@ -67,11 +68,10 @@ class AlfabankPaymentGateway
             $order->payment()->save($payment);
 
             DB::commit();
-
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             DB::rollBack();
 
-            throw new \Exception($e->getMessage());
+            throw new Exception($e->getMessage());
         }
     }
 }

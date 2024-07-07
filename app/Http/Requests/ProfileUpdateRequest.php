@@ -16,7 +16,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => 'required|string|max:191',
             'surname' => 'required|string|max:191',
-            'phone' => 'required'
+            'phone' => 'required',
         ];
     }
 
@@ -25,7 +25,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name.required' => 'Поле Имя является обязательным!',
             'surname.required' => 'Поле Фамилия является обязательным!',
-            'phone.required' => 'Поле Телефон является обязательным!'
+            'phone.required' => 'Поле Телефон является обязательным!',
         ];
     }
 }

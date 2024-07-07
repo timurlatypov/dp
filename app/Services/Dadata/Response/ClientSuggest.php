@@ -11,12 +11,10 @@ use RuntimeException;
 
 /**
  * Class ClientHint
- *
- * @package \Fomvasss\Dadata
  */
 class ClientSuggest
 {
-    public const METHOD_GET  = 'GET';
+    public const METHOD_GET = 'GET';
     public const METHOD_POST = 'POST';
 
     /**
@@ -105,22 +103,16 @@ class ClientSuggest
 
     /**
      * Версия API
-     *
-     * @var string
      */
     protected string $version = '4_1';
 
     /**
      * Базовый адрес
-     *
-     * @var string
      */
     protected string $base_url = 'https://suggestions.dadata.ru/suggestions/api';
 
     /**
      * URI подсказок
-     *
-     * @var string
      */
     protected string $url_suggestions = 'rs/suggest';
 
@@ -158,7 +150,6 @@ class ClientSuggest
         $this->httpClient = new Client();
     }
 
-
     public function cityById($id, array $params = [])
     {
         $params['query'] = $id;
@@ -170,13 +161,10 @@ class ClientSuggest
      * Requests API.
      *
      * @param string $url
-     * @param array  $params
      * @param string $method
-     * @return mixed
      */
     private function query($url, array $params = [], $method = self::METHOD_POST)
     {
-
         if (empty($params['query'])) {
             throw new RuntimeException('Empty request');
         }
@@ -184,7 +172,7 @@ class ClientSuggest
         $request = new Request($method, $url, [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => 'Token ' . $this->token
+            'Authorization' => 'Token ' . $this->token,
         ], 0 < count($params) ? json_encode($params) : null);
 
         try {
@@ -238,21 +226,20 @@ class ClientSuggest
             default:
                 throw new RuntimeException('Unexpected error');
         }
-
     }
 
     /**
      * Подсказки
      *
      * @link https://dadata.ru/api/suggest/
+     *
      * @param string $type
-     * @param array  $fields
+     * @param array $fields
+     *
      * @return bool|mixed|string
      */
     public function suggest($type, $fields)
     {
         return $this->query("{$this->base_url}/{$this->version}/{$this->url_suggestions}/$type", $fields);
     }
-
-
 }

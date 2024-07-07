@@ -28,16 +28,14 @@ class Product extends Model
 
     /**
      * @var string[]
-     *
      */
     protected $with = [
         'brand',
-        'volume_type'
+        'volume_type',
     ];
 
     /**
      * @var string[]
-     *
      */
     protected $appends = [
         'new_product',
@@ -63,7 +61,7 @@ class Product extends Model
      */
     public function toSearchableArray(): array
     {
-        $properties = $this->only(['id', 'price', 'discount', 'title_eng', 'title_rus', 'vendor_code', 'deleted_at', 'live', 'thumb_path','slug','volume','volume_type_id']);
+        $properties = $this->only(['id', 'price', 'discount', 'title_eng', 'title_rus', 'vendor_code', 'deleted_at', 'live', 'thumb_path', 'slug', 'volume', 'volume_type_id']);
         $properties['brand'] = $this->brand->only('name', 'slug');
         $properties['line'] = $this->line;
         $properties['volume_type'] = $this->volume_type;
@@ -116,9 +114,6 @@ class Product extends Model
         return $this->belongsToMany(Product::class, 'product_related', 'product_id', 'related_id');
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class, 'menu_id');
@@ -142,16 +137,14 @@ class Product extends Model
         return $builder->where('bestseller', true);
     }
 
-
     /**
-     *
      * ATRIBUTES
-     *
      */
     public function getNewProductAttribute()
     {
         return $this->categories()->where('slug', 'new-products')->first();
     }
+
     /**
      * FILTERS
      */
@@ -189,81 +182,51 @@ class Product extends Model
         return $titles[($number % 100 > 4 && $number % 100 < 20) ? 2 : $cases[min($number % 10, 5)]];
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title_eng . ' ' . $this->title_rus ?? '';
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description_short ?? '';
     }
 
-    /**
-     * @return string
-     */
     public function getLink(): string
     {
-        return env('APP_URL') . "/brand/" . $this->brand->slug . "/" . $this->slug;
+        return env('APP_URL') . '/brand/' . $this->brand->slug . '/' . $this->slug;
     }
 
-    /**
-     * @return string
-     */
     public function getBrandName(): string
     {
         return $this->brand->name;
     }
 
-    /**
-     * @return int
-     */
     public function getVendorCode(): int
     {
         return $this->vendor_code;
     }
 
-    /**
-     * @return string
-     */
     public function getImagePath(): string
     {
         return get_image_path($this->image_path);
     }
 
-    /**
-     * @return int
-     */
     public function getBasePrice(): int
     {
         return $this->price;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCategoryId(): ?int
     {
         return $this->menu_id;
     }
 
-    /**
-     * @return ProductFeedItem
-     */
     public function toFeedItem(): ProductFeedItem
     {
         return ProductFeedItem::create()

@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Banner;
 use App\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class BannerPolicy
 {

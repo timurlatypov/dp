@@ -10,9 +10,7 @@ class PrivateUserResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param Request  $request
-     *
-     * @return array
+     * @param Request $request
      *
      * @psalm-return array{id: mixed, email: mixed, name: mixed}
      */
@@ -21,7 +19,7 @@ class PrivateUserResource extends JsonResource
         return [
             'id' => $this->id,
             'email' => $this->email,
-            'name' => $this->name
+            'name' => $this->name,
         ];
     }
 }

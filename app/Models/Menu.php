@@ -17,8 +17,6 @@ class Menu extends Model
     protected $guarded = [];
 
     /**
-     * @return string
-     *
      * @psalm-return 'slug'
      */
     public function getRouteKeyName(): string
@@ -26,17 +24,11 @@ class Menu extends Model
         return 'slug';
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function parent(): BelongsTo
     {
         return $this->belongsTo(Menu::class, 'parent_id');
     }
 
-    /**
-     * @return HasMany
-     */
     public function children(): HasMany
     {
         return $this->hasMany(Menu::class, 'parent_id');

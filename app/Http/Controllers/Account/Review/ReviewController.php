@@ -75,11 +75,11 @@ class ReviewController extends Controller
             'published' => false,
             'published_at' => now(),
             'user_id' => $user->id,
-            'product_id' => $request->get('product_id')
+            'product_id' => $request->get('product_id'),
         ]);
 
         $managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
-        $admins   = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
+        $admins = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
 
         event(new NewReviewCreated($review, $managers, $admins));
 

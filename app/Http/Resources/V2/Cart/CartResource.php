@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V2\Cart;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CartResource extends JsonResource
@@ -9,7 +10,7 @@ class CartResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param Request $request
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection[]
      *
@@ -18,7 +19,7 @@ class CartResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'products' => CartProductVariationResource::collection($this->cart)
+            'products' => CartProductVariationResource::collection($this->cart),
         ];
     }
 }

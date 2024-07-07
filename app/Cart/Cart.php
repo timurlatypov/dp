@@ -16,7 +16,6 @@ class Cart
 
     /**
      * Cart constructor.
-     *
      */
     public function __construct()
     {
@@ -24,8 +23,6 @@ class Cart
     }
 
     /**
-     * @param null|string $instance
-     *
      * @psalm-param 'default'|null $instance
      */
     public function instance(?string $instance = null): static
@@ -62,9 +59,6 @@ class Cart
         session()->put($this->instance, $content);
     }
 
-    /**
-     * @return void
-     */
     public function update($rowId, $qty)
     {
         $cartItem = $this->get($rowId);
@@ -83,19 +77,16 @@ class Cart
 
         if ($cartItem->qty <= 0) {
             $this->remove($cartItem->rowId);
+
             return;
-        } else {
-            $content->put($cartItem->rowId, $cartItem);
         }
+            $content->put($cartItem->rowId, $cartItem);
 
         session()->put($this->instance, $content);
     }
 
     /**
      * Remove the cart item with the given rowId from the cart.
-     *
-     * @param string $rowId
-     * @return void
      */
     public function remove(string $rowId): void
     {
@@ -108,12 +99,11 @@ class Cart
         session()->put($this->instance, $content);
     }
 
-
     public function get(string $rowId)
     {
         $content = $this->getContent();
 
-        if (! $content->has($rowId)) {
+        if (!$content->has($rowId)) {
             throw new InvalidRowIDException("The cart does not contain rowId {$rowId}.");
         }
 

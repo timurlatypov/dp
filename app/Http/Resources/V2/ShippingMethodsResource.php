@@ -12,8 +12,6 @@ class ShippingMethodsResource extends JsonResource
      *
      * @param Request $request
      *
-     * @return array
-     *
      * @psalm-return array{id: mixed, name: mixed, price: mixed, default: mixed}
      */
     public function toArray($request): array
@@ -22,7 +20,7 @@ class ShippingMethodsResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->formattedPrice,
-            'default' => $this->default
+            'default' => $this->default,
         ];
     }
 }

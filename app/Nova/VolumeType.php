@@ -5,7 +5,6 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class VolumeType extends Resource
 {
@@ -36,7 +35,7 @@ class VolumeType extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -44,7 +43,7 @@ class VolumeType extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -53,8 +52,6 @@ class VolumeType extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @param Request $request
      */
     public function fields(Request $request)
     {
@@ -69,8 +66,6 @@ class VolumeType extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      */
     public function cards(Request $request)
@@ -80,8 +75,6 @@ class VolumeType extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      */
@@ -93,8 +86,6 @@ class VolumeType extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      */
     public function lenses(Request $request)
@@ -104,8 +95,6 @@ class VolumeType extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      */

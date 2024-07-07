@@ -18,7 +18,7 @@ class Live extends Filter
     /**
      * The filter's name
      *
-     * @return array|null|string
+     * @return array|string|null
      */
     public function name()
     {
@@ -28,11 +28,7 @@ class Live extends Filter
     /**
      * Apply the filter to the given query.
      *
-     * @param Request $request
      * @param Builder $query
-     * @param mixed   $value
-     *
-     * @return Builder
      */
     public function apply(Request $request, $query, $value): Builder
     {
@@ -42,8 +38,6 @@ class Live extends Filter
     /**
      * Get the filter's available options.
      *
-     * @param Request $request
-     *
      * @return int[]
      *
      * @psalm-return array<0|1>
@@ -52,7 +46,7 @@ class Live extends Filter
     {
         return [
             __('nova/resources.filters.live.options.yes') => 1,
-            __('nova/resources.filters.live.options.no')  => 0,
+            __('nova/resources.filters.live.options.no') => 0,
         ];
     }
 }

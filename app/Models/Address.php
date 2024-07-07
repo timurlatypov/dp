@@ -18,7 +18,7 @@ class Address extends Model
         'address',
         'phone',
         'comment',
-        'default'
+        'default',
     ];
 
     public static function boot()
@@ -28,7 +28,7 @@ class Address extends Model
         static::creating(static function ($address) {
             if ($address->default) {
                 $address->user->addresses()->update([
-                    'default' => false
+                    'default' => false,
                 ]);
             }
         });
@@ -36,7 +36,7 @@ class Address extends Model
 
     public function setDefaultAttribute($value): void
     {
-        $this->attributes['default'] = (bool)$value;
+        $this->attributes['default'] = (bool) $value;
     }
 
     public function user(): BelongsTo

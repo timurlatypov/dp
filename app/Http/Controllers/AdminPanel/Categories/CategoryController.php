@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\AdminPanel\Categories;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Subcategory;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -20,7 +22,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function categoriesProducts(Category $categories)
     {
@@ -30,7 +32,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function subcategoriesProducts(Category $categories, Subcategory $subcategory)
     {
@@ -39,14 +41,14 @@ class CategoryController extends Controller
 
     public function categoryAssociateProducts(Category $categories, Request $request): void
     {
-        $products   = $request->toArray();
+        $products = $request->toArray();
         $productsID = array_column($products, 'id');
         $categories->products()->sync($productsID);
     }
 
     public function subcategoryAssociateProducts(Category $categories, Subcategory $subcategory, Request $request): void
     {
-        $products   = $request->toArray();
+        $products = $request->toArray();
         $productsID = array_column($products, 'id');
         $subcategory->products()->sync($productsID);
     }

@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\AdminPanel\Design\Carousel;
 
-use App\Models\Carousel;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Carousel;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 
 class CarouselController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function index(Carousel $carousel)
     {
@@ -20,7 +24,7 @@ class CarouselController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -30,22 +34,22 @@ class CarouselController extends Controller
     public function store(Request $request): void
     {
         Carousel::create([
-            'body'       => $request->body,
-            'body_hex'   => $request->body_hex,
-            'brand'      => $request->brand,
-            'button'     => $request->button,
-            'hex'        => $request->hex,
+            'body' => $request->body,
+            'body_hex' => $request->body_hex,
+            'brand' => $request->brand,
+            'button' => $request->button,
+            'hex' => $request->hex,
             'image_path' => $request->image_path,
-            'link'       => $request->link,
-            'order_id'   => $request->order_id,
-            'title'      => $request->title,
-            'title_hex'  => $request->title_hex,
+            'link' => $request->link,
+            'order_id' => $request->order_id,
+            'title' => $request->title,
+            'title_hex' => $request->title_hex,
             'expired_at' => $request->expired_at,
         ]);
     }
 
     /**
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return Response|ResponseFactory
      */
     public function store_image(Request $request)
     {
@@ -61,7 +65,6 @@ class CarouselController extends Controller
             'data' => $image_unique_name,
         ], 200);
     }
-
 
     public function update(Request $request, Carousel $carousel): void
     {

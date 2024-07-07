@@ -29,8 +29,8 @@ class ImageStoreRequest extends FormRequest
             'file' => [
                 'required',
                 'file',
-                'image:jpeg,png'
-            ]
+                'image:jpeg,png',
+            ],
         ];
     }
 }

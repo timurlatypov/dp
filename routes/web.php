@@ -4,7 +4,7 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
-Route::middleware(ProtectAgainstSpam::class)->group(function() {
+Route::middleware(ProtectAgainstSpam::class)->group(function () {
     Auth::routes();
 });
 
@@ -26,23 +26,19 @@ Route::get('/sdek', 'HomeController@sdek')->name('sdek');
 Route::get('/sdek-points', 'HomeController@sdekPoints')->name('sdek.points');
 Route::get('/bookmarks', 'HomeController@bookmarks')->name('bookmarks');
 
-
-
 // Online payment routes for SUCCESS and FAILURE statuses
 Route::get('/payment-check', 'OrderController@check')->name('payment.check');
 Route::get('/payment-success', 'OrderController@success')->name('payment.success');
 Route::get('/success', 'HomeController@success')->name('page.success');
 
-
 Route::get('/payment-failure', 'OrderController@failure')->name('payment.failure');
 Route::get('/failure', 'HomeController@failure')->name('page.failure');
 
-
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 //
 //  BILLING
 //
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/billing', 'namespace' => 'Billing'], function () {
     Route::group(['prefix' => '/gateway', 'namespace' => 'Gateway'], function () {
         Route::get('/{order}/register', 'PaymentController@register')->name('billing.gateway.registerOrder');
@@ -51,15 +47,12 @@ Route::group(['prefix' => '/billing', 'namespace' => 'Billing'], function () {
 
         Route::get('/success', 'PaymentController@success')->name('billing.gateway.payment.success');
         Route::get('/failed', 'PaymentController@failed')->name('billing.gateway.payment.failed');
-
     });
 
     Route::group(['prefix' => '/postback', 'namespace' => 'Postback'], function () {
         Route::get('/{gateway}', 'PostbackController@check')->name('billing.postback.check');
     });
 });
-
-
 
 Route::group(['prefix' => '/category'], function () {
     Route::get('/{categories}', 'HomeController@category')->name('show.category');
@@ -69,7 +62,6 @@ Route::group(['prefix' => '/category'], function () {
 Route::get('/brand/{brand}/{product}', 'AdminPanel\Brand\BrandController@show_product')->name('show.product');
 Route::get('/brand/{brand}', 'AdminPanel\Brand\BrandController@show_brand_products')->name('show.brand.products');
 Route::get('/brand/{brand}/line/{line}', 'AdminPanel\Brand\BrandController@show_brand_line_products')->name('show.brand.line.products');
-
 
 Route::group(['prefix' => '/cart'], function () {
     Route::post('/add', 'CartController@store')->name('add.product.to.cart');
@@ -88,22 +80,20 @@ Route::group(['prefix' => '/checkout'], function () {
     Route::delete('/delete/{rowId}', 'CheckoutController@destroy')->name('delete.item.from.cart');
 });
 
-
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 //
 //          ORDER CONTROLLER
 //
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/order'], function () {
     Route::post('/store', 'OrderController@store')->name('order.store');
 });
 
-
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 //
 //          USER ACCOUNT CONTROLLER
 //
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Account'], function () {
     Route::get('/profile', 'AccountController@profile')->name('account.profile');
     Route::patch('/profile/update', 'AccountController@profile_update')->name('account.profile.update');
@@ -120,34 +110,31 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth', 'namespace' => 'Ac
     });
 });
 
-
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 //
 //          USER COUPON CONTROLLER
 //
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/coupon'], function () {
     Route::get('/destroy', 'CouponController@destroy')->name('coupon.destroy');
     Route::post('/validate', 'CouponController@validateCoupon')->name('validate.coupon');
 });
 
-
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 //
 //          GIFT CARDS CONTROLLER
 //
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/gift-card'], function () {
     Route::get('/cancel', 'GiftCardController@cancel')->name('gift-card.cancel');
     Route::post('/apply', 'GiftCardController@apply')->name('gift-card.apply');
 });
 
-
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 //
 //          ADMIN PANEL CONTROLLER
 //
-/////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|super-admin', 'namespace' => 'AdminPanel'], function () {
     //
     // EXPERIMENTAL ROUTES
@@ -203,7 +190,6 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|su
         Route::patch('/{categories}/products/associate', 'CategoryController@categoryAssociateProducts')->name('admin.categories.associate.products');
         Route::patch('/{categories}/{subcategory}/products/associate', 'CategoryController@subcategoryAssociateProducts')->name('admin.categories.subcategory.associate.products');
         Route::post('/{categories}/store', 'CategoryController@store')->name('store.new.subcategory');
-
     });
 
     //
@@ -222,13 +208,11 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|su
         Route::get('/{order}/register', 'OrderController@registerOrder')->name('admin.orders.registerOrder');
         Route::get('/{order}/resend', 'OrderController@resendConfirmationEmail')->name('admin.orders.resendConfirmation');
 
-
         Route::get('/{id}/reverse', 'OrderController@reverseOrder')->name('admin.orders.reverseOrder');
         Route::get('/{id}/decline', 'OrderController@declineOrder')->name('admin.orders.declineOrder');
         Route::get('/{id}/delete', 'OrderController@deleteLink')->name('admin.orders.deleteLink');
         Route::get('/{id}/status', 'OrderController@orderStatus')->name('admin.orders.orderStatus');
         Route::get('/{order}/send-link', 'OrderController@sendLink')->name('admin.orders.sendLink');
-
 
         Route::post('/assign', 'OrderController@assign')->name('admin.orders.assign');
         Route::delete('/delete', 'OrderController@destroy')->name('admin.orders.destroy');
@@ -274,7 +258,6 @@ Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|su
     Route::group(['prefix' => '/api', 'namespace' => 'Line'], function () {
         Route::post('/lines', 'LineController@show_all_lines_for_brand')->name('api.get.product.lines');
     });
-
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -968,6 +968,7 @@ docker-compose.override.yml
 /tools/php-cs-fixer/vendor/autoload.php
 /tools/php-cs-fixer/composer.json
 /tools/php-cs-fixer/composer.lock
+/tools/php-cs-fixer/vendor/
 /.php-cs-fixer.cache
 /public/vendor/nova/app.css.map
 /public/vendor/nova/app.js.map

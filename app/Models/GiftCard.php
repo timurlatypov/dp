@@ -32,7 +32,7 @@ class GiftCard extends Model
      * @psalm-var array{used: 'boolean', expired_at: 'datetime'}
      */
     protected $casts = [
-        'used'         => 'boolean',
-        'expired_at'   => 'datetime',
+        'used' => 'boolean',
+        'expired_at' => 'datetime',
     ];
 }

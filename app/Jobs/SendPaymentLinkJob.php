@@ -5,10 +5,10 @@ namespace App\Jobs;
 use App\Mail\PaymentLinkEmail;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
 class SendPaymentLinkJob implements ShouldQueue
@@ -23,8 +23,6 @@ class SendPaymentLinkJob implements ShouldQueue
 
     /**
      * Create a new job instance.
-     *
-     * @return void
      */
     public function __construct(Order $order, $payment_link)
     {
@@ -34,8 +32,6 @@ class SendPaymentLinkJob implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
     public function handle()
     {

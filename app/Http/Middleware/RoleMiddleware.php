@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RoleMiddleware
@@ -10,13 +11,10 @@ class RoleMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param Request $request
      */
     public function handle($request, Closure $next, ...$roles)
     {
-
         if (!Auth::check() || !$request->user()->hasRole($roles)) {
             abort(404);
         }

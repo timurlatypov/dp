@@ -33,7 +33,7 @@ class Order extends Model
      */
     protected $appends = [
         'order_id',
-        'order_id_raw'
+        'order_id_raw',
     ];
 
     protected static function boot()
@@ -49,13 +49,13 @@ class Order extends Model
     {
         switch ($this->order_status) {
             case self::PENDING:
-                return '<span class="text-success">'.$this->order_status.'</span>';
+                return '<span class="text-success">' . $this->order_status . '</span>';
             case self::PROCESSING:
-                return '<span class="text-warning">'.$this->order_status.'</span>';
+                return '<span class="text-warning">' . $this->order_status . '</span>';
             case self::DELIVERED:
-                return '<span class="text-info">'.$this->order_status.'</span>';
+                return '<span class="text-info">' . $this->order_status . '</span>';
             case self::CANCELLED:
-                return '<span class="text-danger">'.$this->order_status.'</span>';
+                return '<span class="text-danger">' . $this->order_status . '</span>';
             default:
                 return $this->order_status;
         }
@@ -63,7 +63,7 @@ class Order extends Model
 
     public function getOrderIdAttribute(): string
     {
-        return 'DP-'.str_pad($this->id, 6, '0', STR_PAD_LEFT);
+        return 'DP-' . str_pad($this->id, 6, '0', STR_PAD_LEFT);
     }
 
     public function getOrderIdRawAttribute(): string
@@ -72,8 +72,6 @@ class Order extends Model
     }
 
     /**
-     * @return int|null
-     *
      * @psalm-return int<0, max>|null
      */
     public static function countNewOrders(): ?int
@@ -82,6 +80,7 @@ class Order extends Model
         if (count($o)) {
             return count($o);
         }
+
         return null;
     }
 

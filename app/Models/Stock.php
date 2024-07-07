@@ -12,6 +12,6 @@ class Stock extends Model
      * @psalm-var list{'quantity', 'product_variation_id'}
      */
     protected $fillable = [
-        'quantity', 'product_variation_id'
+        'quantity', 'product_variation_id',
     ];
 }

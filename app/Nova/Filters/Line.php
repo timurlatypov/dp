@@ -17,7 +17,7 @@ class Line extends Filter
     public $component = 'select-filter';
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public function name()
     {
@@ -27,9 +27,7 @@ class Line extends Filter
     /**
      * Apply the filter to the given query.
      *
-     * @param Request $request
      * @param Builder $query
-     * @param mixed   $value
      *
      * @return Builder
      */
@@ -40,8 +38,6 @@ class Line extends Filter
 
     /**
      * Get the filter's available options.
-     *
-     * @param Request $request
      *
      * @return array
      */

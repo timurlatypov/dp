@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Permission extends Resource
 {
@@ -19,7 +18,6 @@ class Permission extends Resource
     public static $model = \Spatie\Permission\Models\Permission::class;
 
     public static $group = 'Управление';
-
     public static $perPageViaRelationship = 20;
 
     /**
@@ -40,7 +38,7 @@ class Permission extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -48,7 +46,7 @@ class Permission extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -58,7 +56,6 @@ class Permission extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
@@ -85,7 +82,6 @@ class Permission extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -96,7 +92,6 @@ class Permission extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -109,7 +104,6 @@ class Permission extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -120,7 +114,6 @@ class Permission extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)

@@ -6,13 +6,11 @@ use App\Models\Promotion as PromotionModel;
 use Carbon\Carbon;
 use Davidpiesse\NovaToggle\Toggle;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Promotion extends Resource
 {
@@ -41,7 +39,7 @@ class Promotion extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -49,7 +47,7 @@ class Promotion extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -59,9 +57,7 @@ class Promotion extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param Request $request
-     *
-     * @return (Date|ID|Image|Number|Text|mixed)[]
+     * @return (Date|ID|Image|mixed|Number|Text)[]
      *
      * @psalm-return list{ID, Text, Text, Image, Number, mixed, Date, Date}
      */
@@ -102,8 +98,6 @@ class Promotion extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -115,8 +109,6 @@ class Promotion extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *
@@ -130,8 +122,6 @@ class Promotion extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -143,8 +133,6 @@ class Promotion extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *

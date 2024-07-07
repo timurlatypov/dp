@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Cart;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -13,13 +14,11 @@ class CartController extends Controller
     /**
      * Helper function
      *
-     * @param $id
-     *
      * @return int
      */
     private function isCouponDiscount($id)
     {
-        $value  = 0;
+        $value = 0;
         $coupon = session()->get('coupon');
         if ($coupon && $coupon->brand_id == $id) {
             $value = $coupon->discount;
@@ -30,8 +29,6 @@ class CartController extends Controller
 
     /**
      * CartController constructor.
-     *
-     * @param Cart $cart
      */
     public function __construct(Cart $cart)
     {
@@ -41,40 +38,38 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     *
-     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return Response|ResponseFactory
      */
     public function store(Request $request)
     {
         $this->cart->add([
-            'id'      => $request->id,
-            'name'    => $request->title_eng,
-            'qty'     => 1,
-            'price'   => $request->price,
+            'id' => $request->id,
+            'name' => $request->title_eng,
+            'qty' => 1,
+            'price' => $request->price,
             'options' => [
-                'title_rus'    => $request->title_rus,
-                'vendor_code'  => $request->vendor_code,
-                'discount'     => $request->discount,
-                'product_id'   => $request->id,
+                'title_rus' => $request->title_rus,
+                'vendor_code' => $request->vendor_code,
+                'discount' => $request->discount,
+                'product_id' => $request->id,
                 'product_slug' => $request->slug,
-                'brand'        => $request->brand['name'],
-                'brand_id'     => $request->brand['id'],
-                'brand_slug'   => $request->brand['slug'],
-                'image'        => $request->thumb_path,
-                'coupon'       => $this->isCouponDiscount($request->brand['id']),
-                'volume'       => $request->volume,
-                'volume_name'       => $request->volume_type['name'],
+                'brand' => $request->brand['name'],
+                'brand_id' => $request->brand['id'],
+                'brand_slug' => $request->brand['slug'],
+                'image' => $request->thumb_path,
+                'coupon' => $this->isCouponDiscount($request->brand['id']),
+                'volume' => $request->volume,
+                'volume_name' => $request->volume_type['name'],
             ],
         ]);
 
         return response([
-            'data' => $this->cart->content()
+            'data' => $this->cart->content(),
         ], 200);
     }
 
     /**
-     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return Response|ResponseFactory
      */
     public function refresh()
     {

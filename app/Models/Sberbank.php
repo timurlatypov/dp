@@ -16,5 +16,4 @@ class Sberbank extends Model
     {
         return $this->belongsToMany(Order::class, 'orders_payments', 'payment_id', 'order_id');
     }
-
 }

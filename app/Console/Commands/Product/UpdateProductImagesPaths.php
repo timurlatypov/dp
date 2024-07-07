@@ -23,8 +23,6 @@ class UpdateProductImagesPaths extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
     public function handle(): int
     {
@@ -35,16 +33,14 @@ class UpdateProductImagesPaths extends Command
             ->get();
 
         foreach ($products as $product) {
-
-            if (str_starts_with($product->image_path, 'products/image') &&
-                str_starts_with($product->thumb_path, 'products/thumb')) {
+            if (str_starts_with($product->image_path, 'products/image')
+                && str_starts_with($product->thumb_path, 'products/thumb')) {
                 continue;
             }
 
             $product->image_path = 'products/image/' . $product->image_path;
             $product->thumb_path = 'products/thumb/' . $product->thumb_path;
             $product->save();
-
         }
 
         echo $products->count();

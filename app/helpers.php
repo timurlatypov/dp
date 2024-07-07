@@ -13,9 +13,8 @@ if (!function_exists('get_image_path')) {
     {
         if (app()->environment('production')) {
             return asset('/storage/' . $path);
-        } else {
-            return '/storage/' . $path;
         }
 
+            return '/storage/' . $path;
     }
 }

@@ -2,13 +2,13 @@
 
 namespace App\Nova;
 
+use App\Models\Menu as MenuModel;
 use Benjaminhirsch\NovaSlugField\Slug;
 use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use App\Models\Menu as MenuModel;
 
 class Menu extends Resource
 {
@@ -33,13 +33,11 @@ class Menu extends Resource
      */
     public static $search = [
         'id',
-        'name'
+        'name',
     ];
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @param \Illuminate\Http\Request  $request
      *
      * @return (BelongsTo|HasMany|ID|Slug|TextWithSlug)[]
      *
@@ -55,13 +53,13 @@ class Menu extends Resource
                 ->rules(['required', 'max:191'])
                 ->slug('slug'),
 
-            Slug::make("Slug", 'slug')
+            Slug::make('Slug', 'slug')
                 ->disableAutoUpdateWhenUpdating()
                 ->hideFromIndex()
                 ->help(__('nova/resources.product.hint.slug'))
                 ->rules(['required', 'max:191'])
                 ->creationRules(
-                    "unique:menus,slug,NULL"
+                    'unique:menus,slug,NULL'
                 )
                 ->updateRules(
                     "unique:menus,slug,{$this->id}"
@@ -76,8 +74,6 @@ class Menu extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request  $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -89,8 +85,6 @@ class Menu extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param \Illuminate\Http\Request  $request
      *
      * @return array
      *
@@ -104,8 +98,6 @@ class Menu extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request  $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -117,8 +109,6 @@ class Menu extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param \Illuminate\Http\Request  $request
      *
      * @return array
      *

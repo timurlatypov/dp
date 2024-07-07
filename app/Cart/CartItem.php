@@ -10,9 +10,6 @@ class CartItem
 
     /**
      * CartItem constructor.
-     *
-     * @param int $productVariationiId
-     * @param int $qty
      */
     public function __construct(int $productVariationiId, int $qty = 0)
     {

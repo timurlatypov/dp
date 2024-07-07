@@ -27,7 +27,7 @@ class Review extends Model
      * @var string[]
      */
     protected $casts = [
-        'published'    => 'bool',
+        'published' => 'bool',
         'published_at' => 'datetime',
     ];
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait PublishedAware
 {
-    public function scopePublished(Builder $query): \Illuminate\Database\Eloquent\Builder
+    public function scopePublished(Builder $query): Builder
     {
         return $query->where('published', 1);
     }

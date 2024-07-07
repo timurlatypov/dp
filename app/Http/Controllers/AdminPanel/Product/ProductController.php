@@ -2,30 +2,27 @@
 
 namespace App\Http\Controllers\AdminPanel\Product;
 
-use App\Models\Brand;
-use App\Models\Category;
+use App\Filters\Product\BrandFilter;
+use App\Filters\Product\LiveFilter;
+use App\Filters\Product\StockFilter;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNewProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
-use App\Filters\Product\{
-    BrandFilter,
-    StockFilter,
-    LiveFilter
-};
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @param Request $request
      *
      * @return Application|Factory|View
      */
@@ -48,7 +45,7 @@ class ProductController extends Controller
         return [
             'brand' => BrandFilter::class,
             'stock' => StockFilter::class,
-            'live'  => LiveFilter::class,
+            'live' => LiveFilter::class,
         ];
     }
 
@@ -67,25 +64,24 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreNewProductRequest $request
      * @return RedirectResponse
      */
     public function store(StoreNewProductRequest $request)
     {
         $product = Product::create([
-            'brand_id'          => $request->brand_id,
-            'line_id'           => $request->line_id,
-            'thumb_path'        => $request->thumb_path,
-            'image_path'        => $request->image_path,
-            'slug'              => $request->slug,
-            'title_eng'         => $request->title_eng,
-            'title_rus'         => $request->title_rus,
-            'ph'                => $request->ph,
+            'brand_id' => $request->brand_id,
+            'line_id' => $request->line_id,
+            'thumb_path' => $request->thumb_path,
+            'image_path' => $request->image_path,
+            'slug' => $request->slug,
+            'title_eng' => $request->title_eng,
+            'title_rus' => $request->title_rus,
+            'ph' => $request->ph,
             'description_short' => $request->description_short,
-            'description_full'  => $request->description_full,
-            'meta_title'        => $request->meta_title,
-            'meta_description'  => $request->meta_description,
-            'meta_keywords'     => $request->meta_keywords,
+            'description_full' => $request->description_full,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_keywords' => $request->meta_keywords,
         ]);
 
         $product->save();
@@ -96,30 +92,22 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
      * @return Factory|\Illuminate\Contracts\View\View
      */
     public function edit(int $id)
     {
         return view('admin.product.edit', [
-            'product'    => Product::where('id', $id)->first(),
+            'product' => Product::where('id', $id)->first(),
             'categories' => Category::all(),
-            'brands'     => Brand::all(),
+            'brands' => Brand::all(),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param Product $product
-     *
-     * @param UpdateProductRequest $request
-     * @return RedirectResponse
      */
     public function update(Product $product, UpdateProductRequest $request): RedirectResponse
     {
-
         if ($request->thumb_path !== null) {
             $product->update([
                 'thumb_path' => $request->thumb_path,
@@ -132,17 +120,17 @@ class ProductController extends Controller
         }
 
         $product->update([
-            'brand_id'          => $request->brand_id,
-            'line_id'           => $request->line_id,
-            'slug'              => $request->slug,
-            'title_eng'         => $request->title_eng,
-            'title_rus'         => $request->title_rus,
-            'ph'                => $request->ph,
+            'brand_id' => $request->brand_id,
+            'line_id' => $request->line_id,
+            'slug' => $request->slug,
+            'title_eng' => $request->title_eng,
+            'title_rus' => $request->title_rus,
+            'ph' => $request->ph,
             'description_short' => $request->description_short,
-            'description_full'  => $request->description_full,
-            'meta_title'        => $request->meta_title,
-            'meta_description'  => $request->meta_description,
-            'meta_keywords'     => $request->meta_keywords,
+            'description_full' => $request->description_full,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_keywords' => $request->meta_keywords,
         ]);
 
         $product->save();
@@ -158,9 +146,6 @@ class ProductController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse
     {
@@ -169,7 +154,6 @@ class ProductController extends Controller
 
         return back();
     }
-
 
     public function forceDelete($id): void
     {
@@ -180,9 +164,7 @@ class ProductController extends Controller
     /**
      * Toggle the specified resource from storage.
      *
-     * @param Request $request
-     *
-     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return Response|ResponseFactory
      */
     public function toggle(Request $request)
     {
@@ -199,7 +181,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return Response|ResponseFactory
      */
     public function stockToggle(Request $request)
     {
@@ -216,11 +198,10 @@ class ProductController extends Controller
     }
 
     /**
-     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return Response|ResponseFactory
      */
     public function price(Request $request)
     {
-
         $product = Product::find($request->id);
         $product->update(['price' => $request->value]);
 
@@ -228,11 +209,10 @@ class ProductController extends Controller
     }
 
     /**
-     * @return Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return Response|ResponseFactory
      */
     public function discount(Request $request)
     {
-
         $product = Product::find($request->id);
         $product->update(['discount' => $request->value]);
 

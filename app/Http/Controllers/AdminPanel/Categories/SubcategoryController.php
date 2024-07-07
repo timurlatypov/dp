@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\AdminPanel\Categories;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SubcategoryController extends Controller
 {

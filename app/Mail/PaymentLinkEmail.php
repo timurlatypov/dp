@@ -23,6 +23,6 @@ class PaymentLinkEmail extends Mailable
 
     public function build(): self
     {
-        return $this->subject('Ссылка для онлайн-оплаты заказа '.$this->order->order_id)->view('emails.order.notification.payment');
+        return $this->subject('Ссылка для онлайн-оплаты заказа ' . $this->order->order_id)->view('emails.order.notification.payment');
     }
 }

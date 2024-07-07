@@ -4,14 +4,14 @@ namespace App\Notifications;
 
 use App\Enum\Notification\MessageThread;
 use App\Models\Order;
-use NotificationChannels\Telegram\TelegramMessage;
 use Illuminate\Notifications\Notification;
+use NotificationChannels\Telegram\TelegramMessage;
 
 class OrderPaid extends Notification
 {
     public function via($notifiable)
     {
-        return ["telegram"];
+        return ['telegram'];
     }
 
     public function toTelegram(Order $notifiable)
@@ -21,6 +21,6 @@ class OrderPaid extends Notification
             ->options([
                 'message_thread_id' => MessageThread::PAYMENTS,
             ])
-            ->line('Заказ оплачен онлайн: ['.$notifiable->order_id.'](https://doctorproffi.ru/admin-panel/orders/' . $notifiable->getOrderIdRawAttribute() . '/show)');
+            ->line('Заказ оплачен онлайн: [' . $notifiable->order_id . '](https://doctorproffi.ru/admin-panel/orders/' . $notifiable->getOrderIdRawAttribute() . '/show)');
     }
 }

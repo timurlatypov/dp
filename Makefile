@@ -18,9 +18,6 @@ vendor:
 optimize:
 	docker-compose run --rm dp-app php artisan optimize:clear
 
-build:
-    docker-compose run --rm dp-npm npm run production
-
 start:
 	docker-sync start
 	docker-sync-stack start
@@ -45,3 +42,6 @@ _destroy-message:
 
 %:
 	@$*
+
+fixer:
+	tools/php-cs-fixer/vendor/bin/php-cs-fixer fix app --config=tools/php-cs-fixer/bin-dist/php-cs-config.php

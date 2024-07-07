@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Line extends Resource
 {
@@ -39,7 +38,7 @@ class Line extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -47,7 +46,7 @@ class Line extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -56,8 +55,6 @@ class Line extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @param Request $request
      *
      * @return (BelongsTo|ID|Text)[]
      *
@@ -79,8 +76,6 @@ class Line extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -92,8 +87,6 @@ class Line extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *
@@ -107,10 +100,6 @@ class Line extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
-     * @return array
-     *
      * @psalm-return array<never, never>
      */
     public function lenses(Request $request): array
@@ -120,8 +109,6 @@ class Line extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *

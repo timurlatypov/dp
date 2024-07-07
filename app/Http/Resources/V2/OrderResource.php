@@ -11,9 +11,9 @@ class OrderResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param Request  $request
+     * @param Request $request
      *
-     * @return (AddressResource|ShippingMethodsResource|\Illuminate\Http\Resources\Json\AnonymousResourceCollection|mixed)[]
+     * @return (AddressResource|\Illuminate\Http\Resources\Json\AnonymousResourceCollection|mixed|ShippingMethodsResource)[]
      *
      * @psalm-return array{id: mixed, status: mixed, created_at: mixed, subtotal: mixed, total: mixed, products: AnonymousResourceCollection, address: AddressResource, shipping: ShippingMethodsResource}
      */
@@ -33,7 +33,7 @@ class OrderResource extends JsonResource
             ),
             'shipping' => new ShippingMethodsResource(
                 $this->whenLoaded('shippingMethod')
-            )
+            ),
         ];
     }
 }

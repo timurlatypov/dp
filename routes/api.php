@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,17 +11,15 @@ use Illuminate\Http\Request;
 |
 */
 
-
-Route::group(['prefix' => '/auth', 'namespace' => 'Auth\Api'], function() {
-	Route::post('register', 'RegisterController@register')->name('api.register');
+Route::group(['prefix' => '/auth', 'namespace' => 'Auth\Api'], function () {
+    Route::post('register', 'RegisterController@register')->name('api.register');
 });
 
-Route::group(['namespace' => 'API'], function() {
-    Route::group(['prefix' => '/v1', 'namespace' => 'V1'], function() {
+Route::group(['namespace' => 'API'], function () {
+    Route::group(['prefix' => '/v1', 'namespace' => 'V1'], function () {
         Route::get('/{level}/options', 'CouponOptionsController@get');
         Route::get('search', 'SearchController@getDadata');
         Route::get('get-price', 'SearchController@getCDEKPrices');
         Route::post('search-product', 'SearchController@getProductByVendor')->name('search.product');
     });
 });
-

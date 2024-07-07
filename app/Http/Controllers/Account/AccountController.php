@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\User;
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -24,14 +24,13 @@ class AccountController extends Controller
     public function profile_update(ProfileUpdateRequest $request): RedirectResponse
     {
         auth()->user()->update([
-            'name'    => $request->name,
+            'name' => $request->name,
             'surname' => $request->surname,
-            'phone'   => $request->phone,
+            'phone' => $request->phone,
         ]);
 
         return redirect()->back()->with('flash', 'Информация обновлена');
     }
-
 
     /**
      * @return Factory|View

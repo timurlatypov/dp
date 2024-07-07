@@ -14,7 +14,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\NewOrderCreated' => [
             'App\Listeners\SendConfirmationToCustomer',
-            'App\Listeners\SendNotificationToManager'
+            'App\Listeners\SendNotificationToManager',
         ],
         'App\Events\NewReviewCreated' => [
             'App\Listeners\Review\NewReviewCreatedListener',
@@ -23,8 +23,6 @@ class EventServiceProvider extends ServiceProvider
 
     /**
      * Register any events for your application.
-     *
-     * @return void
      */
     public function boot()
     {

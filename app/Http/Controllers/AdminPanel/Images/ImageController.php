@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\AdminPanel\Images;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ImageController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return Response|ResponseFactory
      */
     public function store_product_thumb()
     {
@@ -21,9 +23,8 @@ class ImageController extends Controller
         return response(['data' => request()->file('thumb')->getClientOriginalName()], 200);
     }
 
-
     /**
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return Response|ResponseFactory
      */
     public function store_product_image(Request $request)
     {

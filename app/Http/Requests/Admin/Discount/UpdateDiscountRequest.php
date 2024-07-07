@@ -35,7 +35,6 @@ class UpdateDiscountRequest extends FormRequest
             'discount.numeric' => 'Необходимо ввести числовое значение',
             'discount.min' => 'Минимальное значение 0',
             'discount.max' => 'Максимальное значение 99',
-
         ];
     }
 }

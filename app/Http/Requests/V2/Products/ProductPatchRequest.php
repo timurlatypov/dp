@@ -28,7 +28,7 @@ class ProductPatchRequest extends FormRequest
         return [
             'slug' => [
                 'required',
-                'unique:products,slug,'.$this->id
+                'unique:products,slug,' . $this->id,
             ],
         ];
     }
@@ -41,7 +41,7 @@ class ProductPatchRequest extends FormRequest
     public function messages()
     {
         return [
-            'slug.unique' => 'Этот slug уже у другого продукта'
+            'slug.unique' => 'Этот slug уже у другого продукта',
         ];
     }
 }

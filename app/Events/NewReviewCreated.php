@@ -3,9 +3,9 @@
 namespace App\Events;
 
 use App\Models\Review;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class NewReviewCreated
 {
@@ -19,8 +19,6 @@ class NewReviewCreated
 
     /**
      * Create a new event instance.
-     *
-     * @return void
      */
     public function __construct(Review $review, array $managers, array $admins)
     {

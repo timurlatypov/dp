@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GoogleAnalytics;
-use App\Models\GiftCard;
-use App\Models\Order;
-use App\Models\Coupon;
 use App\Events\NewOrderCreated;
+use App\Models\Coupon;
+use App\Models\GiftCard;
+use App\Models\GoogleAnalytics;
+use App\Models\Order;
 use App\Models\Sberbank;
 use App\Models\YandexMetrika;
 use App\Notifications\OrderCreated;
@@ -17,15 +17,14 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
+use Throwable;
 
 class OrderController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     *
-     * @return ResponseFactory|Response|null
+     * @return Response|ResponseFactory|null
      */
     public function store(Request $request)
     {
@@ -35,15 +34,14 @@ class OrderController extends Controller
             $user_id = auth()->check() ? $request->user()->id : null;
 
             $coupon = $request->get('coupon');
-            $hasCoupon = (bool)$coupon['coupon'];
+            $hasCoupon = (bool) $coupon['coupon'];
             if ($hasCoupon) {
                 try {
                     $couponModel = Coupon::lockForUpdate()
                         ->where('coupon', $coupon['coupon'])
                         ->where('used', false)
                         ->first();
-
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     return response([
                         'error' => $e->getMessage(),
                         'coupon' => $coupon['coupon'],
@@ -60,8 +58,7 @@ class OrderController extends Controller
                         ->where('code', $giftCard['code'])
                         ->where('used', false)
                         ->first();
-
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     return response([
                         'error' => $e->getMessage(),
                         'gift_card' => $giftCard['code'],
@@ -122,8 +119,7 @@ class OrderController extends Controller
 
             request()->session()->forget('coupon');
             request()->session()->forget('gift_card');
-
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             DB::rollBack();
 
             return response([
@@ -159,9 +155,8 @@ class OrderController extends Controller
                 if (!$order->ga->contains($ga_exists)) {
                     $order->ga()->attach($ga_exists);
                 }
-
-            } catch (\Throwable $e) {
-                //Handle errors
+            } catch (Throwable $e) {
+                // Handle errors
             }
         }
 
@@ -184,9 +179,8 @@ class OrderController extends Controller
                 if (!$order->ym->contains($ym_exists)) {
                     $order->ym()->attach($ym_exists);
                 }
-
-            } catch (\Throwable $e) {
-                //Handle errors
+            } catch (Throwable $e) {
+                // Handle errors
             }
         }
 
@@ -213,7 +207,6 @@ class OrderController extends Controller
             $check_order_payment = Sberbank::where('payment_id', $id)->first();
 
             if ($check_order_payment->status === 'В ожидании') {
-
                 $find_order = $check_order_payment->order;
                 $order = Order::where('id', $find_order[0]->id)->first();
 

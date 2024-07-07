@@ -16,8 +16,6 @@ class PaymentSuccessEmail extends Mailable
 
     /**
      * Create a new message instance.
-     *
-     * @return void
      */
     public function __construct(Order $order)
     {
@@ -26,6 +24,6 @@ class PaymentSuccessEmail extends Mailable
 
     public function build(): self
     {
-        return $this->subject('Оплачен заказ '.$this->order->order_id)->view('emails.order.notification.payment-success');
+        return $this->subject('Оплачен заказ ' . $this->order->order_id)->view('emails.order.notification.payment-success');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Nova\Metrics;
 
+use DateInterval;
+use DateTimeInterface;
 use Laravel\Nova\Metrics\Value;
 
 class NewOrders extends Value
@@ -9,7 +11,7 @@ class NewOrders extends Value
     /**
      * Get the ranges available for the metric.
      *
-     * @return (array|null|string)[]
+     * @return (array|string|null)[]
      *
      * @psalm-return array{30: array|null|string, 60: array|null|string, 365: array|null|string, TODAY: array|null|string, MTD: array|null|string, QTD: array|null|string, YTD: array|null|string}
      */
@@ -28,10 +30,8 @@ class NewOrders extends Value
 
     /**
      * Determine for how many minutes the metric should be cached.
-     *
-     * @return  \DateTimeInterface|\DateInterval|float|int
      */
-    public function cacheFor(): \DateInterval|\DateTimeInterface|float|int
+    public function cacheFor(): DateInterval|DateTimeInterface|float|int
     {
         // return now()->addMinutes(5);
     }

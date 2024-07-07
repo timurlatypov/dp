@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Traits\LiveAware;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model implements Sortable
 {
@@ -35,8 +35,8 @@ class Promotion extends Model implements Sortable
      */
     protected $casts = [
         'published_at' => 'datetime',
-        'expired_at'   => 'datetime',
-        'live'         => 'boolean',
+        'expired_at' => 'datetime',
+        'live' => 'boolean',
     ];
 
     /**

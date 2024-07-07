@@ -5,7 +5,6 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Subcategory extends Resource
 {
@@ -36,7 +35,7 @@ class Subcategory extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -44,7 +43,7 @@ class Subcategory extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -53,8 +52,6 @@ class Subcategory extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @param Request $request
      *
      * @return (ID|Text)[]
      *
@@ -73,8 +70,6 @@ class Subcategory extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -86,8 +81,6 @@ class Subcategory extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *
@@ -101,8 +94,6 @@ class Subcategory extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -114,8 +105,6 @@ class Subcategory extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *

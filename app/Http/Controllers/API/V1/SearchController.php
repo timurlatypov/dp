@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Services\Dadata\Response\ClientSuggest;
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
@@ -25,11 +26,11 @@ class SearchController extends Controller
         $data = [];
 
         try {
-            $result = $this->suggest->suggest("address", [
-                "query" => $request->get('keyword'),
-                "count" => 5,
+            $result = $this->suggest->suggest('address', [
+                'query' => $request->get('keyword'),
+                'count' => 5,
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(
                 'No results',
                 200
@@ -43,7 +44,7 @@ class SearchController extends Controller
         }
 
         return response()->json([
-            "data" => $data,
+            'data' => $data,
         ], 200);
     }
 
@@ -51,52 +52,51 @@ class SearchController extends Controller
     {
         try {
             $receiverCityId = $this->suggest->cityById($request->id);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
 
-        $receiverCityId = $receiverCityId["data"]["cdek_id"];
+        $receiverCityId = $receiverCityId['data']['cdek_id'];
 
-        $authLogin    = config('cdek.authLogin');
+        $authLogin = config('cdek.authLogin');
         $authPassword = config('cdek.secure');
-        $dateExecute  = date('Y-m-d');
+        $dateExecute = date('Y-m-d');
 
-        $secure = md5($dateExecute . "&" . $authPassword);
+        $secure = md5($dateExecute . '&' . $authPassword);
 
         $response = $this->client->post(
             'https://api.cdek.ru/calculator/calculate_tarifflist.php',
             [
                 'json' => [
-                    'version'        => '1.0',
-                    "authLogin"      => $authLogin,
-                    "secure"         => $secure,
-                    "dateExecute"    => $dateExecute,
-                    "senderCityId"   => "44",
-                    "receiverCityId" => $receiverCityId,
-                    "currency"       => "RUB",
-                    "goods"          => [
+                    'version' => '1.0',
+                    'authLogin' => $authLogin,
+                    'secure' => $secure,
+                    'dateExecute' => $dateExecute,
+                    'senderCityId' => '44',
+                    'receiverCityId' => $receiverCityId,
+                    'currency' => 'RUB',
+                    'goods' => [
                         [
-                            "weight" => "0.2",
-                            "length" => "5",
-                            "width"  => "5",
-                            "height" => "5",
-
+                            'weight' => '0.2',
+                            'length' => '5',
+                            'width' => '5',
+                            'height' => '5',
                         ],
                     ],
-                    "tariffList"     => [
+                    'tariffList' => [
                         [
-                            "id" => "136",
+                            'id' => '136',
                         ],
                         [
-                            "id" => "137",
+                            'id' => '137',
                         ],
                     ],
                 ],
             ],
             [
-                "headers" => [
-                    "Content-Type" => "application/json",
-                    "Accept"       => "application/json",
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
                 ],
             ]
         );
@@ -111,7 +111,7 @@ class SearchController extends Controller
     {
         $vendorCode = $request->search;
 
-        if (is_numeric($vendorCode) && strlen((string )$vendorCode) === 9) {
+        if (is_numeric($vendorCode) && strlen((string) $vendorCode) === 9) {
             $product = Product::where('vendor_code', $vendorCode)->first();
 
             if ($product !== null) {
@@ -124,6 +124,6 @@ class SearchController extends Controller
             }
         }
 
-        return response()->json([],400);
+        return response()->json([], 400);
     }
 }

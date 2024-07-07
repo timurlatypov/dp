@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait LiveAware
 {
-    public function scopeLive(Builder $query): \Illuminate\Database\Eloquent\Builder
+    public function scopeLive(Builder $query): Builder
     {
         return $query->where('live', true);
     }

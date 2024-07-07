@@ -43,7 +43,7 @@ class Banner extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -51,7 +51,7 @@ class Banner extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -61,9 +61,7 @@ class Banner extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param Request $request
-     *
-     * @return (Color|Date|ID|Image|Number|Text|mixed)[]
+     * @return (Color|Date|ID|Image|mixed|Number|Text)[]
      *
      * @psalm-return list{ID, Text, Text, Image, Image, Color, Number, mixed, Date, Date}
      */
@@ -120,8 +118,6 @@ class Banner extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -133,8 +129,6 @@ class Banner extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *
@@ -148,8 +142,6 @@ class Banner extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -161,8 +153,6 @@ class Banner extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *

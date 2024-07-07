@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Callback;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 
 class CallbackController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return Response|ResponseFactory
      */
     public function store(Request $request, Mail $mail)
     {
@@ -17,6 +19,6 @@ class CallbackController extends Controller
             ->bcc('timur.latypov@gmail.com')
             ->send(new Callback($request));
 
-        return response([ 'data' => 'Успешно'], 200);
+        return response(['data' => 'Успешно'], 200);
     }
 }

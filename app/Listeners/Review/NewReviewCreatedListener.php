@@ -10,9 +10,6 @@ class NewReviewCreatedListener
 {
     /**
      * Handle the event.
-     *
-     * @param  NewReviewCreated  $event
-     * @return void
      */
     public function handle(NewReviewCreated $event)
     {

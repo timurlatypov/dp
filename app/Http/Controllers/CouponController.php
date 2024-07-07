@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Coupon;
 use App\Services\Coupon\DiscountLevel;
 use Gloudemans\Shoppingcart\Cart;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -35,9 +34,7 @@ class CouponController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
-     * @return ResponseFactory|Response
+     * @return Response|ResponseFactory
      */
     public function validateCoupon(Request $request)
     {
@@ -70,8 +67,7 @@ class CouponController extends Controller
 
         return response([
             'coupon' => $coupon,
-            'cart'   => $this->cart->content(),
+            'cart' => $this->cart->content(),
         ], 200);
-
     }
 }

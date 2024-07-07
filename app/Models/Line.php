@@ -26,8 +26,6 @@ class Line extends Model
     protected $guarded = [];
 
     /**
-     * @return string
-     *
      * @psalm-return 'slug'
      */
     public function getRouteKeyName(): string

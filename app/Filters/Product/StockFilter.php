@@ -8,7 +8,6 @@ class StockFilter
 {
     public function filter(Builder $builder, $value): Builder
     {
-
         $value = ($value === 'out' ? 0 : 1);
 
         return $builder->where('stock', $value);

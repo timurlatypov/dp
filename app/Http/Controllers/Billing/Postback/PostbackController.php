@@ -22,6 +22,7 @@ class PostbackController extends Controller
         ]);
 
         DB::beginTransaction();
+
         try {
             if ($request->query('mdOrder')) {
                 $hash = $request->query('mdOrder');

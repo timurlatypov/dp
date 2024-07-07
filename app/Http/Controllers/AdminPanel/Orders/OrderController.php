@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\AdminPanel\Orders;
 
 use App\Events\NewOrderCreated;
-use App\Models\Order;
-use App\User;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use JsonException;
-use Spatie\Permission\Models\Role;
 use App\Filters\Order\DateFromFilter;
 use App\Filters\Order\DateToFilter;
 use App\Filters\Order\EmailFilter;
 use App\Filters\Order\PhoneFilter;
 use App\Filters\Order\SurnameFilter;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use JsonException;
+use Spatie\Permission\Models\Role;
 use Throwable;
 
 class OrderController extends Controller
@@ -41,10 +41,10 @@ class OrderController extends Controller
     {
         return [
             'surname' => SurnameFilter::class,
-            'email'   => EmailFilter::class,
-            'phone'   => PhoneFilter::class,
-            'from'    => DateFromFilter::class,
-            'to'      => DateToFilter::class,
+            'email' => EmailFilter::class,
+            'phone' => PhoneFilter::class,
+            'from' => DateFromFilter::class,
+            'to' => DateToFilter::class,
         ];
     }
 
@@ -65,30 +65,30 @@ class OrderController extends Controller
         }
 
         Order::create([
-            'user_id'        => $user_id,
-            'order_details'  => $request->details,
-            'order_status'   => 'Новый',
-            'coupon'         => 0,
+            'user_id' => $user_id,
+            'order_details' => $request->details,
+            'order_status' => 'Новый',
+            'coupon' => 0,
             'coupon_details' => null,
 
-            'billing_name'    => $request->user['name'],
+            'billing_name' => $request->user['name'],
             'billing_surname' => $request->user['surname'],
-            'billing_phone'   => $request->user['phone'],
-            'billing_email'   => $request->user['email'],
+            'billing_phone' => $request->user['phone'],
+            'billing_email' => $request->user['email'],
 
-            'billing_index'     => $request->address['billing_index'],
-            'billing_city'      => $request->address['billing_city'],
-            'billing_street'    => $request->address['billing_street'],
-            'billing_house'     => $request->address['billing_house'],
+            'billing_index' => $request->address['billing_index'],
+            'billing_city' => $request->address['billing_city'],
+            'billing_street' => $request->address['billing_street'],
+            'billing_house' => $request->address['billing_house'],
             'billing_apartment' => $request->address['billing_apartment'],
-            'billing_building'  => $request->address['billing_building'],
-            'billing_entrance'  => $request->address['billing_entrance'],
-            'billing_floor'     => $request->address['billing_floor'],
-            'billing_comment'   => $request->address['billing_comment'],
+            'billing_building' => $request->address['billing_building'],
+            'billing_entrance' => $request->address['billing_entrance'],
+            'billing_floor' => $request->address['billing_floor'],
+            'billing_comment' => $request->address['billing_comment'],
 
             'billing_subtotal' => $request->billing_subtotal,
             'billing_delivery' => $request->billing_delivery,
-            'billing_total'    => $request->billing_total,
+            'billing_total' => $request->billing_total,
         ]);
 
         return response()->json([
@@ -100,8 +100,8 @@ class OrderController extends Controller
 
     public function assign(Request $request)
     {
-        $order   = Order::find((int)$request->id);
-        $manager = User::find((int)$request->managerid);
+        $order = Order::find((int) $request->id);
+        $manager = User::find((int) $request->managerid);
 
         $order->manager()->associate($manager);
         $order->save();
@@ -152,8 +152,8 @@ class OrderController extends Controller
         $order = Order::find($request->id);
 
         $order->update([
-            'order_details'    => $request->details,
-            'billing_total'    => $request->billing_total,
+            'order_details' => $request->details,
+            'billing_total' => $request->billing_total,
             'billing_delivery' => $request->billing_delivery,
             'billing_subtotal' => $request->billing_subtotal,
         ]);
@@ -164,23 +164,22 @@ class OrderController extends Controller
     public function update_details(Request $request, Order $order)
     {
         $order->update([
-            'billing_name'      => $request->billing_name,
-            'billing_surname'   => $request->billing_surname,
-            'billing_phone'     => $request->billing_phone,
-            'billing_email'     => $request->billing_email,
-            'billing_index'     => $request->billing_index,
-            'billing_city'      => $request->billing_city,
-            'billing_street'    => $request->billing_street,
-            'billing_house'     => $request->billing_house,
+            'billing_name' => $request->billing_name,
+            'billing_surname' => $request->billing_surname,
+            'billing_phone' => $request->billing_phone,
+            'billing_email' => $request->billing_email,
+            'billing_index' => $request->billing_index,
+            'billing_city' => $request->billing_city,
+            'billing_street' => $request->billing_street,
+            'billing_house' => $request->billing_house,
             'billing_apartment' => $request->billing_apartment,
-            'billing_entrance'  => $request->billing_entrance,
-            'billing_floor'     => $request->billing_floor,
-            'billing_comment'   => $request->billing_comment,
+            'billing_entrance' => $request->billing_entrance,
+            'billing_floor' => $request->billing_floor,
+            'billing_comment' => $request->billing_comment,
         ]);
 
         return redirect()->route('admin.orders.show', $order);
     }
-
 
     public function destroy(Request $request)
     {
@@ -195,7 +194,7 @@ class OrderController extends Controller
     {
         $customer = $order->billing_email;
         $managers = Role::where('name', 'manager')->first()->users()->pluck('email')->toArray();
-        $admins   = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
+        $admins = Role::where('name', 'admin')->first()->users()->pluck('email')->toArray();
 
         event(new NewOrderCreated($order, $customer, $managers, $admins));
 

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Models\Brand;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Line;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class CouponOptionsController extends Controller
 {

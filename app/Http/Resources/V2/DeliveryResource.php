@@ -19,9 +19,9 @@ class DeliveryResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id'       => $this->id,
-            'name'     => $this->name,
-            'slug'     => $this->slug,
+            'id' => $this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
             'children' => DeliveryResource::collection($this->whenLoaded('delivery')),
             'products' => ProductResource::collection($this->products()->deliverable()->live()->get()),
         ];

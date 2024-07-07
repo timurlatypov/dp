@@ -12,7 +12,7 @@ class Brand extends Model
 
     public const EXCLUDE = [
         11,
-        17
+        17,
     ];
 
     /**

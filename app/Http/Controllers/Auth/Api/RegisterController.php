@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth\Api;
 
+use App\Http\Controllers\Controller;
 use App\Notifications\UserRegistered;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,7 +35,7 @@ class RegisterController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'errors' => $validator->errors()
+                'errors' => $validator->errors(),
             ], 405);
         }
 
@@ -48,7 +48,7 @@ class RegisterController extends Controller
         $user->notify(new UserRegistered());
 
         return response()->json([
-            'success' => 'OK'
+            'success' => 'OK',
         ], 200);
     }
 }

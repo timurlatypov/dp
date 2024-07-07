@@ -8,13 +8,10 @@ use Illuminate\Http\Request;
 abstract class FiltersAbstract
 {
     protected Request $request;
-
     protected array $filters = [];
 
     /**
      * FiltersAbstract constructor.
-     *
-     * @param Request $request
      */
     public function __construct(Request $request)
     {
@@ -22,8 +19,6 @@ abstract class FiltersAbstract
     }
 
     /**
-     * @param Builder $builder
-     *
      * @return Builder
      */
     public function filter(Builder $builder)
@@ -36,8 +31,6 @@ abstract class FiltersAbstract
     }
 
     /**
-     * @param array $filters
-     *
      * @return $this
      */
     public function add(array $filters)
@@ -58,8 +51,6 @@ abstract class FiltersAbstract
     /**
      * @param (int|string) $filter
      *
-     * @return mixed
-     *
      * @psalm-param array-key $filter
      */
     protected function resolveFilter($filter)
@@ -67,12 +58,6 @@ abstract class FiltersAbstract
         return new $this->filters[$filter]();
     }
 
-    /**
-     * @param $filters
-     *
-     * @return array
-     *
-     */
     protected function filterFilters($filters): array
     {
         return array_filter($this->request->only(array_keys($this->filters)));

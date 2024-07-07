@@ -2,8 +2,8 @@
 
 namespace App\Cart;
 
-use Money\Currency;
 use Money\Currencies\ISOCurrencies;
+use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money as BaseMoney;
 use NumberFormatter;

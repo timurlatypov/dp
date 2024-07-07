@@ -10,7 +10,7 @@ class ImageResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param Request  $request
+     * @param Request $request
      *
      * @return array
      *
@@ -20,7 +20,7 @@ class ImageResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'alt' => $this->alt
+            'alt' => $this->alt,
         ];
     }
 }

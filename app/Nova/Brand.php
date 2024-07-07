@@ -9,7 +9,6 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Brand extends Resource
 {
@@ -39,7 +38,7 @@ class Brand extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -47,7 +46,7 @@ class Brand extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -57,9 +56,7 @@ class Brand extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param Request $request
-     *
-     * @return (HasMany|ID|Text|Trix|mixed)[]
+     * @return (HasMany|ID|mixed|Text|Trix)[]
      *
      * @psalm-return list{ID, Text, Text, Text, Trix, mixed, HasMany, HasMany}
      */
@@ -87,14 +84,11 @@ class Brand extends Resource
             HasMany::make(__('nova/resources.line.label'), 'lines', Line::class),
 
             HasMany::make(__('nova/resources.product.label'), 'products', Product::class),
-
         ];
     }
 
     /**
      * Get the cards available for the request.
-     *
-     * @param Request $request
      *
      * @return array
      *
@@ -107,8 +101,6 @@ class Brand extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return Live[]
      *
@@ -124,8 +116,6 @@ class Brand extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -137,8 +127,6 @@ class Brand extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *

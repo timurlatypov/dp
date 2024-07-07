@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\AdminPanel\Brand;
 
+use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Line;
 use App\Models\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
 {
@@ -21,10 +21,10 @@ class BrandController extends Controller
         }
 
         return view('web.product', [
-            'brand'   => $brand,
+            'brand' => $brand,
             'product' => $product,
             'reviews' => $product->getReviews(),
-            'rating'  => $product->getAverageRating(),
+            'rating' => $product->getAverageRating(),
             'display' => $product->getProperDisplay(),
         ]);
     }

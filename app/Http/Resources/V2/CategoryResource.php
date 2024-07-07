@@ -19,13 +19,13 @@ class CategoryResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id'       => $this->id,
-            'name'     => $this->name,
-            'slug'     => $this->slug,
+            'id' => $this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
             'children' => CategoryResource::collection($this->whenLoaded('children')),
             'products' => ProductResource::collection($this->products()->live()->get()),
-            'image'    => CategoryImageResource::collection($this->image),
-            'sketch'   => CategorySketchResource::collection($this->sketch),
+            'image' => CategoryImageResource::collection($this->image),
+            'sketch' => CategorySketchResource::collection($this->sketch),
         ];
     }
 }

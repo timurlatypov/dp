@@ -38,7 +38,7 @@ class User extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -46,7 +46,7 @@ class User extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -55,8 +55,6 @@ class User extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
-     * @param Request $request
      *
      * @return (Gravatar|ID|MorphToMany|Password|Text)[]
      *
@@ -98,8 +96,6 @@ class User extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -111,8 +107,6 @@ class User extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *
@@ -126,8 +120,6 @@ class User extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -139,8 +131,6 @@ class User extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *

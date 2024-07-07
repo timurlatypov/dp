@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CategoryScope implements Scope
 {
-    /**
-     * @return Builder
-     */
     public function apply(Builder $builder, $value): Builder
     {
         return $builder->whereHas('categories', function ($builder) use ($value) {

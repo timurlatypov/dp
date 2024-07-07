@@ -37,7 +37,7 @@ class Review extends Resource
     ];
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function label()
     {
@@ -45,7 +45,7 @@ class Review extends Resource
     }
 
     /**
-     * @return array|null|string
+     * @return array|string|null
      */
     public static function singularLabel()
     {
@@ -55,9 +55,7 @@ class Review extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param Request $request
-     *
-     * @return (BelongsTo|Boolean|Date|ID|Rating|Textarea)[]
+     * @return (BelongsTo|bool|Date|ID|Rating|Textarea)[]
      *
      * @psalm-return list{ID, BelongsTo, BelongsTo, Textarea, Rating, Date, Boolean}
      */
@@ -97,8 +95,6 @@ class Review extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -110,8 +106,6 @@ class Review extends Resource
 
     /**
      * Get the filters available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *
@@ -125,8 +119,6 @@ class Review extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param Request $request
-     *
      * @return array
      *
      * @psalm-return array<never, never>
@@ -138,8 +130,6 @@ class Review extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
-     * @param Request $request
      *
      * @return array
      *
