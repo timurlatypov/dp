@@ -63,6 +63,8 @@ class CartController extends Controller
                 'brand_slug'   => $request->brand['slug'],
                 'image'        => $request->thumb_path,
                 'coupon'       => $this->isCouponDiscount($request->brand['id']),
+                'volume'       => $request->volume,
+                'volume_name'       => $request->volume_type['name'],
             ],
         ]);
 

@@ -37,7 +37,8 @@
           <td class="td-name">
             <span class="font-weight-bold" href="#">{{ product.name }}</span>
             <br><small>{{ product.options.title_rus }}</small>
-            <br><small class="text-uppercase">{{ product.options.brand.name }}</small>
+            <br><small class="text-uppercase">Бренд:&nbsp;{{ product.options.brand }}</small>
+            <br><small>Объём: {{ product.options.volume }}&nbsp;{{ product.options.volume_name }}</small>
           </td>
 
           <td class="text-center font-weight-bold">
@@ -290,6 +291,8 @@ export default {
           brand: selection.brand.name,
           brand_id: selection.brand.id,
           brand_slug: selection.brand.slug,
+          volume: selection.volume,
+          volume_name: selection.volume_type.name,
           image: selection.thumb_path
         },
         tax: null,

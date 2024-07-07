@@ -111,6 +111,7 @@
                                     <b class="text-primary">{{ $product->name }}</b><br>
                                     @if(isset($product->options->product->title_rus)){{ $product->options->product->title_rus }}@else{{ $product->options->title_rus }}@endif<br>
                                     <small class="text-uppercase">@if(isset($product->options->brand->name)){{ $product->options->brand->name }}@else {{ $product->options->brand }} @endif</small>
+                                    <div><small class="text-uppercase">@if(isset($product->options->volume, $product->options->volume_name)) Объём: {{$product->options->volume}} {{ $product->options->volume_name }} @else @endif</small></div>
                                 </td>
                                 <td>{{ $product->price }} &#x20BD;</td>
                                 <td class="text-danger">@if(isset($product->options->discount))-{{ $product->options->discount }}%@endif</td>

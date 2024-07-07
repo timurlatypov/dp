@@ -46,10 +46,9 @@
           <td class="td-name">
             <a class="font-weight-bold"
                :href="'/brand/' + item.options.brand_slug + '/' + item.options.product_slug">{{ item.name }}</a>
-            <br>
-            <small>{{ item.options.title_rus }}</small>
-            <br>
-            <small class="text-uppercase">{{ item.options.brand }}</small>
+            <br><small>{{ item.options.title_rus }}</small>
+            <br><small class="text-uppercase">{{ item.options.brand }}</small>
+            <br><small>Объём: {{ item.options.volume }}&nbsp;{{ item.options.volume_name }}</small>
           </td>
           <td class="font-weight-bold">
             <nobr>{{ item.price.toFixed(decimals) }}&nbsp;<i class="fas fa-ruble-sign" style="font-size: 90%"></i>
