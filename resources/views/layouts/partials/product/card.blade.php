@@ -12,6 +12,13 @@
         {{ $product->vendor_code }}
     @endslot
 
+    @slot('wb_code')
+        @if(isset($product->wb_code))<p><small>Wildberries: {{ $product->wb_code }}</small></p> @endif
+    @endslot
+    @slot('ozon_code')
+        @if(isset($product->ozon_code))<p><small>Ozon: {{ $product->ozon_code }}</small></p>@endif
+    @endslot
+
     @slot('volume_full')
         @if($product->volume && $product->volume_type)<small class="mb-2"><b>Объем: {{ $product->volume }} {{ $product->volume_type->name }}</b></small>@endif
     @endslot
