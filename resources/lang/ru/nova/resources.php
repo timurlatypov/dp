@@ -48,6 +48,8 @@ return [
             'stock' => 'В наличии',
             'reviews' => 'Отзывов',
             'vendor_code' => 'Артикул',
+            'wb_code' => 'WB Артикул',
+            'ozon_code' => 'OZON Артикул',
         ],
         'hint' => [
             'slug' => 'Уникальная составляющая URL-пути',

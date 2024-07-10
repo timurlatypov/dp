@@ -4,7 +4,11 @@ endif
 
 .PHONY: vendor optimize clean destroy start up
 
-up: vendor start
+up:
+	docker-compose up
+
+down:
+	docker-compose down
 
 vendor:
 	docker volume create dp-data

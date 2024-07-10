@@ -99,9 +99,9 @@ class Product extends Resource
                 ->rules(['required', 'max:191'])
                 ->slug('slug'),
 
-            Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
-                ->hideFromIndex()
-                ->rules(['max:191']),
+                Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
+                    ->hideFromIndex()
+                    ->rules(['max:191']),
 
             Slug::make(__('nova/resources.product.fields.slug'), 'slug')
                 ->disableAutoUpdateWhenUpdating()
@@ -173,6 +173,14 @@ class Product extends Resource
             Number::make(__('nova/resources.product.fields.discount'), 'discount')
                 ->sortable()
                 ->min(0)->max(99)->step(1),
+
+            Text::make(__('nova/resources.product.fields.wb_code'), 'wb_code')
+                ->hideFromIndex()
+                ->rules(['max:191']),
+
+            Text::make(__('nova/resources.product.fields.ozon_code'), 'ozon_code')
+                ->hideFromIndex()
+                ->rules(['max:191']),
 
             Toggle::make(__('nova/resources.product.fields.live'), 'live')
                 ->sortable()
