@@ -13,10 +13,10 @@
     @endslot
 
     @slot('wb_code')
-        @if(isset($product->wb_code))<p><small>Wildberries: {{ $product->wb_code }}</small></p> @endif
+        @if(isset($product->wb_code))<p><small class="font-weight-bold">Wildberries: {{ $product->wb_code }}</small></p> @endif
     @endslot
     @slot('ozon_code')
-        @if(isset($product->ozon_code))<p><small>Ozon: {{ $product->ozon_code }}</small></p>@endif
+        @if(isset($product->ozon_code))<p><small class="font-weight-bold">Ozon: {{ $product->ozon_code }}</small></p>@endif
     @endslot
 
     @slot('volume_full')

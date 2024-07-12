@@ -55,12 +55,12 @@
                                                 <h1 class="title mb-1 mt-4">{{ $product->title_eng }}</h1>
                                                 <span>{{ $product->title_rus }}</span><br>
 
-                                                <div class="pt-1 text-sm-left" style="color: darkslategray;">
+                                                <div class="pt-1 text-sm-left font-weight-bold" style="color: darkslategray;">
                                                     Артикул: {{ $product->vendor_code }}</div>
 
-                                                @if(isset($product->wb_code))<p><small class="pt-1 text-sm-left" style="color: gray;">
+                                                @if(isset($product->wb_code))<p><small class="font-weight-bold pt-1 text-sm-left" style="color: gray;">
                                                     Wildberries: {{ $product->wb_code }}</small></p>@endif
-                                                @if(isset($product->ozon_code))<p><small class="pt-1 text-sm-left" style="color: gray;">
+                                                @if(isset($product->ozon_code))<p><small class="font-weight-bold pt-1 text-sm-left" style="color: gray;">
                                                     Ozon: {{ $product->ozon_code }}</small></p>@endif
 
                                                 @if($product->volume)
