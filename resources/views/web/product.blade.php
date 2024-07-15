@@ -62,6 +62,10 @@
                                                     Wildberries: {{ $product->wb_code }}</small></p>@endif
                                                 @if(isset($product->ozon_code))<p><small class="font-weight-bold pt-1 text-sm-left" style="color: gray;">
                                                     Ozon: {{ $product->ozon_code }}</small></p>@endif
+                                                @if(isset($product->mm_code))<p><small class="font-weight-bold pt-1 text-sm-left" style="color: gray;">
+                                                    Мега Маркет: {{ $product->mm_code }}</small></p>@endif
+                                                @if(isset($product->ya_code))<p><small class="font-weight-bold pt-1 text-sm-left" style="color: gray;">
+                                                    Яндекс Маркет: {{ $product->ya_code }}</small></p>@endif
 
                                                 @if($product->volume)
                                                 <h4 class="title mb-0 mt-1">Объем: {{ $product->volume }} {{ $product->volume_type->name }}</h4>

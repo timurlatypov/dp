@@ -182,6 +182,14 @@ class Product extends Resource
                 ->hideFromIndex()
                 ->rules(['max:191']),
 
+            Text::make(__('nova/resources.product.fields.mm_code'), 'mm_code')
+                ->hideFromIndex()
+                ->rules(['max:191']),
+
+            Text::make(__('nova/resources.product.fields.ya_code'), 'ya_code')
+                ->hideFromIndex()
+                ->rules(['max:191']),
+
             Toggle::make(__('nova/resources.product.fields.live'), 'live')
                 ->sortable()
                 ->editableIndex()

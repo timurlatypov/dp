@@ -18,6 +18,12 @@
     @slot('ozon_code')
         @if(isset($product->ozon_code))<p><small class="font-weight-bold">Ozon: {{ $product->ozon_code }}</small></p>@endif
     @endslot
+    @slot('mm_code')
+        @if(isset($product->mm_code))<p><small class="font-weight-bold">МегаМаркет: {{ $product->mm_code }}</small></p>@endif
+    @endslot
+    @slot('ya_code')
+        @if(isset($product->ya_code))<p><small class="font-weight-bold">Яндекс Маркет: {{ $product->ya_code }}</small></p>@endif
+    @endslot
 
     @slot('volume_full')
         @if($product->volume && $product->volume_type)<small class="mb-2"><b>Объем: {{ $product->volume }} {{ $product->volume_type->name }}</b></small>@endif

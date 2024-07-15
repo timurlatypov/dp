@@ -27,6 +27,8 @@
             <p><small class="font-weight-bold" style="color: darkslategray">Артикул: {{ $vendor_code }}</small></p>
             {{ $wb_code }}
             {{ $ozon_code }}
+            {{ $mm_code }}
+            {{ $ya_code }}
             <p><small>{{ $reviews }}</small></p>
         </div>
 
