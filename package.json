@@ -35,7 +35,7 @@
         "inputmask": "^3.3.11",
         "moment": "^2.29.4",
         "sourcebuster": "^1.1.0",
-        "trix": "^0.11.2",
+        "trix": "^2.1.4",
         "v-color": "^1.1.2",
         "vee-validate": "^2.2.15",
         "vue-color": "^2.7.1",
