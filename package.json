@@ -27,7 +27,7 @@
         "vue": "^2.6.12",
         "vue-loader": "^15.10.2",
         "vue-template-compiler": "^2.6.12",
-        "webpack": "^5.89.0"
+        "webpack": "^5.94.0"
     },
     "dependencies": {
         "algoliasearch": "^3.35.1",
