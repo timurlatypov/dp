@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Filters\Product\ProductFilters;
+use App\Services\VendorService;
 use App\Traits\LiveAware;
 use App\Traits\StockAware;
 use Illuminate\Database\Eloquent\Builder;
@@ -251,5 +252,18 @@ class Product extends Model
             ->live()
             ->stock()
             ->get();
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($product) {
+            $product->vendor_code = VendorService::makeCode($product->brand->id, $product->id);
+            $product->save();
+        });
     }
 }
