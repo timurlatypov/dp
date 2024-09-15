@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::middleware(ProtectAgainstSpam::class)->group(function () {
     Auth::routes();
 });
-
-Route::get('/rss/feed', [FeedController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 Route::get('/novelties', [HomeController::class, 'novelties'])->name('novelties');

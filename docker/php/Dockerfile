@@ -15,6 +15,9 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     zip \
     libzip-dev \
     libfreetype6-dev \
+    libwebp-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
     unixodbc \
     unixodbc-dev \
     build-essential \
@@ -39,6 +42,8 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     &&  docker-php-ext-configure gd \
         --enable-gd \
         --with-freetype=/usr/include/ \
+        --with-jpeg=/usr/include/ \
+        --with-webp=/usr/include/ \
     # Install and enable PHP dependencies
     && docker-php-ext-install \
         gd \

@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Filters\Product\ProductFilters;
+use App\Jobs\ProcessProductImage;
 use App\Services\VendorService;
+use App\Services\ImageService;
 use App\Traits\LiveAware;
 use App\Traits\StockAware;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -228,30 +229,9 @@ class Product extends Model
         return $this->menu_id;
     }
 
-    public function toFeedItem(): ProductFeedItem
+    public function getVolume(): ?string
     {
-        return ProductFeedItem::create()
-            ->setId($this->getId())
-            ->setTitle($this->getTitle())
-            ->setDescription($this->getDescription())
-            ->setDiscountedPrice($this->definePriceToShow())
-            ->setBasePrice($this->getBasePrice())
-            ->setPicture($this->getImagePath())
-            ->setLink($this->getLink())
-            ->setVendor($this->getBrandName())
-            ->setVendorCode($this->getVendorCode())
-            ->setCategoryId($this->getCategoryId());
-    }
-
-    /**
-     * @return mixed
-     */
-    public static function getFeedProducts(): Collection
-    {
-        return Product::toFeed()
-            ->live()
-            ->stock()
-            ->get();
+        return $this->volume;
     }
 
     /**
@@ -264,6 +244,12 @@ class Product extends Model
         static::created(function ($product) {
             $product->vendor_code = VendorService::makeCode($product->brand->id, $product->id);
             $product->save();
+        });
+
+        static::saved(function ($product) {
+            if ($product->wasChanged('image_path')) {
+                ProcessProductImage::dispatch($product);
+            }
         });
     }
 }
