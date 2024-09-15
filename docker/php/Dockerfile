@@ -1,4 +1,4 @@
-FROM php:8.0.28-fpm-buster
+FROM php:8.3.11-fpm-bookworm
 
 ENV PHPREDIS_VERSION 5.3.7
 

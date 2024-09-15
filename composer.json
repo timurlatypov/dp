@@ -8,7 +8,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "8.0.28",
+        "php": "^8.3",
         "ext-curl": "*",
         "ext-json": "*",
         "algolia/algoliasearch-client-php": "^2.7",
