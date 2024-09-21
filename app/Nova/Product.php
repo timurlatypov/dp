@@ -13,6 +13,7 @@ use Davidpiesse\NovaToggle\Toggle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -159,6 +160,12 @@ class Product extends Resource
                 ->help(__('nova/resources.product.hint.image_path'))
                 ->prunable()
                 ->hideFromIndex(),
+
+            Boolean::make(__('nova/resources.product.fields.webp_image_path'), 'webp_image_path')
+                ->resolveUsing(function ($value, $resource) {
+                    return !is_null($resource->webp_image_path);
+                })
+                ->onlyOnIndex(),
 
             Image::make(__('nova/resources.product.fields.thumb_path'), 'thumb_path')
                 ->disk('public')

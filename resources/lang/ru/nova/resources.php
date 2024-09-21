@@ -52,6 +52,7 @@ return [
             'ozon_code' => 'OZON Артикул',
             'mm_code' => 'Мега Маркет Артикул',
             'ya_code' => 'Яндекс Маркет Артикул',
+            'webp_image_path' => 'Webp'
         ],
         'hint' => [
             'slug' => 'Уникальная составляющая URL-пути',
