@@ -14,9 +14,7 @@
             {{ $ph }}
         </div>
         <div class="position-absolute top-0 right-0 pr-1">
-            <noindex>
             {{ $save_bookmark }}<br>{{ $add_favorite }}
-            </noindex>
         </div>
     </div>
     <div class="card-body d-flex flex-column justify-content-between w-100">
