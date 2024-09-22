@@ -30,10 +30,10 @@ host('188.225.73.98')
 // Hooks
 after('deploy:failed', 'deploy:unlock');
 
-// New task for Opcache cleanup
-task('opcache:clear', function () {
-    run('{{bin/php}} -r \'opcache_reset();\'');
-})->desc('Clear OPcache');
+// Clear OPcache by reloading PHP-FPM
+task('phpfpm:reload', function () {
+    run('sudo service php8.3-fpm reload');
+})->desc('Clear OPcache by reloading PHP-FPM');
 
-// Add Opcache cleanup to deployment flow
-after('deploy:symlink', 'opcache:clear');
+// Modify the deployment flow
+after('deploy:symlink', 'phpfpm:reload');
