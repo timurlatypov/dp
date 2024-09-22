@@ -6,16 +6,11 @@
     @include('layouts.partials._head')
     @stack('meta')
     @stack('share')
-    @include('layouts.partials._gtm')
-    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async
-            defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
-    <script src="//code.jivosite.com/widget.js" jv-id="NBcIYDWKSE" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     @stack('js')
 </head>
 <body>
-@include('layouts.partials._gtm_body')
 <div id="app">
     @include('layouts.partials._header')
     @include('layouts.partials._mobile-search')
@@ -43,9 +38,6 @@
     </div>
     <cart-modal payload="{{ session('cartModal') }}"></cart-modal>
 </div>
-@include('layouts.partials._metrika')
-@include('layouts.partials._ga')
-@include('layouts.partials._facebook_pixel')
 @include('layouts.partials._callback_button')
 </body>
 </html>
