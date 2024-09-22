@@ -30,10 +30,16 @@ host('188.225.73.98')
 // Hooks
 after('deploy:failed', 'deploy:unlock');
 
-// Clear OPcache by reloading PHP-FPM
-task('phpfpm:reload', function () {
+// Modify the existing opcache:clear task
+task('opcache:clear', function () {
     run('sudo service php8.3-fpm reload');
 })->desc('Clear OPcache by reloading PHP-FPM');
 
+// Add a new task to restart Nginx
+task('supervisor:restart', function () {
+    run('sudo supervisorctl restart laravel-worker:*');
+})->desc('Restart Supervisor');
+
 // Modify the deployment flow
-after('deploy:symlink', 'phpfpm:reload');
+after('deploy:symlink', 'opcache:clear');
+after('opcache:clear', 'supervisor:restart');
