@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Jobs\Banner\CreateBannerWebpImage;
 use App\Traits\LiveAware;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
@@ -23,6 +25,8 @@ class Banner extends Model implements Sortable
         'name',
         'banner_desktop',
         'banner_mobile',
+        'banner_desktop_webp',
+        'banner_mobile_webp',
         'bg_color',
         'link',
         'sort_order',
@@ -51,4 +55,35 @@ class Banner extends Model implements Sortable
         'order_column_name' => 'sort_order',
         'sort_when_creating' => true,
     ];
+
+    public function getDesktopImageUrlAttribute()
+    {
+        return $this->getImageUrl($this->banner_desktop_webp, $this->banner_desktop);
+    }
+
+    public function getMobileImageUrlAttribute()
+    {
+        return $this->getImageUrl($this->banner_mobile_webp, $this->banner_mobile);
+    }
+
+    private function getImageUrl($webpPath, $originalPath)
+    {
+        if ($webpPath && Storage::exists($webpPath)) {
+            return Storage::url($webpPath);
+        }
+
+        return $originalPath ? Storage::url($originalPath) : null;
+    }
+
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::saved(function ($banner) {
+            if (!is_null($banner->banner_desktop) || !is_null($banner->banner_mobile)) {
+                CreateBannerWebpImage::dispatch($banner);
+            }
+        });
+    }
 }

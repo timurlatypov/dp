@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Filters\Product\ProductFilters;
 use App\Jobs\ProcessProductImage;
 use App\Services\VendorService;
-use App\Services\ImageService;
 use App\Traits\LiveAware;
 use App\Traits\StockAware;
 use Illuminate\Database\Eloquent\Builder;
@@ -236,8 +235,6 @@ class Product extends Model
 
     /**
      * The "booted" method of the model.
-     *
-     * @return void
      */
     protected static function booted()
     {

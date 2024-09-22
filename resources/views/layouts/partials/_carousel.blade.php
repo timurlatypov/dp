@@ -6,18 +6,24 @@
                 <a href="{{ $banner->link }}" class="banner-mobile h-100">
                     <div class="row h-100">
                         <div class="col-12 h-100 align-self-center ">
-                            <div class="h-100 carousel-bg-image"
-                                 style="background-image: url({{ asset('storage/' . $banner->banner_mobile) }})">
-                            </div>
+                            <picture>
+                                @if($banner->banner_mobile_webp)
+                                    <source srcset="{{ get_image_path($banner->banner_mobile_webp) }}" type="image/webp">
+                                @endif
+                                <img src="{{ get_image_path($banner->banner_mobile) }}" alt="DoctorProffi.ru">
+                            </picture>
                         </div>
                     </div>
                 </a>
                 <a href="{{ $banner->link }}" class="banner-desktop h-100">
                     <div class="container-carousel h-100 px-0">
-                        <div class="row h-100 carousel-bg-image"
-                             style="background-image: url({{ asset('storage/' . $banner->banner_desktop) }})">
-                            <div class="col-12 align-self-center px-5">
-                            </div>
+                        <div class="row h-100">
+                            <picture>
+                                @if($banner->banner_desktop_webp)
+                                    <source srcset="{{ get_image_path($banner->banner_desktop_webp) }}" type="image/webp">
+                                @endif
+                                <img src="{{ get_image_path($banner->banner_desktop) }}" alt="DoctorProffi.ru">
+                            </picture>
                         </div>
                     </div>
                 </a>

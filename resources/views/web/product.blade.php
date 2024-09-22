@@ -41,12 +41,13 @@
 
                                         <div class="row align-content-center">
                                             <div class="col-12 col-sm-6 col-md-7 px-sm-0 py-sm-2">
-
-                                                <img src="{{ get_image_path($product->image_path) }}"
-                                                     style="border: 16px solid white;"
-                                                     width="100%"
-                                                     alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
-
+                                                <picture>
+                                                    @if($product->webp_image_path)
+                                                    <source srcset="{{ get_image_path($product->webp_image_path) }}" type="image/webp">
+                                                    @endif
+                                                    <img src="{{ get_image_path($product->image_path) }}" style="border: 16px solid white;" width="100%"
+                                                         alt="{{ $brand->name }} {{ $product->title_eng }} - {{ $product->title_rus }} | DoctorProffi.ru">
+                                                </picture>
                                             </div>
                                             <div class="mt-3 col-12 col-sm-6 col-md-5 p-3 px-sm-0 py-sm-2 align-self-center">
                                                 <a href="/brand/{{$brand->slug}}" class="brand-logo"><img

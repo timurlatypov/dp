@@ -3,10 +3,12 @@
 namespace App\Nova;
 
 use App\Models\Banner as BannerModel;
+use App\Nova\Actions\Banner\ConvertBannerImageToWebp;
 use Carbon\Carbon;
 use Davidpiesse\NovaToggle\Toggle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -72,7 +74,20 @@ class Banner extends Resource
 
             Text::make(__('nova/resources.banner.fields.name'), 'name'),
 
-            Text::make(__('nova/resources.banner.fields.link'), 'link'),
+            Text::make(__('nova/resources.banner.fields.link'), 'link')
+                ->hideFromIndex(),
+
+            Boolean::make(__('nova/resources.banner.fields.banner_desktop_webp'), 'banner_desktop_webp')
+                ->resolveUsing(function ($value, $resource) {
+                    return !is_null($resource->banner_desktop_webp);
+                })
+                ->onlyOnIndex(),
+
+            Boolean::make(__('nova/resources.banner.fields.banner_mobile_webp'), 'banner_mobile_webp')
+                ->resolveUsing(function ($value, $resource) {
+                    return !is_null($resource->banner_mobile_webp);
+                })
+                ->onlyOnIndex(),
 
             Image::make(__('nova/resources.banner.fields.banner_desktop'), 'banner_desktop')
                 ->disk('public')
@@ -160,6 +175,8 @@ class Banner extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new ConvertBannerImageToWebp(),
+        ];
     }
 }

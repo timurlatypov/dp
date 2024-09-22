@@ -106,6 +106,8 @@ return [
             'name' => 'Название',
             'banner_desktop' => 'Desktop',
             'banner_mobile' => 'Mobile',
+            'banner_desktop_webp' => 'WebP-D',
+            'banner_mobile_webp' => 'WebP-M',
             'bg_color' => 'Цвет фона',
             'link' => 'Ссылка',
             'sort_order' => 'Сортировка',

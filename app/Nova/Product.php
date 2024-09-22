@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\Product\ConvertImageToWebp;
 use App\Nova\Filters\Brand;
 use App\Nova\Filters\Line;
 use App\Nova\Filters\Live;
@@ -23,7 +24,6 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Orlyapps\NovaBelongsToDepend\NovaBelongsToDepend;
 use Saumini\Count\RelationshipCount;
-use App\Nova\Actions\ConvertImageToWebp;
 
 class Product extends Resource
 {
@@ -101,9 +101,9 @@ class Product extends Resource
                 ->rules(['required', 'max:191'])
                 ->slug('slug'),
 
-                Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
-                    ->hideFromIndex()
-                    ->rules(['max:191']),
+            Text::make(__('nova/resources.product.fields.title_rus'), 'title_rus')
+                ->hideFromIndex()
+                ->rules(['max:191']),
 
             Slug::make(__('nova/resources.product.fields.slug'), 'slug')
                 ->disableAutoUpdateWhenUpdating()
@@ -263,7 +263,7 @@ class Product extends Resource
     public function actions(Request $request)
     {
         return [
-            new ConvertImageToWebp,
+            new ConvertImageToWebp(),
         ];
     }
 }

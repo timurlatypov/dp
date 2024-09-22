@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ProcessProductImage implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected $product;
 
@@ -30,14 +33,14 @@ class ProcessProductImage implements ShouldQueue
 
         if (Storage::disk('public')->exists($this->product->image_path)) {
             $webpPath = ImageService::convertToWebp($fullPath);
-            
+
             if ($webpPath) {
                 $relativePath = str_replace(Storage::disk('public')->path(''), '', $webpPath);
                 $this->product->webp_image_path = $relativePath;
                 $this->product->save();
             }
         } else {
-            Log::error("Image file not found", ['path' => $fullPath]);
+            Log::error('Image file not found', ['path' => $fullPath]);
         }
     }
 }
