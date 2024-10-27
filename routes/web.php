@@ -134,10 +134,6 @@ Route::group(['prefix' => '/gift-card'], function () {
 // ///////////////////////////////////////////////////////////////
 Route::group(['prefix' => '/admin-panel', 'middleware' => 'role:admin|manager|super-admin', 'namespace' => 'AdminPanel'], function () {
     //
-    // EXPERIMENTAL ROUTES
-    //
-    Route::get('/telegram/update', 'TelegramBotController@update');
-    //
     // ADMIN PANEL INDEX
     //
     Route::get('/', 'AdminController@index')->name('admin.index');

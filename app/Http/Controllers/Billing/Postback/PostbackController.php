@@ -6,7 +6,7 @@ use App\Billing\PaymentStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendPaymentSuccessMessageJob;
 use App\Models\Payment;
-use App\Notifications\OrderPaid;
+use App\Notifications\TelegramOrderPaid;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -37,7 +37,7 @@ class PostbackController extends Controller
                             'status' => PaymentStatusEnum::PAID,
                         ]);
 
-                        $order->notify(new OrderPaid());
+                        $order->notify(new TelegramOrderPaid());
                         SendPaymentSuccessMessageJob::dispatch($order);
                     }
                 } else {

@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Events\NewOrderCreated;
 use App\Models\Coupon;
 use App\Models\GiftCard;
-use App\Models\GoogleAnalytics;
 use App\Models\Order;
 use App\Models\Sberbank;
-use App\Models\YandexMetrika;
-use App\Notifications\OrderCreated;
+use App\Notifications\TelegramOrderCreated;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
@@ -134,55 +132,7 @@ class OrderController extends Controller
 
         event(new NewOrderCreated($order, $customer, $managers, $admins));
 
-        $order->notify(new OrderCreated());
-
-        $ga = $request->_ga;
-        if ($ga) {
-            try {
-                $ga_exists = GoogleAnalytics::where('ga', $ga)->first();
-
-                if (!$ga_exists) {
-                    GoogleAnalytics::create([
-                        'ga' => $ga,
-                    ])->save();
-
-                    $attach_ga = GoogleAnalytics::where('ga', $ga)->first();
-                    $order->ga()->attach($attach_ga);
-                }
-
-                $ga_exists = GoogleAnalytics::where('ga', $ga)->first();
-
-                if (!$order->ga->contains($ga_exists)) {
-                    $order->ga()->attach($ga_exists);
-                }
-            } catch (Throwable $e) {
-                // Handle errors
-            }
-        }
-
-        $ym = $request->_ym;
-        if ($ym) {
-            try {
-                $ym_exists = YandexMetrika::where('ym', $ym)->first();
-
-                if (!$ym_exists) {
-                    YandexMetrika::create([
-                        'ym' => $ym,
-                    ])->save();
-
-                    $attach_ym = YandexMetrika::where('ym', $ym)->first();
-                    $order->ym()->attach($attach_ym);
-                }
-
-                $ym_exists = YandexMetrika::where('ym', $ym)->first();
-
-                if (!$order->ym->contains($ym_exists)) {
-                    $order->ym()->attach($ym_exists);
-                }
-            } catch (Throwable $e) {
-                // Handle errors
-            }
-        }
+        $order->notify(new TelegramOrderCreated());
 
         Cart::destroy();
     }

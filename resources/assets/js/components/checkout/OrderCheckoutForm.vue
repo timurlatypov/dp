@@ -339,8 +339,7 @@
     </div>
     <div class="px-4 pb-5 mx-auto">
       <button type="submit" class="btn btn-primary" @click.prevent="validateBeforeSubmit" :disabled="is_disabled">
-        <i class="fas " :class="is_disabled ? ' fa-spinner fa-spin' : ' fa-check'"></i>&nbsp;&nbsp;<b>Отправить
-        заказ</b>
+        <i class="fas " :class="is_disabled ? ' fa-spinner fa-spin' : ' fa-check'"></i>&nbsp;&nbsp;<b>Отправить заказ</b>
         <div class="ripple-container"></div>
       </button>
     </div>
@@ -592,13 +591,12 @@ export default {
       });
     },
     storeOrder() {
-      if (!this.is_disabled) {
-        this.is_disabled = true;
-        this.order._sbjs = window.sbjs.get.current
+      this.is_disabled = true;
+      this.order._sbjs = window.sbjs.get.current
 
+      if (this.is_disabled) {
         axios.post('/order/store', this.order)
             .then(response => {
-              window.yaCounter35424225.reachGoal('new-order');
               window.flash('Заказ получен!');
               this.new_order_created = true;
               window.cartUpdate();
@@ -662,12 +660,6 @@ export default {
   },
   mounted() {
     this.setCart();
-    if (this.$cookie.get('_ga', {domain: '.doctorproffi.ru'})) {
-      this.order._ga = this.$cookie.get('_ga', {domain: '.doctorproffi.ru'})
-    }
-    if (this.$cookie.get('_ym_uid', {domain: '.doctorproffi.ru'})) {
-      this.order._ym = this.$cookie.get('_ym_uid', {domain: '.doctorproffi.ru'})
-    }
   }
 }
 </script>

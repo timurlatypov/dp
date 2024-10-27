@@ -7,7 +7,7 @@ use App\Models\Order;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Telegram\TelegramMessage;
 
-class OrderCreated extends Notification
+class TelegramOrderCreated extends Notification
 {
     public function via($notifiable)
     {
