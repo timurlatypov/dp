@@ -19,11 +19,8 @@ class CreatePromotionWebpImage implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    protected $promotion;
-
-    public function __construct(Promotion $promotion)
+    public function __construct(protected Promotion $promotion)
     {
-        $this->promotion = $promotion;
     }
 
     public function handle()

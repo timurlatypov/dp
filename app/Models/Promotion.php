@@ -53,7 +53,7 @@ class Promotion extends Model implements Sortable
     protected static function booted(): void
     {
         static::saved(function ($promotion) {
-            if (!is_null($promotion->image_path)) {
+            if ($promotion->wasChanged('image_path')) {
                 CreatePromotionWebpImage::dispatch($promotion);
             }
         });
