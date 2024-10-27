@@ -122,7 +122,8 @@ return [
         'fields' => [
             'name' => 'Название',
             'link' => 'Ссылка',
-            'image_path' => 'Баннер',
+            'image_path' => 'Jpeg',
+            'webp_image_path' => 'Webp',
             'sort_order' => 'Сортировка',
             'live' => 'Видимость',
             'published_at' => 'Опубликован',

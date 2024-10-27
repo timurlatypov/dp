@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\Promotion\CreatePromotionWebpImage;
 use App\Traits\LiveAware;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -48,4 +49,13 @@ class Promotion extends Model implements Sortable
         'order_column_name' => 'sort_order',
         'sort_when_creating' => true,
     ];
+
+    protected static function booted(): void
+    {
+        static::saved(function ($promotion) {
+            if (!is_null($promotion->image_path)) {
+                CreatePromotionWebpImage::dispatch($promotion);
+            }
+        });
+    }
 }

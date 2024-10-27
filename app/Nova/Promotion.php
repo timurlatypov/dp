@@ -6,6 +6,7 @@ use App\Models\Promotion as PromotionModel;
 use Carbon\Carbon;
 use Davidpiesse\NovaToggle\Toggle;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -68,7 +69,14 @@ class Promotion extends Resource
 
             Text::make(__('nova/resources.promotion.fields.name'), 'name'),
 
-            Text::make(__('nova/resources.promotion.fields.link'), 'link'),
+            Text::make(__('nova/resources.promotion.fields.link'), 'link')
+                ->hideFromIndex(),
+
+            Boolean::make(__('nova/resources.promotion.fields.webp_image_path'), 'webp_image_path')
+                ->resolveUsing(function ($value, $resource) {
+                    return !is_null($resource->webp_image_path);
+                })
+                ->onlyOnIndex(),
 
             Image::make(__('nova/resources.promotion.fields.image_path'), 'image_path')
                 ->disk('public')
