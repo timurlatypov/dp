@@ -8,7 +8,6 @@
     @stack('share')
     <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('js')
 </head>
 <body>
