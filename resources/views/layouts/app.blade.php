@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="facebook-domain-verification" content="lteht5c11k3xsym3kk0qm00izgq7zv" />
+    @include('layouts.partials._gtm')
     @include('layouts.partials._head')
     @stack('meta')
     @stack('share')
@@ -11,6 +12,7 @@
     @stack('js')
 </head>
 <body>
+@include('layouts.partials._gtm_body')
 <div id="app">
     @include('layouts.partials._header')
     @include('layouts.partials._mobile-search')
