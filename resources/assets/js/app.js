@@ -1,4 +1,8 @@
+import Vue from "vue";
+
 window.Vue = require('vue').default;
+
+import Alpine from 'alpinejs'
 
 import VueYandexMetrika from 'vue-yandex-metrika';
 
@@ -73,6 +77,7 @@ Vue.component('order-create-form', require('./components/admin-panel/order/Order
 
 Vue.component('TypeAhead', require('./components/delivery/TypeAhead').default);
 Vue.component('delivery-calculator', require('./components/delivery/Calculator.vue').default);
+Vue.component('mobile-menu', require('./components/MobileMenu.vue').default);
 
 Vue.use(VueYandexMetrika, {
     id: 35424225,

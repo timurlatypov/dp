@@ -1,5 +1,5 @@
 <template>
-    <a
+    <div
             class="btn btn-fab btn-link"
             data-toggle="tooltip"
             data-placement="top"
@@ -7,7 +7,7 @@
             title="В избранное">
         <i class="material-icons text-info">bookmark</i>
         <div class="ripple-container"></div>
-    </a>
+    </div>
 </template>
 
 <script>

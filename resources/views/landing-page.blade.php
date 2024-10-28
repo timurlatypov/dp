@@ -12,19 +12,19 @@
 @endsection
 
 @section('promotions')
-    <noindex>@include('layouts.partials._promotions')</noindex>
+    @include('layouts.partials._promotions')
 @endsection
 
 @section('content')
-    <noindex>@include('layouts.partials._bestsellers')</noindex>
+    @include('layouts.partials._bestsellers')
 @endsection
 
 @section('brands')
-    <noindex>@include('layouts.partials._brands')</noindex>
+    @include('layouts.partials._brands')
 @endsection
 
 @section('infoblock')
-    <noindex>@include('layouts.partials._infoblock')</noindex>
+    @include('layouts.partials._infoblock')
 @endsection
 
 @section('about')

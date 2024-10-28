@@ -31,6 +31,7 @@
     },
     "dependencies": {
         "algoliasearch": "^3.35.1",
+        "alpinejs": "^3.14.3",
         "autocomplete.js": "^0.31.0",
         "inputmask": "^3.3.11",
         "moment": "^2.29.4",

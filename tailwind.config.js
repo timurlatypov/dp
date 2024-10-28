@@ -24,6 +24,9 @@ module.exports = {
           letterSpacing: '-0.01em',
         }],
       },
+      screens: {
+        'md2': '992px',
+      },
     }
   },
   variants: {
