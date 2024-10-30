@@ -21,6 +21,7 @@ add('writable_dirs', []);
 
 host('188.225.73.98')
     ->set('remote_user', 'root')
+    ->set('port', 2222)
     ->set('deploy_path', '/var/www/doctorproffi/production')
     ->set('forward_agent', true)
     ->set('stage', 'production')
