@@ -74,7 +74,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="tw-text-gray-700 hover:tw-text-gray-900 tw-px-3 tw-py-2 tw-rounded-md tw-text-sm tw-font-medium tw-whitespace-nowrap">
+                    <a href="/brand/sets" class="tw-text-gray-700 hover:tw-text-gray-900 tw-px-3 tw-py-2 tw-rounded-md tw-text-sm tw-font-medium tw-whitespace-nowrap">
                         Наборы
                     </a>
 

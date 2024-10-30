@@ -325,7 +325,7 @@
                 </div>
 
                 <!-- Sets -->
-                <a href="#" class="tw-block tw-px-3 tw-py-2 tw-rounded-md tw-text-lg tw-font-medium tw-text-gray-700 hover:tw-text-gray-900 hover:tw-bg-gray-100">
+                <a href="/brand/sets" class="tw-block tw-px-3 tw-py-2 tw-rounded-md tw-text-lg tw-font-medium tw-text-gray-700 hover:tw-text-gray-900 hover:tw-bg-gray-100">
                     Наборы
                 </a>
 
